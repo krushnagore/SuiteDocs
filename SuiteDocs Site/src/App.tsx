@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { docService } from './services/docService';
 import { DocModule } from './types/doc';
 import { Header } from './components/Header';
@@ -142,6 +143,9 @@ export const App: React.FC = () => {
         onClose={() => setSearchOpen(false)}
         onSelect={handleCommandPaletteSelect}
       />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 };
