@@ -1,0 +1,5 @@
+[2026-09-09 03:08:29] Update frequency successfully changed to: daily (Interval: 1 day(s)). Next run: 2026-09-10T02:00:00Z
+[2026-09-09 03:08:30] Update frequency successfully changed to: weekly (Interval: 7 day(s)). Next run: 2026-09-13T02:00:00Z
+[2026-09-09 03:09:46] Registering Windows Task 'SuiteScriptDocAutoUpdater'...
+[2026-09-09 03:09:46] SUCCESS: Windows Scheduled Task 'SuiteScriptDocAutoUpdater' registered successfully (WEEKLY at 02:00).
+[2026-09-09 03:09:51] Update frequency successfully changed to: daily (Interval: 1 day(s)). Next run: 2026-09-10T02:00:00Z
