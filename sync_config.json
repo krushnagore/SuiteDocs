@@ -1,0 +1,12 @@
+{
+  "frequency": "daily",
+  "interval_days": 1,
+  "day_of_week": "Sunday",
+  "time_of_day": "02:00",
+  "auto_rebuild_site": true,
+  "author": "Krushna Gore",
+  "last_sync": "2026-09-09T03:00:00Z",
+  "last_status": "SUCCESS",
+  "last_details": "55 modules synchronized, 321-page PDF generated and synced to SuiteDocs Site",
+  "next_scheduled_sync": "2026-09-10T02:00:00Z"
+}

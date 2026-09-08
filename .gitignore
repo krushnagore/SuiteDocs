@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+SuiteDocs Site/node_modules/
+
+# Build artifacts
+dist/
+SuiteDocs Site/dist/
+
+# OS and temporary files
+Thumbs.db
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+
+# Cache directories (optional: cache can be preserved or ignored)
+cache_docs/
+cache_samples/

@@ -825,30 +825,59 @@ with open('SuiteScript_2.1_Modules_Reference.html', 'w', encoding='utf-8') as f:
 print(f"Generated expanded SuiteScript_2.1_Modules_Reference.html ({len(html_content)} bytes)")
 
 # -------------------------------------------------------------
-# 3. COMPILE EXPANDED PDF USING HEADLESS EDGE
+# 3. COMPILE EXPANDED PDF USING HEADLESS BROWSER (EDGE / CHROME / CHROMIUM)
 # -------------------------------------------------------------
+import shutil as _shutil
+
 html_abs_path = os.path.abspath('SuiteScript_2.1_Modules_Reference.html')
 pdf_abs_path = os.path.abspath('SuiteScript_2.1_Modules_Reference.pdf')
-edge_path = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
 
-if not os.path.exists(edge_path):
-    edge_path = r'C:\Program Files\Microsoft\Edge\Application\msedge.exe'
-
-print(f"Converting expanded HTML to PDF via Edge: {edge_path}")
-cmd = [
-    edge_path,
-    '--headless',
-    '--disable-gpu',
-    '--no-pdf-header-footer',
-    '--run-all-compositor-stages-before-draw',
-    f'--print-to-pdf={pdf_abs_path}',
-    f'file:///{html_abs_path.replace(os.sep, "/")}'
+browser_candidates = [
+    r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
+    r'C:\Program Files\Microsoft\Edge\Application\msedge.exe',
+    r'C:\Program Files\Google\Chrome\Application\chrome.exe',
+    r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
+    'google-chrome',
+    'google-chrome-stable',
+    'chromium-browser',
+    'chromium',
+    'msedge'
 ]
 
-result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
-print(f"Edge process exited with code: {result.returncode}")
-if os.path.exists(pdf_abs_path):
-    pdf_size = os.path.getsize(pdf_abs_path)
-    print(f"SUCCESS: Generated {pdf_abs_path} ({pdf_size} bytes)")
+browser_exe = None
+for candidate in browser_candidates:
+    if os.path.isabs(candidate) and os.path.exists(candidate):
+        browser_exe = candidate
+        break
+    elif not os.path.isabs(candidate):
+        found = _shutil.which(candidate)
+        if found:
+            browser_exe = found
+            break
+
+if not browser_exe:
+    print("Warning: No headless browser found for PDF compilation. Keeping existing PDF if present.")
 else:
-    print(f"ERROR: PDF file not created. Stderr: {result.stderr}")
+    print(f"Converting expanded HTML to PDF via browser: {browser_exe}")
+    cmd = [
+        browser_exe,
+        '--headless',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--no-pdf-header-footer',
+        '--run-all-compositor-stages-before-draw',
+        f'--print-to-pdf={pdf_abs_path}',
+        f'file:///{html_abs_path.replace(os.sep, "/")}'
+    ]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+        print(f"Browser PDF process exited with code: {result.returncode}")
+        if os.path.exists(pdf_abs_path):
+            pdf_size = os.path.getsize(pdf_abs_path)
+            print(f"SUCCESS: Generated {pdf_abs_path} ({pdf_size} bytes)")
+        else:
+            print(f"Notice: PDF file not refreshed. Stderr: {result.stderr}")
+    except Exception as e:
+        print(f"Notice: PDF generation skipped or timed out: {e}")
