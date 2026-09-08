@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import React, { useState, useEffect } from 'react';
 import { docService } from './services/docService';
 import { DocModule } from './types/doc';
@@ -145,6 +146,9 @@ export const App: React.FC = () => {
         isOpen={syncModalOpen}
         onClose={() => setSyncModalOpen(false)}
       />
+
+      {/* Vercel Analytics Tracker */}
+      <Analytics />
     </div>
   );
 };
