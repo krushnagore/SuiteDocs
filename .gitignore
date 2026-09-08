@@ -9,10 +9,10 @@ SuiteDocs Site/dist/
 # OS and temporary files
 Thumbs.db
 .DS_Store
-*.log
 __pycache__/
 *.pyc
+*.log
 
-# Cache directories (optional: cache can be preserved or ignored)
+# Cache directories
 cache_docs/
 cache_samples/

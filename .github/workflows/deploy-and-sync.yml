@@ -2,11 +2,6 @@ name: Scheduled Documentation Sync & Deploy
 
 on:
   # Automated Cloud Schedule: Runs weekly on Sunday at 02:00 UTC
-  # To change frequency:
-  #   - Weekly: '0 2 * * 0'
-  #   - Daily:  '0 2 * * *'
-  #   - Every 3 days: '0 2 */3 * *'
-  #   - Monthly (1st of month): '0 2 1 * *'
   schedule:
     - cron: '0 2 * * 0'
 
@@ -14,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       force_rebuild:
-        description: 'Force clean rebuild of all 55 modules and PDF'
+        description: 'Force clean rebuild of all 55 modules'
         type: boolean
         required: false
         default: false
@@ -43,15 +38,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install System Dependencies (Chromium & Fonts)
+      - name: Install Fonts for PDF Rendering
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser fonts-liberation fonts-roboto
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-liberation fonts-roboto
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Run Documentation Sync Pipeline
         run: |
@@ -67,7 +62,7 @@ jobs:
         run: |
           git config --global user.name 'SuiteDocs Automation [Bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add suite_script_21_complete.json SuiteScript_2.1_Modules_Reference.pdf sync_config.json sync_history.log "SuiteDocs Site/public/data" "SuiteDocs Site/public/downloads"
+          git add suite_script_21_complete.json SuiteScript_2.1_Modules_Reference.pdf sync_config.json "SuiteDocs Site/public/data" "SuiteDocs Site/public/downloads"
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync: update SuiteScript 2.1 documentation & PDF [skip ci]" && git push)
 
       - name: Setup GitHub Pages
