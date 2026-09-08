@@ -1,0 +1,465 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/log Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="article_23112904019.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0303041954.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/log Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="article_23112904019.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0303041954.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/log Module</li>
+        </ol>
+        <h1 class="sect1">N/log Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/log module to manually access methods for logging script execution details. These methods can also be accessed using the global log object. For more information about the global log object, see <a href="section_4387812838.html">log Object</a>.</p>
+        <p>Log messages appear on the Execution Log subtab of the script deployment for deployed scripts, or on the Execution Log subtab of the SuiteScript Debugger if you are debugging a script. Log messages also appear on the Script Execution Logs page at <em>Customization &gt; Scripting &gt; Script Execution Logs</em>.</p>
+        <p>
+          <strong>
+            <a href="section_0303041954.html">N/log Module Script Sample</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_35181254835">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4430315777">N/log Module Guidelines</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4546180151">Using Log Levels</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4546025564">Viewing Script Execution Logs</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4574564175">N/log Module Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4430315777">N/log Module Guidelines</h2>
+        <p>The following guidelines are provided for use of the N/log module:</p>
+        <ul>
+          <li>
+            <p>NetSuite governs the amount of logging that can be done in any specific 60 minute time period. A company is allowed to make up to 100,000 log object method calls across <strong>all</strong> of their scripts. Script owners are notified if NetSuite detects that one script is logging excessively and automatically adjusts the log level.</p>
+          </li>
+          <li>
+            <p>NetSuite purges logs older than <strong>30 days</strong>.</p>
+          </li>
+          <li>
+            <p>The Server Script Log search and the Execution Log subtab of script records and script deployment records have a log storage limit of 5 million per database. Because log persistence is not guaranteed, You should use custom records if you want to store script execution logs for extended periods. The Script Execution Logs page at <em>Customization &gt; Scripting &gt; Script Execution Logs</em> does not share the same database limit.</p>
+          </li>
+          <li>
+            <p>The Execution Log subtab also lists notes returned by NetSuite such as error messages. For more information, see <a href="section_4243798608.html">N/error Module</a>.</p>
+          </li>
+          <li>
+            <p>If you deploy a client script to a form using <a href="section_4340375753.html">Form.clientScriptFileId</a> or <a href="section_4625445350.html">Form.clientScriptModulePath</a>, using the N/log module adds the logs to the deployment of the parent script. The parent script can be either a <code>beforeLoad</code> user event script or a <a href="section_4387799600.html">SuiteScript 2.1 Suitelet Script Type</a>.</p>
+          </li>
+          <li>
+            <p>If a client script uses the N/log module and it is attached to a form (see <a href="section_4575178433.html">SuiteScript 2.x Form-Level Script Deployments</a>), calls to any log function (log.audit, log.debug, log.emergency, log.error) are ignored. The script executes successfully, however, nothing will be logged. To log messages in a client script that is attached to a form, use the console.log function.</p>
+          </li>
+          <li>
+            <p>When an object (that is not a string) is passed to a log object method, NetSuite runs <a href="section_4434858442.html">JSON.stringify(obj)</a> on any values that are passed as the <code>details</code> parameter and equal a JavaScript object.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">...  
+// log.debug(myRecord) //Shows the JSON representation of the current values in the myRecord object
+  var id = myRecord.save();
+... 
+</code>
+            </pre>
+          </li>
+        </ul>
+        <h2 id="bridgehead_4546180151">Using Log Levels</h2>
+        <p>Use the log methods along with the Log Level field on the script deployment to specify which log messages are written to the Execution Log on the script deployment. This is useful during the debugging of a script or for providing useful execution notes for auditing or tracking purposes.</p>
+        <p>Log levels on the script deployment and N/log module methods act as a filter on the amount of information logged. The following Log Levels are supported:</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.3%;">
+                  <p style="font-size:1em !important;">Log Level</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:87.6%;">
+                  <p style="font-size:1em !important;">Example Uses</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.3%;">
+                  <p style="font-size:1em !important;">Debug</p>
+                </td>
+                <td style="padding:3.61px;width:87.6%;">
+                  <p style="font-size:1em !important;">Use Debug to show all messages.</p>
+                  <p style="font-size:1em !important;">This type of logging is suitable only for testing scripts. To avoid excessive logging, don't use Debug level for active scripts in production.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.3%;">
+                  <p style="font-size:1em !important;">Audit</p>
+                </td>
+                <td style="padding:3.61px;width:87.6%;">
+                  <p style="font-size:1em !important;">Use Audit to shows a record of events that have occurred during the processing of the script (for example, 'A request was made to an external site.').</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.3%;">
+                  <p style="font-size:1em !important;">Error</p>
+                </td>
+                <td style="padding:3.61px;width:87.6%;">
+                  <p style="font-size:1em !important;">Use Error to show only unexpected script errors.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.3%;">
+                  <p style="font-size:1em !important;">Emergency</p>
+                </td>
+                <td style="padding:3.61px;width:87.6%;">
+                  <p style="font-size:1em !important;">Use Emergency to show only the most critical errors in the script log.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The following table shows you which type of log messages are written based on the Log Level field selected on the script deployment and the log method used in your script.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Log Level</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:23.5%;" colspan="4">
+                  <p style="font-size:1em !important;">Log method used in your script</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385611.html">log.emergency(options)</a>
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385812.html">log.error(options)</a>
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430384449.html">log.audit(options)</a>
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:26.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385329.html">log.debug(options)</a>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Emergency</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.4%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:26.3%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Error</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.4%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:26.3%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Audit</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.4%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:26.3%;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Debug</p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.4%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+                <td style="text-align:center;padding:3.61px;width:26.3%;">
+                  <p style="font-size:1em !important;">
+                    <img alt="checkmark" src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20API/Check.png" loading="lazy" style="height: 1em;">
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4546025564">Viewing Script Execution Logs</h2>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">Log messages written in client scripts that are attached to a form are viewed in the browser debug console tab when the client script runs on the form. Log messages written in server scripts and client scripts (that are deployed at the record level) are viewed in NetSuite.</p>
+        </div>
+        <p>Log messages for a specific script are shown on the Execution Log of the script deployment for the script. These logs are not guaranteed to persist for 30 days and may be purged to enhance performance if volume is high.</p>
+        <p>To view script execution log details for server scripts, go to <em>Customization &gt; Scripting &gt; Script Execution Logs</em>. This list of script execution logs is an enhanced repository that stores all log details for 30 days.</p>
+        <p>On this page, you can perform the following tasks:</p>
+        <ul>
+          <li>
+            <p>Search for specific logs using filter options, such as log level, execution date range, and script name.</p>
+          </li>
+          <li>
+            <p>Download the list as a CSV file or an Excel spreadsheet.</p>
+          </li>
+          <li>
+            <p>Print the list.</p>
+          </li>
+        </ul>
+        <p>When you debug a script in the SuiteScript Debugger, log messages appear on the Execution Log subtab of the SuiteScript Debugger and do not appear on any Execution Log subtab of any script deployment.</p>
+        <h2 id="bridgehead_4574564175">N/log Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:25.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:15.2%;" rowspan="4">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430384449.html">log.audit(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Client* and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:25.6%;">
+                  <p style="font-size:1em !important;">Logs an Audit message.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385329.html">log.debug(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Client* and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:25.6%;">
+                  <p style="font-size:1em !important;">Logs a Debug message.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385611.html">log.emergency(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Client* and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:25.6%;">
+                  <p style="font-size:1em !important;">Logs an Emergency message.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4430385812.html">log.error(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Client* and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:25.6%;">
+                  <p style="font-size:1em !important;">Logs an Error message.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>* If a client script uses the N/log module and it is attached to a form (see <a href="section_4575178433.html">SuiteScript 2.x Form-Level Script Deployments</a>), calls to any log function (log.audit, log.debug, log.emergency, log.error) are ignored. The script executes successfully, however, nothing will be logged. To log messages in a client script that is attached to a form, use the console.log function. You can use N/log module methods in client scripts that are deployed at the record level or are called from a server script.</p>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

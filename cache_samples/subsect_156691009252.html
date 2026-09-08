@@ -1,0 +1,190 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Search for Customer Records and Log First 50 Results</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_0304061100.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_156691117264.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Search for Customer Records and Log First 50 Results","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_0304061100.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_156691117264.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4345764122.html" property="item" typeof="WebPage">
+              <span property="name">N/search Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0304061100.html" property="item" typeof="WebPage">
+              <span property="name">N/search Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Search for Customer Records and Log First 50 Results</li>
+        </ol>
+        <h1 class="sect1">Search for Customer Records and Log First 50 Results</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample creates a search for customer records. The sample specifies several result columns and one filter, and it logs the first 50 search results.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript"> /**
+ * @NApiVersion 2.1
+ */
+
+require(['N/search'], function(search) {
+    var mySearch = search.create({
+        type: search.Type.CUSTOMER,
+        columns: ['entityid', 'firstname', 'lastname', 'salesrep'],
+        filters: ['entityid', 'contains', 'Adam']
+    });
+
+    var myResultSet = mySearch.run();
+
+    var resultRange = myResultSet.getRange({
+        start: 0,
+        end: 50
+    });
+
+    for (var i = 0; i &lt; resultRange.length; i++) {
+        log.debug(resultRange[i]);
+    }
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0304061100.html">N/search Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691117264.html">Search for Sales Order Records</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691156175.html">Load a Search for Sales Order Records and Use a Callback Function to Process Results</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691178780.html">Load a Search for Sales Order Records and Return the First 100 Search Results</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691193698.html">Load and Run a Paginated Search and Process the Results</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691607120.html">Create a Search for a Custom Record Type</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691710476.html">Search for Items in a Custom List</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156691213501.html">Delete a Saved Search</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_161114820748.html">Search Using a Specific Record Field</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

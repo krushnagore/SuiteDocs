@@ -1,0 +1,920 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/runtime Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4412215015.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0304045354.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/runtime Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4412215015.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0304045354.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/runtime Module</li>
+        </ol>
+        <h1 class="sect1">N/runtime Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/runtime module to view runtime settings for the script, the session, or the user. You can also use this module to set a session key and to see whether a particular feature is enabled in your account.</p>
+        <p>
+          <strong>
+            <a href="section_0304045354.html">N/runtime Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_70180521835">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4296458307">N/runtime Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4296459957">Script Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4296460759">Session Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4296461392">User Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4296458307">N/runtime Module Members</h2>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="3">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296527813.html">runtime.Script</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Encapsulates the runtime settings of the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296528369.html">runtime.Session</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Encapsulates the user session for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296528504.html">runtime.User</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Encapsulates the properties and preferences of the user currently executing the script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="5">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296529387.html">runtime.getCurrentScript()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296527813.html">runtime.Script</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Returns a <a href="section_4296527813.html">runtime.Script</a> object that represents the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296529736.html">runtime.getCurrentSession()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296528369.html">runtime.Session</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Returns a <a href="section_4296528369.html">runtime.Session</a> object that represents the user session for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296529105.html">runtime.getCurrentUser()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296528504.html">runtime.User</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Returns a <a href="section_4296528504.html">runtime.User</a> object that represents the properties and preferences of the user currently executing the script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296530135.html">runtime.isFeatureInEffect(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Indicates whether a particular feature is enabled in a NetSuite account.</p>
+                  <p style="font-size:1em !important;">These are the features that appear on the Enable Features page.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="article_92152343123.html">runtime.isNextActive()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Returns whether NetSuite Next is active for the user running the script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="7">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296530806.html">runtime.accountId</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The account ID for the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159983960584.html">runtime.country</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The country for the current company.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296531123.html">runtime.envType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The current environment in which the script is executing.</p>
+                  <p style="font-size:1em !important;">This property uses values from the <a href="section_4296647065.html">runtime.EnvType</a> enum.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296531348.html">runtime.executionContext</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The trigger of the current script.</p>
+                  <p style="font-size:1em !important;">This property uses values from the <a href="section_4296646855.html">runtime.ContextType</a> enum.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1513808179.html">runtime.processorCount</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The number of processors available to the current account.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296531705.html">runtime.queueCount</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The number of scheduled script queues available to the current account.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296531948.html">runtime.version</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">The version of NetSuite that the method is called in. For example, this property in an account running NetSuite 2023.2 is 2023.2.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="3">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296646855.html">runtime.ContextType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Holds the context values for script triggers.</p>
+                  <p style="font-size:1em !important;">This is the type for the <a href="section_4296531348.html">runtime.executionContext</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296647065.html">runtime.EnvType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Holds all possible environment types that the current script can execute in.</p>
+                  <p style="font-size:1em !important;">This is the type for the <a href="section_4296531123.html">runtime.envType</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:22%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296647244.html">runtime.Permission</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.6%;">
+                  <p style="font-size:1em !important;">Holds the user permission level for a specific permission ID.</p>
+                  <p style="font-size:1em !important;">This is the type returned by the <a href="section_4296668393.html">User.getPermission(options)</a> method.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4296459957">Script Object Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296661592.html">Script.getParameter(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">number | Date | string | boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">Returns the value of a script parameter for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296661153.html">Script.getRemainingUsage()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">Returns the number of units remaining (per governance limitations) for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;" rowspan="6">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1550072971.html">Script.apiVersion</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">The current script's runtime version.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4439977567.html">Script.bundleIds</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">Array (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">An array of bundle IDs for the bundles that include the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4439939144.html">Script.deploymentId</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">The deployment ID for the script deployment of the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296662491.html">Script.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">The script ID for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296662791.html">Script.logLevel</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">The script logging level for the currently executing script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296662993.html">Script.percentComplete</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.8%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.3%;">
+                  <p style="font-size:1em !important;">The percent complete for the current scheduled script execution. This value will appear in the % Complete column on the Scheduled Script Status page.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4296460759">Session Object Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:12.5%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:38.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296666278.html">Session.get(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.5%;">
+                  <p style="font-size:1em !important;">string | null</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.6%;">
+                  <p style="font-size:1em !important;">Returns the user-defined session object value associated with the session object key. Both the session object value and associated key are defined using <a href="section_4296667139.html">Session.set(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296667139.html">Session.set(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.5%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.6%;">
+                  <p style="font-size:1em !important;">Sets a key and value for a user-defined session object.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4296461392">User Object Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.5%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296668393.html">User.getPermission(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">Returns a <a href="section_4296647244.html">runtime.Permission</a> user permission level for the specified permission.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296668859.html">User.getPreference(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">Returns the value of a NetSuite preference.</p>
+                  <p style="font-size:1em !important;">Currently only General Preferences and Accounting Preferences are exposed in SuiteScript. For more information about these preferences, see <a href="bridgehead_N3251492.html">General Preferences</a> and <a href="bridgehead_N3258805.html">Accounting Preferences</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.5%;" rowspan="10">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1554920187.html">User.contact</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number(read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the currently logged-in contact.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296669751.html">User.department</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the department for the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296669120.html">User.email</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The email address of the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296670466.html">User.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296669502.html">User.location</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the location of the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296669367.html">User.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The name of the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296669948.html">User.role</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the role for the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296670081.html">User.roleCenter</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The string value of the center type, or role center, for the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296670260.html">User.roleId</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The custom scriptId of the role for the current user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4296670612.html">User.subsidiary</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.8%;">
+                  <p style="font-size:1em !important;">The internal ID of the subsidiary for the current user.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

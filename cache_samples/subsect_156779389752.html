@@ -1,0 +1,223 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Create and Save a CSV File then Reload the File and Parse Its Contents</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_156779372653.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_156779464948.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Create and Save a CSV File then Reload the File and Parse Its Contents","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_156779372653.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_156779464948.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4205693274.html" property="item" typeof="WebPage">
+              <span property="name">N/file Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0303032537.html" property="item" typeof="WebPage">
+              <span property="name">N/file Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Create and Save a CSV File then Reload the File and Parse Its Contents</li>
+        </ol>
+        <h1 class="sect1">Create and Save a CSV File then Reload the File and Parse Its Contents</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample creates a CSV file, appends several lines of data, and saves the file. The script also loads the file and calculates the total of several values in the file.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/file', 'N/error', 'N/log'], function (file, error, log) {
+    // This sample calculates the total for the
+    // second column value in a CSV file.
+    //
+    // Each line in the CSV file has the following format:
+    // date,amount
+    //
+    // Here is the data that the script adds to the file:
+    // 10/21/14,200.0
+    // 10/21/15,210.2
+    // 10/21/16,250.3
+
+    // Create the CSV file
+    var csvFile = file.create({
+        name: 'data.csv', 
+        contents: 'date,amount\n', 
+        folder: 39, 
+        fileType: 'CSV'
+    });
+
+    // Add the data
+    csvFile.appendLine({
+        value: '10/21/14,200.0'
+    });
+    csvFile.appendLine({
+        value: '10/21/15,210.2'
+    });
+    csvFile.appendLine({
+        value: '10/21/16,250.3'
+    });
+
+    // Save the file
+    var csvFileId = csvFile.save();
+
+    // Create a variable to store the calculated total
+    var total = 0.0;
+
+    // Load the file
+    var invoiceFile = file.load({
+        id: csvFileId
+    });
+
+    // Obtain an iterator to process each line in the file
+    var iterator = invoiceFile.lines.iterator();
+
+    // Skip the first line, which is the CSV header line
+    iterator.each(function () {return false;});
+
+    // Process each line in the file
+    iterator.each(function (line) {
+        // Update the total based on the line value
+        var lineValues = line.value.split(',');
+        var lineAmount = parseFloat(lineValues[1]);
+        if (!lineAmount) {
+            throw error.create({
+                name: 'INVALID_INVOICE_FILE',
+                message: 'Invoice file contained non-numeric value for total: ' + lineValues[1]
+            });
+        }
+        total += lineAmount;
+        return true;
+    });
+
+    // At the completion of the iteration.each function, the total is 660.5
+    
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0303032537.html">N/file Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156779133458.html">Create and Save a File to the File Cabinet</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156779372653.html">Create a File, Set Property Values, and Save It to the File Cabinet</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156779464948.html">Read and Log File Contents Using Commas and New Lines as Separators</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156779502327.html">Read and Log Segments of a File Using a Set of Characters as Separators</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_161547803169.html">Copy a File Using Conflict Resolution</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

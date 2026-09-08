@@ -1,0 +1,549 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/sftp Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4483165708.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0304050535.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/sftp Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4483165708.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0304050535.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/sftp Module</li>
+        </ol>
+        <h1 class="sect1">N/sftp Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/sftp module to manage folders and upload or download files from external SSH file transfer (SFTP) servers. You can perform the following SFTP functions using the N/sftp module:</p>
+        <p>SFTP servers can be hosted by your organization or by a third party. NetSuite does not provide SFTP server functionality. All SFTP transfers to or from NetSuite must originate from SuiteScript. It is not possible for external clients to initiate file transfers using SFTP.</p>
+        <p>Use SSH keys to establish an SFTP connection. By using the keys, you can manage files and directories by using the SFTP protocol. For more information, see <a href="chapter_1558548485.html">SSH Keys for SFTP</a>. For more information about working with keys in SuiteScript, see the N/keyControl Module, see <a href="section_1557413213.html">N/keyControl Module</a>.</p>
+        <p>
+          <strong>
+            <a href="section_0304050535.html">N/sftp Module Script Samples</a>
+          </strong>
+        </p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">All paths, directories, and filenames that contain wildcards such as <code>?</code> and <code>*</code> must have those characters escaped, unless these characters are specifically intended to work as wildcards.</p>
+        </div>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">To use an external server to initiate a NetSuite file transfer that doesn't use SFTP, you can use RESTlets or SOAP web services. In SuiteScript, RESTlets can respond to requests containing file data and save them in the File Cabinet. RESTlets can also respond to requests for file data by loading the contents from the File Cabinet and returning them in the response. Note that binary file content must be received or sent as Base64 encoded Strings. See <a href="section_4387799403.html">SuiteScript 2.1 RESTlet Script Type</a> for more information.</p>
+          <p>In SOAP web services, applications can invoke CRUD operations on the file record to populate or change the contents of the File Cabinet. See <a href="book_156388532579.html">SuiteTalk SOAP Web Services Platform Guide</a> and <a href="section_N3784054.html">File</a> for more information.</p>
+        </div>
+        <div>
+          <h2 id="subsect_20180322259">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4617004971">N/sftp Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4618505755">Connection Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="section_4855400554.html">Setting up an SFTP Transfer</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="section_4855401415.html">SFTP Authentication</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="section_4784614151.html">Supported Cipher Suites and Host Key Types</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="section_4855409350.html">Supported SuiteScript File Types</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="section_1557413213.html">N/keyControl Module</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4617004971">N/sftp Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4618502733.html">sftp.Connection</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Represents a connection to the account on the remote FTP server.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4617005472.html">sftp.createConnection(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4618502733.html">sftp.Connection</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Establishes a connection to a remote FTP server.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.1%;" rowspan="6">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557321286.html">sftp.MAX_CONNECT_TIMEOUT</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values for maximum connection timeout.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557238823.html">sftp.MIN_CONNECT_TIMEOUT</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values for minimum connection timeout.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557327056.html">sftp.MAX_PORT_NUMBER</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values for the maximum port number.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557327099.html">sftp.MIN_PORT_NUMBER</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values for the minimum port number.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557327135.html">sftp.DEFAULT_PORT_NUMBER</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values for the default port number.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557239613.html">sftp.Sort</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.5%;">
+                  <p style="font-size:1em !important;">Holds the values to be used to sort the listed directory.</p>
+                  <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.sort</code> parameter of the <a href="section_1557235176.html">Connection.list(options)</a> method.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4618505755">Connection Object Members</h2>
+        <p>The following members are called on the <a href="section_4618502733.html">sftp.Connection</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.8%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="7">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4618664030.html">Connection.download(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Downloads a file from the remote FTP server.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4618512910.html">Connection.upload(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Uploads a file to the remote FTP server.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557234024.html">Connection.makeDirectory(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Creates an empty directory.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557234344.html">Connection.removeDirectory(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Removes an empty directory.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557234670.html">Connection.removeFile(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Removes a file in a directory.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557234961.html">Connection.move(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Moves a file or directory from one location to another.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557235176.html">Connection.list(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">Array&lt;Object&gt;</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Lists the remote directory.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="2">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557238937.html">Connection.MAX_FILE_SIZE</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Holds the values for the maximum file size.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1557238973.html">Connection.MAX_TRANSFER_TIMEOUT</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:17.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:26.8%;">
+                  <p style="font-size:1em !important;">Holds the values for the maximum transfer timeout.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Support Articles</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/88524" target="_blank">SuiteScript &gt; sftp Module &gt; Connection.upload(options) &gt; Execution Logs &gt; FTP_PERMISSION_DENIED</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/92760" target="_blank">SuiteScript 2.0 &gt; n/sftp &gt; FTP_INVALID_DIRECTORY</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/88609" target="_blank">One SFTP Connection Established per Every File Upload/Download Using sftp.createConnection() Function</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_4855400554.html">Setting up an SFTP Transfer</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_4855401415.html">SFTP Authentication</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_4784614151.html">Supported Cipher Suites and Host Key Types</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_4855409350.html">Supported SuiteScript File Types</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

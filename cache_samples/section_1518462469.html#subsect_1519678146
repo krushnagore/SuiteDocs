@@ -1,0 +1,321 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Sample Custom List Page Script</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_1518456414.html" title="Previous" type="text/html">
+    <link rel="next" href="section_1543433765.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Sample Custom List Page Script","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_1518456414.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_1543433765.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_8161516336.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_1518456405.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Custom Pages</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_1518456414.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Custom List Pages</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Sample Custom List Page Script</li>
+        </ol>
+        <h1 class="sect1">Sample Custom List Page Script</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following screenshot displays a list page created by a Suitelet. You can use the sample code provided below to create this list yourself.</p>
+        <img alt="Sample Purchase History page." src="img/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SuiteScript20/SuiteScript20/SS2-UI-ListSample.png" loading="lazy" style="width:629px; max-width:100%;">
+        <h2 id="bridgehead_1522091460">Steps for Creating a Custom List Page with SuiteScript 2.1</h2>
+        <p>Before proceeding, you must create a script file. To create this file, you can do one of the following:</p>
+        <ul>
+          <li>
+            <p>If you want to copy and paste the completed script directly from this help topic, go to <a href="#subsect_1519678146">Complete Custom List Page Sample Script</a>.</p>
+          </li>
+          <li>
+            <p>If you want to walk through the steps for creating the script, complete the following procedure.</p>
+          </li>
+        </ul>
+        <p>Here's how to create a list page:</p>
+        <ol>
+          <li>
+            <p>Create a Suitelet and add the necessary JSDoc tags.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/ 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>Add the define function to load the <a href="section_4321345532.html">N/ui/serverWidget Module</a> module.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/
+define(['N/ui/serverWidget'],
+    function(serverWidget) {
+}; 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>To enable a Submit button, create an onRequest function. In the onRequest function create an if statement for the context request method, and set it to 'GET'. After the if statement, create a return statement to support the GET request method.</p>
+            <div class="infobox-note">
+              <span class="notep1">Note: </span>
+              <p class="nshelp_first">This sample is divided into two sections, as noted in the code comments. Each part shows where to add the corresponding sample code.</p>
+            </div>
+            <pre class="line-numbers">
+              <code class="language-suitescript">/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/
+define(['N/ui/serverWidget'],
+    function(serverWidget) {
+        function onRequest(context){
+            if(context.request.method === 'GET'){
+                // Section One - List - See 'Steps for Creating a List', Step Five
+                // Section Two - Columns  - See 'Steps for Creating a List', Step Seven
+                context.response.writePage(list); 
+            }else{
+            }
+        }
+    return {
+        onRequest: onRequest 
+    }
+
+}); 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>In section one, create a list page using <a href="section_4329247625.html">serverWidget.createList(options)</a>. You can use <a href="section_4332669117.html">serverWidget.ListStyle</a> to define the style of the list page.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">var list = serverWidget.createList({
+    title: 'Purchase History'
+});
+list.style = serverWidget.ListStyle.REPORT; 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>In section one, below the declaration of the list, use <a href="section_4340555101.html">List.addButton(options)</a> to create a button on the list. Use the <code>functionName</code> property to call the function triggered when the button is clicked.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">list.addButton({
+    id : 'buttonid',
+    label : 'Test',
+    functionName: '' // the function called when the button is pressed
+}); 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>In section two, use <a href="section_4344848479.html">List.addColumn(options)</a> to define the columns in the list. The column type is specified according to the <a href="section_4332671056.html">serverWidget.FieldType</a> enumeration.</p>
+            <p>Use the <code>align</code> property to justify the position of the column.</p>
+            <div class="infobox-important">
+              <span class="notep1">Important: </span>
+              <p class="nshelp_first">Note that not all field types are supported by <a href="section_4344848479.html">List.addColumn(options)</a>, see <a href="section_4332671056.html">serverWidget.FieldType</a>.</p>
+            </div>
+            <pre class="line-numbers">
+              <code class="language-suitescript">            var datecol = list.addColumn({
+               id : 'column1',
+               type : serverWidget.FieldType.DATE,
+               label : 'Date',
+               align : serverWidget.LayoutJustification.RIGHT
+            });
+            
+               list.addColumn({
+               id : 'column2',
+               type : serverWidget.FieldType.TEXT,
+               label : 'Product',
+               align : serverWidget.LayoutJustification.RIGHT
+            });   
+               
+               list.addColumn({
+               id : 'column3',
+               type : serverWidget.FieldType.INTEGER,
+               label : 'Quantity',
+               align : serverWidget.LayoutJustification.RIGHT
+            });   
+            
+               list.addColumn({
+               id : 'column4',
+               type : serverWidget.FieldType.CURRENCY,
+               label : 'Unit Cost',
+               align : serverWidget.LayoutJustification.RIGHT
+            }); 
+</code>
+            </pre>
+          </li>
+          <li>
+            <p>In section two, use <a href="section_4346428830.html">List.addRow(options)</a> to define a single row on the list. Or use <a href="section_4346482649.html">List.addRows(options)</a> to define multiple rows at one time.</p>
+            <pre class="line-numbers">
+              <code class="language-suitescript">list.addRow({
+    row : { column1 : '02/12/2018', column2 : 'Widget', column3: '4', column4:'4.50' }
+}); 
+</code>
+            </pre>
+            <pre class="line-numbers">
+              <code class="language-suitescript">list.addRows({
+    rows :[{column1 : '02/12/2018', column2 : 'Widget', column3: '4', column4:'4.50'},
+        {column1 : '02/14/2018', column2 : 'Sprocket', column3: '6', column4:'11.50'},
+        {column1 : '02/16/2018', column2 : 'Gizmo', column3: '9', column4:'1.25'}]
+}); 
+</code>
+            </pre>
+          </li>
+        </ol>
+        <div>
+          <h2 id="subsect_1519678146">Complete Custom List Page Sample Script</h2>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_N3014215.html">SuiteScript Debugger</a>.</p>
+          </div>
+          <p>The following code creates a Suitelet that generates a custom list page. For steps to create this script, see <a href="#bridgehead_1522091460">Steps for Creating a Custom List Page with SuiteScript 2.1</a>.</p>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/ui/serverWidget'], function(serverWidget) {
+    function onRequest(context){
+        if(context.request.method === 'GET'){
+            // Section One - List - See 'Steps for Creating a Custom List Page', Step Five
+            var list = serverWidget.createList({
+                title: 'Purchase History'
+            });
+
+            list.style = serverWidget.ListStyle.REPORT;
+
+            list.addButton({
+                id: 'buttonid',
+                label: 'Test',
+                functionName: '' // the function called when the button is pressed
+            });
+
+            // Section Two - Columns  - See 'Steps for Creating a Custom List Page', Step Seven
+            var datecol = list.addColumn({
+                id: 'column1',
+                type: serverWidget.FieldType.DATE,
+                label: 'Date',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column2',
+                type: serverWidget.FieldType.TEXT,
+                label: 'Product',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column3',
+                type: serverWidget.FieldType.INTEGER,
+                label: 'Quantity',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column4',
+                type: serverWidget.FieldType.CURRENCY,
+                label: 'Unit Cost',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addRows({
+                rows: [{column1: '05/30/2018', column2: 'Widget', column3: '4', column4: '4.50'},
+                    {column1: '05/30/2018', column2: 'Sprocket', column3: '6', column4: '11.50'},
+                    {column1: '05/30/2018', column2: 'Gizmo', column3: '9', column4: '1.25'}]
+            });
+            context.response.writePage(list);
+        }
+    }
+
+    return {
+        onRequest: onRequest
+    }
+}); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_1518456414.html">SuiteScript 2.1 Custom List Pages</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

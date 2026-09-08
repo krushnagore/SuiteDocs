@@ -1,0 +1,244 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Clean Up Content for Text Area Fields After Saving a Record</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_1015115955.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_1022045225.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Clean Up Content for Text Area Fields After Saving a Record","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_1015115955.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_1022045225.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_9123730083.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_1015110627.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Clean Up Content for Text Area Fields After Saving a Record</li>
+        </ol>
+        <h1 class="sect1">Clean Up Content for Text Area Fields After Saving a Record</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The following sample uses the large language model (LLM) to correct the text for the purchase description and the sales description fields of an inventory item record after the user saves the record. This sample also shows how to use the <code>llm.generateText.promise</code> method.</p>
+        <div>
+          <h4>To test this script after script deployment:</h4>
+          <ol>
+            <li>
+              <p>Go to <em>Lists &gt; Accounting &gt; Items &gt; New</em>.</p>
+            </li>
+            <li>
+              <p>Select <strong>Inventory Item</strong>.</p>
+            </li>
+            <li>
+              <p>Enter an <strong>Item Name</strong> and optionally fill out any other fields.</p>
+            </li>
+            <li>
+              <p>Select a value for <strong>Tax Schedule</strong> in the <strong>Accounting</strong> subtab.</p>
+            </li>
+            <li>
+              <p>Enter text into the <strong>Purchase Description</strong> and <strong>Sales Description</strong> fields.</p>
+            </li>
+            <li>
+              <p>Click <strong>Save</strong>.</p>
+              <p>When you save, the script will trigger. The content in the <strong>Purchase Description</strong> and <strong>Sales Description</strong> fields will be corrected, and the record will be submitted.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ */
+define(['N/llm'], (llm) =&gt; {
+    /**
+     * @param {Object} scriptContext The updated inventory item
+     * record to clean up typo errors for purchase description and
+     * sales description fields. The values are set before the record
+     * is submitted to be saved.
+     */ 
+    function fixTypos(scriptContext) {
+        const purchaseDescription = scriptContext.newRecord.getValue({
+            fieldId: 'purchasedescription'
+        })
+        const salesDescription = scriptContext.newRecord.getValue({
+            fieldId: 'salesdescription'
+        })
+
+        const p1 = llm.generateText.promise({
+            prompt: `Please clean up typos in the following text: 
+                     ${purchaseDescription} and return just the corrected text. 
+                     Return the text as is if there's no typo 
+                     or you don't understand the text.`
+        })
+        const p2 = llm.generateText.promise({
+            prompt: `Please clean up typos in the following text: 
+                     ${salesDescription} and return just the corrected text. 
+                     Return the text as is if there's no typo 
+                     or you don't understand the text.`
+        })
+
+        // When both promises are resolved, set the updated values for the
+        // record
+        Promise.all([p1, p2]).then((results) =&gt; {
+            scriptContext.newRecord.setValue({
+                fieldId: 'purchasedescription',
+                value: results[0].value.text
+            })
+            scriptContext.newRecord.setValue({
+                fieldId: 'salesdescription',
+                value: results[1].value.text
+            })
+        })
+    }
+
+    return { beforeSubmit: fixTypos }
+}) 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_1015110627.html">N/llm Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1015115955.html">Send a Prompt to the LLM and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045225.html">Provide an LLM-based ChatBot for NetSuite Users</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0115091619.html">Evaluate an Existing Prompt and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0211115903.html">Create a Prompt and Evaluate It</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103359.html">Find Similar Items Using Embeddings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_85093504618.html">Use Tools to Enhance the Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,1758 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/xml Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4344892270.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0305035854.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/xml Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4344892270.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0305035854.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/xml Module</li>
+        </ol>
+        <h1 class="sect1">N/xml Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/xml module to validate, parse, read, and modify XML documents.</p>
+        <p>
+          <strong>
+            <a href="section_0305035854.html">N/xml Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_40173257064">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920139">N/xml Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920823">Attr Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920578">Document Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920725">Element Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920428">Node Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920205">Parser Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4344920322">XPath Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4344920139">N/xml Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;" rowspan="6">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Represents an attribute node of an <a href="section_4345167426.html">xml.Element</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392323653.html">xml.Document</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Represents an entire XML document. The XML DOM presents a document as a hierarchy of node objects. Use the methods and properties available to the xml.Document object to manipulate the XML document and the nodes in the document tree.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345167426.html">xml.Element</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Represents an element in an XML document. Elements may contain attributes, other elements, or text. If an element contains text, the text is represented in a text node of type TEXT_NODE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Represents a generic XML node in an XML document. A node can be a Document, Element, or Attribute.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344922681.html">xml.Parser</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Encapsulates the functionality used by NetSuite to parse XML.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344925104.html">xml.XPath</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Encapsulates the functionality used by NetSuite to run XPath expressions.</p>
+                  <p style="font-size:1em !important;">XPath is a standard for enumerating paths in an XML document collection.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392331185.html">xml.escape(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Prepares a string for use in XML by escaping XML markup, such as angle brackets, quotation marks, and ampersands.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345173468.html">xml.validate(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Validates an XML document against an XML Schema (XSD).</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345174049.html">xml.NodeType</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:38.1%;">
+                  <p style="font-size:1em !important;">Holds the string values for the supported node types. Use this enum to set the <a href="section_456552673339.html">Node.nodeType</a> property.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920823">Attr Object Members</h2>
+        <p>The following members are called on the <a href="section_4345169036.html">xml.Attr</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.3%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.8%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.2%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:34.8%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.3%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:18.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46546264648.html">Attr.ownerElement</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.2%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.8%;">
+                  <p style="font-size:1em !important;">The <a href="section_4345167426.html">xml.Element</a> object that is the parent of the <a href="section_4345169036.html">xml.Attr</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46766296386.html">Attr.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.2%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.8%;">
+                  <p style="font-size:1em !important;">The name of an attribute.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460958801268.html">Attr.specified</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.2%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.8%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the attribute value is set in the parsed XML document, and <code>false</code> if it is a default value in a DTD or Schema.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:18.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46829772949.html">Attr.value</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.8%;">
+                  <p style="font-size:1em !important;">Value of an attribute. The value of the attribute is returned as a string. Character and general entity references are replaced with their values.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920578">Document Object Members</h2>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">In addition to the Document object members, Document objects inherit the members of the Node object. The methods and properties associated with a Node object can be used as members of a Document object. For more information, see <a href="#bridgehead_4344920428">Node Object Members</a>.</p>
+        </div>
+        <p>The following members are called on the <a href="section_4392323653.html">xml.Document</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.9%;" rowspan="14">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453612609863.html">Document.adoptNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Attempts to adopt a node from another document to this document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456575866698.html">Document.createAttribute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates an attribute node of type ATTRIBUTE_NODE with the optional specified value.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452244812011.html">Document.createAttributeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates an attribute node of type ATTRIBUTE_NODE, with the specified namespace value and optional specified value.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46463562011.html">Document.createCDATASection(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a CDATA section node of type DOCUMENT_FRAGMENT_NODE with the specified data.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460454650877.html">Document.createComment(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a Comment node of type COMMENT_NODE with the specified string.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457661987304.html">Document.createDocumentFragment()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a node of type DOCUMENT_FRAGMENT_NODE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452954040527.html">Document.createElement(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345167426.html">xml.Element</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a new node of type ELEMENT_NODE with the specified name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458257690428.html">Document.createElementNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345167426.html">xml.Element</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a new node of type ELEMENT_NODE with the specified namespace URI and name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453675170898.html">Document.createProcessingInstruction(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a new node of type PROCESSING_<wbr>INSTRUCTION_NODE with the specified target and data.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458155761718.html">Document.createTextNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a new node of type TEXT_NODE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458778015135.html">Document.getElementById(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345167426.html">xml.Element</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Returns the element that has an ID attribute with the specified value as an <a href="section_4345167426.html">xml.Element</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457710510253.html">Document.getElementsByTagName(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Returns an array of <a href="section_4345167426.html">xml.Element</a> objects with a specific tag name, in the order in which they appear in the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460907836913.html">Document.getElementsByTagNameNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Returns an array of <a href="section_4345167426.html">xml.Element</a> objects with a specific tag name and namespace, in the order in which they appear in the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457609802245.html">Document.importNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Imports a node from another document to this document. Creates a new copy of the source node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.9%;" rowspan="7">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454703308105.html">Document.doctype</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Returns a node of type DOCUMENT_TYPE_NODE that represents the doctype of the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452410827636.html">Document.documentElement</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a> (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Root node of the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455008483886.html">Document.documentURI</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Location of the document or <code>null</code> if undefined.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452187744140.html">Document.inputEncoding</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Encoding used for an XML document at the time the document was parsed.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453554931640.html">Document.xmlEncoding</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Part of the XML declaration, the XML encoding of the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459471374510.html">Document.xmlStandalone</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Part of the XML declaration, returns <code>true</code> if the current XML document is standalone or returns <code>false</code> if it is not.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460908752440.html">Document.xmlVersion</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:14.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.4%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:30.7%;">
+                  <p style="font-size:1em !important;">Part of the XML declaration, the version number of the XML document.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920725">Element Object Members</h2>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">In addition to the Element object members, Element objects inherit the members of the Node object. The methods and properties associated with a Node object can be used as members of a Element object. For more information, see <a href="#bridgehead_4344920428">Node Object Members</a>.</p>
+        </div>
+        <p>The following members are called on the <a href="section_4345167426.html">xml.Element</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.5%;" rowspan="15">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457730651854.html">Element.getAttribute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns the value of the specified attribute.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4588427395.html">Element.getAttributeNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Retrieves an attribute node by name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452000061035.html">Element.getAttributeNodeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns an attribute node with the specified namespace URI and local name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453436523437.html">Element.getAttributeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns an attribute value with the specified namespace URI and local name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452163024902.html">Element.getElementsByTagName(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns an array of descendant <a href="section_4345167426.html">xml.Element</a> objects with a specific tag name, in the order in which they appear in the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454667602538.html">Element.getElementsByTagNameNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;"><a href="section_4345167426.html">xml.Element</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns an array of descendant <a href="section_4345167426.html">xml.Element</a> objects with a specific tag name and namespace, in the order in which they appear in the XML document.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453276306152.html">Element.hasAttribute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the current element has an attribute with the specified name or if that attribute has a default value. Otherwise, returns <code>false</code>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458537536620.html">Element.hasAttributeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the current element has an attribute with the specified local name and namespace or if that attribute has a default value. Otherwise, returns <code>false</code>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457329345702.html">Element.removeAttribute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Removes the attribute with the specified name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454500366210.html">Element.removeAttributeNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Removes the attribute specified as a <a href="section_4345169036.html">xml.Attr</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460859619139.html">Element.removeAttributeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Removes the attribute with the specified namespace URI and local name.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455326171874.html">Element.setAttribute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Adds a new attribute with the specified name. If an attribute with that name is already present in the element, its value is changed to the value specified in method argument.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454052368163.html">Element.setAttributeNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Adds the specified attribute node. If an attribute with the same name is already present in the element, it is replaced by the new one.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454328857421.html">Element.setAttributeNodeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345169036.html">xml.Attr</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Adds the specified attribute node. If an attribute with the same local name and namespace URI is already present in the element, it is replaced by the new one.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456093383788.html">Element.setAttributeNS(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">Adds a new attribute with the specified name and namespace URI. If an attribute with the same name and namespace URI is already present in the element, its value is changed to the value specified in method argument.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.5%;">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458841796874.html">Element.tagName</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:13.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:34.1%;">
+                  <p style="font-size:1em !important;">The tag name of this <a href="section_4345167426.html">xml.Element</a> object.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920428">Node Object Members</h2>
+        <p>The following members are called on the <a href="section_4346057759.html">xml.Node</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.7%;" rowspan="14">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459708190917.html">Node.appendChild(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Appends a node after the last child node of a specific element node. Returns the new child node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46211181640.html">Node.cloneNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Creates a copy of a node. Returns the copied node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460349365233.html">Node.compareDocumentPosition(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns a number that reflects where two nodes are located, compared to each other.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460054565428.html">Node.hasAttributes()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the current node has any attributes. Note that only element nodes can have attributes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453459411620.html">Node.hasChildNodes()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the current node has child nodes or returns <code>false</code> if the current node does not have child nodes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452156005859.html">Node.insertBefore(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Inserts a new child node before an existing child node for the current node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46175476074.html">Node.isDefaultNamespace(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the specified namespace uniform resource identifier (URI) is the default namespace for the current node or returns <code>false</code> if the specified namespace is not the default namespace.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453230529784.html">Node.isEqualNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if two nodes are equal or returns <code>false</code> if two nodes are not equal.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454356628417.html">Node.isSameNode(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if two nodes reference the same object or returns <code>false</code> if two nodes do not reference the same object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46200805664.html">Node.lookupNamespaceURI(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns the namespace uniform resource identifier (URI) that matches the specified namespace prefix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456616149901.html">Node.lookupPrefix(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Returns the namespace prefix associated with the specified namespace uniform resource identifier (URI).</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457614685057.html">Node.normalize()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Puts all text nodes underneath a node, including attribute nodes, into a normal form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454751220702.html">Node.removeChild(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Removes the specified child node. Returns the removed child node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456990295409.html">Node.replaceChild(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346057759.html">xml.Node</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Replaces a specific child node with another child node in a list of child nodes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.7%;" rowspan="16">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46127868652.html">Node.attributes</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Key-value pairs for all attributes for an <a href="section_4345167426.html">xml.Element</a> node. Returns <code>null</code> for all other node types.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459509521483.html">Node.baseURI</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Absolute base uniform resource identifier (URI) of a node or <code>null</code> if the URI cannot be determined.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459823547362.html">Node.childNodes</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a>[] (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Array of all child nodes of a node or an empty array if there are no child nodes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460666442870.html">Node.firstChild</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">First child node for a specific node or <code>null</code> if there are no child nodes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457311035155.html">Node.lastChild</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Last child node for a specific node or <code>null</code> if there is no last child node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460875793456.html">Node.localName</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The local part of the qualified name of a node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456845336913.html">Node.namespaceURI</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The namespace uniform resource identifier (URI) of a node or <code>null</code> if there is no namespace URI for the node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455924011229.html">Node.nextSibling</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The next node in a node list or <code>null</code> if the current node is the last node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458950439452.html">Node.nodeName</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">Name of a node, depending on the type. For example, for a node of type <a href="section_4345167426.html">xml.Element</a>, the name is the name of the element.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456552673339.html">Node.nodeType</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The type of node defined as a value from the <a href="section_4345174049.html">xml.NodeType</a> enum.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454531188964.html">Node.nodeValue</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The value of a node, depending on its type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458963562010.html">Node.ownerDocument</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4392323653.html">xml.Document</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The root element for a node as a <a href="section_4392323653.html">xml.Document</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46910644531.html">Node.parentNode</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The parent node of a node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460653930663.html">Node.prefix</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The namespace prefix of the node, or <code>null</code> if the node does not have a namespace.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46856323242.html">Node.previousSibling</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The previous node in a node list or <code>null</code> if the current node is the first node.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458147827147.html">Node.textContent</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.9%;">
+                  <p style="font-size:1em !important;">The textual content of a node and its descendants.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920205">Parser Object Members</h2>
+        <p>The following members are called on the <a href="section_4344922681.html">xml.Parser</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:21.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:27.8%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.9%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344924195.html">Parser.fromString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392323653.html">xml.Document</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.8%;">
+                  <p style="font-size:1em !important;">Parses a string into a W3C XML document object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344924636.html">Parser.toString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.8%;">
+                  <p style="font-size:1em !important;">Converts (serializes) an <a href="section_4392323653.html">xml.Document</a> object into a string.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4344920322">XPath Object Members</h2>
+        <p>The following members are called on the <a href="section_4344925104.html">xml.XPath</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344925105.html">XPath.select(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4346057759.html">xml.Node</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Selects an array of nodes from an XML document using an XPath expression.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Create a Prompt and Evaluate It</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_0115091619.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_0317102527.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Create a Prompt and Evaluate It","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_0115091619.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_0317102527.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_9123730083.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_1015110627.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Create a Prompt and Evaluate It</li>
+        </ol>
+        <h1 class="sect1">Create a Prompt and Evaluate It</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The following sample creates a prompt record, populates the required record fields, and evaluates the prompt by sending it to the default NetSuite large language model (LLM).</p>
+        <p>This sample creates a prompt record using the <a href="section_4267258059.html">record.create(options)</a> method of the N/record module, and it sets the values of the following fields (which are required to be able to save a prompt record):</p>
+        <ul>
+          <li>
+            <p>Name</p>
+          </li>
+          <li>
+            <p>Prompt Type</p>
+          </li>
+          <li>
+            <p>Model Family</p>
+          </li>
+          <li>
+            <p>Template</p>
+          </li>
+        </ul>
+        <p>After the prompt record is saved, <a href="article_0115064704.html">llm.evaluatePrompt(options)</a> is called, but only the ID of the created prompt is provided as a parameter. The method throws a <code>TEMPLATE_PROCESSING_EXCEPTION</code> error because the prompt template includes a required variable (<code>mandatoryVariable</code>) that was not provided when the method was called. The error is caught, and a debug message is logged.</p>
+        <p>Next, the sample calls <a href="article_0115064704.html">llm.evaluatePrompt(options)</a> again but provides values for the <code>mandatoryVariable</code> and <code>optionalVariable</code> variables. This time, the call succeeds, and a debug message is logged. Finally, the sample calls <a href="article_81065603726.html">llm.evaluatePrompt.promise(options)</a> and confirms that the call succeeds. When the call succeeds, the prompt record is deleted.</p>
+        <p>You can create and manage prompts using Prompt Studio. You can also use Prompt Studio to generate a SuiteScript example that uses the <a href="article_0115064704.html">llm.evaluatePrompt(options)</a> method and includes the variables for a prompt in the correct format. When viewing a prompt in Prompt Studio, click Show SuiteScript Example to generate SuiteScript code with all of the variables that prompt uses. You can then use this code in your scripts and provide a value for each variable. For more information about Prompt Studio, see <a href="article_160809601.html">Prompt Studio</a>.</p>
+        <p>For instructions about how to run a SuiteScript 2.1 code snippet in the debugger, see <a href="section_157625776929.html">On-Demand Debugging of SuiteScript 2.1 Scripts</a>. Step through the code until the line before the end of the script to see the response text returned from the LLM.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+* @NApiVersion 2.1
+*/
+require(['N/record', 'N/llm'], function(record, llm) {
+    const rec = record.create({
+        type: "prompt"
+    });
+    
+    rec.setValue({
+        fieldId: "name",
+        value: "Test"
+    });
+    rec.setValue({
+        fieldId: "prompttype",
+        value: "GENERIC"
+    });
+    rec.setValue({
+        fieldId: "modelfamily",
+        value: "COHERE_COMMAND"
+    });
+    rec.setValue({
+        fieldId: "template",
+        value: "${mandatoryVariable} &lt;#if optionalVariable?has_content&gt;${optionalVariable}&lt;#else&gt;World&lt;/#if&gt;"
+    });
+    
+    const id = rec.save();
+    
+    try {
+        llm.evaluatePrompt({
+            id: id
+        });
+    }
+    catch (e) {
+        if (e.name === "TEMPLATE_PROCESSING_EXCEPTION")
+            log.debug("Exception", "Expected exception was thrown");
+    }
+    
+    const response = llm.evaluatePrompt({
+        id: id,
+        variables: {
+            mandatoryVariable: "Hello",
+            optionalVariable: "People"
+        }
+    });
+    if ("Hello People" === response.chatHistory[0].text)
+        log.debug("Evaluation", "Correct prompt got evaluated");
+        
+    llm.evaluatePrompt.promise({
+        id: id,
+        variables: {
+            mandatoryVariable: "Hello",
+            optionalVariable: "World"
+        }
+    }).then(function(response) {
+        if ("Hello World" === response.chatHistory[0].text)
+            log.debug("Evaluation", "Correct prompt got evaluated");
+        record.delete({
+            type: "prompt",
+            id: id
+        });
+        debugger;
+    })
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_1015110627.html">N/llm Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1015115955.html">Send a Prompt to the LLM and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045211.html">Clean Up Content for Text Area Fields After Saving a Record</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045225.html">Provide an LLM-based ChatBot for NetSuite Users</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0115091619.html">Evaluate an Existing Prompt and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103359.html">Find Similar Items Using Embeddings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_85093504618.html">Use Tools to Enhance the Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

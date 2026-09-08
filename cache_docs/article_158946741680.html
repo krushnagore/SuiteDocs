@@ -1,0 +1,1047 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/dataset Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4637734729.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0303050851.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/dataset Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4637734729.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0303050851.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/dataset Module</li>
+        </ol>
+        <h1 class="sect1">N/dataset Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/dataset module to create, load, list, or save datasets. You can only use this module in server scripts.</p>
+        <p>With this module, you can do things like:</p>
+        <ul>
+          <li>
+            <p>Create columns, joins, and conditions within a dataset.</p>
+          </li>
+          <li>
+            <p>Delete a dataset using the <a href="section_1510275060.html">N/query Module</a>.</p>
+          </li>
+          <li>
+            <p>Execute a dataset and obtain results-similar to running a query definition with the <a href="section_1510275060.html">N/query Module</a>.</p>
+          </li>
+          <li>
+            <p>Use string aliasing to identify columns, which is helpful when linking dataset columns to a workbook.</p>
+          </li>
+          <li>
+            <p>Apply column labels, which are the string descriptions shown in the UI.</p>
+          </li>
+          <li>
+            <p>Save a dataset.</p>
+          </li>
+        </ul>
+        <p>Datasets are the foundation for workbooks and their components. In a dataset, you combine record type fields and filters to make a query. You can use the results as source data for any workbook, and you can use one dataset in several workbooks.</p>
+        <p>To learn more about datasets in SuiteAnalytics, see <a href="section_1544122173.html">Defining a Dataset</a>. For details on workbooks, see <a href="article_159006350818.html">N/workbook Module</a>.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">The N/dataset module doesn't work in unauthenticated client-side contexts.</p>
+          <p>For details, see the SuiteAnswers <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/1013055" target="_blank">Outbound HTTPs in an unauthenticated client-side context</a>.</p>
+        </div>
+        <p>
+          <strong>
+            <a href="section_0303050851.html">N/dataset Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_159414583140">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_158946757184">N/dataset Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_158946772914">Column Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_158946780094">Condition Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_158946789261">Dataset Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_158946792222">Join Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_158946757184">N/dataset Module Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:12.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:12.7%;" rowspan="4">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946808345.html">dataset.Column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">A column in the dataset, which usually represents a record field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946951148.html">dataset.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">A condition or set of conditions to apply to a column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948063457.html">dataset.Dataset</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">A representation of the entire dataset, including columns, conditions, and joins.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948390739.html">dataset.Join</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">A joined record used in the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:12.7%;" rowspan="11">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158989971922.html">dataset.create(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948063457.html">dataset.Dataset</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Creates a dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158990102328.html">dataset.createColumn(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946808345.html">dataset.Column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Creates a dataset column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158990217350.html">dataset.createCondition(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946951148.html">dataset.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Creates a dataset condition (criteria). A condition is applied to a dataset column and includes an operator.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158990279568.html">dataset.createJoin(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948390739.html">dataset.Join</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Creates a dataset join.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_162853138869.html">dataset.createTranslation(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_159008229845.html">workbook.Expression</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Creates a translation expression based on a Translation Collection.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_162853496011.html">dataset.describe(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Retrieves descriptive information about a dataset, including name, description, and a list of columns or formulas with their labels and types.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0507043830.html">dataset.describe.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Promise Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Asynchronously retrieves descriptive information about a dataset, including name, description, and a list of columns or formulas with their labels and types..</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158990317009.html">dataset.list()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Object[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Lists all existing datasets.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_162853512391.html">dataset.listPaged(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <code>PagedInfoData</code>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Returns metadata about datasets as a set of paged results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158990335776.html">dataset.load(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948063457.html">dataset.Dataset</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Loads an existing dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0507050454.html">dataset.load.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.5%;">
+                    <p style="font-size:1em !important;">Promise Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Asynchronously loads an existing dataset.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_158946772914">Column Object Members</h2>
+          <p>This object encapsulates the record fields in the dataset. Columns are equivalent to the fields you use when you build a dataset in SuiteAnalytics. For more information about datasets in SuiteAnalytics, see <a href="chapter_1544122127.html">Custom Workbooks and Datasets</a>.</p>
+          <p>The following members are available for a <a href="section_158946808345.html">dataset.Column</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.2%;" rowspan="7">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946930657.html">Column.alias</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The alias of the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946870976.html">Column.fieldId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The ID of the record field associated with the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946906503.html">Column.formula</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The formula of the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946901670.html">Column.id</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server Scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The ID of the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_159310457176.html">Column.join</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;"><a href="section_158948390739.html">dataset.Join</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The join for the column. Used only when the column is from a joined record.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946922873.html">Column.label</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The label of the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946914278.html">Column.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.9%;">
+                    <p style="font-size:1em !important;">The return type of the formula.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_158946780094">Condition Object Members</h2>
+          <p>This object encapsulates the criteria in the dataset. Conditions are equivalent to the criteria you use when you build a dataset in SuiteAnalytics. For more information about criteria used in datasets in SuiteAnalytics, see <a href="section_1544211200.html">Dataset Criteria Filters</a>.</p>
+          <p>The following members are available for a <a href="section_158946951148.html">dataset.Condition</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;" rowspan="5">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0507040252.html">Condition.caseSensitive</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">Indicates whether the condition in a sort is case sensitive.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946962310.html">Condition.children</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;"><a href="section_158946951148.html">dataset.Condition</a>[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">The children of the condition (for example, subconditions AND'd or OR'd).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948010876.html">Condition.column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;"><a href="section_158946808345.html">dataset.Column</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">The column on which the condition is placed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948026629.html">Condition.operator</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">The operator of the condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948048117.html">Condition.values</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:23.6%;">
+                    <p style="font-size:1em !important;">string[] | number[] | boolean[] | Date[] | Object[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.9%;">
+                    <p style="font-size:1em !important;">The values for the condition.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_158946789261">Dataset Object Members</h2>
+          <p>This object encapsulates the entire dataset. For more information about datasets in SuiteAnalytics, see <a href="chapter_1544122127.html">Custom Workbooks and Datasets</a>.</p>
+          <p>The following members are available for a <a href="section_158948063457.html">dataset.Dataset</a> object.</p>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:14%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:14%;" rowspan="5">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948233177.html">Dataset.getExpressionFromColumn(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_159008229845.html">workbook.Expression</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Returns an expression which can be used in a workbook.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948330969.html">Dataset.run()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Executes the dataset and returns the result set (the same as in <a href="section_1510275060.html">N/query Module</a>).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0507044927.html">Dataset.run.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Asynchronously executes the dataset and returns the result set (the same as in <a href="section_1510275060.html">N/query Module</a>).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948363823.html">Dataset.runPaged(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Executes the dataset and returns the result set in paginated data form (the same as in <a href="section_1510275060.html">N/query Module</a>).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_159354415610.html">Dataset.save(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">Saves a dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:14%;" rowspan="6">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948083358.html">Dataset.columns</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;"><a href="section_158946808345.html">dataset.Column</a>[]</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The columns in the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948103219.html">Dataset.condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158946951148.html">dataset.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The condition (criteria) for the entire dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948114518.html">Dataset.description</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The description of the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948123704.html">Dataset.id</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The ID of the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948129533.html">Dataset.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The name of the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948136837.html">Dataset.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.8%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29%;">
+                    <p style="font-size:1em !important;">The internal ID for the base record type for the dataset.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_158946792222">Join Object Members</h2>
+          <p>Encapsulates a joined record used in the dataset. For more information about using joins in a dataset, see <a href="section_1544129148.html">Joining Record Types in a Dataset</a>.</p>
+          <p>The following members are available for a <a href="section_158948390739.html">dataset.Join</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:11.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.3%;" rowspan="4">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:11.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948402464.html">Join.fieldId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">The ID of the field on which the join is performed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:11.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948412223.html">Join.join</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;"><a href="section_158948390739.html">dataset.Join</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">The child join, if the join is a multilevel join.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:11.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948418068.html">Join.source</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">The internal ID for the source record type of the join.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:11.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158948426433.html">Join.target</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">The polymorphic target of the join.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_159006350818.html">N/workbook Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_1544122127.html">Custom Workbooks and Datasets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1544122173.html">Defining a Dataset</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,3001 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/ui/serverWidget Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4498688050.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_6164157284.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/ui/serverWidget Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4498688050.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_6164157284.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_156939471908.html" property="item" typeof="WebPage">
+              <span property="name">N/ui Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/ui/serverWidget Module</li>
+        </ol>
+        <h1 class="sect1">N/ui/serverWidget Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/ui/serverWidget module to work with the user interface within NetSuite. You can use Suitelets to build custom pages and wizards that have a NetSuite look-and-feel. You can also create various components of the NetSuite UI (for example, forms, fields, sublists, tabs).</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">SuiteScript does not support direct access to the NetSuite UI through the Document Object Model (DOM). The NetSuite UI should only be accessed using SuiteScript APIs.</p>
+        </div>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">When you add a UI object to an existing NetSuite page, to minimize the occurrence of field/object name conflicts, the internal ID that references the object must be prefixed with <code>custpage</code>.</p>
+        </div>
+        <p>
+          <strong>
+            <a href="subsect_6164157284.html">N/ui/serverWidget Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_26175033590">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4321347373">N/ui/serverWidget Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325792161">Assistant Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325792392">AssistantStep Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325789920">Button Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325790702">Field Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325790819">FieldGroup Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4321347483">Form Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325793773">List Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325793963">ListColumn Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325791040">Sublist Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4325791337">Tab Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4321347373">N/ui/serverWidget Module Members</h2>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.4%;" rowspan="10">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849970.html">serverWidget.Assistant</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A scriptable, multi-step NetSuite assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325851003.html">serverWidget.AssistantStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A step within a custom NetSuite assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A button that appears in a UI object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A NetSuite field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835878.html">serverWidget.FieldGroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A field group.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835149.html">serverWidget.Form</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A NetSuite form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856174.html">serverWidget.List</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856768.html">serverWidget.ListColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A list column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A NetSuite sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849420.html">serverWidget.Tab</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">A NetSuite tab and subtabs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.4%;" rowspan="3">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.1%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325753291.html">serverWidget.createAssistant(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849970.html">serverWidget.Assistant</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Creates and returns a new assistant object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4329245048.html">serverWidget.createForm(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835149.html">serverWidget.Form</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Creates and returns a new form object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4329247625.html">serverWidget.createList(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856174.html">serverWidget.List</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Creates a List object (specifying the title, and whether to hide the navigation bar).</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.4%;" rowspan="10">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.51px;width:21.1%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4329254732.html">serverWidget.AssistantSubmitAction</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for submit actions performed by the user. This enum is used to set the value of the <a href="section_4333442841.html">Assistant.getLastAction()</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332670010.html">serverWidget.FieldBreakType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported field break types. This enum is used to set the value of the <a href="section_4335187732.html">Field.updateBreakType(options)</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332670964.html">serverWidget.FieldDisplayType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported field display types. This enum is used to set the value of the <a href="section_4335287288.html">Field.updateDisplayType(options)</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332671038.html">serverWidget.FieldLayoutType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for the supported types of field layouts. This enum is used to set the value of the <a href="section_4335294907.html">Field.updateLayoutType(options)</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332671056.html">serverWidget.FieldType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the values for supported field types. This enum is used to set the value of the <code>type</code> parameter when <a href="section_4337905245.html">Form.addField(options)</a> is called.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332671075.html">serverWidget.FormPageLinkType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported page link types on a form. This enum is used to set the value of the <code>type</code> parameter for <a href="section_4338794048.html">Form.addPageLink(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332671154.html">serverWidget.LayoutJustification</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported justification layouts. This enum is used to set the value of the align parameter when <a href="section_4344848479.html">List.addColumn(options)</a> is called.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332669117.html">serverWidget.ListStyle</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported list styles. This enum is used to set the value of the <a href="section_4537550409.html">List.style</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332704261.html">serverWidget.SublistDisplayType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported sublist display types. This enum is used to set the value of the <a href="section_460338073729.html">Sublist.displayType</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332704307.html">serverWidget.SublistType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:30.6%;">
+                  <p style="font-size:1em !important;">Holds the string values for valid sublist types. This enum is used to define the <code>type</code> parameter when <a href="section_4339569512.html">Form.addSublist(options)</a> is called.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325792161">Assistant Object Members</h2>
+        <p>The following members are called on the <a href="section_4325849970.html">serverWidget.Assistant</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="22">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332747915.html">Assistant.addField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Adds a field to an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332762451.html">Assistant.addFieldGroup(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835878.html">serverWidget.FieldGroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Adds a field group to an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4332773236.html">Assistant.addStep(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325851003.html">serverWidget.AssistantStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Adds a step to an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333407203.html">Assistant.addSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Adds a sublist to an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4378406680.html">Assistant.getField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets a field object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4378406710.html">Assistant.getFieldGroup(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835878.html">serverWidget.FieldGroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets a field group object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333419693.html">Assistant.getFieldGroupIds()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets all the field group IDs in an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333410160.html">Assistant.getFieldIds()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets all the field IDs in an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4549847352.html">Assistant.getFieldIdsByFieldGroup(fieldGroup)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets all field IDs in the assistant field group.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333442841.html">Assistant.getLastAction()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets the last action submitted by the user.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333461766.html">Assistant.getLastStep()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325851003.html">serverWidget.AssistantStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets the step that the last submitted action came from.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333467641.html">Assistant.getNextStep()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325851003.html">serverWidget.AssistantStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets the next step prompted by the assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333472133.html">Assistant.getStep(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325851003.html">serverWidget.AssistantStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Returns a step in an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333478410.html">Assistant.getStepCount()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets the total count of steps in the assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333424096.html">Assistant.getSteps()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4325851003.html">serverWidget.AssistantStep</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets all the steps in the assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4378445760.html">Assistant.getSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Get a Sublist object from its ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333425688.html">Assistant.getSublistIds()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Gets all the sublist IDs in an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333490823.html">Assistant.hasErrorHtml()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Indicates whether the assistant has an error message to display.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333493801.html">Assistant.isFinished()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Indicates the status of the assistant. If set to true, the assistant is finished.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333517010.html">Assistant.sendRedirect(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Manages redirects in an assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333549069.html">Assistant.setSplash(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Define a splash message.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333537728.html">Assistant.updateDefaultValues(values)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Sets the default values of an array of fields that are specific to the assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14%;" rowspan="9">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333547812.html">Assistant.clientScriptFileId</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The File Cabinet ID of client script file to be used in this assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4625432742.html">Assistant.clientScriptModulePath</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The relative path to the client script file to be used in this assistant.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333435322.html">Assistant.currentStep</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;"><a href="section_4325851003.html">serverWidget.AssistantStep</a> (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The current step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333532370.html">Assistant.errorHtml</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The error message text.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333540884.html">Assistant.finishedHtml</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The text displayed after an assistant is finished.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333553611.html">Assistant.hideAddToShortcutsLink</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Whether the Add to Shortcuts Link is displayed in the UI.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333543298.html">Assistant.hideStepNumber</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Whether the current and total step numbers are displayed in the UI.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333544993.html">Assistant.isNotOrdered</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">Whether assistant steps are ordered or unordered.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4333559476.html">Assistant.title</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:24.2%;">
+                  <p style="font-size:1em !important;">The title of the assistant.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325792392">AssistantStep Object Members</h2>
+        <p>The following members are called on the <a href="section_4325851003.html">serverWidget.AssistantStep</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.9%;" rowspan="6">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4610728749.html">AssistantStep.getFieldIds()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets all the field IDs in an assistant step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334385888.html">AssistantStep.getLineCount(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets the number of lines previously entered by a user in a step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334385888.html">AssistantStep.getLineCount(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets all the field IDs in a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334431322.html">AssistantStep.getSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets the current value of a sublist field (line item) in a step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334385704.html">AssistantStep.getSubmittedSublistIds()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets the IDs for all the sublist fields (line items) in a step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334418504.html">AssistantStep.getValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string | string[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Gets the current value of a field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.9%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334438434.html">AssistantStep.helpText</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">The help text for a step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334447959.html">AssistantStep.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">The internal ID of the step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334444607.html">AssistantStep.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">The label for a step.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4334434327.html">AssistantStep.stepNumber</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28.4%;">
+                  <p style="font-size:1em !important;">Indicates where this step appears sequentially in an assistant.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325789920">Button Object Members</h2>
+        <p>The following members are called on the <a href="section_4325806317.html">serverWidget.Button</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:14.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:14.9%;">
+                  <p style="font-size:1em !important;">Property Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:32.2%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:14.7%;" rowspan="3">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:17.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325807642.html">Button.isDisabled</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.9%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:32.2%;">
+                  <p style="font-size:1em !important;">Determines whether a button is dimmed.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:17.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806318.html">Button.isHidden</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.9%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:32.2%;">
+                  <p style="font-size:1em !important;">Determines whether the button is hidden in the UI.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:17.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325807686.html">Button.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.9%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:32.2%;">
+                  <p style="font-size:1em !important;">The label for the button.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325790702">Field Object Members</h2>
+        <p>The following members are called on the <a href="section_4325837128.html">serverWidget.Field</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="7">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4449822161.html">Field.addSelectOption(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a select option to a dropdown list for a selectable field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335162417.html">Field.getSelectOptions(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Object[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Returns the internal ID and label of the options for a select field as name/value pairs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335195721.html">Field.setHelpText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Sets the help text that appears in the field help popup.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335187732.html">Field.updateBreakType(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Updates the break type used to add a break in flow layout for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335279800.html">Field.updateDisplaySize(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Updates the height and width for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335287288.html">Field.updateDisplayType(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Updates the type of display for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335294907.html">Field.updateLayoutType(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Updates the layout type for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="12">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335158000.html">Field.alias</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The alias used to set the field value.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335275520.html">Field.defaultValue</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The default value for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_158166710285.html">Field.helpText</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The help text for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335174387.html">Field.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The internal ID for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335318155.html">Field.isMandatory</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Whether the field is required.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335154548.html">Field.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The label for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335304242.html">Field.linkText</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The text displayed for a link in place of the URL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335324500.html">Field.maxLength</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The maximum length, in characters, for the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335328468.html">Field.padding</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The number of empty vertical character spaces above the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335331512.html">Field.richTextHeight</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The height of a rich text field, in pixels.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335332981.html">Field.richTextWidth</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The width of a rich text field, in pixels.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335171133.html">Field.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.4%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The type of field.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325790819">FieldGroup Object Members</h2>
+        <p>The following members are called on the <a href="section_4325835878.html">serverWidget.FieldGroup</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">Property Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:14.1%;" rowspan="5">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335382771.html">FieldGroup.isBorderHidden</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Whether a border appears around the field group.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335348134.html">FieldGroup.isCollapsible</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Whether the field group is collapsible.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335356208.html">FieldGroup.isCollapsed</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Whether the field group is initially collapsed or expanded in the default view.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335387515.html">FieldGroup.isSingleColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">Boolean</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">Whether the field group is displayed in a single column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4335362250.html">FieldGroup.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:30.9%;">
+                  <p style="font-size:1em !important;">The label for the field group.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4321347483">Form Object Members</h2>
+        <p>The following members are called on the <a href="section_4325835149.html">serverWidget.Form</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="24">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4337761696.html">Form.addButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a button to the form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4337770901.html">Form.addCredentialField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a field that store credentials in NetSuite for invoking services provided by third parties.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4337905245.html">Form.addField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a field to the form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4337960739.html">Form.addFieldGroup(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325835878.html">serverWidget.FieldGroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a group of fields to the form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1530198114.html">Form.addPageInitMessage(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Shows a message on a form in view mode. You can use this method to show a message on a form based on its user event script context.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4338794048.html">Form.addPageLink(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a link to a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4338808398.html">Form.addResetButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a Reset button to a form that clears the values of all fields.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4550325064.html">Form.addSecretKeyField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Add a secret key field to the form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339569512.html">Form.addSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a sublist to the form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4543597606.html">Form.addSubmitButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a submit button to a form that saves user inputs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4338820096.html">Form.addSubtab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849420.html">serverWidget.Tab</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a subtab to a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339625909.html">Form.addTab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849420.html">serverWidget.Tab</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Adds a tab to a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339637102.html">Form.getButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns a button by internal ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339676625.html">Form.getField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns a field by internal ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339685468.html">Form.getSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns a sublist by internal ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339693214.html">Form.getSubtab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849420.html">serverWidget.Tab</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns a subtab by internal ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4550406903.html">Form.getTab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325849420.html">serverWidget.Tab</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns a tab object from its internal ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339699645.html">Form.getTabs()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Returns the internal IDs of all tabs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4339707334.html">Form.insertField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Inserts a field before another field within a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340337306.html">Form.insertSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Inserts a sublist before another sublist on a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340316428.html">Form.insertSubtab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Inserts a subtab before another subtab on a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340351224.html">Form.insertTab(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Inserts a tab before another tab on a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340356412.html">Form.removeButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Removes a button from a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340360899.html">Form.updateDefaultValues(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">Sets the default values of many fields on a form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="3">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340375753.html">Form.clientScriptFileId</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">The File Cabinet ID of client script file to be used in this form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4625445350.html">Form.clientScriptModulePath</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">The relative path to the client script file to be used in this form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340389560.html">Form.title</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:28.6%;">
+                  <p style="font-size:1em !important;">The title used for the form.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325793773">List Object Members</h2>
+        <p>The following members are called on the <a href="section_4325856174.html">serverWidget.List</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="6">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4340555101.html">List.addButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a button to a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344848479.html">List.addColumn(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856768.html">serverWidget.ListColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a column to a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4344858957.html">List.addEditColumn(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856768.html">serverWidget.ListColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a column containing Edit or Edit/View links to a Suitelet or Portlet list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346411913.html">List.addPageLink(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856174.html">serverWidget.List</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a link to a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346428830.html">List.addRow(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856174.html">serverWidget.List</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds a single row to a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346482649.html">List.addRows(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856174.html">serverWidget.List</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">Adds multiple rows to a list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4346492713.html">List.clientScriptFileId</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The File Cabinet ID of client script file to be used in this list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4625450746.html">List.clientScriptModulePath</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The relative path to the client script file to be used in this list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4537550409.html">List.style</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The display style for this list.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4537553901.html">List.title</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.9%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.61px;width:28%;">
+                  <p style="font-size:1em !important;">The List title.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325793963">ListColumn Object Members</h2>
+        <p>The following members are called on the <a href="section_4325856768.html">serverWidget.ListColumn</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14.3%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:23%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:19.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:25.3%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14.3%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:23%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4539150168.html">ListColumn.addParamToURL(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856768.html">serverWidget.ListColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:25.3%;">
+                  <p style="font-size:1em !important;">Adds a URL parameter (optionally defined per row) to the list column's URL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4539229925.html">ListColumn.setURL(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325856768.html">serverWidget.ListColumn</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:25.3%;">
+                  <p style="font-size:1em !important;">Sets the base URL for the list column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14.3%;">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:23%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4539273209.html">ListColumn.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:19.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets</p>
+                </td>
+                <td style="padding:3.51px;width:25.3%;">
+                  <p style="font-size:1em !important;">The label of this list column.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325791040">Sublist Object Members</h2>
+        <p>The following members are called on the <a href="section_4325844858.html">serverWidget.Sublist</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="10">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453578124999.html">Sublist.addButton(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Adds a button to a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456415649413.html">Sublist.addField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Add a field to a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456862121581.html">Sublist.addMarkAllButtons()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;"><a href="section_4325806317.html">serverWidget.Button</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Adds a Mark All or Unmark All button.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458060852050.html">Sublist.addRefreshButton()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325806317.html">serverWidget.Button</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Adds a Reset button.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793350468.html">Sublist.getField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325837128.html">serverWidget.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Returns a Field object on a specified sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452837158202.html">Sublist.getSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Gets a field value on a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="article_0311105505.html">Sublist.insertField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Inserts a field before another field on a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456052185058.html">Sublist.setSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Sets the value of a sublist field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457052856444.html">Sublist.updateTotallingFieldId(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Updates the ID of a field designated as a totalling column, which is used to calculate and display a running total for the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46467834472.html">Sublist.updateUniqueFieldId(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4325844858.html">serverWidget.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">Updates a field ID that is to have unique values across the rows in the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460338073729.html">Sublist.displayType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">The display style for a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456982666015.html">Sublist.helpText</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">The inline help text for a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455521179198.html">Sublist.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">The label for a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452748962402.html">Sublist.lineCount</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.2%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:18%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.51px;width:27.9%;">
+                  <p style="font-size:1em !important;">The number of line items in a sublist.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4325791337">Tab Object Members</h2>
+        <p>The following members are called on the <a href="section_4325849420.html">serverWidget.Tab</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:16.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:13.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:12%;">
+                  <p style="font-size:1em !important;">Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:24.2%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:34%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:16.4%;" rowspan="2">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:13.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46605773925.html">Tab.helpText</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:24.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:34%;">
+                  <p style="font-size:1em !important;">The inline help text for a tab or subtab.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454571472167.html">Tab.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:24.2%;">
+                  <p style="font-size:1em !important;">Suitelets and beforeLoad user events</p>
+                </td>
+                <td style="padding:3.61px;width:34%;">
+                  <p style="font-size:1em !important;">The label for a tab or subtab.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_4417231053.html">SuiteScript Versioning Guidelines</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1518456420.html">Creating Custom Assistants</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

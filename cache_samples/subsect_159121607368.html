@@ -1,0 +1,316 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Create a Comprehensive Workbook</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_159112696585.html" title="Previous" type="text/html">
+    <link rel="next" href="section_159007796216.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Create a Comprehensive Workbook","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_159112696585.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_159007796216.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_159006350818.html" property="item" typeof="WebPage">
+              <span property="name">N/workbook Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0303053727.html" property="item" typeof="WebPage">
+              <span property="name">N/workbook Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Create a Comprehensive Workbook</li>
+        </ol>
+        <h1 class="sect1">Create a Comprehensive Workbook</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample creates a workbook that includes a chart, a table, and a pivot. This sample uses a dataset that is not included in your account, so you will need to change the dataset id to a valid value from your account. This dataset needs to include columns for 'id', 'name', 'date', and 'total'.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code>require</code> function so you can copy it into the SuiteScript Debugger and test it. You must use the <code>define</code> function in an entry point script (a script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.x
+ */
+// The following script creates a workbook that includes a chart, a table, and a pivot. This sample uses a dataset that is not included in your account, so you will need to change the dataset id to a valid value from your account. This dataset needs to include columns for 'id', 'name', 'date', and 'total'.
+
+require(['N/workbook', 'N/dataset'], function(workbook, dataset){ 
+    var myDataset = dataset.load({
+        id: 'dataset_7'
+    });
+
+    var theIDExpression = myDataset.getExpressionFromColumn({
+        alias: 'id'
+    });
+    var sort = workbook.createSort({
+        ascending: false
+    });
+    var columnID = workbook.createTableColumn({
+        datasetColumnAlias: 'id'
+    });
+    var columnName = workbook.createTableColumn({
+        datasetColumnAlias: 'name'
+    });
+    var columnDate = workbook.createTableColumn({
+        datasetColumnAlias: 'date'
+    });
+    var columnTotal = myBasicWorkbook.createTableColumn({
+        datasetColumnAlias: 'total'
+    });
+    var tableView = workbook.createTableDefinition({
+        id: 'view',
+        name: 'View',
+        dataset: myDataset, 
+        columns: [columnID, columnName, columnDate, columnTotal]
+    });
+    var theDateExpression = dataset.getExpressionFromColumn({
+        alias: 'date'
+    });    
+    var rowItem = workbook.createDataDimensionitem({
+        label: 'A',
+        expression: theDateExpression
+    });
+    var rowDataDimension = workbook.createDataDimension({
+        items: [rowItem]
+    });
+    var rowSection = workbook.createSection({
+        children: [rowDataDimension]
+    });
+    var theTotalExpression = dataset.getExpressionFromColumn({
+        alias: 'total'
+    });
+    var columnItem = workbook.createDataDimensionItem({
+        label: 'B',
+        expression: theTotalExpression
+    });    var columnDataDimension = workbook.createDataDimension({
+        items: [columnItem]
+    });
+    var columnMeasure = workbook.createMeasure({
+        label: 'M',
+        expression: theIDExpression,
+        aggregation: workbook.Aggregation.MAX
+    });
+    var columnSection = workbook.createSection({
+        children: [columnDataDimension, columnMeasure]
+    });
+    var constExpr = workbook.createConstant({
+        constant: 1
+    });
+    var anyOfExpr = workbook.createExpression({
+        functionId: workbook.ExpressionType.AND,
+        parameters: {
+            expression: theIDExpression,
+            set: [constExpr]
+        }
+    });
+    var notExpr = workbook.createExpression({
+        functionId: workbook.ExpressionType.NOT,
+        parameters: {
+            a: anyOfExpr
+        }
+    });
+    var allSubNodesSelector = workbook.createAllSubNodesSelector();
+    var rowItemSelector = workbook.createDimensionSelector({
+        dimension: rowDataDimension
+    });
+    var columnItemSelector = workbook.createDimensionSelector({
+        dimension: columnDataDimension
+    });
+    var rowSelector = workbook.createPathSelector({
+        elements: [allSubNodesSelector, rowItemSelector]
+    });
+    var columnSelector = workbook.createPathSelector({
+        elements: [allSubNodesSelector, columnItemSelector]
+    });
+    var rowSort = workbook.createDimensionSort({
+        item:rowItem,
+        sort:sort
+    });
+    var columnSort = workbook.createMeasureSort({
+        measure: columnMeasure,
+        sort: sort,
+        otherAxisSelector: allSubNodesSelector
+    });
+    var rowSortDefinition = workbook.createSortDefinition({
+        sortBys: [rowSort],
+        selector: rowSelector
+    });
+    var columnSortDefinition = workbook.createSortDefinition({
+        sortBys: [columnSort],
+        selector: columnSelector
+    });
+    var rowAxis = workbook.createPivotAxis({
+        root: rowSection,
+        sortDefinitions: [rowSortDefinition]
+    });
+    var columnAxis = workbook.createPivotAxis({
+        root: columnSection,
+        sortDefinitions: [columnSortDefinition]
+    });
+    var limitingFilter = workbook.createLimitingFilter({
+        row: true,
+        filteredNodesSelector: rowSelector,
+        limit: 1,
+        sortBys: [rowSort]
+    });
+    var conditionalFilter = workbook.createConditionalFilter({
+        row: false,
+        filteredNodesSelector: rowSelector,
+        otherAxisSelector: columnSelector,
+        measure: columnMeasure,
+        predicate: notExpr
+    });
+    var pivot = workbook.createPivotDefinition({
+        id: 'pivot',
+        name: 'Pivot',
+        dataset: myDataset,
+        rowAxis: rowAxis,
+        columnAxis: columnAxis,
+        filterExpressions: [notExpr],
+        aggregationFilters: [limitingFilter, conditionalFilter]
+    });
+    var firstAxis = workbook.createChartAxis({
+        title: 'First axis'
+    });
+    var secondAxis = workbook.createChartAxis({
+        title: 'Second axis'
+    });
+    var category = workbook.createCategory({
+        axis: firstAxis,
+        root: rowSection
+    });
+    var legend = workbook.createLegend({
+        axes: [secondAxis],
+        root: columnSection
+    });
+    var aspect = workbook.createAspect({
+        measure: columnMeasure
+    });
+    var series = workbook.createSeries({
+        aspects: [aspect]
+    });
+    var chart = workbook.createChartDefinition({
+        id: 'chart',
+        name: 'Chart',
+        type: workbook.ChartType.AREA,
+        dataset: myDataset,
+        category: category,
+        legend: legend,
+        series: [series]
+    });
+    var myNewWorkbook = workbook.create({
+        description: 'My new updated workbook',
+        name: 'Workbook Updated',
+        tableDefinitions: [tableView],
+        pivotDefinitions: [pivot],
+        chartDefinitions: [chart]
+    });
+    var workbookList = workbook.list();
+
+    log.debug({
+        title: "MyNewWorkbook",
+        details: myNewWorkbook
+    });
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0303053727.html">N/workbook Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159112696585.html">Create Datasets, Dataset Links, and a Workbook with a Pivot and Run the Workbook</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,1021 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/pgp Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="article_0310115209.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0711100030.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/pgp Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="article_0310115209.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0711100030.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/pgp Module</li>
+        </ol>
+        <h1 class="sect1">N/pgp Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>Use the N/pgp module to enable secure messaging, file encryption, and document signing. Based on <a href="https://www.openpgp.org/" target="_blank">OpenPGP</a> encryption standards.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">To use the N/pgp Module, you must first generate PGP keys from <a href="https://www.gnupg.org/gph/en/manual.html" target="_blank">GnuPG</a>, <a href="https://openpgpjs.org/" target="_blank">OpenPGP</a>, or a third party source that supports pgp key generation. The generated keys must be stored in Secrets Management to securely manage and reference the keys. To store your generated keys, go to <em>Setup &gt; Company &gt; API Secrets</em> to create a new secret key.</p>
+          <p>For more information about API Secrets in NetSuite, see <a href="article_160216486846.html">Secrets Management</a>.</p>
+        </div>
+        <p>If you are new to PGP, use the following resources to learn more:</p>
+        <ul>
+          <li>
+            <p><a href="https://datatracker.ietf.org/doc/html/rfc4880" target="_blank">RFC 4880 OpenPGP Message Format</a> - Provides background information about the PGP standard.</p>
+          </li>
+          <li>
+            <p><a href="https://www.gnupg.org/gph/en/manual.html" target="_blank">GnuPG Manual</a> - A reliable resource for practical information.</p>
+          </li>
+          <li>
+            <p><a href="https://www.openpgp.org/" target="_blank">OpenPGP</a> - Learn more about the pgp standards with documentation resources for developers.</p>
+          </li>
+        </ul>
+        <div>
+          <h2 id="subsect_0605040117">Limitations of N/pgp</h2>
+          <p>As you are working with the N/pgp module, consider the following limitations:</p>
+          <ul>
+            <li>
+              <p>You cannot generate, modify, or inspect PGP keys using the N/pgp module. You must generate keys from a third party source that supports PGP key generation.</p>
+            </li>
+            <li>
+              <p>You cannot create a message without readable PGP software.</p>
+            </li>
+            <li>
+              <p>You are limited to strings.</p>
+            </li>
+            <li>
+              <p>You are limited to data that fits into memory.</p>
+            </li>
+          </ul>
+        </div>
+        <p>
+          <strong>
+            <a href="section_0711100030.html">N/pgp Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_62154137054">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_5121135606">N/pgp Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_93121311824">Config Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_26122135274">KeyId Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_14122340914">Message Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_92122450880">MessageData Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_53122532959">Verification Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_6122611816">VerificationSignature Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_5121135606">N/pgp Module Members</h2>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13.3%;" rowspan="7">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921021222.html">pgp.Config</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">General configuration options that can be used for message decryption.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033205.html">pgp.Key</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Cryptographic keys and its metadata.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033457.html">pgp.KeyId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">An octet scalar that identifies a subkey.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923090947.html">pgp.Message</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Processed PGP data.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092625.html">pgp.MessageData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Message data.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923094518.html">pgp.Verification</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Verification results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923101555.html">pgp.VerificationSignature</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">A verification result for a single signature.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.3%;" rowspan="7">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113524.html">pgp.createConfig(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921021222.html">pgp.Config</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Creates a new configuration object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113223.html">pgp.createMessageData(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092625.html">pgp.MessageData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Creates new message data.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113742.html">pgp.createSigner(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1547242551.html">certificate.Signer</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Creates a <a href="section_1547242551.html">certificate.Signer</a> object for signing plain strings.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113648.html">pgp.createVerification()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923094518.html">pgp.Verification</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Creates an empty verification object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923112727.html">pgp.loadKeyFromSecret(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033205.html">pgp.Key</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Loads a key whose contents are stored securely in secret.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113424.html">pgp.parseMessage(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923090947.html">pgp.Message</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Parses a PGP message.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923113901.html">pgp.parseKey(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033205.html">pgp.Key</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Parses an existing PGP key.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.3%;" rowspan="2">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923112620.html">pgp.CompressionAlgorithm</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Holds the values for available compression algorithms. Use this enum to set the value of the <code>options.<wbr>compressionAlgorithm</code> parameter of the <a href="section_0923093832.html">MessageData.encrypt(options)</a> method.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923111016.html">pgp.Format</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.9%;">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:32.3%;">
+                    <p style="font-size:1em !important;">Literal data packet type. Use this enum to set the value for the options.format parameter of the <a href="section_0923113223.html">pgp.createMessageData(options)</a> method.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_93121311824">Config Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:24.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.2%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:24.8%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921031929.html">Config.allowInsecureDecryptionWithSigningKeys</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">Enables decryption that is not secured with signing keys.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:24.8%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921032219.html">Config.allowMessagesWithoutIntegrityProtection</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">Allows messages without integrity protection.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:24.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921032557.html">Config.useRelaxedSignatureParsing</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">Relaxed signature parsing for configuration objects.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_26122135274">KeyId Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:14.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:32.2%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:14.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033647.html">KeyId.asHex()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.2%;">
+                    <p style="font-size:1em !important;">Returns a key ID as a hexadecimal string.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_14122340914">Message Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923091633.html">Message.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server Scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.6%;">
+                    <p style="font-size:1em !important;">Message type that specifies how a message is processed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;" rowspan="3">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923091739.html">Message.asArmored()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.6%;">
+                    <p style="font-size:1em !important;">Converts a message to ASCII armored format.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092023.html">Message.toMessageData()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092625.html">pgp.MessageData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.6%;">
+                    <p style="font-size:1em !important;">Converts a message to message data without processing. Works only if the message is not encrypted.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092155.html">Message.decrypt(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923092625.html">pgp.MessageData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.6%;">
+                    <p style="font-size:1em !important;">Decrypts a message and optionally verifies the signatures.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_92122450880">MessageData Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.9%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093028.html">MessageData.filename</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">The name of a file.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093419.html">MessageData.date</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Date</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">The date of a message or modification date of the file.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093507.html">MessageData.format</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923111016.html">pgp.Format</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Literal data packet type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.9%;" rowspan="3">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093601.html">MessageData.getText()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Extracts the contents of a message as text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093718.html">MessageData.toMessage()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923090947.html">pgp.Message</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Creates a message with no signature, compression, or encryption.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923093832.html">MessageData.encrypt(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923090947.html">pgp.Message</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Creates a message that is encrypted and optionally signed.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_53122532959">Verification Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.8%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.7%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923105015.html">VerificationSignature.verified</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.8%;">
+                    <p style="font-size:1em !important;">null | boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">Indicates whether verification was successful.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923095811.html">Verification.signatures</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.8%;">
+                    <p style="font-size:1em !important;">null | Array&lt;<wbr>VerificationSignature&gt;</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">A list of individual verifications, one per signature.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_6122611816">VerificationSignature Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.4%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.3%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.2%;" rowspan="4">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:22.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923101641.html">VerificationSignature.keyId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0921033457.html">pgp.KeyId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18.3%;">
+                    <p style="font-size:1em !important;">Server Scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">ID of the (sub)key that was used for signing.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923103943.html">VerificationSignature.dateSigned</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Date</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.3%;">
+                    <p style="font-size:1em !important;">Server Scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Date when the message was signed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923105015.html">VerificationSignature.verified</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Indicates whether verification was successful for a signature.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0923105152.html">VerificationSignature.problems</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">string[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">A list of problems for verification signatures.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Related Topics</h3>
+            <div>
+              <div>
+                <ul class="ns-enhanced-minitoc">
+                  <li>
+                    <span>
+                      <a href="bridgehead_1501543623.html#bridgehead_1501609041">SuiteScript 2.1 Modules</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="article_8161516336.html">SuiteScript 2.x</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

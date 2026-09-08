@@ -1,0 +1,1400 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/documentCapture Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_162626675925.html" title="Previous" type="text/html">
+    <link rel="next" href="article_0703022052.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/documentCapture Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_162626675925.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="article_0703022052.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/documentCapture Module</li>
+        </ol>
+        <h1 class="sect1">N/documentCapture Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>Load the N/documentCapture module to extract text content from supported documents.</p>
+        <p>The N/documentCapture module lets you programmatically extract structured content and key information from a variety of document types (such as invoices, receipts, contracts, and so on) directly within NetSuite. This module uses the AI-driven capabilities of the Oracle Cloud Infrastructure (OCI) Document Understanding service and can automate document processing, reduce manual data entry, and enhance business workflows. For more information about the OCI Document Understanding service, refer to <a href="https://docs.oracle.com/en-us/iaas/Content/document-understanding/using/home.htm" target="_blank">Document Understanding</a> in the <i>Oracle Cloud Infrastructure Documentation</i>.</p>
+        <p>
+          <strong>
+            <a href="article_0703022052.html">N/documentCapture Module Script Samples</a>
+          </strong>
+        </p>
+        <p>This module provides the following features and benefits:</p>
+        <ul>
+          <li>
+            <p><strong>Automated content extraction</strong> - Extracts text, tables, and key-value pairs from scanned documents, PDFs, and images.</p>
+          </li>
+          <li>
+            <p><strong>AI-powered data recognition</strong> - Uses advanced machine learning models from OCI to accurately identify and extract relevant information.</p>
+          </li>
+          <li>
+            <p><strong>Support for multiple document types</strong> - Works with invoices, receipts, tax forms, and other business documents in PDF, PNG, JPG, and TIFF formats.</p>
+          </li>
+          <li>
+            <p><strong>Synchronous and asynchronous requests</strong> - Supports synchronous requests (for documents up to five pages in length) and asynchronous requests (for documents longer than five pages).</p>
+          </li>
+          <li>
+            <p><strong>Document classification</strong> - Automatically classifies documents by type, enabling use cases such as intelligent routing and processing.</p>
+          </li>
+          <li>
+            <p><strong>Support for multiple languages and layouts</strong> - Supports documents in multiple languages and using various layouts, increasing flexibility.</p>
+          </li>
+          <li>
+            <p><strong>Error handling and confidence scores</strong> - Provides confidence scores for extracted data and error handling for improved reliability.</p>
+          </li>
+        </ul>
+        <p>This module is available in NetSuite by default when the Server SuiteScript feature is enabled. For more information, see <a href="chapter_N232138.html">Enabling Features</a>.</p>
+        <p>To learn how to get started with the N/documentCapture module, see <a href="article_0828072922.html">Getting Started with the N/documentCapture Module</a>.</p>
+        <div>
+          <h2 id="subsect_0703021136">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_0703021358">N/documentCapture Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021423">Cell Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021538">Document Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021558">Field Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021611">FieldLabel Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021627">FieldValue Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021740">Line Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021817">Page Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021828">Table Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021843">TableRow Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0703021906">Word Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_0703021358">N/documentCapture Module Members</h2>
+          <div style="font-size:11.33px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.41px;width:13.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.41px;width:13.5%;" rowspan="10">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703022335.html">documentCapture.Cell</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted table cell from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703030933.html">documentCapture.Document</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">The extracted data from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703031446.html">documentCapture.Field</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted field from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095038.html">documentCapture.FieldLabel</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted field label from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095437.html">documentCapture.FieldValue</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted field value from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704100631.html">documentCapture.Line</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted line of text from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704100841.html">documentCapture.Page</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted page from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101225.html">documentCapture.Table</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted table from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102217.html">documentCapture.TableRow</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted table row from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102321.html">documentCapture.Word</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">An extracted word from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:13.5%;" rowspan="9">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102801.html">documentCapture.documentToStructure(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703030933.html">documentCapture.Document</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Extracts content from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_49090632931.html">documentCapture.documentToStructure.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Asynchronously extracts content from a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704103115.html">documentCapture.documentToText(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Extracts text content from a PDF file.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_6091025132.html">documentCapture.documentToText.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Asynchronously extracts text content from a PDF file.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_70083055604.html">documentCapture.getRemainingConcurrency()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Returns the number of available concurrent requests remaining.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_32092152071.html">documentCapture.getRemainingConcurrency.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Asynchronously returns the number of available concurrent requests remaining.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_42084005061.html">documentCapture.getRemainingFreeUsage()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084043.html">llm.getRemainingUsage()</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_86092527607.html">documentCapture.getRemainingFreeUsage.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084325.html">llm.getRemainingUsage.promise()</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704103210.html">documentCapture.parseResult(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703030933.html">documentCapture.Document</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Converts a JSON file into a <a href="article_0703030933.html">documentCapture.Document</a> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:13.5%;" rowspan="4">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704103314.html">documentCapture.DocumentType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Holds values for the document type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704103522.html">documentCapture.Feature</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Holds values for the feature to extract.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704103558.html">documentCapture.FieldType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Holds values for the type of a field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.41px;width:23.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0828075605.html">documentCapture.Language</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.41px;width:20.9%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.41px;width:16.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.41px;width:25.2%;">
+                    <p style="font-size:1em !important;">Holds values for the language of a document.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021423">Cell Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.9%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.7%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703022616.html">Cell.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.9%;">
+                    <p style="font-size:1em !important;">The confidence level for the cell.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703023215.html">Cell.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.9%;">
+                    <p style="font-size:1em !important;">The extracted text of the cell.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021538">Document Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.9%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:25.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.1%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703031202.html">Document.mimeType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.4%;">
+                    <p style="font-size:1em !important;">The MIME type of the document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703031346.html">Document.pages</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22%;">
+                    <p style="font-size:1em !important;"><a href="article_0704100841.html">documentCapture.Page</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.4%;">
+                    <p style="font-size:1em !important;">The pages of the document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:14.1%;">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_93100953424.html">Document.getText()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.4%;">
+                    <p style="font-size:1em !important;">Returns the entire text of the document.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021558">Field Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:11.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:24.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.4%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:11.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0703031534.html">Field.label</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:24.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095038.html">documentCapture.FieldLabel</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The label (name) of the field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:11.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704094825.html">Field.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:24.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The type of the field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:11.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704094949.html">Field.value</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:24.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095437.html">documentCapture.FieldValue</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The value of the field.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021611">FieldLabel Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.9%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.1%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095138.html">FieldLabel.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">The confidence level for the field label.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095251.html">FieldLabel.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.1%;">
+                    <p style="font-size:1em !important;">The name of the field label.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021627">FieldValue Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095514.html">FieldValue.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28%;">
+                    <p style="font-size:1em !important;">The confidence level for the field value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704095601.html">FieldValue.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28%;">
+                    <p style="font-size:1em !important;">The text of the field value.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021740">Line Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.6%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704100717.html">Line.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">The confidence level for the line.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:15.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704100807.html">Line.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">The text of the line.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021817">Page Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;" rowspan="5">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_28102340830.html">Page.detectedDocumentTypes</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">Object[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">A set of confidence levels indicating whether the page represents a particular type of document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704100922.html">Page.fields</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;"><a href="article_0703031446.html">documentCapture.Field</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The extracted fields from the page of a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101048.html">Page.lines</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;"><a href="article_0704100631.html">documentCapture.Line</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The extracted lines from the page of a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101117.html">Page.tables</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;"><a href="article_0704101225.html">documentCapture.Table</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The extracted tables from the page of a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101139.html">Page.words</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;"><a href="article_0704102321.html">documentCapture.Word</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The extracted words from the page of a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_65101108674.html">Page.getText()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.5%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Returns the entire text of the page.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021828">Table Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.7%;" rowspan="6">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101315.html">Table.bodyRows</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;"><a href="article_0704102217.html">documentCapture.TableRow</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The extracted body rows from the table in a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101358.html">Table.columnCount</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The number of extracted columns from the table in a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704101426.html">Table.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The confidence level for the table.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102012.html">Table.footerRows</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;"><a href="article_0704102217.html">documentCapture.TableRow</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The extracted footer rows from the table in a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102044.html">Table.headerRows</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;"><a href="article_0704102217.html">documentCapture.TableRow</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The extracted header rows from the table in a document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102126.html">Table.rowCount</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.3%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The number of extracted rows from the table in a document.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021843">TableRow Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:14.9%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.7%;">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:14.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102248.html">TableRow.cells</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;"><a href="article_0703022335.html">documentCapture.Cell</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.4%;">
+                    <p style="font-size:1em !important;">The extracted cells in the table row.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0703021906">Word Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.4%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102426.html">Word.confidence</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">The confidence level for the word.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0704102521.html">Word.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.8%;">
+                    <p style="font-size:1em !important;">The extracted text of the word.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Related Topics</h3>
+            <div>
+              <div>
+                <ul class="ns-enhanced-minitoc">
+                  <li>
+                    <span>
+                      <a href="article_8134325498.html">N/documentCapture Module</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

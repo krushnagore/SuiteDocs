@@ -1,0 +1,1869 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/llm Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_1557413265.html" title="Previous" type="text/html">
+    <link rel="next" href="article_1015110627.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/llm Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_1557413265.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="article_1015110627.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/llm Module</li>
+        </ol>
+        <h1 class="sect1">N/llm Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The N/llm module supports generative artificial intelligence (AI) capabilities in SuiteScript. You can use this module to send requests to the large language models (LLMs) supported by NetSuite and receive responses to use in your scripts.</p>
+        <p>
+          <strong>
+            <a href="article_1015110627.html">N/llm Module Script Samples</a>
+          </strong>
+        </p>
+        <p>Methods in this module that send requests to an LLM consume AI Units. For more information, see <a href="article_2163848930.html">NetSuite AI Units and NetSuite Features</a> and <a href="article_8144753226.html">AI Units FAQ</a>.</p>
+        <p>If you're new to using generative AI in SuiteScript, see <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>. That topic contains essential information about this feature.</p>
+        <p>The following list summarizes the main features that are available using the N/llm module:</p>
+        <ul>
+          <li>
+            <p><strong>Content generation</strong> - You can request generative AI content from a supported LLM using <a href="article_1014032554.html">llm.generateText(options)</a>. You can provide a prompt that describes the content you want to generate, and the module sends the request to the Oracle Cloud Infrastructure (OCI) Generative AI service to generate a response.</p>
+          </li>
+          <li>
+            <p><strong>Prompt evaluation</strong> - If you use Prompt Studio to manage existing prompts in your NetSuite account, you can use <a href="article_0115064704.html">llm.evaluatePrompt(options)</a> to send a prompt from Prompt Studio to the LLM for evaluation. This method uses the information from the prompt definition in Prompt Studio (such as the model and model parameters), and it lets you provide values for any variables the prompt uses before sending it for evaluation. For more information about Prompt Studio, see <a href="article_160809601.html">Prompt Studio</a>.</p>
+          </li>
+          <li>
+            <p><strong>Prompt and Text Enhance action management</strong> - By using the N/record module, you can create, update, and delete prompts and Text Enhance actions in your scripts. For more information, see <a href="article_0115105418.html">Managing Prompts and Text Enhance Actions Using the N/llm Module</a>.</p>
+          </li>
+          <li>
+            <p><strong>Retrieval-augmented generation (RAG) support</strong> - You can give source documents to the LLM when calling <a href="article_1014032554.html">llm.generateText(options)</a>. The LLM uses information from the source documents to augment its response. The LLM also returns citations that identify which source documents it used. For an example of how to implement a RAG use case using the N/llm module, see <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>.</p>
+          </li>
+          <li>
+            <p><strong>Image support</strong> - When using the Cohere Command A Vision model, you can send an image to the LLM when calling <a href="article_1014032554.html">llm.generateText(options)</a> or <a href="article_46075557997.html">llm.generateTextStreamed(options)</a>. You can ask questions about the image and receive information such as advanced image captions, a detailed description of the image, or information about charts and graphs in the image.</p>
+          </li>
+          <li>
+            <p><strong>Embedding support</strong> - The <a href="article_76083302199.html">llm.embed(options)</a> method converts text to vector embeddings. Your SuiteScript applications can use vector embeddings for use cases such as semantic searches, recommender systems, text classification, or text clustering. For an example of how to generate and use embeddings, see <a href="subsect_0730103359.html">Find Similar Items Using Embeddings</a>. For more information about embedding models, refer to <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank">Offered Pretrained Foundational Models in Generative AI</a> in the <i>Oracle Cloud Infrastructure Documentation</i>.</p>
+            <div class="infobox-important">
+              <span class="notep1">Important: </span>
+              <p class="nshelp_first">Embeddings include the semantic information of the original data and should be treated with the same level of sensitivity. Embeddings created from sensitive data must be protected, stored, logged, shared, retained, and deleted according to the same rules as the original data.</p>
+            </div>
+          </li>
+          <li>
+            <p><strong>Streaming support</strong> - Using the <a href="article_46075557997.html">llm.generateTextStreamed(options)</a> and <a href="article_47080704730.html">llm.evaluatePromptStreamed(options)</a> methods, your code gets content as the LLM generates it, instead of waiting to receive it all at the same time. For an example of how to work with streamed content, see <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>.</p>
+          </li>
+          <li>
+            <p><strong>Tooling support</strong> - You can define custom tools using <a href="article_54090013211.html">llm.createTool(options)</a> that let you extend and enhance LLM interactions. Tools can run business-specific logic in your scripts (such as SuiteQL queries), receive inputs from the LLM, and return structured outputs. The LLM can request tool calls as needed and integrate tool results into its generated responses, which can provide richer and more dynamic responses.</p>
+            <p>For more information, see <a href="article_0311105254.html">Tooling in the N/llm Module</a>. For an example of how to create tools and provide them to the LLM, see <a href="article_85093504618.html">Use Tools to Enhance the Response from the LLM</a>.</p>
+          </li>
+          <li>
+            <p><strong>Method aliases</strong> - You can use the following aliases in your code instead of the method names:</p>
+            <ul>
+              <li>
+                <p><code>llm.chat(options)</code> is an alias for <a href="article_1014032554.html">llm.generateText(options)</a>.</p>
+              </li>
+              <li>
+                <p><code>llm.executePrompt(options)</code> is an alias for <a href="article_0115064704.html">llm.evaluatePrompt(options)</a>.</p>
+              </li>
+              <li>
+                <p><code>llm.chatStreamed(options)</code> is an alias for <a href="article_46075557997.html">llm.generateTextStreamed(options)</a>.</p>
+              </li>
+              <li>
+                <p><code>llm.executePromptStreamed(options)</code> is an alias for <a href="article_47080704730.html">llm.evaluatePromptStreamed(options)</a>.</p>
+              </li>
+            </ul>
+            <p>Promise versions are also available for these methods.</p>
+            <p>When aliases are available for methods, you'll see them listed in the main table of the method's help topic. For an example, see <a href="article_46075557997.html">llm.generateTextStreamed(options)</a>.</p>
+          </li>
+        </ul>
+        <p>This module is available in NetSuite by default when the Server SuiteScript feature is enabled. For more information, see <a href="chapter_N232138.html">Enabling Features</a>.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">As you work with this module, keep the following considerations in mind:</p>
+          <ul>
+            <li>
+              <p>Generative AI features, such as the N/llm module, use creativity in their responses. Make sure you validate the AI-generated responses for accuracy and quality. Oracle NetSuite isn't responsible or liable for the use or interpretation of AI-generated content.</p>
+            </li>
+            <li>
+              <p>SuiteScript Generative AI APIs (N/llm module) are available only for accounts located in certain regions. For a list of these regions, see <a href="article_3132707887.html">Generative AI Feature Availability in NetSuite</a>.</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_1014032311">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_1014093243">N/llm Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1014094448">ChatMessage Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_45094434966">Citation Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_70094537133">Document Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0422021855">EmbedResponse Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1014094025">Response Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0422021140">StreamedResponse Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_86110110849">Tool Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_55110215563">ToolCall Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_38110320151">ToolParameter Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_68110344825">ToolResult Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_0804073835">Usage Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_1014093243">N/llm Module Members</h2>
+          <div style="font-size:10.38px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.13px;width:14.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.13px;width:14.1%;" rowspan="11">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015043130.html">llm.ChatMessage</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">The chat message.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_56082143862.html">llm.Citation</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A citation returned from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_73085600635.html">llm.Document</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A document to be used as source content when calling the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_40085011867.html">llm.EmbedResponse</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">The embeddings response returned from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015033509.html">llm.Response</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">The response returned from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_13082058358.html">llm.StreamedResponse</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">The streamed response returned from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_40103605821.html">llm.Tool</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A tool the LLM can request.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_16103740432.html">llm.ToolCall</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A tool call request from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_70104105348.html">llm.ToolParameter</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A parameter for a tool.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_73104354447.html">llm.ToolResult</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">A tool result to send back to the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804071108.html">llm.Usage</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">The token usage for a request to the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:14.1%;" rowspan="21">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014104320.html">llm.createChatMessage(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015043130.html">llm.ChatMessage</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Creates a chat message based on a specified role and text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_79091440431.html">llm.createDocument(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_73085600635.html">llm.Document</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Creates a document to be used as source content when calling the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_54090013211.html">llm.createTool(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_40103605821.html">llm.Tool</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Creates a tool the LLM can request.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_47090328711.html">llm.createToolParameter(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_70104105348.html">llm.ToolParameter</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Creates a tool parameter for a tool.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_40090425838.html">llm.createToolResult(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_73104354447.html">llm.ToolResult</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Creates a tool result to send back to the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_76083302199.html">llm.embed(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_40085011867.html">llm.EmbedResponse</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Returns the embeddings from the LLM for a given input.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_52083437973.html">llm.embed.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Asynchronously returns the embeddings from the LLM for a given input.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0115064704.html">llm.evaluatePrompt(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015033509.html">llm.Response</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes the ID of an existing prompt and values for variables used in the prompt and returns the response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_81065603726.html">llm.evaluatePrompt.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes the ID of an existing prompt and values for variables used in the prompt and asynchronously returns the response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_47080704730.html">llm.evaluatePromptStreamed(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_13082058358.html">llm.StreamedResponse</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes the ID of an existing prompt and values for variables used in the prompt and returns the streamed response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_43094934029.html">llm.evaluatePromptStreamed.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes the ID of an existing prompt and values for variables used in the prompt and asynchronously returns the streamed response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014032554.html">llm.generateText(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015033509.html">llm.Response</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes a prompt and parameters for the LLM and returns the response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014100301.html">llm.generateText.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes a prompt and parameters for the LLM and asynchronously returns the response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_46075557997.html">llm.generateTextStreamed(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_13082058358.html">llm.StreamedResponse</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes a prompt and parameters for the LLM and returns the streamed response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_48093225962.html">llm.generateTextStreamed.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Takes a prompt and parameters for the LLM and asynchronously returns the streamed response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014102816.html">llm.getRemainingFreeUsage()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084043.html">llm.getRemainingUsage()</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014103215.html">llm.getRemainingFreeUsage.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084325.html">llm.getRemainingUsage.promise()</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_77083006042.html">llm.getRemainingFreeEmbedUsage()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084043.html">llm.getRemainingUsage()</a>. Embed usage is no longer tracked separately.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_53083101627.html">llm.getRemainingFreeEmbedUsage.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Deprecated. Calls <a href="article_0808084325.html">llm.getRemainingUsage.promise()</a>. Embed usage is no longer tracked separately.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0808084043.html">llm.getRemainingUsage()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Returns the number of AI Units remaining.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;word-wrap:break-word;word-break:break-all;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0808084325.html">llm.getRemainingUsage.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">Promise</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Asynchronously returns the number of AI Units remaining.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:14.1%;" rowspan="6">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015044805.html">llm.ChatRole</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the string values for the author (role) of a chat message.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.role</code> parameter in <a href="article_1014104320.html">llm.createChatMessage(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_36111753207.html">llm.EmbedModelFamily</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the string values for the large language model to be used to generate embeddings.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.embedModelFamily</code> parameter in <a href="article_76083302199.html">llm.embed(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1014101247.html">llm.ModelFamily</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the string values for the large language model to be used.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.model</code> parameter in <a href="article_1014032554.html">llm.generateText(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804070845.html">llm.SafetyMode</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the string values for the safety mode to be used for LLM requests.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.safetyMode</code> parameter in <a href="article_1014032554.html">llm.generateText(options)</a> and <a href="article_46075557997.html">llm.generateTextStreamed(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_8105303902.html">llm.ToolParameterType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the data type for a tool parameter.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.type</code> parameter in <a href="article_47090328711.html">llm.createToolParameter(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_23112904019.html">llm.Truncate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.13px;width:15.8%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.13px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.13px;width:34.4%;">
+                    <p style="font-size:1em !important;">Holds the string values for the truncation method to use when embeddings input exceeds 512 tokens.</p>
+                    <p style="font-size:1em !important;">Use this enum to set the value of the <code>options.truncate</code> parameter in <a href="article_76083302199.html">llm.embed(options)</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1014094448">ChatMessage Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:14.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:35.5%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.1%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015044731.html">ChatMessage.role</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:14.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:35.5%;">
+                    <p style="font-size:1em !important;">The author (role) of the chat message.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015044007.html">ChatMessage.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:14.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:35.5%;">
+                    <p style="font-size:1em !important;">Text of the chat message.</p>
+                    <p style="font-size:1em !important;">This text can be either the prompt sent by the script or the response returned by the LLM.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_45094434966">Citation Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.6%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.9%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.3%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.6%;" rowspan="4">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_7082217666.html">Citation.documentIds</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">string[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.3%;">
+                    <p style="font-size:1em !important;">The IDs of the documents where the cited text is located.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_49082248467.html">Citation.end</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.3%;">
+                    <p style="font-size:1em !important;">The ending position of the cited text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_94083155180.html">Citation.start</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.3%;">
+                    <p style="font-size:1em !important;">The starting position of the cited text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_21084848961.html">Citation.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.3%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.9%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.3%;">
+                    <p style="font-size:1em !important;">The cited text from the documents.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_70094537133">Document Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:15.8%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:15.8%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_51085702425.html">Document.data</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.4%;">
+                    <p style="font-size:1em !important;">The content of the document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_83085729325.html">Document.id</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.4%;">
+                    <p style="font-size:1em !important;">The ID of the document.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0422021855">EmbedResponse Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.5%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.3%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_47085051031.html">EmbedResponse.embeddings</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">number[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.5%;">
+                    <p style="font-size:1em !important;">The embeddings returned from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_3085137102.html">EmbedResponse.inputs</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">string[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.5%;">
+                    <p style="font-size:1em !important;">The list of inputs used to generate the embeddings response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_31085243777.html">EmbedResponse.model</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.5%;">
+                    <p style="font-size:1em !important;">The model used to generate the embeddings response.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1014094025">Response Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.9%;" rowspan="7">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015041820.html">Response.chatHistory</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;"><a href="article_1015043130.html">llm.ChatMessage</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">List of chat messages.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_31090645000.html">Response.citations</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;"><a href="article_56082143862.html">llm.Citation</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">List of citations used to generate the response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_77090808354.html">Response.documents</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;"><a href="article_73085600635.html">llm.Document</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">List of documents used to generate the response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015041456.html">Response.model</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">Model used to produce the LLM response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_1015040837.html">Response.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">Text returned by the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_47085353743.html">Response.toolCalls</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;"><a href="article_16103740432.html">llm.ToolCall</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">Tool calls requested by the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804073454.html">Response.usage</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804071108.html">llm.Usage</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.3%;">
+                    <p style="font-size:1em !important;">Token usage for a request to the LLM.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0422021140">StreamedResponse Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.6%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.6%;" rowspan="6">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_43082126234.html">StreamedResponse.chatHistory</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;"><a href="article_1015043130.html">llm.ChatMessage</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">List of chat messages.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_2082423034.html">StreamedResponse.citations</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;"><a href="article_56082143862.html">llm.Citation</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">List of citations used to generate the streamed response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_2082503946.html">StreamedResponse.documents</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;"><a href="article_73085600635.html">llm.Document</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">List of documents used to generate the streamed response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_37082546497.html">StreamedResponse.model</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">Model used to produce the streamed response.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_83082638858.html">StreamedResponse.text</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">Text returned by the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_49092442056.html">StreamedResponse.toolCalls</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;"><a href="article_16103740432.html">llm.ToolCall</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:26.7%;">
+                    <p style="font-size:1em !important;">Tool calls requested by the LLM.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_86110110849">Tool Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:27.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.5%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_71090751307.html">Tool.description</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27.1%;">
+                    <p style="font-size:1em !important;">The description of the tool.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_19103033051.html">Tool.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27.1%;">
+                    <p style="font-size:1em !important;">The name of the tool.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_60103126273.html">Tool.parameters</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.9%;">
+                    <p style="font-size:1em !important;"><a href="article_70104105348.html">llm.ToolParameter</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27.1%;">
+                    <p style="font-size:1em !important;">The parameters of the tool.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_55110215563">ToolCall Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.1%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_21103802286.html">ToolCall.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">The name of the requested tool.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_48103839503.html">ToolCall.parameters</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:22.1%;">
+                    <p style="font-size:1em !important;"><a href="article_70104105348.html">llm.ToolParameter</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:25.8%;">
+                    <p style="font-size:1em !important;">The parameters of the requested tool.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_38110320151">ToolParameter Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.9%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:22.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.9%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:27%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.9%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:22.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_80104127925.html">ToolParameter.description</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27%;">
+                    <p style="font-size:1em !important;">The description of the tool parameter.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_54104159857.html">ToolParameter.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27%;">
+                    <p style="font-size:1em !important;">The name of the tool parameter.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:22.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_66104233079.html">ToolParameter.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15.9%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:27%;">
+                    <p style="font-size:1em !important;">The type of the tool parameter.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_68110344825">ToolResult Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:31.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.2%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_92104450377.html">ToolResult.call</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_16103740432.html">llm.ToolCall</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:31.8%;">
+                    <p style="font-size:1em !important;">The originating tool call request from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_68104522023.html">ToolResult.outputs</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Object[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:31.8%;">
+                    <p style="font-size:1em !important;">The outputs from running the tool specified in the tool call request.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_0804073835">Usage Object Members</h2>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.5%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804071705.html">Usage.completionTokens</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30%;">
+                    <p style="font-size:1em !important;">The number of tokens in the response from the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804071825.html">Usage.promptTokens</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30%;">
+                    <p style="font-size:1em !important;">The number of tokens in the request to the LLM.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0804071933.html">Usage.totalTokens</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:15%;">
+                    <p style="font-size:1em !important;">number</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30%;">
+                    <p style="font-size:1em !important;">The total number of tokens for the entire request to the LLM.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">To learn more about the generative AI models, see the SuiteAnswers article <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/1023335" target="_blank">LLM Mapping for Generative AI Features</a>. Be aware that you must be logged in to NetSuite to access articles in SuiteAnswers.</p>
+          </div>
+          <div>
+            <h3>Related Topics</h3>
+            <div>
+              <div>
+                <ul class="ns-enhanced-minitoc">
+                  <li>
+                    <span>
+                      <a href="article_9123730083.html">N/llm Module</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

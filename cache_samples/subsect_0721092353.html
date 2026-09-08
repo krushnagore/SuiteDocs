@@ -1,0 +1,172 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Extract Feature Content from a Document Synchronously</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_0703022249.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_0721114921.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Extract Feature Content from a Document Synchronously","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_0703022249.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_0721114921.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_8134325498.html" property="item" typeof="WebPage">
+              <span property="name">N/documentCapture Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_0703022052.html" property="item" typeof="WebPage">
+              <span property="name">N/documentCapture Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Extract Feature Content from a Document Synchronously</li>
+        </ol>
+        <h1 class="sect1">Extract Feature Content from a Document Synchronously</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following code sample extracts content from a document using <a href="article_0704102801.html">documentCapture.documentToStructure(options)</a>. This method provides a synchronous way to extract content from documents up to five pages in length. For longer documents, you must submit an asynchronous task using the N/task module. For a code sample, see <a href="subsect_0721114921.html">Extract Content from a Document Asynchronously</a>.</p>
+        <p>The file is located in the NetSuite File Cabinet and specified using its internal ID, but you can also specify a file using its name and path. The sample specifies the features to extract (text, tables, and key-value pairs). If you don't specify the features to extract, text and tables are extracted by default. The sample also indicates that the provided document is an invoice. Specifying the document type is optional, but doing so can improve the quality and accuracy of the extracted content.</p>
+        <p>After the content is extracted, it's passed to the <code>llm.chat(options)</code> method, which is an alias of <a href="article_1014032554.html">llm.generateText(options)</a>. This method lets you use a large language model (LLM) to analyze the content further by providing a suitable prompt. The data returned from <a href="article_0704102801.html">documentCapture.documentToStructure(options)</a> can be converted to a string and provided to <code>llm.chat(options)</code> (<a href="article_1014032554.html">llm.generateText(options)</a>) as a document, which helps you integrate these modules for more advanced use cases. For more information about the N/llm module, see <a href="article_9123730083.html">N/llm Module</a>.</p>
+        <p>In this example, the LLM is provided with a preamble, which contains additional instructions for the LLM to consider when generating its response. The LLM is asked about the purpose of the provided invoice, and the extracted content is converted to a string and provided as a document. The response includes citations, which indicate the content in the document that was used to generate the response. Finally, the LLM response and the citations are logged.</p>
+        <p>For instructions about how to run a SuiteScript 2.1 code snippet in the debugger, see <a href="section_157625776929.html">On-Demand Debugging of SuiteScript 2.1 Scripts</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">require(['N/file', 'N/documentCapture', 'N/llm'],
+    function(file, documentCapture, llm) { 
+        // "14" is the internal ID of a file stored in the NetSuite File Cabinet 
+        const extractedData = documentCapture.documentToStructure({
+            file: file.load(
+                id: "14"
+            ),
+            features: [
+                documentCapture.Feature.TEXT_EXTRACTION,
+                documentCapture.Feature.TABLE_EXTRACTION,
+                documentCapture.Feature.FIELD_EXTRACTION
+            ],
+            documentType: documentCapture.DocumentType.INVOICE
+        });
+
+        const documentText = extractedData.getText();
+         
+        const response = llm.chat({
+            preamble: "Your task is to parse the provided document and answer questions about that document.",
+            prompt: "What is this invoice for?",
+            documents: [{
+                id: "1",
+                data: documentText
+            }]
+        });
+
+        log.debug("Answer: ", response.text);
+        log.debug("Citations: ", response.citations);
+    }
+); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_0703022052.html">N/documentCapture Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0703022249.html">Extract Text from a PDF File</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0721114921.html">Extract Content from a Document Asynchronously</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

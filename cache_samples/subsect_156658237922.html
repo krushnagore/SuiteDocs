@@ -1,0 +1,259 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Create and Submit a Task with Dependent Scripts</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_156658201228.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_156658362398.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Create and Submit a Task with Dependent Scripts","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_156658201228.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_156658362398.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4345787858.html" property="item" typeof="WebPage">
+              <span property="name">N/task Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0305023241.html" property="item" typeof="WebPage">
+              <span property="name">N/task Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Create and Submit a Task with Dependent Scripts</li>
+        </ol>
+        <h1 class="sect1">Create and Submit a Task with Dependent Scripts</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample creates a map/reduce script task. It then creates an asynchronous search task and adds the map/reduce script task to the search task as dependent scripts. The script is processed when the search task is complete. For more information, see <a href="chapter_1498571420.html">SuiteCloud Processors</a>.</p>
+        <p>This sample refers to two script parameters: <code>custscript_ss_as_srch_res</code> for the scheduled script, and <code>custscript_mr_as_srch_res</code> for the map/reduce script. These parameters are used to pass the location of the CSV file to the dependent scripts, which is shown in the second and third code samples below. Before using this sample, create these parameters in the script record. For more information, see <a href="chapter_N2999459.html">Creating Script Parameters</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/task'], (task) =&gt; {
+    // Specify a file for the search results
+    const asyncSearchResultFile = 'SuiteScripts/ExportFile.csv';
+
+    // Create a map/reduce script task
+    const mapReduceScript = task.create({
+        taskType: task.TaskType.MAP_REDUCE
+    });
+    mapReduceScript.scriptId = 'customscript_mr_create_submit';
+    mapReduceScript.deploymentId = 'customdeploy_mr_create_submit';
+    mapReduceScript.params = {
+        'custscript_mr_as_srch_res' : asyncSearchResultFile
+    };
+
+    // Create the search task
+    const asyncTask = task.create({
+        taskType: task.TaskType.SEARCH
+    };
+    asyncTask.savedSearchId = 'customsearch35';
+    asyncTask.filePath = asyncSearchResultFile;
+
+    // Add dependent scripts to the search task before it is submitted
+    asyncTask.addInboundDependency(mapReduceScript);
+
+    // Submit the search task
+    const asyncTaskId = asyncTask.submit();
+}); 
+</code>
+        </pre>
+        <p>To read the contents of the search results file in a dependent map/reduce script, consider the following script sample:</p>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType MapReduceScript
+ * @NModuleScope SameAccount
+ */
+
+define(['N/runtime', 'N/file', 'N/log', 'N/email'], (runtime, file, log, email) =&gt; {
+    // Load the search results file, count the number of letters in the file, and
+    // store this count in another file
+
+    function getInputData() {
+        // Retrieve the ID of the search results file
+        //
+        // Update the completionScriptParameterName value to use the script
+        // ID of the original search task
+        const fileId = runtime.getCurrentScript().getParameter({
+            name: 'custscript_mr_new_submit_task_field'
+        });
+
+        if (!fileId) {
+            log.error({
+                details: 'fileId is not valid. Please check the script parameter stored in the completionScriptParameterName variable in getInputData().'
+            });
+        }
+
+        return {
+            type: 'file',
+            id: fileId
+        };
+    }
+
+    function map(context) {
+        log.debug('map context: ', context);
+        context.write({
+           key: context.key,
+           value: 1           
+        });
+    }
+
+    function reduce(context) {
+        log.debug('reduce context: ', context);
+        log.debug('context.values.length', context.values.length);
+        
+        // Count the number of rows 
+        let rowCount = 0;
+        rowCount = context.values.length - 1 // Subtracting 1 to remove header row from the count.
+        log.debug('rowCount: ', rowCount);
+ 
+       // Send an email to the user who ran the script, and attach the
+       // CSV file with the search results
+       const completionScriptParameterName = 'custscript_mr_new_submit_task_field';
+       const resFileId = runtime.getCurrentScript().getParameter({
+          name: completionScriptParameterName
+       });
+       const fileObj = file.load({  
+          id: resFileId
+       });
+       const userId = runtime.getCurrentUser().id;
+       email.send({
+          author: userId,
+          recipients: userId,
+          subject: 'Search completed',
+          body: 'CSV file attached, ' + rowCount + ' record(s) found.', 
+          attachments: [fileObj]            
+       });
+    }
+
+    function summarize(summary) {
+        const type = summary.toString();
+        log.audit({ title: type + ' Usage Consumed ', details: summary.usage });
+        log.audit({ title: type + ' Concurrency Number ', details: summary.concurrency });
+        log.audit({ title: type + ' Number of Yields ', details: summary.yields });
+    }
+    return {
+        getInputData: getInputData,
+        map: map,
+        reduce: reduce,
+        summarize: summarize
+    };
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0305023241.html">N/task Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156658130732.html">Create and Submit a Map/Reduce Script Task</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156658201228.html">Create and Submit an Asynchronous Search Task and Export the Results into a CSV File</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156658362398.html">Submit a Record Action Task and Check Status</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

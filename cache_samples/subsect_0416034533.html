@@ -1,0 +1,283 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Call a Suitelet from a Client Script</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_73192327604.html" title="Previous" type="text/html">
+    <link rel="next" href="section_4418286676.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Call a Suitelet from a Client Script","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_73192327604.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_4418286676.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4418229131.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0305042314.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Call a Suitelet from a Client Script</li>
+        </ol>
+        <h1 class="sect1">Call a Suitelet from a Client Script</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>This sample shows how to use the <a href="section_44162330742.html">https.requestSuitelet(options)</a> method to call a Suitelet from a client-side script.</p>
+        <p>This sample consists of three scripts that perform the following actions:</p>
+        <ul>
+          <li>
+            <p><a href="#subsect_0416040949">Add a Button that Calls a Custom Function</a> - A user event script that adds a custom button on a form. When the button is clicked, it calls a custom function that is defined in a client script.</p>
+          </li>
+          <li>
+            <p><a href="#subsect_0416041041">Create a Custom Function to Call a Suitelet</a> - A client script that defines a custom function that calls a Suitelet and displays the Suitelet response in a dialog.</p>
+          </li>
+          <li>
+            <p><a href="#subsect_0416045901">Create a Simple Suitelet</a>- A simple Suitelet that shows the text "Hello World!".</p>
+          </li>
+        </ul>
+        <p>Take note of the following when using the scripts in this sample:</p>
+        <ul>
+          <li>
+            <p>Ensure that you replace path to the client script referenced in the user event script.</p>
+          </li>
+          <li>
+            <p>Ensure that you replace the script and deployment IDs of the Suitelet referenced in the client script.</p>
+          </li>
+          <li>
+            <p>The client script and user event script must be deployed to the same form.</p>
+          </li>
+        </ul>
+        <div>
+          <h2 id="subsect_0416040949">Add a Button that Calls a Custom Function</h2>
+          <p>The following user event script adds a button to a form. When the button is clicked, it calls the <code>callSuitelet</code> function that is defined in the referenced client script. The <a href="section_4625445350.html">Form.clientScriptModulePath</a> property is used to specify the path to the client script where the custom function is defined. Ensure that you replace the value with the path to your client script.</p>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+          </div>
+          <div class="infobox-important">
+            <span class="notep1">Important: </span>
+            <p class="nshelp_first">This sample uses SuiteScript 2.1. For more information, see <a href="chapter_156042690639.html">SuiteScript 2.1</a>.</p>
+          </div>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ */
+
+// This script adds a button to a form and calls a custom function defined in a client script.
+define(['N/ui/serverWidget'], 
+    
+    function (serverWidget) {
+        function beforeLoad(scriptContext) {
+ 
+            // Add a button that calls the callSuitelet function
+            scriptContext.form.addButton({
+                id: 'custpage_call_suitelet_button',
+                label: 'Click to Open Suitelet',
+                functionName: 'callSuitelet'
+            })
+             
+            // Specify the path to the client script where the callSuitelet function is defined
+            scriptContext.form.clientScriptModulePath = './cs_request_suitelet.js' // Replace with the path to your client script
+        }
+
+        return {beforeLoad} 
+    }); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h2 id="subsect_0416041041">Create a Custom Function to Call a Suitelet</h2>
+          <p>The following client script defines a <code>callSuitelet</code> function that sends a request to a Suitelet using the <a href="section_44162330742.html">https.requestSuitelet(options)</a> method. The response from the Suitelet is then shown in an alert dialog using the <a href="section_4497744851.html">dialog.alert(options)</a> method. To use this script, replace the Suitelet script and deployment IDs with your own values.</p>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ * @NModuleScope SameAccount
+ */
+
+// This script defines a custom function to call a Suitelet.
+define(['N/https', 'N/ui/dialog'],
+ 
+    function(https, dialog) {
+        function pageInit(scriptContext) {}
+
+        // Create a custom function that calls a Suitelet and displays the response in a dialog
+        function callSuitelet() {
+            const response = https.requestSuitelet({
+                scriptId: 'customscript_sl_plf_requestsuitelet', // Replace with your Suitelet script ID
+                deploymentId: 'customdeploy_sl_plf_requestsuitelet', // Replace with your Suitelet deployment ID
+            });
+            dialog.alert({
+                title: 'Suitelet Response',
+                message: response.body
+            });
+        }
+     
+        return {
+            pageInit: pageInit,
+            callSuitelet: callSuitelet
+        };
+         
+    }); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h2 id="subsect_0416045901">Create a Simple Suitelet</h2>
+          <p>The following Suitelet returns a plain text response with the "Hello World!" message.</p>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+          </div>
+          <div class="infobox-important">
+            <span class="notep1">Important: </span>
+            <p class="nshelp_first">This sample uses SuiteScript 2.1. For more information, see <a href="chapter_156042690639.html">SuiteScript 2.1</a>.</p>
+          </div>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This Suitelet shows the text 'Hello World!' in plain text.
+define([],
+
+    function() {
+        function onRequest(context) {
+            context.response.setHeader({name: 'Content-Type', value: 'text/plain'});
+            context.response.write('Hello World!');
+        }
+
+        return {onRequest};
+
+    }); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0305042314.html">N/https Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976520537.html">Generate a Secure Token and a Secret Key</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976523569.html">Create a Form with a Credential Field</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_162334564716.html">Create an Authentication Header Using a Secure String</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_64151802701.html">Concatenate API Secrets with Strings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_162801159670.html">Create a JWT Token Using a SecureString</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_73192327604.html">Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

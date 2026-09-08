@@ -1,0 +1,359 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/error Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4369865177.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0227032340.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/error Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4369865177.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0227032340.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/error Module</li>
+        </ol>
+        <h1 class="sect1">N/error Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/error module to create custom SuiteScript errors that you can use in try-catch statements to abort script execution. Note that this module doesn't provide functionality to throw custom errors. However, you can include logic such as try-catch statements in your script to throw custom SuiteScript errors.</p>
+        <p>
+          <strong>
+            <a href="section_0227032340.html">N/error Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_160816802972">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4243798821">N/error Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4243798897">SuiteScriptError Object Members</a>
+              </p>
+            </li>
+          </ul>
+          <p>For more information about additional error logging capabilities, see the <a href="section_4574548135.html">N/log Module</a>.</p>
+        </div>
+        <h2 id="bridgehead_4243798821">N/error Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4253432660.html">error.SuiteScriptError</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.4%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a custom SuiteScript error for any server script type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4243803203.html">error.create(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4253432660.html">error.SuiteScriptError</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Creates a new <a href="section_4253432660.html">error.SuiteScriptError</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.6%;">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159469488562.html">error.Type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.4%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Holds the string values for error types.</p>
+                  <p style="font-size:1em !important;">Use this enum to set the value for the <a href="section_4243803552.html">SuiteScriptError.name</a> parameter of the <a href="section_4243803203.html">error.create(options)</a> method. This sets the value of the <a href="section_159475480456.html">SuiteScriptError.type</a> property.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4243798897">SuiteScriptError Object Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.9%;" rowspan="7">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_158049399342.html">SuiteScriptError.cause</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Cause of the error.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4243803497.html">SuiteScriptError.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Error ID that is automatically generated when a new error is created.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4243803629.html">SuiteScriptError.message</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Error message text displayed in the Details column of the Execution Log. Set from the <code>options.message</code> parameter when you create a new error using <a href="section_4243803203.html">error.create(options)</a></p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4243803552.html">SuiteScriptError.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Error name or error code. Set from the <code>options.name</code> parameter when you create a new error using <a href="section_4243803203.html">error.create(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159475415674.html">SuiteScriptError.notifyOff</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Suppresses email notification when set to true. Set from the <code>options.notifyOff</code> parameter when you create a new error using <a href="section_4243803203.html">error.create(options)</a></p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4243803715.html">SuiteScriptError.stack</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">Array of strings (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">List of method calls that the script is executing when the error is thrown.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159475480456.html">SuiteScriptError.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;"><a href="section_159469488562.html">error.Type</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:36.5%;">
+                  <p style="font-size:1em !important;">Error type (error.SuiteScriptError).</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_4574548135.html">N/log Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

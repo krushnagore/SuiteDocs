@@ -1,0 +1,598 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Supported Record Actions</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_1509640242.html" title="Previous" type="text/html">
+    <link rel="next" href="section_1516982642.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Supported Record Actions","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_1509640242.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_1516982642.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_8161516336.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_1529336272.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Record Actions and Macros</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_1509640242.html" property="item" typeof="WebPage">
+              <span property="name">Overview of Record Action and Macro APIs</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Supported Record Actions</li>
+        </ol>
+        <h1 class="sect1">Supported Record Actions</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Record actions make it convenient to update records that are currently being viewed. For more information, see <a href="section_1509640242.html">Overview of Record Action and Macro APIs</a>.</p>
+        <p>Record macro APIs are part of the <a href="section_1510761537.html">N/action Module</a>. For more information, see <a href="section_1510761537.html">N/action Module</a>.</p>
+        <p>The following table lists currently supported record actions. The table is organized by record type and includes the UI button labels. For details about a specific action, click its Action ID.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">For information about working with record actions in REST web services, see <a href="section_156631158782.html">Executing Record Actions</a>.</p>
+        </div>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:592.78px;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:176.28px;">
+                  <p style="font-size:1em !important;">
+                    <strong>Record Type</strong>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:205.18px;">
+                  <p style="font-size:1em !important;">
+                    <strong>Action ID</strong>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:211.32px;">
+                  <p style="font-size:1em !important;">
+                    <strong>UI Button Label</strong>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_157373984745.html">Bonus</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_157124159674.html#subsect_157124170029">cancel</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Exclude from Payroll</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3743283850.html">Charge</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161218135180.html#subsect_161217737032">clearBudgetAmounts</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Clear Values</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3743283850.html">Charge</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161218135180.html#subsect_161217736703">distributeBudgetTotalAmount</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Distribute Total</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3743283850.html">Charge</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161218135180.html#subsect_161217604580">selectAllBudgetLines</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Mark All</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3743283850.html">Charge</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161218135180.html#subsect_161217734718">setBudgetAmountsToCalculated</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Set to Calculated</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3743283850.html">Charge</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161218135180.html#subsect_161217716936">unselectAllBudgetLines</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">-</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3898859490.html">Inventory Count</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_0531013556.html#subsect_0531014548">approve</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Approve</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3898859490.html">Inventory Count</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_0531013556.html#subsect_0531014337">completecount</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Complete Count</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3898859490.html">Inventory Count</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_0531013556.html#subsect_0531014729">reject</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Reject</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_3898859490.html">Inventory Count</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_0531013556.html#subsect_0531013951">startcount</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Start Count</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3194809.html">Invoice</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018205567.html#bridgehead_160009998089">markforgrouping</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Mark for Grouping</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3194809.html">Invoice</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018205567.html#bridgehead_160011103849">removeinvoicefromgroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Remove From Grouping</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3194809.html">Invoice</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018205567.html#bridgehead_160011179240">unmarkforgrouping</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Unmark for Grouping</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160011270327.html">Invoice Group</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018254292.html#bridgehead_160011319602">groupinvoices</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Group Invoices</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160011270327.html">Invoice Group</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018254292.html#bridgehead_160011433003">removeinvoicesfromgroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Unlink Invoices</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4839864414.html">Revenue Recognition Event</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_160018254292.html#bridgehead_160011433003">removeinvoicesfromgroup</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Recalculate % Complete Override</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4544311111.html">Revenue Arrangement</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337080.html#subsect_1516986411">allocate</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Allocate</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159231558772.html">Supply Change Order</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159854541072.html#subsect_159854730513">approve</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Approve all pending</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159231558772.html">Supply Change Order</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159854541072.html#subsect_159854737448">reject</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Reject all pending</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159231624834.html">Supply Plan Definition</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159854547667.html#subsect_159854576699">launch</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Launch</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"><a href="section_N3197386.html">Time</a> (TimeBill)</p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337353.html#subsect_1516986329">approve</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Approve</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"><a href="section_N3197386.html">Time</a> (TimeBill)</p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337663.html#subsect_1516986437">reject</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Reject</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"><a href="section_N3197386.html">Time</a> (TimeBill)</p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3197386.html#subsect_161226738170">retract</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Retract</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;"><a href="section_N3197386.html">Time</a> (TimeBill)</p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337353.html#subsect_1516986356">submit</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Submit</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3199719.html">Vendor Payment</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1530193985.html#subsect_1530194018">confirm</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Confirm</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_N3199719.html">Vendor Payment</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1530193985.html#subsect_1530194953">decline</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Decline</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1518113345.html">Weekly Timesheet</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337663.html#subsect_1516986425">approve</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Approve All Pending</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1518113345.html">Weekly Timesheet</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337663.html#subsect_1516986437">reject</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Reject All Pending</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1518113345.html">Weekly Timesheet</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337663.html#subsect_161225700196">retract</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Retract</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1518113345.html">Weekly Timesheet</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1529337663.html#subsect_1516986452">submit</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;">
+                  <p style="font-size:1em !important;">Submit</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_1509640242.html">Overview of Record Action and Macro APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1510761537.html">N/action Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1516982642.html">Supported Record Macros</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

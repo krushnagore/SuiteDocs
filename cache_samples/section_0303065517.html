@@ -1,0 +1,194 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/portlet Module Script Sample</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4473510730.html" title="Previous" type="text/html">
+    <link rel="next" href="section_4473510937.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/portlet Module Script Sample","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4473510730.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_4473510937.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4473510730.html" property="item" typeof="WebPage">
+              <span property="name">N/portlet Module</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/portlet Module Script Sample</li>
+        </ol>
+        <h1 class="sect1">N/portlet Module Script Sample</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following script sample demonstrates how to use the features of the N/portlet module.</p>
+        <div>
+          <h2 id="subsect_53105436081">Create a Form Portlet with a Button That Allows User Adjustments</h2>
+          <p>The following sample shows how to create a form portlet that allows users to adjust its height and width. It creates two text fields representing the height and width of the portlet, measured in pixels. It also creates a button that runs the <a href="section_4473510937.html">portlet.resize()</a> method to adjust the height and width of the portlet based on the values of the text fields.</p>
+          <p>This sample also shows how to create a button that uses the <a href="section_4473511255.html">portlet.refresh()</a> method. When the button is clicked, the portlet is updated to show the current date.</p>
+          <p>For more information about how a portlet is displayed on the NetSuite dashboard, see <a href="section_4387799288.html">SuiteScript 2.1 Portlet Script Type</a>.</p>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+          </div>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.x
+ * @NScriptType Portlet
+ * @NScriptPortletType form
+ */
+
+define([], function() {
+    function render(context) {
+        var portletObj = context.portlet;
+        portletObj.title = 'Test Form Portlet';
+        setComponentsForResize();
+        setComponentsForRefresh();
+
+        function setComponentsForResize() {
+            var DEFAULT_HEIGHT = '50';
+            var DEFAULT_WIDTH = '50';
+            var inlineHTMLField = portletObj.addField({
+                id: 'divfield',
+                type: 'inlinehtml',
+                label: 'Test inline HTML'
+            });
+            inlineHTMLField.defaultValue = '&lt;div id=\'divfield_elem\' style=\'border: 1px dotted red; height: ' + DEFAULT_HEIGHT + 'px; width: ' + DEFAULT_WIDTH + 'px;\'&gt;&lt;/div&gt;';
+            inlineHTMLField.updateLayoutType({
+                layoutType: 'normal'
+            });
+            inlineHTMLField.updateBreakType({
+                breakType: 'startcol'
+            });
+            var resizeHeight = portletObj.addField({
+                id: 'resize_height',
+                type: 'text',
+                label: 'Resize Height'
+            });
+            resizeHeight.defaultValue = DEFAULT_HEIGHT;
+            var resizeWidth = portletObj.addField({
+                id: 'resize_width',
+                type: 'text',
+                label: 'Resize Width'
+            });
+            resizeWidth.defaultValue = DEFAULT_WIDTH;
+            var resizeLink = portletObj.addField({
+                id: 'resize_link',
+                type: 'inlinehtml',
+                label: 'Resize link'
+            });
+            resizeLink.defaultValue = resizeLink.defaultValue = '&lt;a id=\'resize_link\' onclick=\"require([\'SuiteScripts/portletApiTestHelper\'], function(portletApiTestHelper) {portletApiTestHelper.resizePortlet(); }) \" href=\'#\'&gt;Resize&lt;/a&gt;&lt;br&gt;';
+        }
+
+        function setComponentsForRefresh() {
+            var textField = portletObj.addField({
+                id: 'refresh_output',
+                type: 'text',
+                label: 'Date.now().toString()'
+            });
+            textField.defaultValue = Date.now().toString();
+            var refreshLink = portletObj.addField({
+                id: 'refresh_link',
+                type: 'inlinehtml',
+                label: 'Refresh link'
+            });
+            refreshLink.defaultValue = '&lt;a id=\'refresh_link\' onclick=\'require([\"SuiteScripts/portletApiTestHelper\"], function(portletApiTestHelper) {portletApiTestHelper.refreshPortlet(); }) \' href=\'#\'&gt;Refresh&lt;/a&gt;';
+        }
+    }
+
+    return {
+        render: render
+    };
+})
+
+// portletApiTestHelper.js
+define(['N/portlet'], function(portlet) {
+    function refreshPortlet() {
+        portlet.refresh();
+    }
+
+    function resizePortlet() {
+        var div = document.getElementById('divfield_elem');
+        var newHeight = parseInt(document.getElementById('resize_height').value);
+        var newWidth = parseInt(document.getElementById('resize_width').value);
+        div.style.height = newHeight + 'px';
+        div.style.width = newWidth + 'px';
+        portlet.resize();
+    }
+
+    return {
+        refreshPortlet: refreshPortlet,
+        resizePortlet: resizePortlet
+    };
+}); 
+</code>
+          </pre>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

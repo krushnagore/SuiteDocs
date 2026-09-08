@@ -1,0 +1,190 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Uploading Digital Certificates</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="chapter_1542656608.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_1547501301.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Uploading Digital Certificates","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="chapter_1542656608.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_1547501301.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N125873.html" property="item" typeof="WebPage">
+              <span property="name">Account Administration</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="book_4299752196.html" property="item" typeof="WebPage">
+              <span property="name">Authentication</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_1542656608.html" property="item" typeof="WebPage">
+              <span property="name">Digital Signing</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Uploading Digital Certificates</li>
+        </ol>
+        <h1 class="sect1">Uploading Digital Certificates</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>You can store and manage your digital certificates on the Digital Certificates page. NetSuite currently accepts the following certificate file types are:</p>
+        <ul>
+          <li>
+            <p>PFX</p>
+          </li>
+          <li>
+            <p>P12</p>
+          </li>
+          <li>
+            <p>PEM - Certificates with a private key encrypted with CTR block mode are not supported (for example, AES-256-CTR).</p>
+          </li>
+        </ul>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">The certificate record holds information for a digital certificate, but it isn't a standard NetSuite record and can't be accessed with the N/record module.</p>
+        </div>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">It isn't possible to download digital certificates. Depending on which SuiteApps are installed in your account, you may see read-only system certificates in your list of digital certificates. These certificates are required for a secure connection to a third party service through a SuiteApp and can't be edited or removed without uninstalling the SuiteApp.</p>
+        </div>
+        <div>
+          <h4>To upload a new certificate:</h4>
+          <ol>
+            <li>
+              <p>Go to <em>Setup &gt; Company &gt; Preferences &gt; Certificates</em>.</p>
+            </li>
+            <li>
+              <p>At the top of the page, click <strong>Create New</strong>.</p>
+            </li>
+            <li>
+              <p>In the <strong>New Certificate</strong> window, on the <strong>Details</strong> subtab, enter a descriptive name for this certificate in the <strong>Name</strong> field.</p>
+            </li>
+            <li>
+              <p>In the <strong>ID</strong> field, enter a script ID for this certificate. The script ID of the certificate lets you access the certificate using SuiteScript. You should make this a descriptive ID with no spaces or special characters. NetSuite prefixes the script ID with 'custcertificate'.</p>
+              <div class="infobox-important">
+                <span class="notep1">Important: </span>
+                <p class="nshelp_first">Don't reuse a certificate ID if the certificate was deleted.</p>
+              </div>
+            </li>
+            <li>
+              <p>In the <strong>Description</strong> field, enter a description of this certificate, such as its use and who maintains it.</p>
+            </li>
+            <li>
+              <p>On the <strong>Files</strong> subtab, in the <strong>Certificate File</strong> field, choose a file to upload the digital certificate. You need a file type of PFX, PEM, or P12 to save this certificate.</p>
+            </li>
+            <li>
+              <p>In the <strong>Password</strong> field, enter the password for this certificate. The certificate authority that issued you the certificate, provides the password.</p>
+            </li>
+            <li>
+              <p>On the <strong>Audience</strong> subtab, check the <strong>Restrict to Employees</strong> box to limit access to this certificate to specific employees. Select the employees in the field below. Click each name to select multiple employees. You don't need to use Ctrl or Command.</p>
+              <p>Employees must also use roles with the Certificate Access permission to be able to run a script that accesses a certificate.</p>
+            </li>
+            <li>
+              <p>To restrict access through SuiteScript to specific scripts, enter the script IDs in the <strong>Restrict to Scripts</strong> field.</p>
+              <p>For more information, see <a href="subsect_1547501301.html">Access to Digital Certificates</a>.</p>
+            </li>
+            <li>
+              <p>In the <strong>Subsidiaries</strong> field, select which subsidiaries this certificate applies to. You can select more than one subsidiary, or you can check the box at the top of the list to select all subsidiaries. Selecting a subsidiary lets you search for certificates by subsidiary and doesn't affect access.</p>
+            </li>
+            <li>
+              <p>Under <strong>Expiration Reminders</strong>, select when administrators receive reminder of expiration: one week, one month, or three months in advance. You can select more than one option to receive more than one reminder.</p>
+            </li>
+            <li>
+              <p>Check the <strong>Copy Employees</strong> box to copy additional employees on reminders. Select which employees to copy in the field below. Click each name to select multiple employees. You don't need to use Ctrl or Command.</p>
+            </li>
+            <li>
+              <p>Click <strong>Save</strong>. The certificate file is decrypted and validated using the provided password. NetSuite stores the certificate and password securely in the database.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">When testing in various accounts, you must re-upload your certificate to the new account. For example, if you upload a certificate in your production account and refresh your sandbox account, you must still re-upload your certificate in the sandbox account.</p>
+        </div>
+        <p>You can view the list of uploaded certificates on the Digital Certificates page.</p>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_161964252762.html">Locking and Restricting Certificates</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_1542656608.html">Digital Signing</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1543986321.html">N/https/clientCertificate Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1543432423.html">N/crypto/certificate Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1547247950.html">N/certificateControl Module</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Find Similar Items Using Embeddings</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_0730103345.html" title="Previous" type="text/html">
+    <link rel="next" href="article_85093504618.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Find Similar Items Using Embeddings","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_0730103345.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="article_85093504618.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_9123730083.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_1015110627.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Find Similar Items Using Embeddings</li>
+        </ol>
+        <h1 class="sect1">Find Similar Items Using Embeddings</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The following code sample shows how to generate embeddings to determine the similarity of item names using a Suitelet and <a href="article_76083302199.html">llm.embed(options)</a>. For more information about Suitelets, see <a href="section_4387799600.html">SuiteScript 2.1 Suitelet Script Type</a>.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">Embeddings include the semantic information of the original data and should be treated with the same level of sensitivity. Embeddings created from sensitive data must be protected, stored, logged, shared, retained, and deleted according to the same rules as the original data.</p>
+        </div>
+        <p>The sample starts by defining a helper function, <code>cosineSimilarity()</code>, that calculates the cosine similarity of two vectors. This function is used later in the sample to compare the embeddings of a selected item with those of other items to determine how similar they are. For more information about cosine similarity, see <a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank">Cosine similarity</a>.</p>
+        <p>Next, the sample defines the <code>onRequest()</code> function, which will be provided to the <code>onRequest</code> entry point for Suitelets. For a <code>GET</code> request, the sample creates a simple form with a dropdown list to select an item. A SuiteQL query is used to retrieve available items and populate the list. The form also includes a submit button.</p>
+        <p>For a <code>POST</code> request, the sample creates a list of inputs to provide to <a href="article_76083302199.html">llm.embed(options)</a>. Each input contains an item name, and <a href="article_76083302199.html">llm.embed(options)</a> generates embeddings for each one using the Cohere Embed model. Note that you can't use the same models you use when calling <a href="article_1014032554.html">llm.generateText(options)</a> to generate embeddings and must use a dedicated embed model. For a list of available embed models, see <a href="article_36111753207.html">llm.EmbedModelFamily</a>.</p>
+        <p>Finally, the sample builds an array of similarity results and uses <code>cosineSimilarity()</code> to calculate how similar the selected item is to other available items. The similarity results are sorted by highest similarity value, and the results are displayed. The similarity value is between 0 and 1, with higher values representing greater similarity to the selected item.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ * @NModuleScope SameAccount
+ */
+define(['N/ui/serverWidget','N/query', 'N/llm'],
+    function(serverWidget, query, llm) {
+
+        function cosineSimilarity(array1, array2) {
+            const dotProduct = array1.reduce((sum, value, index) =&gt; sum + value
+                                              * array2[index], 0);
+            const magnitude1 = Math.sqrt(array1.reduce((sum, value) =&gt; sum + 
+                                         value * value, 0));
+            const magnitude2 = Math.sqrt(array2.reduce((sum, value) =&gt; sum + 
+                                         value * value, 0));
+            return dotProduct / (magnitude1 * magnitude2);
+        }
+
+        function onRequest(context) {
+            if (context.request.method === 'GET') {
+                var form = serverWidget.createForm({
+                    title: 'Item Similarity Form'
+                });
+
+                var selectField = form.addField({
+                    id: 'custpage_myselect',
+                    type: serverWidget.FieldType.SELECT,
+                    label: 'Select an Item to find similar items for'
+                });
+
+                var res = query.runSuiteQL("SELECT id, case when displayname 
+                is not null then displayname else itemid end name from item 
+                where rownum &lt;= 96 order by id").asMappedResults();
+
+                for (let i = 0; i &lt; res.length; i++)
+                {
+                    selectField.addSelectOption({
+                        value: res[i]['id'],
+                        text: res[i]['name']
+                    });
+                }
+
+                form.addSubmitButton({
+                    label: 'Submit'
+                });
+
+                context.response.writePage(form);
+            } else {
+                var selectedValue = context.request.parameters.custpage_myselect;
+                var res = query.runSuiteQL("SELECT id, case when displayname 
+                is not null then displayname else itemid end name from item 
+                where rownum &lt;= 96 order by id").asMappedResults();
+                
+                const inputs = [];
+                let selectedName;
+                let selectedIndex = 0;
+
+                for (let i = 0; i &lt; res.length; i++)
+                {
+                    if (res[i]['id'] == selectedValue)
+                    {
+                        selectedName = res[i]["name"];
+                        selectedIndex = i;
+                    }
+                    inputs.push(res[i]["name"]);
+                }
+
+                var embeddingResult = llm.embed({
+                    embedModelFamily: llm.EmbedModelFamily.COHERE_EMBED,
+                    inputs: inputs
+                });
+                
+                var item = embeddingResult.embeddings[selectedIndex];
+                var similarityResults = [];
+
+                for (var j = 0; j &lt; embeddingResult.inputs.length; j++)
+                    similarityResults.push({
+                        itemName: embeddingResult.inputs[j],
+                        similarity: cosineSimilarity(item, embeddingResult.embeddings[j])
+                    });
+
+                similarityResults.sort((a,b) =&gt; b.similarity - a.similarity);
+                context.response.write(JSON.stringify(similarityResults, null, 2));
+            }
+        }
+
+        return {
+            onRequest: onRequest
+        };
+    }
+); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_1015110627.html">N/llm Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1015115955.html">Send a Prompt to the LLM and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045211.html">Clean Up Content for Text Area Fields After Saving a Record</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045225.html">Provide an LLM-based ChatBot for NetSuite Users</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0115091619.html">Evaluate an Existing Prompt and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0211115903.html">Create a Prompt and Evaluate It</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_85093504618.html">Use Tools to Enhance the Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

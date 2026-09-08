@@ -1,0 +1,2889 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/query Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4473511255.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0304035624.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/query Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4473511255.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0304035624.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/query Module</li>
+        </ol>
+        <h1 class="sect1">N/query Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/query module to create and run queries using the SuiteAnalytics Workbook query process. For more information about SuiteAnalytics Workbook, see <a href="chapter_1503949328.html">SuiteAnalytics Workbook Overview</a>.</p>
+        <p>
+          <strong>
+            <a href="section_0304035624.html">N/query Module Script Samples</a>
+          </strong>
+        </p>
+        <p>Using the query module, you can:</p>
+        <ul>
+          <li>
+            <p>Use multilevel joins to create queries using field data from multiple record types.</p>
+          </li>
+          <li>
+            <p>Create conditions (filters) using AND, OR, and NOT logic, as well as formulas and relative dates.</p>
+          </li>
+          <li>
+            <p>Sort query results based on the values of multiple columns.</p>
+          </li>
+          <li>
+            <p>Load and delete existing saved queries that were created using the SuiteAnalytics Workbook interface.</p>
+          </li>
+          <li>
+            <p>View paged query results.</p>
+          </li>
+          <li>
+            <p>Use promises for asynchronous .</p>
+          </li>
+          <li>
+            <p>Convert query objects to SuiteQL queries and run arbitrary SuiteQL queries.</p>
+          </li>
+        </ul>
+        <p>For more information about creating scripts using the N/query module, see the following help topics:</p>
+        <ul>
+          <li>
+            <p>
+              <a href="section_1532440865.html">Scripting with the N/query Module</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="section_1536750827.html">Formulas in the N/query Module</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="section_1549916938.html">Relative Dates in the N/query Module</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="section_157960623712.html">SuiteQL in the N/query Module</a>
+            </p>
+          </li>
+        </ul>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">As you use the N/query module, keep the following considerations in mind:</p>
+          <ul>
+            <li>
+              <p>The N/query module lets you create and run queries using the SuiteAnalytics Workbook query process. You can load and delete existing queries, but you can't save queries with this module. To save queries, use the SuiteAnalytics Workbook interface. For details, see <a href="chapter_1544220943.html">Navigating SuiteAnalytics Workbook</a>.</p>
+            </li>
+            <li>
+              <p>The N/query module uses a different data source than N/search. To find record types or field IDs for filters or result columns, use the Records Catalog (not the SuiteScript Records Browser). The Records Catalog lists everything available for SuiteAnalytics Workbook and N/query. For more, see <a href="article_159367781370.html">Records Catalog Overview</a>.</p>
+            </li>
+            <li>
+              <p>The N/query module doesn't work in unauthenticated client-side contexts.</p>
+              <p>For details, see the SuiteAnswers article <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/1013055" target="_blank">Outbound HTTPs in an unauthenticated client-side context</a>.</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_157661307730">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_1510352106">N/query Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510788828">Column Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510785368">Component Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510789342">Condition Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510861573">Page Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510860746">PagedData Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510878500">PageRange Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510352143">Query Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1544530447">RelativeDate Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510858930">Result Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510790719">ResultSet Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_1510790337">Sort Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_157980851724">SuiteQL Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_1510352106">N/query Module Members</h2>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="13">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779196.html">query.Column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">The field types (query result columns) that are displayed from the query results.</p>
+                    <p style="font-size:1em !important;">Use <a href="section_1510780373.html">Query.createColumn(options)</a> or <a href="section_1510784945.html">Component.createColumn(options)</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">One component of the query definition. The query definition always contains at least one component that encapsulates the initial query type. Queries with joins contain multiple components that encapsulate the join relationships.</p>
+                    <p style="font-size:1em !important;">The initial component (<a href="section_1510781874.html">Query.root</a>) is automatically created with the query definition (<a href="section_1510275177.html">query.Query</a>). Use <a href="section_1530819144.html">Query.autoJoin(options)</a> or <a href="section_1530818573.html">Component.autoJoin(options)</a> to create subsequent components.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A condition. A condition narrows the query results.</p>
+                    <p style="font-size:1em !important;">Use <a href="section_1510780329.html">Query.createCondition(options)</a> or <a href="section_1510784922.html">Component.createCondition(options)</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779287.html">query.Page</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">One page of the paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A set of paged query results. This object also contains information about the set of paged results it encapsulates.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779296.html">query.PageRange</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A range of pages from the paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289614570.html">query.Period</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A period of time to use in query conditions.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109440.html">query.RelativeDate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A relative date to use in query conditions.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779258.html">query.Result</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A single row of the query result set.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">The set of results returned by the query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275177.html">query.Query</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">The query definition. Use <a href="section_1510275581.html">query.create(options)</a> or <a href="section_1510349101.html">query.load(options)</a> to create this object.</p>
+                    <div class="infobox-important">
+                      <span class="notep1">Important: </span>
+                      <p class="nshelp_first" style="font-size:1em !important;">The creation of this object is the first step in creating a query with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779222.html">query.Sort</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A sort that is placed on a particular query result column.</p>
+                    <p style="font-size:1em !important;">Use <a href="section_1510780402.html">Query.createSort(options)</a> or <a href="section_1510785047.html">Component.createSort(options)</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960384819.html">query.SuiteQL</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">A SuiteQL query.</p>
+                    <p style="font-size:1em !important;">Use <a href="section_157960522744.html">Query.toSuiteQL()</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="11">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275581.html">query.create(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275177.html">query.Query</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Creates the query definition.</p>
+                    <div class="infobox-important">
+                      <span class="notep1">Important: </span>
+                      <p class="nshelp_first" style="font-size:1em !important;">The invocation of this method is the first step in creating a query with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289670344.html">query.createPeriod(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289614570.html">query.Period</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Creates a <a href="section_158289614570.html">query.Period</a> object that represents a period of time.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544108154.html">query.createRelativeDate(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109440.html">query.RelativeDate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Creates a <a href="section_1544109440.html">query.RelativeDate</a> object that represents a date relative to the current date.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819817.html">query.delete(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">void</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Deletes an existing query that was created using the SuiteAnalytics Workbook UI. The deleted query is no longer available and cannot be modified or executed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289760700.html">query.listTables(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">&lt;Object&gt;</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Lists the table view objects that are included in a workbook in SuiteAnalytics Workbook.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510349101.html">query.load(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275177.html">query.Query</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Loads an existing query that was created using the SuiteAnalytics Workbook UI. The loaded query can be modified (for example, by setting additional property values), joined with other query types, and executed in the same way as queries created using <a href="section_1510275581.html">query.create(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1552419444.html">query.load.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_4387812940.html">Promise Object</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Asynchronously loads an existing query that was created using the SuiteAnalytics Workbook UI.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960542026.html">query.runSuiteQL(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Runs an arbitrary SuiteQL query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0429104416.html">query.runSuiteQL.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_4387812940.html">Promise Object</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Asynchronously runs an arbitrary SuiteQL query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960586441.html">query.runSuiteQLPaged(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Runs an arbitrary SuiteQL query as a paged query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0429112941.html">query.runSuiteQLPaged.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_4387812940.html">Promise Object</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Asynchronously runs an arbitrary query as a paged query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="11">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878932.html">query.Aggregate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for aggregate functions supported with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the aggregate function argument to <a href="section_1510784945.html">Component.createColumn(options)</a>, <a href="section_1510784922.html">Component.createCondition(options)</a>, <a href="section_1510780373.html">Query.createColumn(options)</a>, and <a href="section_1510780329.html">Query.createCondition(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544111587.html">query.DateId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for supported date codes in relative dates.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the date ID argument to <a href="section_1544108154.html">query.createRelativeDate(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1552071599.html">query.FieldContext</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for the field context to use when creating a column.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the context argument to <a href="section_1510780373.html">Query.createColumn(options)</a> and <a href="section_1510784945.html">Component.createColumn(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275752.html">query.Operator</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for operators supported with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the operator argument to <a href="section_1510780329.html">Query.createCondition(options)</a> and <a href="section_1510784922.html">Component.createCondition(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289865548.html">query.PeriodAdjustment</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for adjustment types for a period.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the adjustment argument to <a href="section_158289670344.html">query.createPeriod(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289876878.html">query.PeriodCode</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for period codes for a period.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the code argument to <a href="section_158289670344.html">query.createPeriod(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289949288.html">query.PeriodType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for period types for a period.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the type argument to <a href="section_158289670344.html">query.createPeriod(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544111773.html">query.RelativeDateRange</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds <a href="section_1544109440.html">query.RelativeDate</a> object values for supported date ranges in relative dates.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the values argument to <a href="section_1510780329.html">Query.createCondition(options)</a> and <a href="section_1510784922.html">Component.createCondition(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878969.html">query.ReturnType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for the formula return types supported with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the formula return type argument to <a href="section_1510780373.html">Query.createColumn(options)</a>, <a href="section_1510784945.html">Component.createColumn(options)</a>, <a href="section_1510780329.html">Query.createCondition(options)</a>, and <a href="section_1510784922.html">Component.createCondition(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819885.html">query.SortLocale</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for sort locales supported with the <a href="section_1510275060.html">N/query Module</a>.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the sort locale argument to <a href="section_1510780402.html">Query.createSort(options)</a> and <a href="section_1510785047.html">Component.createSort(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878994.html">query.Type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:15.6%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:34.7%;">
+                    <p style="font-size:1em !important;">Holds the string values for supported query types used in the query definition.</p>
+                    <p style="font-size:1em !important;">This enum is used to pass the initial query type argument to <a href="section_1510275581.html">query.create(options)</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510788828">Column Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779196.html">query.Column</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:12.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:12.7%;" rowspan="9">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789115.html">Column.aggregate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">An aggregate function that is performed on the query result column. An aggregate function performs a calculation on the column values and returns a single value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156336566313.html">Column.alias</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">An alias for this column. An alias is an alternate name for a column, and the alias is used in mapped results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789028.html">Column.component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779141.html">query.Component</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">A reference to the <a href="section_1510779141.html">query.Component</a> object to which this query result column belongs.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109085.html">Column.context</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">The field context for values in the query result column. The field context determines how field values are displayed in the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510788976.html">Column.fieldId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">The name of the query result column. This property and the <a href="section_1510789062.html">Column.formula</a> property cannot be set at the same time.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789062.html">Column.formula</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">The formula used to create the query result column. This property and the <a href="section_1510788976.html">Column.fieldId</a> property cannot be set at the same time.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789147.html">Column.groupBy</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">(read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">Whether the query results are grouped by this query result column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158291894456.html">Column.label</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">The label for the column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789090.html">Column.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.3%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.6%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.6%;">
+                    <p style="font-size:1em !important;">The return type of the formula used to create the query result column.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510785368">Component Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779141.html">query.Component</a> object.</p>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="7">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530818573.html">Component.autoJoin(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates a join relationship.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use <a href="section_1530819144.html">Query.autoJoin(options)</a> to create your first join. Then use this method to create each subsequent join.</p>
+                    <p style="font-size:1em !important;">This method selects the correct join type automatically based on the record types that are being joined.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510784945.html">Component.createColumn(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779196.html">query.Column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates a query result column based on the component.</p>
+                    <p style="font-size:1em !important;">Use this method to create columns based on the join relationships created with <a href="section_1530819144.html">Query.autoJoin(options)</a> and <a href="section_1530818573.html">Component.autoJoin(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510784922.html">Component.createCondition(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates a condition (filter column) based on the component.</p>
+                    <p style="font-size:1em !important;">Use this method to create conditions based on the join relationships created with <a href="section_1530819144.html">Query.autoJoin(options)</a> and <a href="section_1530818573.html">Component.autoJoin(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785047.html">Component.createSort(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779222.html">query.Sort</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates a sort based on the component.</p>
+                    <p style="font-size:1em !important;">Use this method to create sorts based on the join relationships created with <a href="section_1530819144.html">Query.autoJoin(options)</a> and <a href="section_1530818573.html">Component.autoJoin(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510784833.html">Component.join(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates a join relationship. This method is an alias to <a href="section_1530818573.html">Component.autoJoin(options)</a>.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use <a href="section_1530819144.html">Query.autoJoin(options)</a> to create your first join. Then use this method, or <a href="section_1530818573.html">Component.autoJoin(options)</a>, to create each subsequent join.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530818705.html">Component.joinFrom(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates an explicit directional join relationship from another component to this component (an inverse join). This method sets the <a href="section_1510785292.html">Component.source</a> property on the returned <a href="section_1510779141.html">query.Component</a> object.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method to create explicit directional joins from other components to this component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530818855.html">Component.joinTo(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">Creates an explicit directional join relationship to another component from this component (a join). You can use this method to specify the target of the join when a field can join multiple query types. This method sets the <a href="section_1510785266.html">Component.target</a> property on the returned <a href="section_1510779141.html">query.Component</a> object.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method to create explicit directional joins to other components from this component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="5">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785245.html">Component.child</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">The child components of the component. This property holds an object of key-value pairs. Each key is the name of a child component. Each value is the corresponding child <a href="section_1510779141.html">query.Component</a> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785228.html">Component.parent</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">The parent <a href="section_1510779141.html">query.Component</a> object of the component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785292.html">Component.source</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">The source query type of the component.</p>
+                    <p style="font-size:1em !important;">The value of this property is set when <a href="section_1530818705.html">Component.joinFrom(options)</a> is called to perform an explicit directional join from another component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785266.html">Component.target</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">The target query type of the component.</p>
+                    <p style="font-size:1em !important;">The value of this property is set when <a href="section_1530818855.html">Component.joinTo(options)</a> is called to perform an explicit directional join to another component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.3%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510785195.html">Component.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:35.8%;">
+                    <p style="font-size:1em !important;">The query type of the component.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510789342">Condition Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779210.html">query.Condition</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:12.6%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:12.6%;" rowspan="8">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789603.html">Condition.aggregate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">An aggregate function that is performed on the condition. An aggregate function performs a calculation on the condition values and returns a single value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789455.html">Condition.children</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779210.html">query.Condition</a>[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">An array of child conditions used to create the parent condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789643.html">Condition.component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779141.html">query.Component</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">A reference to the <a href="section_1510779141.html">query.Component</a> object to which this condition belongs.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789485.html">Condition.fieldId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">The name of the field that is used in the condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789560.html">Condition.formula</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">The formula used to create the condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789501.html">Condition.operator</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">The name of the operator used to create the condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789582.html">Condition.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">The return type of the formula used to create the condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510789525.html">Condition.values</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string | number | | &lt;string | number | &gt; (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.3%;">
+                    <p style="font-size:1em !important;">Value or an array of values used by an operator to create the condition.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510861573">Page Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779287.html">query.Page</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14%;" rowspan="5">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878060.html">Page.data</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779235.html">query.ResultSet</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">The query results contained in this page.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878267.html">Page.isFirst</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">boolean (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">Whether this page is the first of the paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878292.html">Page.isLast</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;">boolean (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">Whether this page is the last of the paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878184.html">Page.pagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779273.html">query.PagedData</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">The set of paged query results that this page is from.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878146.html">Page.pageRange</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779296.html">query.PageRange</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.9%;">
+                    <p style="font-size:1em !important;">The range of query results for this page.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510860746">PagedData Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779273.html">query.PagedData</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;" rowspan="3">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510861317.html">PagedData.iterator()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;"><a href="section_0831085754.html">Iterator</a> object</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Standard SuiteScript 2.0 object for iterating through results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_163482652383.html">PagedData.fetch(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779287.html">query.Page</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Retrieves a page in the set of pages included in the <code>PagedData</code> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_0429115433.html">PagedData.fetch.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_4387812940.html">Promise Object</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">Asynchronously retrieves a page in the set of pages included in the <code>PagedData</code> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.2%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510861385.html">PagedData.count</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The total number of paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510861433.html">PagedData.pageRanges</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779296.html">query.PageRange</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">An array of page ranges for the set of paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510861410.html">PagedData.pageSize</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.5%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.2%;">
+                    <p style="font-size:1em !important;">The number of query result rows per page.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510878500">PageRange Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779296.html">query.PageRange</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.7%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.3%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:17%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878655.html">PageRange.index</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.7%;">
+                    <p style="font-size:1em !important;">The index for this page range.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510878735.html">PageRange.size</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.7%;">
+                    <p style="font-size:1em !important;">The number of query result rows in this page range.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_158386655425">Period Object Members</h2>
+          <p>The following members are available for a <a href="section_158289614570.html">query.Period</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.7%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289613523.html">Period.adjustment</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">The adjustment of the period.</p>
+                    <p style="font-size:1em !important;">This property uses values from the <a href="section_158289865548.html">query.PeriodAdjustment</a> enum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289612641.html">Period.code</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">The code of the period.</p>
+                    <p style="font-size:1em !important;">This property uses values from the <a href="section_158289876878.html">query.PeriodCode</a> enum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:18.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_158289645227.html">Period.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18.4%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.1%;">
+                    <p style="font-size:1em !important;">The type of the period.</p>
+                    <p style="font-size:1em !important;">This property uses values from the <a href="section_158289949288.html">query.PeriodType</a> enum.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510352143">Query Object Members</h2>
+          <p>The following members are available for a <a href="section_1510275177.html">query.Query</a> object.</p>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="15">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780422.html">Query.and(conditions)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a new condition (a <a href="section_1510779210.html">query.Condition</a> object) that corresponds to a logical conjunction (AND) of the arguments passed to the method. The arguments must be one or more <a href="section_1510779210.html">query.Condition</a> objects.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819144.html">Query.autoJoin(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a join relationship.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method to create your first join or subsequent joins from the root component of the query.</p>
+                    <p style="font-size:1em !important;">This method selects the correct join type automatically based on the record types that are being joined.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780373.html">Query.createColumn(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779196.html">query.Column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a query result column based on the <a href="section_1510275177.html">query.Query</a> object.</p>
+                    <p style="font-size:1em !important;">Use this method to create columns on the initial query definition created with <a href="section_1510275581.html">query.create(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780329.html">Query.createCondition(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a condition (filter column) based on the <a href="section_1510275177.html">query.Query</a> object.</p>
+                    <p style="font-size:1em !important;">Use this method to create conditions on the initial query definition created with <a href="section_1510275581.html">query.create(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780402.html">Query.createSort(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779222.html">query.Sort</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a sort based on the <a href="section_1510275177.html">query.Query</a> object. The <a href="section_1510779222.html">query.Sort</a> object describes a sort that is placed on a particular query result column or condition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275377.html">Query.join(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a join relationship. This method is an alias to <a href="section_1530819144.html">Query.autoJoin(options)</a>.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method, or <a href="section_1530819144.html">Query.autoJoin(options)</a>, to create your first join.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819218.html">Query.joinFrom(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates an explicit directional join relationship from another component to the root component of the search definition (an inverse join). This method sets the <a href="section_1510785292.html">Component.source</a> property on the returned <a href="section_1510779141.html">query.Component</a> object.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method to create your first join as an explicit directional join from another component to this component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819329.html">Query.joinTo(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779141.html">query.Component</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates an explicit directional join relationship to another component from this component (a forward join). You can use this method to specify the target of the join when a field can join multiple query types. This method sets the <a href="section_1510785266.html">Component.target</a> property on the returned <a href="section_1510779141.html">query.Component</a> object.</p>
+                    <p style="font-size:1em !important;">After you create the initial query definition, use this method to create your first join as an explicit directional join to another component from this component.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780462.html">Query.not(condition)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a new condition (a <a href="section_1510779210.html">query.Condition</a> object) that corresponds to a logical negation (NOT) of the argument passed to the method. The argument must be a <a href="section_1510779210.html">query.Condition</a> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780444.html">Query.or(conditions)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779210.html">query.Condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Creates a new condition (a <a href="section_1510779210.html">query.Condition</a> object) that corresponds to a logical disjunction (OR) of the arguments passed to the method. The arguments must be one or more <a href="section_1510779210.html">query.Condition</a> objects.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780212.html">Query.run(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Executes the query and returns the query result set.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780250.html">Query.run.promise()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Executes the query asynchronously and returns the query result set.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780277.html">Query.runPaged(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Executes the query and returns a set of paged results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510780308.html">Query.runPaged.promise(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Executes the query asynchronously and returns a set of paged results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960522744.html">Query.toSuiteQL()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960384819.html">query.SuiteQL</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">Converts this <a href="section_1510275177.html">query.Query</a> object to its corresponding SuiteQL representation.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13%;" rowspan="8">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510781899.html">Query.child</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">A reference to children of the root component of the query definition. The value of this property is an object of key-value pairs. Each key is the name of a child component. Each respective value is the corresponding <a href="section_1510779141.html">query.Component</a> object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510781812.html">Query.columns</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779196.html">query.Column</a>[]</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">An array of query result columns returned from the query.</p>
+                    <p style="font-size:1em !important;">Before you perform the query, you must assign all created columns as values to this property.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510781832.html">Query.condition</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779210.html">query.Condition</a> object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">The parent condition that narrows the query results.</p>
+                    <p style="font-size:1em !important;">Before you perform the query, you must assign your simple or complex conditions to this property.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819439.html">Query.id</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">The ID of the query definition.</p>
+                    <p style="font-size:1em !important;">This property has a value only for existing queries that are loaded using <a href="section_1510349101.html">query.load(options)</a>. If you create a query using <a href="section_1510275581.html">query.create(options)</a> but do not save it, this property is null.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819481.html">Query.name</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">The name of the query definition.</p>
+                    <p style="font-size:1em !important;">This property has a value only for existing queries that are loaded using <a href="section_1510349101.html">query.load(options)</a>. If you create a query using <a href="section_1510275581.html">query.create(options)</a> but do not save it, this property is null.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510781874.html">Query.root</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779141.html">query.Component</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">The root component of the query definition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510781853.html">Query.sort</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779196.html">query.Column</a>[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">An array of query result columns used for sorting.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510275511.html">Query.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:14.6%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:16%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:36%;">
+                    <p style="font-size:1em !important;">The query type of the initial query definition.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1544530447">RelativeDate Object Members</h2>
+          <p>The following members are available for a <a href="section_1544109440.html">query.RelativeDate</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.3%;" rowspan="6">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109453.html">RelativeDate.dateId</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">The ID of the relative date.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109465.html">RelativeDate.end</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">The end point of the relative date.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109758.html">RelativeDate.interval</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">The interval of the relative date (from the <a href="section_1544109794.html">RelativeDate.start</a> point to the <a href="section_1544109465.html">RelativeDate.end</a> point).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1552334952.html">RelativeDate.isRange</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">boolean (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">Whether the relative date represents a range of dates or a specific moment in time.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109794.html">RelativeDate.start</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">Object (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">The start point of the relative date.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:19.4%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1544109837.html">RelativeDate.value</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:17.7%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.7%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:32.6%;">
+                    <p style="font-size:1em !important;">The value of the relative date.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510858930">Result Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779258.html">query.Result</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.5%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.3%;" rowspan="2">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156336629343.html">Result.asMap()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.5%;">
+                    <p style="font-size:1em !important;">Returns the query result as an object with the columns mapped to the result values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="article_0522071257.html">Result.getValue(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">&lt;boolean | number | string | Date | null&gt; (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.5%;">
+                    <p style="font-size:1em !important;">Gets the value at a given index in <a href="section_1510859061.html">Result.values</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.3%;">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510859061.html">Result.values</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:21.2%;">
+                    <p style="font-size:1em !important;">Array &lt;boolean | number | string | Date | null&gt; (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.5%;">
+                    <p style="font-size:1em !important;">The result values.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510790719">ResultSet Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779235.html">query.ResultSet</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.5%;" rowspan="2">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156336700395.html">ResultSet.asMappedResults()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;">Object[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Returns a query result set as an array of mapped results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510790932.html">ResultSet.iterator()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;"><a href="section_0831085754.html">Iterator</a> object</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">Standard SuiteScript 2.0 object for iterating through results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.5%;" rowspan="3">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510857693.html">ResultSet.columns</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779196.html">query.Column</a>[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">An array of query result column references.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510857646.html">ResultSet.results</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779258.html">query.Result</a>[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">An array of <a href="section_1510779258.html">query.Result</a> objects.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510857678.html">ResultSet.types</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.2%;">
+                    <p style="font-size:1em !important;">string[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.1%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:29.1%;">
+                    <p style="font-size:1em !important;">An array of the return types for <a href="section_1510857646.html">ResultSet.results</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_1510790337">Sort Object Members</h2>
+          <p>The following members are available for a <a href="section_1510779222.html">query.Sort</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:12.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:12.5%;" rowspan="5">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530897548.html">Sort.ascending</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">Whether the sort direction is ascending.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819572.html">Sort.caseSensitive</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">Whether the sort is case sensitive.</p>
+                    <p style="font-size:1em !important;">If a sort is case sensitive (and the sort direction is ascending), rows with column values that start with uppercase letters are listed before rows with column values that start with lowercase letters. If a sort is not case sensitive, uppercase and lowercase letters are treated the same.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510790467.html">Sort.column</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779196.html">query.Column</a> (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">The query result column that the query results are sorted by.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819644.html">Sort.locale</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">The locale to use for the sort.</p>
+                    <p style="font-size:1em !important;">A locale represents a combination of language and region, and it can affect how certain values (such as strings) are sorted.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:17.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1530819676.html">Sort.nullsLast</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.3%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.61px;width:15.4%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:37.7%;">
+                    <p style="font-size:1em !important;">Whether query results with null values are listed at the end of the query results.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_157980851724">SuiteQL Object Members</h2>
+          <p>The following members are available for a <a href="section_157960384819.html">query.SuiteQL</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.3%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.3%;" rowspan="2">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960470046.html">SuiteQL.run()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779235.html">query.ResultSet</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Runs the SuiteQL query and returns the query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960491275.html">SuiteQL.runPaged(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1510779273.html">query.PagedData</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Runs the SuiteQL query as a paged query and returns the paged query results.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:13.3%;" rowspan="4">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960405619.html">SuiteQL.columns</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;"><a href="section_1510779196.html">query.Column</a>[]</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Describes the result columns to be returned from the query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960427733.html">SuiteQL.params</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">&lt;string | number | &gt; (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Contains the parameters for the query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960443690.html">SuiteQL.query</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Holds the string representation of the query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:20.2%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_157960456167.html">SuiteQL.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:20.8%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:16.8%;">
+                    <p style="font-size:1em !important;">Client and server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:28.6%;">
+                    <p style="font-size:1em !important;">Describes the type of the query.</p>
+                    <p style="font-size:1em !important;">This property uses values from the <a href="section_1510878994.html">query.Type</a> enum.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_1503949328.html">SuiteAnalytics Workbook Overview</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

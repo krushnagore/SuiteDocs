@@ -1,0 +1,727 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/file Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_159469488562.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0303032537.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/file Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_159469488562.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0303032537.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/file Module</li>
+        </ol>
+        <h1 class="sect1">N/file Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/file module to work with files within NetSuite. You can use this module to upload files to the NetSuite File Cabinet, as well as send files as attachments without uploading them to the File Cabinet. You can also use this module to copy files in the File Cabinet, and you can use conflict resolution options to handle conflicts (such as when a file with the same name already exists in the same folder in the File Cabinet).</p>
+        <div class="infobox-tip">
+          <span class="notep1">Tip: </span>
+          <p class="nshelp_first">When dealing with file naming conventions, especially when uploading files to the File Cabinet using SuiteScript, it is important to follow best practices to prevent file duplication. If your system works with multiple files simultaneously, consider including timestamps with millisecond precision in the file names. Additionally, generating a random number as part of the file name can further reduce the chances of duplicates.</p>
+        </div>
+        <p>A <a href="section_1543844186.html">file.Reader</a> object, which is returned by <a href="section_1543843814.html">File.getReader()</a>, can be used for special read operations. Use <a href="section_1543844004.html">File.getSegments(options)</a> to retrieve an iterator of custom segments of a file.</p>
+        <p>Methods that load content in memory, such as <a href="section_4229269811.html">File.getContents()</a>, have a 10 MB size limit. This limit does not apply when content is streamed, such as when <a href="section_4229271179.html">File.save()</a> is called.</p>
+        <p>The <a href="section_4769938149.html">File.appendLine(options)</a> method inserts a line to the end of a CSV or text file, which increases the file size accordingly. All files are screened for malicious content when they are uploaded or updated, and increased file size can slow down the process. Consider splitting large files into several smaller ones if you experience performance issues.</p>
+        <p>
+          <strong>
+            <a href="section_0303032537.html">N/file Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_25182053667">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4223142246">N/file Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4223145668">File Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_1543845180">Reader Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4223142246">N/file Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="2">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Encapsulates a file within NetSuite.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543844186.html">file.Reader</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Encapsulates a reader that you can use to perform special read operations.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="4">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161167269293.html">file.copy(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Copies an existing file in the File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4223861820.html">file.create(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Creates a new <a href="section_4247974825.html">file.File</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4226573892.html">file.delete(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Deletes an existing <a href="section_4247974825.html">file.File</a> from the NetSuite File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4226574300.html">file.load(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Loads an existing <a href="section_4247974825.html">file.File</a> from the NetSuite File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="3">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4228998505.html">file.Encoding</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Holds character encoding values for file contents.</p>
+                  <p style="font-size:1em !important;">Use this enum to set the value of the <a href="section_4229270853.html">File.encoding</a> property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_161167377495.html">file.NameConflictResolution</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Holds conflict resolution values that apply when copying a file.</p>
+                  <p style="font-size:1em !important;">Use this enum to specify how to resolve conflicts when copying files and to set the value of the conflict resolution parameter in <a href="section_161167269293.html">file.copy(options)</a></p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4228999954.html">file.Type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.6%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:37.1%;">
+                  <p style="font-size:1em !important;">Holds file type values.</p>
+                  <p style="font-size:1em !important;">Use this enum to set the value of the <a href="section_4229267378.html">File.fileType</a> property.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4223145668">File Object Members</h2>
+        <p>The following members are available for a <a href="section_4247974825.html">file.File</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.2%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="7">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4769938149.html">File.appendLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4247974825.html">file.File</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Inserts a line to the end of a CSV or text file.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229269811.html">File.getContents()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns the content of a file in string format.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4769955095.html">File.lines.iterator()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Calls a developer-defined function for each line. Returns false when line processing stops.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4769955125.html">File.resetStream()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Resets the file stream to its previous state.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229271179.html">File.save()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Saves a new or updated file to the File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543843814.html">File.getReader()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns reader object for read operations.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543844004.html">File.getSegments(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns an iterator of segments that are delimited by the specified separator.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.2%;" rowspan="12">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4223862428.html">File.description</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Description of a file.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229270853.html">File.encoding</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Character encoding on a file.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229267378.html">File.fileType</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">File type of a file.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229265810.html">File.folder</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Internal ID of the folder that houses a file within the NetSuite File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229266178.html">File.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Internal ID of a file in the NetSuite File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229270120.html">File.isInactive</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Inactive status of a file. If set to true, the file is inactive.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229270451.html">File.isOnline</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">'Available without Login' status of a file. If set to true, users can download the file outside of a current NetSuite login session.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229267767.html">File.isText</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Indicates whether a file type is text-based.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229266563.html">File.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Name of a file.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229268933.html">File.path</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Relative path to a file in the NetSuite File Cabinet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229266796.html">File.size</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Size of a file in bytes.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4229268651.html">File.url</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.6%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">URL of a file.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_1543845180">Reader Object Members</h2>
+        <p>The following members are available for a <a href="section_1543844186.html">file.Reader</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:21.2%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.8%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:32.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.9%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:21.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543844484.html">Reader.readChars(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.8%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:32.7%;">
+                  <p style="font-size:1em !important;">Returns the next <code>options.number</code> characters from the current position.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543844425.html">Reader.readUntil(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.8%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:32.7%;">
+                  <p style="font-size:1em !important;">Returns string from current position to the next occurrence of <code>options.tag</code>.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

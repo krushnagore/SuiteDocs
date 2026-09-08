@@ -1,0 +1,1533 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/currentRecord Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4358678787.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0302071622.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/currentRecord Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4358678787.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0302071622.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/currentRecord Module</li>
+        </ol>
+        <h1 class="sect1">N/currentRecord Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/currentRecord module to access the record that is active in the current client context. This module is always a dynamic object and mode of work is always dynamic, not deferred dynamic/standard. For more information, see <a href="section_1524156901.html">SuiteScript 2.x Standard and Dynamic Modes</a>. Be aware that when the current record is in view mode it cannot be edited; it is a read-only record when in view mode. As such, any set APIs do not work on the current record in view mode.</p>
+        <p>
+          <strong>
+            <a href="section_0302071622.html">N/currentRecord Module Script Samples</a>
+          </strong>
+        </p>
+        <p>You can use the currentRecord module in the following types of scripts:</p>
+        <ul>
+          <li>
+            <p><strong>Entry point client scripts</strong> - These scripts use the <code>@NScriptType ClientScript</code> annotation. (For details, see <a href="chapter_4387175355.html">SuiteScript 2.1 JSDoc Validation</a>.) The system automatically provides this type of script with a <a href="section_4642657958.html">currentRecord.CurrentRecord</a> object that represents the current record. For this reason, an entry point client script does not have to explicitly load the N/currentRecord module. To access the currentRecord object, create a variable and initialize it to the value of the <code>scriptContext.currentRecord</code> property, which is available in each of the <a href="section_4489981198.html">SuiteScript 2.1 Client Script Entry Points and API</a>. For an example, see <a href="bridgehead_4484779426.html">SuiteScript Client Script Sample</a>.</p>
+          </li>
+          <li>
+            <p><strong>Client custom modules</strong> - These scripts do not use an <code>@NScriptType</code> annotation (see <a href="chapter_4704097697.html">SuiteScript 2.1 Custom Modules</a>). For these scripts, you must manually load the N/currentRecord module by naming it in the script's define statement. Additionally, you must actively retrieve a <a href="section_4642657958.html">currentRecord.CurrentRecord</a> object by using the <a href="section_4637729624.html">currentRecord.get()</a> or <a href="section_4637734729.html">currentRecord.get.promise()</a> method. For an example, see <a href="section_0302071622.html">N/currentRecord Module Script Samples</a>.</p>
+          </li>
+        </ul>
+        <p>Like the <a href="section_4267255811.html">N/record Module</a>, the currentRecord module provides access to body and sublist fields. However, you should use the record module for server scripts and for cases where a client script needs to interact with a record other than the currently active record. You should use the currentRecord module for client scripts that need to interact with the currently active record.</p>
+        <p>Additionally, the functionality of the two modules varies slightly. For example, the currentRecord module does not permit the editing of subrecords, although subrecords can be retrieved in view mode. For additional details, see the following topics:</p>
+        <div>
+          <h2 id="subsect_49182258812">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4629679065">N/currentRecord Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_1501620644">Column Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4642652726">CurrentRecord Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4794174219">Field Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_1501618768">Sublist Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">SuiteScript supports working with standard NetSuite records and with instances of custom record types. Supported standard record types are described in the <a href="https://system.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2026_1/script/index.html" target="_blank">SuiteScript Records Browser</a>. Refer also to <a href="chapter_N3170023.html">SuiteScript Supported Records</a>. For help interacting with an instance of a custom record type, see <a href="section_N3204194.html">Custom Record</a>.</p>
+        </div>
+        <h2 id="bridgehead_4629679065">N/currentRecord Module Members</h2>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14.6%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14.6%;" rowspan="4">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619693.html">currentRecord.Column</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a column of a sublist on the current record.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Represents the record active on the current page.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793291846.html">currentRecord.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Represents a body or sublist field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501618457.html">currentRecord.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Represents a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14.6%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637729624.html">currentRecord.get()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Retrieves a record object that represents the current record.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637734729.html">currentRecord.get.promise()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.51px;width:18.5%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:25.5%;">
+                  <p style="font-size:1em !important;">Retrieves a promise for an object that represents the current record.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_1501620644">Column Object Members</h2>
+        <p>The following members are called on the <a href="section_1501619693.html">currentRecord.Column</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.9%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.9%;" rowspan="6">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619846.html">Column.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Returns the internal ID of the column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_158618597707.html">Column.isDisabled</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Indicates whether the column is disabled.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_158618632629.html">Column.isMandatory</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Indicates whether the column is required.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619880.html">Column.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Returns the UI label for the column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619931.html">Column.sublistId</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Returns the internal ID of the standard or custom sublist that contains the column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501620041.html">Column.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.7%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.1%;">
+                  <p style="font-size:1em !important;">Returns the column type.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4642652726">CurrentRecord Object Members</h2>
+        <p>The following members are called on the <a href="section_4642657958.html">currentRecord.CurrentRecord</a> object.</p>
+        <div style="font-size:11.01px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.32px;width:13.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.32px;width:13.4%;" rowspan="40">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637546866.html">CurrentRecord.cancelLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Cancels the changes made to the currently selected line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637565703.html">CurrentRecord.commitLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Commits the currently selected line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637586269.html">CurrentRecord.findMatrixSublistLineWithValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns the line number of the first line that contains the specified value in the matrix column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637586103.html">CurrentRecord.findSublistLineWithValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the line number for the first occurrence of a field value in a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585905.html">CurrentRecord.getCurrentMatrixSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value for the currently selected line in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585731.html">CurrentRecord.getCurrentSublistIndex(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the line number of the currently selected line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585570.html">CurrentRecord.getCurrentSublistSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the subrecord for the associated sublist field on the current line. The subrecord object is retrieved in view mode.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585436.html">CurrentRecord.getCurrentSublistText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field in the currently selected line by text representation.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585213.html">CurrentRecord.getCurrentSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field in the currently selected line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637585044.html">CurrentRecord.getField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793291846.html">currentRecord.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets a field object from the record.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584890.html">CurrentRecord.getLineCount(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns the number of lines in the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584779.html">CurrentRecord.getMatrixHeaderCount(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns the number of columns for the specified matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584607.html">CurrentRecord.getMatrixHeaderField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793291846.html">currentRecord.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the field for the specified header in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584433.html">CurrentRecord.getMatrixHeaderValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value for the associated header in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584261.html">CurrentRecord.getMatrixSublistField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793291846.html">currentRecord.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the field for the specified sublist in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637584028.html">CurrentRecord.getMatrixSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value for the associated field in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637583811.html">CurrentRecord.getSublist(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501618457.html">currentRecord.Sublist</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the specified sublist object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637583684.html">CurrentRecord.getSublistField(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4793291846.html">currentRecord.Field</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the specified field object from the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637583397.html">CurrentRecord.getSublistText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field in a sublist by a string representation.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637583237.html">CurrentRecord.getSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field in a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637583010.html">CurrentRecord.getSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the subrecord associated with the field. The subrecord object is retrieved in view mode.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637582421.html">CurrentRecord.getText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field by a string representation.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637582256.html">CurrentRecord.getValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number | Date | string | array | boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Gets the value of the field. Not to be used on custom password fields. Use <a href="section_160806904480.html">crypto.checkPasswordField(options)</a> instead.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637582063.html">CurrentRecord.hasCurrentSublistSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns a value indicating whether the associated sublist field has a subrecord on the current line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637581548.html">CurrentRecord.hasSublistSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns a value indicating whether the associated sublist field contains a subrecord.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637581381.html">CurrentRecord.hasSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Indicates whether the field has a subrecord.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637581252.html">CurrentRecord.insertLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Inserts a new line in a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;"> </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637581076.html">CurrentRecord.removeCurrentSublistSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Removes the subrecord for the associated sublist field on the current line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637580808.html">CurrentRecord.removeLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Removes a line from a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637580399.html">CurrentRecord.removeSubrecord(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Removes the subrecord associated with the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637580249.html">CurrentRecord.selectLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Selects a line item in a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637580046.html">CurrentRecord.selectNewLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Selects a new line at the end of the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637579872.html">CurrentRecord.setCurrentMatrixSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value for the currently selected line in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637579678.html">CurrentRecord.setCurrentSublistText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value of the field in the currently selected line using a string representation.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637579473.html">CurrentRecord.setCurrentSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value of the field in the currently selected line.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637579241.html">CurrentRecord.setMatrixHeaderValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value for the associated header in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637579037.html">CurrentRecord.setMatrixSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value for the associated field in the matrix.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637577945.html">CurrentRecord.setText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value of the field using a string representation.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637577499.html">CurrentRecord.setValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4642657958.html">currentRecord.CurrentRecord</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Sets the value of the field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:13.4%;" rowspan="3">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637576907.html">CurrentRecord.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns the internal record ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637576809.html">CurrentRecord.isDynamic</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Indicates whether the record is dynamic.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:22.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4637576636.html">CurrentRecord.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.32px;width:16.6%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.32px;width:27.8%;">
+                  <p style="font-size:1em !important;">Returns the record type.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4794174219">Field Object Members</h2>
+        <p>The following members are called on the <a href="section_4793291846.html">currentRecord.Field</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13%;" rowspan="3">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4834781098.html">Field.getSelectOptions(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">array</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns an array of available options on a standard or custom select, multiselect, or radio field as key-value pairs. Only the first 1,000 available options are returned.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4779675098.html">Field.insertSelectOption(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Inserts an option into certain types of select and multiselect fields.</p>
+                  <p style="font-size:1em !important;">This method is usable only in fields that were added by a front-end Suitelet or beforeLoad user event script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4780315055.html">Field.removeSelectOption(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Removes an option from certain types of select and multiselect fields.</p>
+                  <p style="font-size:1em !important;">This method is usable only in fields that were added by a front-end Suitelet or beforeLoad user event script. It is supported only in client scripts.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13%;" rowspan="10">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794247756.html">Field.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns the internal ID of a standard or custom body or sublist field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794215939.html">Field.isDisabled</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the standard or custom field is disabled on the record form, or <code>false</code> otherwise.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794214205.html">Field.isDisplay</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the field is set to display on the record form, or <code>false</code> otherwise.</p>
+                  <p style="font-size:1em !important;">This property is read-only for sublist fields.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794223029.html">Field.isMandatory</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the standard or custom field is mandatory on the record form, or <code>false</code> otherwise.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794222162.html">Field.isPopup</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the field is a popup list field, or <code>false</code> otherwise.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794213415.html">Field.isReadOnly</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the field on the record form cannot be edited, or <code>false</code> otherwise.</p>
+                  <p style="font-size:1em !important;">For textarea fields, this property can be read or written to. For all other fields, this property is read-only.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794214500.html">Field.isVisible</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns <code>true</code> if the field is visible on the record form, or <code>false</code> otherwise.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794248033.html">Field.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns the UI label for a standard or custom field body or sublist field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1490026603.html">Field.sublistId</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns the ID of the sublist associated with the specified sublist field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4794225547.html">Field.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:15.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:34.6%;">
+                  <p style="font-size:1em !important;">Returns the type of a body or sublist field.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_1501618768">Sublist Object Members</h2>
+        <p>The following members are called on the <a href="section_1501618457.html">currentRecord.Sublist</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619036.html">Sublist.getColumn(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619693.html">currentRecord.Column</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Returns a column in the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619218.html">Sublist.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Returns the internal ID of the sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619246.html">Sublist.isChanged</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Indicates whether the sublist has changed on the current record form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619367.html">Sublist.isDisplay</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Indicates whether the sublist is displayed on the current record form.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1501619432.html">Sublist.type</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.7%;">
+                  <p style="font-size:1em !important;">Returns the sublist type.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

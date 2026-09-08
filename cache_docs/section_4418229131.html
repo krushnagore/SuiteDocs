@@ -1,0 +1,1392 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/https Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_1492804577.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0305042314.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/https Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_1492804577.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0305042314.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/https Module</li>
+        </ol>
+        <h1 class="sect1">N/https Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/https module to manage content sent to a third party using HTTPS calls. This module encapsulates all the functionality of the <a href="section_4296361104.html">N/http Module</a>, but does not allow the HTTP protocol. You can make HTTPS calls from client and server scripts.</p>
+        <p>
+          <strong>
+            <a href="section_0305042314.html">N/https Module Script Samples</a>
+          </strong>
+        </p>
+        <p>You can use the N/https module to encode binary content or access a handle to the value in a NetSuite credential field.</p>
+        <p>You can use the N/https module to communicate between SuiteScript scripts, RESTlets, and SuiteTalk REST APIs without having to reauthenticate, using the <a href="section_159139340774.html">https.requestRestlet(options)</a> and <a href="section_159139347369.html">https.requestSuiteTalkRest(options)</a> methods.</p>
+        <p>When the N/https module is used, SuiteScript also loads the <a href="section_4358549582.html">N/crypto Module</a> and <a href="section_4369847722.html">N/encode Module</a>.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">Use TLS 1.2 for HTTPS requests. SuiteScript 2.0 requests such <a href="section_4567631039.html">https.delete(options)</a>, <a href="section_4567631366.html">https.get(options)</a>, <a href="section_4567628658.html">https.post(options)</a>, <a href="section_4567627984.html">https.put(options)</a>, and <a href="section_4567630582.html">https.request(options)</a> usually go to third-party servers. Management of these servers is not within the control of your company. These HTTPS requests now fail the handshake when they attempt to connect to servers that do not support TLS 1.2. You should communicate with those who manage any third-party servers to which you connect, and ensure their servers support the TLS 1.2 protocol.</p>
+        </div>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">NetSuite supports the same list of trusted third-party certificate authorities (CAs) as the Mozilla Included CA Certificate List.</p>
+          <p>The target endpoint, domain, or server must use one of these trusted third-party CAs, or the connection cannot be established. Oracle NetSuite requires that the endpoints that you are connecting to from NetSuite provide a full certification chain, including intermediate certificates.</p>
+          <p>For a list of certificate authorities, see <a href="https://wiki.mozilla.org/CA/Included_Certificates" target="_blank">https://wiki.mozilla.org/CA/Included_Certificates.</a></p>
+        </div>
+        <div class="infobox-warn">
+          <span class="notep1">Warning: </span>
+          <p class="nshelp_first">Using plain text or other unencrypted user credentials is unsafe and can pose a security threat. Whenever possible, use <a href="chapter_4247329078.html">Token-based Authentication (TBA)</a> or <a href="chapter_157769826287.html">OAuth 2.0</a> to specify user credentials.</p>
+        </div>
+        <div>
+          <h2 id="subsect_3181432172">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_1558529145">HTTPS Header Information</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4418245329">N/https Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4418245379">SecureString Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4567778926">ClientResponse Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4612545387">ServerResponse Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4612545277">ServerRequest Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_1558529145">HTTPS Header Information</h2>
+          <p>HTTP headers add extra information to a request or response. A header has a case-insensitive name, a colon (:), and a value on the same line. When you define custom headers, don't include underscores in the name. For a list of standard HTTP and HTTPS headers, see <a href="https://developer.mozilla.org/docs/Web/HTTP/Headers" target="_blank">https://developer.mozilla.org/docs/Web/HTTP/Headers</a>.</p>
+          <p>If you call <a href="section_4567628658.html">https.post(options)</a> without a <code>Content-Type</code> header, NetSuite sets a default value:</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:589.5px;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:201.54px;">
+                    <p style="font-size:1em !important;">POST Request Body Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:387.96px;">
+                    <p style="font-size:1em !important;">Default Content-Type Header</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:201.54px;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.61px;width:387.96px;">
+                    <p style="font-size:1em !important;">
+                      <code>application/octet-stream</code>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;">
+                    <p style="font-size:1em !important;">Uint8Array</p>
+                  </td>
+                  <td style="padding:3.61px;">
+                    <p style="font-size:1em !important;">
+                      <code>application/x-www-form-urlencoded; charset=UTF-8</code>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;">
+                    <p style="font-size:1em !important;">Other type</p>
+                  </td>
+                  <td style="padding:3.61px;">
+                    <p style="font-size:1em !important;">
+                      <code>text/xml; charset=UTF-8</code>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><span style="text-decoration: underline;"><a href="section_4567653583.html">https.ServerResponse</a></span> encodes text responses in UTF-8 by default. To return a file with a different encoding, see <a href="article_0808012948.html">Return a File with Alternative Character Encoding</a>.</p>
+          <p>Some headers are not supported in NetSuite and are blocked. These are listed below as either general HTTPS headers or Suitelet response headers.</p>
+          <div>
+            <h3 id="subsect_1558529163">General Blocked HTTPS Headers</h3>
+            <p>Be aware that certain headers cannot be set manually when using N/https module methods. If a script attempts to set values for any of the following headers, the values are discarded. These headers are listed in the following table.</p>
+            <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+              <table class="grid" style="width:288.22px;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+                <tbody>
+                  <tr>
+                    <td style="padding:3.61px;width:135.67px;">
+                      <ul>
+                        <li>
+                          <p style="font-size:1em !important;">Connection</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Content-Length</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Host</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">JSESSIONID</p>
+                        </li>
+                      </ul>
+                    </td>
+                    <td style="padding:3.61px;width:152.55px;">
+                      <ul>
+                        <li>
+                          <p style="font-size:1em !important;">Trailer</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Transfer-Encoding</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Upgrade</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Via</p>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h3 id="subsect_1558529186">Suitelet Response HTTPS Header Blocklist</h3>
+            <p>In addition to the headers described in <a href="#subsect_1558529163">General Blocked HTTPS Headers</a>, certain headers cannot be set manually when interacting with the <a href="section_4567653583.html">https.ServerResponse</a> Objects sent by Suitelets. If a script attempts to set values for any of these headers, the system throws an <code>SSS_INVALID_HEADER</code> error. These headers are listed in the following table.</p>
+            <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+              <table class="grid" style="width:564.2px;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+                <tbody>
+                  <tr>
+                    <td style="padding:3.61px;width:144.94px;">
+                      <ul>
+                        <li>
+                          <p style="font-size:1em !important;">Allow</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Content-Location</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Content-MD5</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Content-Range</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Date</p>
+                        </li>
+                      </ul>
+                    </td>
+                    <td style="padding:3.61px;width:209.08px;">
+                      <ul>
+                        <li>
+                          <p style="font-size:1em !important;">Location</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Proxy-Authenticate</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Public-Key-Pins</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Public-Key-Pins-Report-Only</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Retry-After</p>
+                        </li>
+                      </ul>
+                    </td>
+                    <td style="padding:3.61px;width:210.18px;">
+                      <ul>
+                        <li>
+                          <p style="font-size:1em !important;">Server</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Strict-Transport-Security</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Upgrade-Insecure-Requests</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">Warning</p>
+                        </li>
+                        <li>
+                          <p style="font-size:1em !important;">WWW-Authenticate</p>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <h2 id="bridgehead_4418245329">N/https Module Members</h2>
+        <div style="font-size:11.01px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.32px;width:13%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.32px;width:13%;" rowspan="4">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Encapsulates data that may be sent to a third-party using an HTTPS call.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567656083.html">https.ClientResponse</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Encapsulates the response to an HTTPS client request.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567655097.html">https.ServerRequest</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Encapsulates the HTTPS request information sent to an HTTPS server. For example, a request received by a Suitelet or RESTlet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653583.html">https.ServerResponse</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Encapsulates the response from an HTTPS server to an HTTPS request. For example, a response from a Suitelet or RESTlet.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:13%;" rowspan="17">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418247967.html">https.createSecretKey(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates a key for the contents of a credential field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418247678.html">https.createSecureString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Creates an <a href="section_4418286676.html">https.SecureString</a> Object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567631039.html">https.delete(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4567656083.html">https.ClientResponse</a> or <a href="section_4567653583.html">https.ServerResponse</a></p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS DELETE request and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4619548807.html">https.delete.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS DELETE request asynchronously and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567631366.html">https.get(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4567656083.html">https.ClientResponse</a> or <a href="section_4567653583.html">https.ServerResponse</a></p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS GET request and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4619547935.html">https.get.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS GET request asynchronously and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567628658.html">https.post(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4567656083.html">https.ClientResponse</a> or <a href="section_4567653583.html">https.ServerResponse</a></p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS POST request and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4619553255.html">https.post.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS POST request asynchronously and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567627984.html">https.put(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4567656083.html">https.ClientResponse</a> or <a href="section_4567653583.html">https.ServerResponse</a></p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS PUT request and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4619558092.html">https.put.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS PUT asynchronously request and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567630582.html">https.request(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4567656083.html">https.ClientResponse</a> or <a href="section_4567653583.html">https.ServerResponse</a></p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request and returns the response.</p>
+                  <p style="font-size:1em !important;">If a request fails, an error.SuiteScriptError is thrown.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4619550220.html">https.request.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request asynchronously and returns the response.</p>
+                  <p style="font-size:1em !important;">If a request fails, a Promise.reject is thrown with a parameter Error.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159139340774.html">https.requestRestlet(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567656083.html">https.ClientResponse</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request to a RESTlet and returns the response. Authentication headers are automatically added.</p>
+                  <p style="font-size:1em !important;">The RESTlet will run with the same privileges as the calling script.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="article_95165853712.html">https.requestRestlet.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request to a Restlet and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_44162330742.html">https.requestSuitelet(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567656083.html">https.ClientResponse</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request to a Suitelet and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_95100734176.html">https.requestSuitelet.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4387812940.html">Promise Object</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request asynchronously to a Suitelet and returns the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_159139347369.html">https.requestSuiteTalkRest(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567656083.html">https.ClientResponse</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Sends an HTTPS request to a SuiteTalk REST endpoint and returns the response. Authentication headers are automatically added.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:13%;" rowspan="5">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567627367.html">https.CacheDuration</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported cache durations. Use this enum to set the value of the <code>type</code> parameter in <a href="section_4567652215.html">ServerResponse.setCdnCacheable(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4612521061.html">https.Encoding</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported encoding types. Use this enum to set the value of parameters in <a href="section_460942016600.html">SecureString.appendString(options)</a>, <a href="section_457542663573.html">SecureString.convertEncoding(options)</a>, <a href="section_4418247678.html">https.createSecureString(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1543504694.html">https.HashAlg</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported hashing algorithms. Use this enum to set the value of parameters in <a href="section_459472900389.html">SecureString.hash(options)</a> and <a href="section_459579406737.html">SecureString.hmac(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567626997.html">https.Method</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported HTTPS requests. Use this enum to set the value of <code>method</code> parameter in <a href="section_4567630582.html">https.request(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.32px;width:20.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1494603145.html">https.RedirectType</a>
+                  </p>
+                </td>
+                <td style="padding:3.32px;width:19.8%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.32px;width:15.9%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.32px;width:30.7%;">
+                  <p style="font-size:1em !important;">Holds the string values for supported NetSuite resources that you can redirect to. Use this enum to set the value of the <code>type</code> parameter for <a href="section_4567653054.html">ServerResponse.sendRedirect(options)</a>.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4418245379">SecureString Object Members</h2>
+        <p>SecureString functionality is supported only in server scripts.</p>
+        <p>The following members are called on the <a href="section_4418286676.html">https.SecureString</a> Object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14.1%;" rowspan="6">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:23.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453662353515.html">SecureString.appendSecureString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Appends one <a href="section_4418286676.html">https.SecureString</a> to another <a href="section_4418286676.html">https.SecureString</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460942016600.html">SecureString.appendString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Appends a string to a <a href="section_4418286676.html">https.SecureString</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457542663573.html">SecureString.convertEncoding(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Converts the content of a <a href="section_4418286676.html">https.SecureString</a> between two encodings.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459472900389.html">SecureString.hash(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Creates a hash for a <a href="section_4418286676.html">https.SecureString</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459579406737.html">SecureString.hmac(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Creates an hmac for a <a href="section_4418286676.html">https.SecureString</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:23.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_162190865586.html">SecureString.replaceString(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4418286676.html">https.SecureString</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.7%;">
+                  <p style="font-size:1em !important;">Server Scripts</p>
+                </td>
+                <td style="padding:3.51px;width:27%;">
+                  <p style="font-size:1em !important;">Replaces all occurrences of a pattern string inside a <a href="section_4418286676.html">https.SecureString</a> with a replacement string.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4567778926">ClientResponse Object Members</h2>
+        <p>The following members are called on the <a href="section_4567656083.html">https.ClientResponse</a> Object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:15.1%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:23.4%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:15.1%;" rowspan="3">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:22.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567655965.html">ClientResponse.body</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:19.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:23.4%;">
+                  <p style="font-size:1em !important;">The response body.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567655849.html">ClientResponse.code</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:19.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:23.4%;">
+                  <p style="font-size:1em !important;">The response code.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567655700.html">ClientResponse.headers</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.2%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:19.7%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:23.4%;">
+                  <p style="font-size:1em !important;">The response body.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4612545277">ServerRequest Object Members</h2>
+        <p>The following members are called on the <a href="section_4567655097.html">https.ServerRequest</a> Object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.8%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567655008.html">ServerRequest.getLineCount(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">Returns the number of lines in a sublist.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567654796.html">ServerRequest.getSublistValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">Returns the value of a sublist line item.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="6">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567654549.html">ServerRequest.body</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The server request body</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567654371.html">ServerRequest.files</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The server request files represented as object in ID-file.File pair.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567654177.html">ServerRequest.headers</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The server request headers.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567654020.html">ServerRequest.method</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567626997.html">https.Method</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The HTTPS method for the server request.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653880.html">ServerRequest.parameters</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The server request parameters.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653744.html">ServerRequest.url</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:27.9%;">
+                  <p style="font-size:1em !important;">The server request URL.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4612545387">ServerResponse Object Members</h2>
+        <p>The following members are called on the <a href="section_4567653583.html">https.ServerResponse</a> Object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.8%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="10">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653484.html">ServerResponse.addHeader(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Adds a header to the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653267.html">ServerResponse.getHeader(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">string | string[]</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Returns the value of a response header.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567652460.html">ServerResponse.renderPdf(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Generates and renders a PDF directly to the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567653054.html">ServerResponse.sendRedirect(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Sets the redirect URL by resolving to a NetSuite resource.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567652215.html">ServerResponse.setCdnCacheable(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Sets CDN caching for a period of time.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567652689.html">ServerResponse.setHeader(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Sets the value of a response header.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567651956.html">ServerResponse.write(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Writes information (text/xml/html) to the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567633001.html">ServerResponse.writeFile(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Writes a file to the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567632751.html">ServerResponse.writeLine(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Writes line information (text/xml/html) to the response.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567632500.html">ServerResponse.writePage(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">Generates a page.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:23.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4567631816.html">ServerResponse.headers</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.7%;">
+                  <p style="font-size:1em !important;">Object (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.7%;">
+                  <p style="font-size:1em !important;">The server response headers.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

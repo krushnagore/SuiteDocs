@@ -1,0 +1,207 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Establish an SFTP Connection Using an SSH Key</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_156384869007.html" title="Previous" type="text/html">
+    <link rel="next" href="section_156201811375.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Establish an SFTP Connection Using an SSH Key","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_156384869007.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_156201811375.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_1547247950.html" property="item" typeof="WebPage">
+              <span property="name">N/certificateControl Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0302040948.html" property="item" typeof="WebPage">
+              <span property="name">N/certificateControl Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Establish an SFTP Connection Using an SSH Key</li>
+        </ol>
+        <h1 class="sect1">Establish an SFTP Connection Using an SSH Key</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample establishes a SFTP connection using an SSH key that has already been uploaded to NetSuite. It then creates, updates, loads, and deletes a certificate record to show the full CRUD operation. Replace the server URL with your correct URL.</p>
+        <p>For the SFTP connection, the public key corresponding to the private key in the certificate must be stored in the .ssh/authorized_keys file on the server.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This sample script uses the <code translate="no">require</code> function so that you can copy it into the SuiteScript Debugger and test it. You must use the <code translate="no">define</code> function in an entry point script (the script you attach to a script record and deploy). For more information, see <a href="section_1504638761.html">SuiteScript 2.1 Script Basics</a> and <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript"> /**
+ * @NApiVersion 2.1
+ */
+
+require(['N/file', 'N/sftp', 'N/certificateControl'], function(file, sftp, certificateControl) {
+    var certPath = 'yyy/certificates'
+    var certName = 'apiclient_cert.p12';
+
+    // Establish SFTP connection
+    var connection = sftp.createConnection({
+        username: 'sftpuser',
+        keyId: 'custkeysftp_nft_demo_key',
+        url: 'my.sftp.example.com',
+        port: 22,
+        directory: 'inbound',
+        hostKey: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC4gYD1K4lE9QnuYEgRRQChjrAM1+bTT95e71Xv0oQ60ywVQEiedhRqSMbPiCPPB4pjpBdOmPIQCCkug+3XwAQ6uNj3UM11zoGGmg86tyEJT6qGB0SsrQJzHTb3EG38BSrBO0WEzOWeJ8E8YODT3oAj1Nrf8Ls3JbGObRF+0uwJDIllSrFkYS3kWCV27NhBnaytGe7iLBgrJdNVlitNqkxZfK0NsAYCaJWQjQLtz+GFfN5zTbKKNsDa6s/YW7oAMMOI3Q5GQAqdXtKY728WvxYTjr2FsYS/KM6nbq/csTvZHWLE0z2TQtB2H0IIofvEP/QvXwmgEnCeVPcNgRwdHWQf'
+    });
+// ------------------------------------------------------------------------
+
+// Create new certificate
+    var certScriptId = '_' + (Math.random().toString(36).substring(2, 10));
+    var cert = certificateControl.createCertificate();
+    cert.name = 'Test Certificate China API';
+    cert.description = 'Test Certificate China created using API';
+// custcertificate prefix will be added automatically
+    cert.scriptId = certScriptId;
+    cert.file = connection.download({
+        directory: certPath,
+        filename: certName
+    });
+//guid corresponding to the certificate's password';
+    var pwd = '022b490ad4334c7e86a8304f937ec68f';
+    cert.password = pwd;
+    cert.save();
+/**/certScriptId = 'custcertificate' + certScriptId;
+    log.debug('Certificate "' + cert.name + '" successfuly created with id "' + certScriptId + '"!');
+// ------------------------------------------------------------------------
+// Rename certificate
+    cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    cert.name = 'Test Certificate China API TEMP';
+    cert.save();
+// Verify new certificate name
+/**/cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    log.debug('Certificate successfully renamed to "' + cert.name + '"');
+// ------------------------------------------------------------------------
+// Delete certificate
+    certificateControl.deleteCertificate(certScriptId);
+    log.debug('Certificate deleted!');
+// ------------------------------------------------------------------------
+// Load the deleted certificate
+    // attempt to load the deleted certificate - this should error
+    try {
+        cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    }
+    catch (e) {
+        log.error(e.message);
+    }
+}) 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_1547247950.html">N/certificateControl Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1547248957.html">Filter the Digital Certificate List by Subsidiary and File Type</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156384681831.html">Find the Audit Trail of POST Operations for a Certificate Record Based on ID</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156384732865.html">Create, Modify, and Save Certificate Record Based on a File in the File Cabinet</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156384869007.html">Find and Use an Existing Certificate Record</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

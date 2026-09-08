@@ -1,0 +1,246 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Create a JWT Token Using a SecureString</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_64151802701.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_73192327604.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Create a JWT Token Using a SecureString","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_64151802701.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_73192327604.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4418229131.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0305042314.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Create a JWT Token Using a SecureString</li>
+        </ol>
+        <h1 class="sect1">Create a JWT Token Using a SecureString</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample shows how to use a JWT token using https.SecureString. For more information about SecureString, see <a href="section_4418286676.html">https.SecureString</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">This sample uses SuiteScript 2.1. For more information, see <a href="chapter_156042690639.html">SuiteScript 2.1</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script creates a JWT token using https.SecureString.
+define(['N/https', 'N/encode'], (https, encode) =&gt; {
+    function onRequest(context) {
+        let nameToken = "custsecret_myName";
+        let passwordToken = "custsecret_myPassword";
+        let headerObj = {
+            "alg": "HS256",
+            "typ": "JWT"
+        }
+        let payloadObj = {
+            "sub": "1234567890",
+            "name": "John Doe",
+            "iat": 1516239002
+        }
+
+        let headerJSON = JSON.stringify(headerObj);
+        let payloadJSON = JSON.stringify(payloadObj);
+        let headerBASE64 = encode.convert({
+            string: headerJSON,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
+        });
+
+        let payloadBASE64 = encode.convert({
+            string: payloadJSON,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
+        });
+
+        headerBASE64 = headerBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+        payloadBASE64 = payloadBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+        
+        let secStringJwtSignature = https .createSecureString({
+            input: headerBASE64 + "." + payloadBASE64
+        })
+        .hmac({
+            algorithm: https.HashAlg.SHA256,
+            key: https.createSecretKey({
+                     secret: passwordToken,
+                     encoding: encode.Encoding.UTF_8
+            }),
+           resultEncoding: encode.Encoding.BASE_64_URL_SAFE
+        })
+        .replaceString({ // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+             pattern: "=", 
+             replacement: ""
+        })
+
+        let secStringJwtAuthHeader = https .createSecureString({
+            input: "Bearer " + headerBASE64 + "." + payloadBASE64 + "."
+        })
+        .appendSecureString({
+            secureString: secStringJwtSignature,
+            keepEncoding: true
+        })
+
+        // Reflect the response using a echo-request suitelet
+        let resp = https.get({
+            url: "myURL",
+            headers: {
+                "Authorization": secStringJwtAuthHeader
+            } 
+        });
+
+        { 
+            log.debug("resp-code", resp.code);
+            log.debug("resp-body", resp.body);
+
+            let respAuth = JSON.parse(resp.body)["headers"]["Authorization"];
+
+            log.debug("reps-head-auth", respAuth);
+            log.debug("reps-head-auth-expected", 
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.uel3RLILSJ9Q9W2Gomh8vAJQAgdbnd6TS4b7plyFOtA" ); // see https://jwt.io/#debugger-io
+        } 
+    }
+    return {
+        onRequest: onRequest
+    };
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0305042314.html">N/https Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976520537.html">Generate a Secure Token and a Secret Key</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976523569.html">Create a Form with a Credential Field</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_162334564716.html">Create an Authentication Header Using a Secure String</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_64151802701.html">Concatenate API Secrets with Strings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_73192327604.html">Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0416034533.html">Call a Suitelet from a Client Script</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

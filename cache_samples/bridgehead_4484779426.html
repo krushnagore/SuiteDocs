@@ -1,0 +1,300 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - SuiteScript Client Script Sample</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4387798404.html" title="Previous" type="text/html">
+    <link rel="next" href="section_1512507115.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - SuiteScript Client Script Sample","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4387798404.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_1512507115.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_8161516336.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4387172495.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Script Types</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4387798404.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Client Script Type</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">SuiteScript Client Script Sample</li>
+        </ol>
+        <h1 class="sect1">SuiteScript Client Script Sample</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>For help with writing scripts in SuiteScript 2.x, see <a href="section_1503717063.html">SuiteScript 2.1 Hello World</a> and <a href="chapter_4525001447.html">SuiteScript 2.x Entry Point Script Creation and Deployment</a>.</p>
+        <p>The following sample shows a client script applied to a sales order form. Here's what the script does:</p>
+        <ul>
+          <li>
+            <p>When you edit the form, the pageInit event sets the customer field to a specific customer.</p>
+          </li>
+          <li>
+            <p>When you save changes, the saveRecord event checks that the customer field is set and you've got at least one sales order item.</p>
+          </li>
+          <li>
+            <p>When you edit a sales order item's quantity, the validateField event checks it's less than three.</p>
+          </li>
+          <li>
+            <p>When you select a sales order item, the fieldChanged event updates a memo field to show it was selected.</p>
+          </li>
+          <li>
+            <p>When you select a specific sales order item, the postSourcing event updates its price level.</p>
+          </li>
+          <li>
+            <p>When you select an existing partner, the lineInit event switches the selected partner to a specific partner.</p>
+          </li>
+          <li>
+            <p>When you delete a partner, the validateDelete event updates a memo field to show it was deleted.</p>
+          </li>
+          <li>
+            <p>When you add or edit a partner, the validateInsert and validateLine events check their contribution is set to 100%.</p>
+          </li>
+        </ul>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ *@NApiVersion 2.x
+ *@NScriptType ClientScript
+ */
+define(['N/error'], function(error) {
+    function pageInit(context) {
+        if (context.mode !== 'create')
+            return;
+        var currentRecord = context.currentRecord;
+        currentRecord.setValue({
+            fieldId: 'entity',
+            value: 107
+        });
+    }
+    function saveRecord(context) {
+        var currentRecord = context.currentRecord;
+        if (!currentRecord.getValue({fieldId: 'entity'}) || currentRecord.getLineCount({sublistId: 'item'}) &lt; 1)
+            throw error.create({
+                name: 'MISSING_REQ_ARG',
+                message: 'Please enter all the necessary fields on the salesorder before saving'
+             });
+        return true;
+    }
+    function validateField(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item') {
+            if (sublistFieldName === 'quantity') {
+                if (currentRecord.getCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: sublistFieldName
+                }) &lt; 3)
+                    currentRecord.setValue({
+                        fieldId: 'otherrefnum',
+                        value: 'Quantity is less than 3'
+                    });
+                else
+                    currentRecord.setValue({
+                        fieldId: 'otherrefnum',
+                        value: 'Quantity accepted'
+                    });
+                }
+            }
+       return true;
+    }
+    function fieldChanged(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
+            currentRecord.setValue({
+                fieldId: 'memo',
+                value: 'Item: ' + currentRecord.getCurrentSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'item'
+                }) + ' is selected'
+            });
+    }
+    function postSourcing(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: sublistFieldName
+            }) === '39')
+                if (currentRecord.getCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'pricelevels'
+                }) !== '1-1')
+                    currentRecord.setCurrentSublistValue({
+                        sublistId: sublistName,
+                        fieldId: 'pricelevels',
+                        value: '1-1'
+                    });
+    }
+    function lineInit(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            currentRecord.setCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'partner',
+                value: '55'
+            });
+    }
+    function validateDelete(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'partner'
+            }) === '55')
+                currentRecord.setValue({
+                    fieldId: 'memo',
+                    value: 'Removing partner sublist'
+                });
+        return true;
+    }
+    function validateInsert(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'contribution'
+            }) !== '100.0%')
+                currentRecord.setCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'contribution',
+                    value: '100.0%'
+                });
+        return true;
+    }
+    function validateLine(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'contribution'
+            }) !== '100.0%')
+                currentRecord.setCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'contribution',
+                    value: '100.0%'
+                });
+        return true;
+    }
+    function sublistChanged(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var op = context.operation;
+        if (sublistName === 'item')
+            currentRecord.setValue({
+                fieldId: 'memo',
+                value: 'Total has changed to ' + currentRecord.getValue({fieldId: 'total'})
+            });
+    }
+    
+    return {
+        pageInit: pageInit,
+        fieldChanged: fieldChanged,
+        postSourcing: postSourcing,
+        sublistChanged: sublistChanged,
+        lineInit: lineInit,
+        validateField: validateField,
+        validateLine: validateLine,
+        validateInsert: validateInsert,
+        validateDelete: validateDelete,
+        saveRecord: saveRecord
+    };
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4387172495.html">SuiteScript 2.1 Script Types</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_4387798404.html">SuiteScript 2.1 Client Script Type</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

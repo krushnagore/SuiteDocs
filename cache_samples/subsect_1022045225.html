@@ -1,0 +1,287 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Provide an LLM-based ChatBot for NetSuite Users</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_1022045211.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_0115091619.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Provide an LLM-based ChatBot for NetSuite Users","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_1022045211.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_0115091619.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_9123730083.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_1015110627.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Provide an LLM-based ChatBot for NetSuite Users</li>
+        </ol>
+        <h1 class="sect1">Provide an LLM-based ChatBot for NetSuite Users</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The following sample creates a custom NetSuite form titled <strong>Chat Bot</strong>. The user can enter a prompt for the large language model (LLM) in the <strong>Prompt</strong> field. After the user clicks <strong>Submit</strong>, NetSuite sends the request to the LLM. The LLM returns a response, which is displayed as part of the message history displayed on the form.</p>
+        <p>The script includes code that handles the prompts and responses as a conversation between the user and the LLM. The code associates the prompts the user enters as the USER messages (these messages are labeled <strong>You</strong> on the form) and the responses from the LLM as CHATBOT messages (these messages are labeled <strong>ChatBot</strong> on the form). The code also assembles a chat history and sends it along with the prompt to the LLM. Without the chat history, it would treat each prompt as an unrelated request. For example, if your first prompt asks a question about Las Vegas and your next prompt asks, 'What are the top 5 activities here?', the chat history gives the LLM the information that 'here' means Las Vegas and may also help the LLM avoid repeating information it already provided.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+define(['N/ui/serverWidget', 'N/llm'], (serverWidget, llm) =&gt; {
+  /**
+   * Creates NetSuite form to communicate with LLM
+   */  
+  function onRequest (context) {
+    const form = serverWidget.createForm({
+      title: 'Chat Bot'
+    })
+    const fieldgroup = form.addFieldGroup({
+      id: 'fieldgroupid',
+      label: 'Chat'
+    })
+    fieldgroup.isSingleColumn = true
+    const historySize = parseInt(
+      context.request.parameters.custpage_num_chats || '0')
+    const numChats = form.addField({
+      id: 'custpage_num_chats',
+      type: serverWidget.FieldType.INTEGER,
+      container: 'fieldgroupid',
+      label: 'History Size'
+    })
+    numChats.updateDisplayType({
+      displayType: serverWidget.FieldDisplayType.HIDDEN
+    })
+
+    if (context.request.method === 'POST') {
+      numChats.defaultValue = historySize + 2
+      const chatHistory = []
+      for (let i = historySize - 2; i &gt;= 0; i -= 2) {
+        const you = form.addField({
+          id: 'custpage_hist' + (i + 2),
+          type: serverWidget.FieldType.TEXTAREA,
+          label: 'You',
+          container: 'fieldgroupid'
+        })
+        const yourMessage = context.request.parameters['custpage_hist' + i]
+        you.defaultValue = yourMessage
+        you.updateDisplayType({
+          displayType: serverWidget.FieldDisplayType.INLINE
+        })
+
+        const chatbot = form.addField({
+          id: 'custpage_hist' + (i + 3),
+          type: serverWidget.FieldType.TEXTAREA,
+          label: 'ChatBot',
+          container: 'fieldgroupid'
+        })
+        const chatBotMessage =
+          context.request.parameters['custpage_hist' + (i + 1)]
+        chatbot.defaultValue = chatBotMessage
+        chatbot.updateDisplayType({
+          displayType: serverWidget.FieldDisplayType.INLINE
+        })
+        chatHistory.push({
+          role: llm.ChatRole.USER,
+          text: yourMessage
+        })
+        chatHistory.push({
+          role: llm.ChatRole.CHATBOT,
+          text: chatBotMessage
+        })
+      }
+
+      const prompt = context.request.parameters.custpage_text
+      const promptField = form.addField({
+        id: 'custpage_hist0',
+        type: serverWidget.FieldType.TEXTAREA,
+        label: 'You',
+        container: 'fieldgroupid'
+      })
+      promptField.defaultValue = prompt
+      promptField.updateDisplayType({
+        displayType: serverWidget.FieldDisplayType.INLINE
+      })
+      const result = form.addField({
+        id: 'custpage_hist1',
+        type: serverWidget.FieldType.TEXTAREA,
+        label: 'ChatBot',
+        container: 'fieldgroupid'
+      })
+      result.defaultValue = llm.generateText({
+        prompt: prompt,
+        chatHistory: chatHistory
+      }).text
+      result.updateDisplayType({
+        displayType: serverWidget.FieldDisplayType.INLINE
+      })
+    } else {
+      numChats.defaultValue = 0
+    }
+
+    form.addField({
+      id: 'custpage_text',
+      type: serverWidget.FieldType.TEXTAREA,
+      label: 'Prompt',
+      container: 'fieldgroupid'
+    })
+
+    form.addSubmitButton({
+      label: 'Submit'
+    })
+
+    context.response.writePage(form)
+  }
+
+  return {
+    onRequest: onRequest
+  }
+}) 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_1015110627.html">N/llm Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1015115955.html">Send a Prompt to the LLM and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045211.html">Clean Up Content for Text Area Fields After Saving a Record</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0115091619.html">Evaluate an Existing Prompt and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0211115903.html">Create a Prompt and Evaluate It</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103359.html">Find Similar Items Using Embeddings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_85093504618.html">Use Tools to Enhance the Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

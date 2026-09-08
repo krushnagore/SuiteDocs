@@ -1,0 +1,674 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/piremoval Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_0923111016.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0303064653.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/piremoval Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_0923111016.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0303064653.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/piremoval Module</li>
+        </ol>
+        <h1 class="sect1">N/piremoval Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/piremoval module to remove personal information (PI) from system notes, workflow history, and specific field values. Use the N/piremoval module to comply with privacy regulations, specifically the right to be forgotten. You can remove personal information from system notes only, or you can also remove workflow history and field values on the record. Entity records, transactions, and custom records are supported.</p>
+        <p>
+          <strong>
+            <a href="section_0303064653.html">N/piremoval Module Script Sample</a>
+          </strong>
+        </p>
+        <p>You can use the <a href="section_156174907211.html">piremoval.createTask(options)</a> method to create a PI removal task, or use <a href="section_156174989271.html">piremoval.loadTask(options)</a> to load an existing PI removal task. Both of these methods return a <a href="section_156174263975.html">piremoval.PiRemovalTask</a> object that represents the task. Create a <a href="section_156174263975.html">piremoval.PiRemovalTask</a> object for each record type that requires removal of personal information. Use the <a href="section_156174691190.html">PiRemovalTask.save()</a> method to save the task, then use the <a href="section_156174672468.html">PiRemovalTask.run()</a> method to process the task and remove the personal information.</p>
+        <p>You can use the <a href="section_156174976129.html">piremoval.getTaskStatus(options)</a> method to check the status of a submitted PI removal task. This method returns a <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a> object that describes the current status of the removal task. The <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a> object uses an iterator to provide a list of log entries in the <a href="section_156174788348.html">PiRemovalTaskStatus.logList</a> object.</p>
+        <p>To use the N/piremoval module, the following requirements must be met:</p>
+        <ul>
+          <li>
+            <p>Remove Personal Information Create permission is required to create a PI removal task.</p>
+          </li>
+          <li>
+            <p>Remove Personal Information Run permission is required to run a PI removal task.</p>
+          </li>
+        </ul>
+        <p>For more information, see <a href="chapter_156596387080.html">Personal Information (PI) Removal</a>.</p>
+        <div>
+          <h2 id="subsect_47181224622">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_156173789194">N/piremoval Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_156174053276">PiRemovalTask Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_156174160546">PiRemovalTaskLogItem Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_156174140843">PiRemovalTaskStatus Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_156173789194">N/piremoval Module Members</h2>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13.4%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13.4%;" rowspan="3">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174263975.html">piremoval.PiRemovalTask</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Encapsulates a personal information removal task.</p>
+                    <p style="font-size:1em !important;">Use <a href="section_156174907211.html">piremoval.createTask(options)</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174820776.html">piremoval.PiRemovalTaskLogItem</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Encapsulates a log item of the personal information removal task status.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Encapsulates the status of a personal information removal task. Use <a href="section_156174976129.html">piremoval.getTaskStatus(options)</a> to create this object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.4%;" rowspan="4">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174907211.html">piremoval.createTask(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174263975.html">piremoval.PiRemovalTask</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Creates a personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174955494.html">piremoval.deleteTask(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">void</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Deletes a personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174976129.html">piremoval.getTaskStatus(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Retrieves the status of a personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.8%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174989271.html">piremoval.loadTask(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.7%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174263975.html">piremoval.PiRemovalTask</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:28.2%;">
+                    <p style="font-size:1em !important;">Loads a personal information removal task.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_156174053276">PiRemovalTask Object Members</h2>
+          <p>The following members are available for a <a href="section_156174263975.html">piremoval.PiRemovalTask</a> object.</p>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13.7%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13.7%;" rowspan="3">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174490300.html">PiRemovalTask.deleteTask()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">void</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Deletes the personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174672468.html">PiRemovalTask.run()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">void</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Runs the personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174691190.html">PiRemovalTask.save()</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">void</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Saves the personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.7%;" rowspan="8">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174501852.html">PiRemovalTask.fieldIds</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">string[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Represents the field IDs that are processed by the PI removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174552829.html">PiRemovalTask.historyOnly</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">boolean</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Indicates whether the PI removal task removes system note information only, not field values or workflow history.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174597006.html">PiRemovalTask.historyReplacement</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Represents the text used in system notes to replace the original values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174615502.html">PiRemovalTask.id</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">number (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Represents the ID of the personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174629555.html">PiRemovalTask.recordIds</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">number[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Represents the record IDs that are processed by the PI removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174658201.html">PiRemovalTask.recordType</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Describes the record type updated by the PI removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174701248.html">PiRemovalTask.status</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Describes the status of the submitted personal information removal task.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174717892.html">PiRemovalTask.workflowIds</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:21.1%;">
+                    <p style="font-size:1em !important;">number[] (read-only)</p>
+                  </td>
+                  <td style="padding:3.51px;width:17.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:26.4%;">
+                    <p style="font-size:1em !important;">Represents the workflow IDs whose history is processed by the PI removal task.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_156174160546">PiRemovalTaskLogItem Object Members</h2>
+          <p>The following members are available for a <a href="section_156174820776.html">piremoval.PiRemovalTaskLogItem</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:13.5%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Support Script Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:13.5%;" rowspan="4">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174844834.html">PiRemovalTaskLogItem.exception</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Describes the exception for the log item, including and what caused it.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174862773.html">PiRemovalTaskLogItem.message</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Describes the message for the log item and an explanation for any errors.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174870975.html">PiRemovalTaskLogItem.status</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Describes the status of the log item. This property takes its values from <a href="section_4345807357.html">task.TaskStatus</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174886448.html">PiRemovalTaskLogItem.type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:18%;">
+                    <p style="font-size:1em !important;">string (read-only)</p>
+                  </td>
+                  <td style="padding:3.61px;width:13.7%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:33.4%;">
+                    <p style="font-size:1em !important;">Describes the type of personal information that was removed, one of <code>FieldValue</code>, <code>SystemNote</code>, or <code>Workflow</code>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 id="subsect_156174140843">PiRemovalTaskStatus Object Members</h2>
+          <p>The following members are available for a <a href="section_156174751485.html">piremoval.PiRemovalTaskStatus</a> object.</p>
+          <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.61px;width:14.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:19.1%;">
+                    <p style="font-size:1em !important;">Return Type/Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:14.6%;">
+                    <p style="font-size:1em !important;">Support Script Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.61px;width:30.5%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.61px;width:14.1%;" rowspan="2">
+                    <p style="font-size:1em !important;">Property</p>
+                  </td>
+                  <td style="padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174788348.html">PiRemovalTaskStatus.logList</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.1%;">
+                    <p style="font-size:1em !important;">list</p>
+                  </td>
+                  <td style="padding:3.61px;width:14.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.5%;">
+                    <p style="font-size:1em !important;">Represents a list of logs for the PI removal task job.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.61px;width:21.5%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156174807831.html">PiRemovalTaskStatus.status</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.61px;width:19.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.61px;width:14.6%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.61px;width:30.5%;">
+                    <p style="font-size:1em !important;">Describes the status of the submitted personal information removal task.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156596387080.html">Personal Information (PI) Removal</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

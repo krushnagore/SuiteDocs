@@ -1,0 +1,383 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Use Tools to Enhance the Response from the LLM</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_0730103359.html" title="Previous" type="text/html">
+    <link rel="next" href="article_0115105418.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Use Tools to Enhance the Response from the LLM","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_0730103359.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="article_0115105418.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_9123730083.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_1015110627.html" property="item" typeof="WebPage">
+              <span property="name">N/llm Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Use Tools to Enhance the Response from the LLM</li>
+        </ol>
+        <h1 class="sect1">Use Tools to Enhance the Response from the LLM</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">The content in this help topic pertains to SuiteScript 2.1.</p>
+        </div>
+        <p>The following code sample shows how to create tools and pass them to the large language model (LLM) using a Suitelet. For more information about tools in the N/llm module, see <a href="article_0311105254.html">Tooling in the N/llm Module</a>. For more information about Suitelets, see <a href="section_4387799600.html">SuiteScript 2.1 Suitelet Script Type</a>.</p>
+        <p>The sample starts by defining a set of tool definitions and tool handlers. Tool definitions use <a href="article_54090013211.html">llm.createTool(options)</a> to create <a href="article_40103605821.html">llm.Tool</a> objects, which represent the available tools that the LLM can request to enhance its response. Tool handlers contain the logic of each tool, and this logic runs when a tool call is requested by the LLM. The sample defines three tools that use SuiteQL queries from the N/query module.</p>
+        <p>Next, the sample defines functions that create the Suitelet form, display the conversation history, and run the main tooling loop. In the main tooling loop, the sample calls <a href="article_1014032554.html">llm.generateText(options)</a> to generate an initial response, providing the set of available tools along with the preamble, conversation history, and user prompt. After the initial response is received, the sample looks for any tool call requests (which are included in the <a href="article_47085353743.html">Response.toolCalls</a> property). If the LLM requested a tool call, the sample calls the associated handler and creates a tool result using <a href="article_40090425838.html">llm.createToolResult(options)</a>. The sample sends the tool results back to the LLM in a subsequent call to <a href="article_1014032554.html">llm.generateText(options)</a>, and it repeats this process until no further tool calls are requested.</p>
+        <p>Finally, the sample defines functions that display the results, create a form footer and add a submit button, and define the <code>onRequest()</code> function that's provided to the <code>onRequest</code> entry point for Suitelets.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+define(['N/ui/serverWidget', 'N/llm', 'N/query'], (serverWidget, llm, query) =&gt; {
+    const TOOL_HANDLERS = {
+      getNumberOfCustomerPurchasesForItem: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT count(*) cnt from transactionline where entity=? and item=?",
+          params: [options.userId, options.itemId]
+        }).asMappedResults();
+        return res[0]["cnt"];
+      },
+
+      findItemId: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT id from item where itemid=?",
+          params: [options.itemName]
+        }).asMappedResults();
+        return res.length === 0 ? -1 : res[0]["id"];
+      },
+
+      findUserId: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT id from entity where fullname=?",
+          params: [options.userName]
+        }).asMappedResults();
+        return res.length === 0 ? -1 : res[0]["id"];
+      }
+    };
+
+    const TOOL_DEFINITIONS = {
+        'findUserId': llm.createTool({
+            name: "findUserId",
+            description: "Looks up user id based on his/her name",
+            parameters: [
+                llm.createToolParameter({ name: "userName", description: "name of the user", type: "STRING" })
+            ]
+        }),
+        'findItemId': llm.createTool({
+            name: "findItemId",
+            description: "Looks up item id based on its name",
+            parameters: [
+                llm.createToolParameter({ name: "itemName", description: "name of the item", type: "STRING" })
+            ]
+        }),
+        'getNumberOfCustomerPurchasesForItem': llm.createTool({
+            name: "getNumberOfCustomerPurchasesForItem",
+            description: "Looks up how many times did user purchase given item, both user and item are specified by id.",
+            parameters: [
+                llm.createToolParameter({ name: "userId", description: "id of the user", type: "INTEGER" }),
+                llm.createToolParameter({ name: "itemId", description: "id of the item", type: "INTEGER" })
+            ]
+        })
+    }
+
+    const createFromHeader = (context) =&gt; {
+        const form = serverWidget.createForm({ title: 'Tool Use Example' });
+
+        const fieldgroup = form.addFieldGroup({
+            id: 'fieldgroupid',
+            label: 'Chat'
+        });
+        fieldgroup.isSingleColumn = true;
+
+        const history = form.addField({
+            id: 'custpage_history',
+            type: serverWidget.FieldType.LONGTEXT,
+            container: 'fieldgroupid',
+            label: "History"
+        });
+        history.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
+
+        const numChats = form.addField({
+            id: 'custpage_num_chats',
+            type: serverWidget.FieldType.INTEGER,
+            container: 'fieldgroupid',
+            label: "History Size"
+        });
+        numChats.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
+        return form;
+    }
+
+    const displayHistory = (context, form) =&gt; {
+        const historySize = parseInt(context.request.parameters["custpage_num_chats"] || "0", 10);
+        form.getField({id: 'custpage_num_chats'}).defaultValue = String(historySize + 2);
+        //numChats.defaultValue = String(historySize + 2);
+
+        // Recreate the chat history fields (in reverse order)
+        for (let i = historySize - 2; i &gt;= 0; i -= 2) {
+            const you = form.addField({
+                id: 'custpage_hist' + (i + 2),
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'You',
+                container: 'fieldgroupid'
+            });
+            const yourMessage = context.request.parameters["custpage_hist" + i];
+            you.defaultValue = yourMessage;
+            you.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            const chatbot = form.addField({
+                id: 'custpage_hist' + (i + 3),
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'ChatBot',
+                container: 'fieldgroupid'
+            });
+            const chatBotMessage = context.request.parameters["custpage_hist" + (i + 1)];
+            chatbot.defaultValue = chatBotMessage;
+            chatbot.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+        }
+    }
+
+    const runToolLoop = (prompt, chatHistory) =&gt; {
+        const preamble = "You are an AI assistant. Don't be chatty. If you're asking for further
+               information, keep it very brief and instructive. All the input variables for tools 
+               have to be explicitly stated.";
+        const tools = Object.values(TOOL_DEFINITIONS);
+
+        let llmResult = llm.generateText({
+            modelFamily: llm.ModelFamily.COHERE_COMMAND,
+            preamble,
+            tools,
+            prompt,
+            chatHistory: chatHistory ? JSON.parse(chatHistory) : undefined
+        });
+
+        while (llmResult.toolCalls.length &gt; 0) {
+            const toolResults = [];
+            for (const call of llmResult.toolCalls) {
+                const resultValue = TOOL_HANDLERS[call.name](call.parameters);
+                const toolResult = llm.createToolResult({
+                    call,
+                    outputs: [{ result: resultValue }]
+                });
+                toolResults.push(toolResult);
+            }
+
+            llmResult = llm.generateText({
+                modelFamily: llm.ModelFamily.COHERE_COMMAND,
+                tools,
+                toolResults,
+                chatHistory: llmResult.chatHistory
+            });
+        }
+        return llmResult;
+    }
+
+    const displayResult = (prompt, llmResult, form) =&gt; {
+        const promptField = form.addField({
+                id: 'custpage_hist0',
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'You',
+                container: 'fieldgroupid'
+            });
+            promptField.defaultValue = prompt;
+            promptField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            const resultField = form.addField({
+                id: 'custpage_hist1',
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'ChatBot',
+                container: 'fieldgroupid'
+            });
+            resultField.defaultValue = llmResult.text;
+            resultField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            form.getField({id: 'custpage_history'}).defaultValue = JSON.stringify(llmResult.chatHistory);
+            //history.defaultValue = JSON.stringify(llmResult.chatHistory);
+    }
+
+    const createFormFooter = (form) =&gt; {
+    // Field for new prompt input
+        form.addField({
+            id: 'custpage_text',
+            type: serverWidget.FieldType.TEXTAREA,
+            container: 'fieldgroupid',
+            label: 'Prompt'
+        });
+
+        form.addSubmitButton({ label: 'Submit' });
+    }
+
+    const onRequest = (context) =&gt; {
+
+        const form = createFromHeader(context);
+
+        if (context.request.method === 'POST') {
+            displayHistory(context, form);
+
+            const prompt = context.request.parameters["custpage_text"];
+            const chatHistory = context.request.parameters["custpage_history"];
+
+            const llmResult = runToolLoop(prompt, chatHistory)
+
+            displayResult(prompt, llmResult, form);
+
+        } else { // GET
+            form.getField({id: 'custpage_num_chats'}).defaultValue = '0';
+            //numChats.defaultValue = "0";
+        }
+
+        createFormFooter(form);
+        context.response.writePage(form);
+    };
+
+    return { onRequest };
+  }); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="article_1015110627.html">N/llm Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1015115955.html">Send a Prompt to the LLM and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045211.html">Clean Up Content for Text Area Fields After Saving a Record</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_1022045225.html">Provide an LLM-based ChatBot for NetSuite Users</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0115091619.html">Evaluate an Existing Prompt and Receive a Response</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0211115903.html">Create a Prompt and Evaluate It</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0317102527.html">Provide Source Documents When Calling the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103345.html">Receive a Partial Response from the LLM</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0730103359.html">Find Similar Items Using Embeddings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_6193337927.html">SuiteScript 2.1 Generative AI APIs</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_156042690639.html">SuiteScript 2.1</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

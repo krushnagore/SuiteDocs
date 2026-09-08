@@ -1,0 +1,235 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Defining a Dataset</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="chapter_1544122127.html" title="Previous" type="text/html">
+    <link rel="next" href="section_158041505315.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Defining a Dataset","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="chapter_1544122127.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_158041505315.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N576235.html" property="item" typeof="WebPage">
+              <span property="name">SuiteAnalytics</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="book_1527274324.html" property="item" typeof="WebPage">
+              <span property="name">Workbook</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_1544122127.html" property="item" typeof="WebPage">
+              <span property="name">Custom Workbooks and Datasets</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Defining a Dataset</li>
+        </ol>
+        <h1 class="sect1">Defining a Dataset</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Datasets are the foundation for all workbook visualizations in your account. You can make a new dataset from the Analytics Home page or from the Dataset Panel in a workbook visualization.</p>
+        <p>In a dataset, you combine the fields of a root record type and any joined related record types to create a query. What you can access depends on your account features and permissions. You can join related record types based on common keys in your analytics data. If standard record types don't have what you need, you can add custom formula fields to your dataset.</p>
+        <p>In the Dataset Builder, your query results display in the Data Grid. When you create a new dataset, it automatically fills with fields from the root record type. Joinable record types and fields you can use display in the Records and Fields lists. Only fields you add to the Data Grid can be used for workbook visualizations like tables, pivots, and charts.</p>
+        <ul>
+          <li>
+            <p>To view a record type's fields, click the name of the record type to refresh the Fields list.</p>
+          </li>
+          <li>
+            <p>To view additional related record types, click the arrow next to any record type in the Records list.</p>
+          </li>
+          <li>
+            <p>To join a record type to a dataset, add fields from the record type to the Data Grid or use the field to create a criteria filter. For more information about dataset criteria filters, see <a href="section_1544211200.html">Dataset Criteria Filters</a>.</p>
+          </li>
+          <li>
+            <p>In workbook visualizations based on linked datasets, to view the fields within each dataset click the dataset name in the Dataset Panel.</p>
+          </li>
+        </ul>
+        <p>You can join as many record types as you want in a dataset, but joining more than ten can hurt performance.</p>
+        <p>For more information about joining record types in a dataset, see <a href="section_1543418452.html">Guidelines for Joining Record Types in SuiteAnalytics Workbook</a>.</p>
+        <p>For information about accessing specific record types and fields in NetSuite, download the following worksheet: <a href="https://system.netsuite.com/core/media/media.nl?id=341574735&amp;c=NLCORP&amp;h=BmVV5dg6iq3SkAR6-7whWl0kksl0cQkz7wGKgkoMYABHPp51&amp;_xt=.xls" target="_blank">NetSuitePermissionsUsage.xls</a>.</p>
+        <p>For information about editing a dataset that is used in a workbook visualization, see <a href="section_158041505315.html">Editing a Dataset</a>.</p>
+        <div>
+          <h4>To define a new dataset:</h4>
+          <ol>
+            <li>
+              <p>Click <strong>New Dataset</strong> on the Dataset subtab of the Analytics Home page or on the <strong>Select a dataset to create a new workbook</strong> page.</p>
+              <p>Alternatively, click <strong>Connect Dataset</strong> in the Dataset Panel of a workbook visualization, then click <strong>New Dataset</strong> on the <strong>Select a dataset</strong> page.</p>
+            </li>
+            <li>
+              <p>Select a root record type for the dataset. The record type you pick determines the record types and fields you can join to the dataset.</p>
+            </li>
+            <li>
+              <p>Add fields from the root record type to the Data Grid. Here are three ways you can do it:</p>
+              <ul>
+                <li>
+                  <p>Drag fields from the Fields list to the Data Grid.</p>
+                </li>
+                <li>
+                  <p>Double-click field names in the Fields list.</p>
+                </li>
+                <li>
+                  <p>Type a field name in the search bar above the Fields list, then drag or double-click it to add it to the Data Grid.</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Add fields from related record types to the Data Grid.</p>
+              <ol type="a">
+                <li>
+                  <p>Click the arrow next to any record type in the Records list to see more related record types.</p>
+                </li>
+                <li>
+                  <p>Click a record type name to refresh the Fields list.</p>
+                </li>
+                <li>
+                  <p>Double-click or drag any field to the Data Grid.</p>
+                  <div class="infobox-note">
+                    <span class="notep1">Note: </span>
+                    <p class="nshelp_first">Some record types have multiple versions, like entity job, customer, or vendor in a transaction dataset. Make sure you pick the one that fits your data.</p>
+                  </div>
+                </li>
+              </ol>
+            </li>
+            <li>
+              <p>(Optional) Click <strong>Formulas</strong> to see, create, and add custom formula fields to the Data Grid.</p>
+              <p>For step-by-step instructions on creating a custom formula field, see <a href="section_1544128605.html">Formula Fields</a>.</p>
+            </li>
+            <li>
+              <p>Remove any fields you don't want to include in the dataset.</p>
+              <ol type="a">
+                <li>
+                  <p>Click the Field Menu icon <img alt="Field menu icon" src="img/SuiteAnalyticsDashboardsSearchesReports/Workbook/FieldMenuIcon18_1.png" loading="lazy" style="height: 1em;"> in the column you want to remove from the Data Grid.</p>
+                </li>
+                <li>
+                  <p>Select <strong>Remove Column</strong> from the dropdown list.</p>
+                  <div class="infobox-important">
+                    <span class="notep1">Important: </span>
+                    <p class="nshelp_first">If you create a workbook visualization from the current dataset and then remove a field from the Data Grid, it'll also be removed from any other workbook visualizations based on the same dataset. This can cause errors or unwanted results. Exercise caution when taking out fields used in several visualizations.</p>
+                  </div>
+                </li>
+              </ol>
+            </li>
+            <li>
+              <p>Click <strong>Save</strong> to save the dataset. Or, if you're making the dataset in a new workbook, click <strong>Save &amp; Close</strong> to save it and open the workbook.</p>
+              <p>The Save Dataset As window will pop-up.</p>
+            </li>
+            <li>
+              <p>Type a name and description for the dataset, then click <strong>Save</strong>.</p>
+            </li>
+            <li>
+              <p>(Optional) To preview your dataset in a new workbook visualization before saving, click <strong>Create New Workbook</strong> or <strong>Apply to workbook</strong>. The workbook will open.</p>
+              <div class="infobox-note">
+                <span class="notep1">Note: </span>
+                <p class="nshelp_first">You must save the dataset before you can save the workbook it's connected to. Unsaved datasets show a warning icon <img alt="Warning icon" src="img/SuiteAnalyticsDashboardsSearchesReports/Workbook/Warning-icon.png" loading="lazy" style="height: 1em;"> in the Dataset Panel of a workbook. For more information, see <a href="section_158041505315.html">Editing a Dataset</a>.</p>
+              </div>
+            </li>
+            <li>
+              <p>(Optional) To export your dataset, click <strong>Export</strong> and pick one of the following options:</p>
+              <ul>
+                <li>
+                  <p>Export data to CSV</p>
+                  <div class="infobox-important">
+                    <span class="notep1">Important: </span>
+                    <p class="nshelp_first">To mitigate the possibility of a CSV injection, exported CSV files may have extra formatting. For more information, see <a href="section_1551206597.html">Known Limitations in SuiteAnalytics Workbook</a>.</p>
+                  </div>
+                </li>
+                <li>
+                  <p>Export dataset to SDF XML</p>
+                </li>
+                <li>
+                  <p>Export dataset to SuiteQL TXT</p>
+                  <div class="infobox-note">
+                    <span class="notep1">Note: </span>
+                    <p class="nshelp_first">For information about the benefits of exporting dataset definitions to SuiteQL, see <a href="article_0918121629.html">Exporting Dataset Definitions to SuiteQL</a>.</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_1544122127.html">Custom Workbooks and Datasets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_162627283560.html">Linking Datasets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1544211200.html">Dataset Criteria Filters</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1544211284.html">Creating a Workbook</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1544129169.html">Currency in Datasets and Workbooks</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

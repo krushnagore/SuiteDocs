@@ -1,0 +1,595 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/certificateControl Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_4655722738.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0302040948.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/certificateControl Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_4655722738.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0302040948.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/certificateControl Module</li>
+        </ol>
+        <h1 class="sect1">N/certificateControl Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/certificateControl module to enable scripting access to the Digital Certificates list found in the UI at <em>Setup &gt; Company &gt; Certificates</em>. You can use this module to find, create, update, read and delete certificate records. For more information, see <a href="chapter_1542656608.html">Digital Signing</a> and <a href="section_1542656620.html">Uploading Digital Certificates</a>.</p>
+        <p>
+          <strong>
+            <a href="section_0302040948.html">N/certificateControl Module Script Samples</a>
+          </strong>
+        </p>
+        <p>To access the N/certificateControl module, you must use the Execute As Role field on the script deployment record. Select either the Administrator role or a custom role with the Certificate Access permission. For more information, see <a href="subsect_1547501301.html">Access to Digital Certificates</a>.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">The certificate record holds information for a digital certificate, but it is not a standard NetSuite record and cannot be accessed with the N/record.</p>
+        </div>
+        <div>
+          <h2 id="subsect_22182728032">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#subsect_1547248658">N/certificateControl Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#subsect_156209951814">Certificate Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="subsect_1547248658">N/certificateControl Module Members</h2>
+          <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+            <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+              <thead>
+                <tr>
+                  <th style="vertical-align:top;padding:3.51px;width:13.1%;">
+                    <p style="font-size:1em !important;">Member Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">Name</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">Return Type / Value Type</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Supported Script Types</p>
+                  </th>
+                  <th style="vertical-align:top;padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:3.51px;width:13.1%;">
+                    <p style="font-size:1em !important;">Object</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156201811375.html">certificateControl.Certificate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Encapsulates a digital certificate record.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.1%;" rowspan="7">
+                    <p style="font-size:1em !important;">Method</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.9%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1547249535.html">certificateControl.findCertificates(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">object</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Returns metadata about the certificate(s).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156146904779.html">certificateControl.findUsages(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">object[]</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Returns an audit trail of how a certificate has been used. Includes operations performed with time stamps.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156156407497.html">certificateControl.createCertificate(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156201811375.html">certificateControl.Certificate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Creates a certificate record using a file from the File Cabinet. After saving with <a href="section_156218491774.html">Certificate.save()</a>, the certificate is accessible on the <strong>Certificates</strong>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156199793585.html">certificateControl.deleteCertificate(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Deletes a certificate record that has been uploaded to the <strong>Certificates</strong> list in the UI or created using <a href="section_156156407497.html">certificateControl.createCertificate(options)</a> and saved with <a href="section_156218491774.html">Certificate.save()</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;word-wrap:break-word;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156201707058.html">certificateControl.loadCertificate(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156201811375.html">certificateControl.Certificate</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Loads a certificate record that has been uploaded to the <strong>Certificates</strong> list in the UI or created using <a href="section_156156407497.html">certificateControl.createCertificate(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_161316650912.html">certificateControl.lock(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Locks a certificate record so that it cannot be edited.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_161316704169.html">certificateControl.unlock(options)</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">string</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Unlocks a certificate record that has been locked with <a href="section_161316650912.html">certificateControl.lock(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:13.1%;" rowspan="3">
+                    <p style="font-size:1em !important;">Enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156348578245.html">certificateControl.Operation</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Holds the values for the operation when searching for certificates with <a href="section_156146904779.html">certificateControl.findUsages(options)</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_156347310616.html">certificateControl.Operator</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Holds the values for search operators to use with the <code>name</code> and <code>description</code> parameters of the <a href="section_1547249535.html">certificateControl.findCertificates(options)</a> method.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:3.51px;width:20.9%;">
+                    <p style="font-size:1em !important;">
+                      <a href="section_1547250231.html">certificateControl.Type</a>
+                    </p>
+                  </td>
+                  <td style="padding:3.51px;width:20.1%;">
+                    <p style="font-size:1em !important;">enum</p>
+                  </td>
+                  <td style="padding:3.51px;width:16.1%;">
+                    <p style="font-size:1em !important;">Server scripts</p>
+                  </td>
+                  <td style="padding:3.51px;width:29.6%;">
+                    <p style="font-size:1em !important;">Holds the values for the certificate file type to use with the <code>type</code> parameter of the <a href="section_1547249535.html">certificateControl.findCertificates(options)</a> method.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3 id="subsect_156209951814">Certificate Object Members</h3>
+            <p>The following members are called on the <a href="section_156201811375.html">certificateControl.Certificate</a> object.</p>
+            <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+              <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+                <thead>
+                  <tr>
+                    <th style="vertical-align:top;padding:3.51px;width:13.4%;">
+                      <p style="font-size:1em !important;">Member Type</p>
+                    </th>
+                    <th style="vertical-align:top;padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">Name</p>
+                    </th>
+                    <th style="vertical-align:top;padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">Return Type / Value Type</p>
+                    </th>
+                    <th style="vertical-align:top;padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Supported Script Types</p>
+                    </th>
+                    <th style="vertical-align:top;padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Description</p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:3.51px;width:13.4%;">
+                      <p style="font-size:1em !important;">Method</p>
+                    </td>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156218491774.html">Certificate.save()</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">object containing the script ID of the new certificate record</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Saves a certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:13.4%;" rowspan="11">
+                      <p style="font-size:1em !important;">Property</p>
+                    </td>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156218882054.html">Certificate.description</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">string</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Describes the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156261189191.html">Certificate.file</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;"><a href="section_4205693274.html#bridgehead_4223145668">File Object Members</a> object</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Includes the properties of the file uploaded to create the certificate.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156261266478.html">Certificate.name</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">string</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The name of the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156263099184.html">Certificate.monthReminder</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">boolean</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The setting of the <strong>Month</strong> box for <strong>Expiration Reminders</strong> on the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156263222400.html">Certificate.notifications</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">number[]</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The internal IDs of the employees selected in the <strong>Copy Employees</strong> field on the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156263312543.html">Certificate.password</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">string (write-only)</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The password for the digital certificate. You can create a GUID for the password using <a href="section_4550325064.html">Form.addSecretKeyField(options)</a> or you can create an API secret for the secret at <em>Setup &gt; Company &gt; API Secrets</em>.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156263396061.html">Certificate.restrictions</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">number[]</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The internal IDs of the employees selected in the <strong>Restrict to Employees</strong> field of the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156269109525.html">Certificate.scriptId</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">string</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The ID of the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156269250571.html">Certificate.subsidiaries</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">number[]</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">The internal IDs of the subsidiaries associated with the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156269504090.html">Certificate.threeMonthsReminder</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">boolean</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Indicates the setting of the <strong>3 Months</strong> box for <strong>Expiration Reminders</strong> on the certificate record.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:3.51px;width:20.7%;">
+                      <p style="font-size:1em !important;">
+                        <a href="section_156269529064.html">Certificate.weekReminder</a>
+                      </p>
+                    </td>
+                    <td style="padding:3.51px;width:16.3%;">
+                      <p style="font-size:1em !important;">boolean</p>
+                    </td>
+                    <td style="padding:3.51px;width:16.5%;">
+                      <p style="font-size:1em !important;">Server scripts</p>
+                    </td>
+                    <td style="padding:3.51px;width:32.9%;">
+                      <p style="font-size:1em !important;">Indicates the setting of the <strong>Week</strong> box for <strong>Expiration Reminders</strong> on the certificate record.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_1542656608.html">Digital Signing</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1542656620.html">Uploading Digital Certificates</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1543986321.html">N/https/clientCertificate Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_1543432423.html">N/crypto/certificate Module</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

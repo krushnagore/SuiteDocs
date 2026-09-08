@@ -1,0 +1,138 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Secrets Management</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_162273124049.html" title="Previous" type="text/html">
+    <link rel="next" href="section_160216528415.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Secrets Management","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_162273124049.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_160216528415.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N125873.html" property="item" typeof="WebPage">
+              <span property="name">Account Administration</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="book_4299752196.html" property="item" typeof="WebPage">
+              <span property="name">Authentication</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Secrets Management</li>
+        </ol>
+        <h1 class="sect1">Secrets Management</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>You can store, manage, and reference API secrets in NetSuite at <em>Setup &gt; Company &gt; Preferences &gt; API Secrets</em>. You can then reference these secrets in third party integrations, preventing the need for plaintext secrets in scripts. API secrets include hashes, passwords, keys, and other secrets for managing digital authentication credentials. NetSuite accepts secrets up to 1,000,000 characters.</p>
+        <p>Secret owners can limit access for other users or allow access for a specific SuiteApp. Secrets are only referenced by script ID, and the password value can't be displayed. A secret can't be used by more than one SuiteApp. If you need to share a password across multiple SuiteApps, you must create multiple secrets with the same password.</p>
+        <p>Only SuiteScript 2.x APIs can use the secret. For a list of supported SuiteScript 2.x modules, see <a href="section_160216528415.html">Supported SuiteScript 2.x modules</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">A secret can only be updated in the same account where it was created. Ensure that you don't enter a secret in an account that will be deleted in the future; when a shared secret is deleted, you'll be unable to create another shared secret with same id.</p>
+        </div>
+        <p>In SDF, you can add the customization object <code>custsecret_example_id.xml</code>, which contains the line <code>&lt;secret scriptid="custsecret_example_id"/&gt;</code>. You can only import a secret customization object to your SuiteCloud project if the <strong>Available to SuiteApp</strong> box is checked. For more information about this setting, see <a href="section_160216498405.html">Creating Secrets</a>. For more information about customization objects, see <a href="section_4715411907.html">SDF Custom Object and File Development in SuiteCloud Projects</a>.</p>
+        <p>Only administrators and users with the Secrets Management permission can manage secrets. For more information, see <a href="section_160337298977.html">Access to Secrets</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">To maintain higher security in comparison to using the username and password combination, you can use an authentication API based on OAuth.</p>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="book_4299752196.html">Authentication</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160216528415.html">Supported SuiteScript 2.x modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160216498405.html">Creating Secrets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160216499842.html">Filtering Secrets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160216501258.html">Managing Secrets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160337298977.html">Access to Secrets</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="section_160216636819.html">Code Sample</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_1558548485.html">SSH Keys for SFTP</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

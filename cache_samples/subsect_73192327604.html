@@ -1,0 +1,297 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_162801159670.html" title="Previous" type="text/html">
+    <link rel="next" href="subsect_0416034533.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_162801159670.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="subsect_0416034533.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4418229131.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0305042314.html" property="item" typeof="WebPage">
+              <span property="name">N/https Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header</li>
+        </ol>
+        <h1 class="sect1">Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>This sample consists of a Suitelet script calling a RESTlet script. The RESTlet result dictates the output of the Suitelet.</p>
+        <ul>
+          <li>
+            <p>
+              <a href="#subsect_1217055428">Call a RESTlet and Display Results</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#subsect_1217055502">Query Employee Name and Return Data in JSON Format</a>
+            </p>
+          </li>
+        </ul>
+        <div>
+          <h2 id="subsect_1217055428">Call a RESTlet and Display Results</h2>
+          <p>The following sample is a Suitelet script calling a RESTlet script through <code>https.requestRestlet()</code>. The RESTlet returns an <code>application/json</code> value with the employee name. For more information about <code>https.requestRestlet()</code>, see <a href="section_159139340774.html">https.requestRestlet(options)</a>.</p>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+          </div>
+          <div class="infobox-important">
+            <span class="notep1">Important: </span>
+            <p class="nshelp_first">This sample uses SuiteScript 2.1. For more information, see <a href="chapter_156042690639.html">SuiteScript 2.1</a>.</p>
+          </div>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/https'],
+    
+    (https) =&gt; {
+        /**
+         * Defines the Suitelet script trigger point.
+         * @param {Object} scriptContext
+         * @param {ServerRequest} scriptContext.request - Incoming request
+         * @param {ServerResponse} scriptContext.response - Suitelet response
+         * @since 2015.2
+         */
+        const onRequest = (scriptContext) =&gt; {
+            // Get the employee ID from the parameters
+            const employeeId = scriptContext.request.parameters.employeeId || '0';
+
+            // Define output variable
+            let output = '';
+
+            // Retrieve the employee name 
+            const restletResponse = https.requestRestlet({
+                body: JSON.stringify({ employeeId }),
+                deploymentId: 'customdeploy_samples_rs_requestrestlet',
+                scriptId: 'customscript_samples_rs_requestrestlet',
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST'
+            });
+
+            // Check if the RESTlet call is successful
+            if (restletResponse.code === 200) {
+                if (restletResponse.body !== '') {
+                    // Parse the RESTlet response
+                    const restletBody = JSON.parse(restletResponse.body);
+
+                    // Write the suitelet output
+                    output = `Employee Name is: ${restletBody.name}`;
+                } else {
+                    // Write error message.
+                    output = 'No employee found.';
+                }
+
+            } else {
+                // Write error message.
+                output = 'Unexpected error. Please check script logs.';
+            }
+
+            // Write output to response object.
+            scriptContext.response.write(output);
+        }
+
+        return {onRequest}
+
+    }); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h2 id="subsect_1217055502">Query Employee Name and Return Data in JSON Format</h2>
+          <p>The following RESTlet queries employee information based on the employee ID from the RESTlet request body. This RESTlet script expects the request to be have a Content-Type Header of <code>application/json</code>. The RESTlet response is also expected to have the same Content-Type Header.</p>
+          <div class="infobox-note">
+            <span class="notep1">Note: </span>
+            <p class="nshelp_first">This sample script uses the <code>define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code>require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_N3014215.html">SuiteScript Debugger</a>.</p>
+          </div>
+          <pre class="line-numbers">
+            <code class="language-suitescript">/*
+ * Copyright (c) 2022, Oracle and/or its affiliates.
+ */
+
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Restlet
+ */
+define(['N/scriptTypes/restlet', 'N/query'], function (restlet, query) {
+    // Restlet entry point
+    const post = function (requestBody) {
+        // Define the output variable
+        let returnValue = '';
+
+        // Create the Employee Query
+        const qObj = query.create({
+            type: query.Type.EMPLOYEE
+        });
+
+        // Check if the requestBody and the employeeId field is defined
+        if (!!requestBody &amp;&amp; !!requestBody.employeeId) {
+            // Define the query condition for employee ID field in Employee record
+            qObj.condition = qObj.createCondition({
+                fieldId: 'id',
+                operator: query.Operator.EQUAL,
+                values: requestBody.employeeId
+            });
+
+            // Add the desired columns in the Query
+            qObj.columns = [
+                qObj.createColumn({
+                    fieldId: 'firstname'
+                }),
+                qObj.createColumn({
+                    fieldId: 'lastname'
+                })
+            ];
+
+            // Retrieve the results
+            const results = qObj.run().asMappedResults();
+            for (let i = 0; i &lt; results.length; i++) {
+                const result = results[i];
+                returnValue = {
+                    name: result.firstname + ' ' + (result.lastname || '')
+                };
+            }
+        }
+        
+        return returnValue;
+    }
+
+    return { post };
+}); 
+</code>
+          </pre>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0305042314.html">N/https Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976520537.html">Generate a Secure Token and a Secret Key</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_159976523569.html">Create a Form with a Credential Field</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_162334564716.html">Create an Authentication Header Using a Secure String</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_64151802701.html">Concatenate API Secrets with Strings</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_162801159670.html">Create a JWT Token Using a SecureString</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_0416034533.html">Call a Suitelet from a Client Script</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

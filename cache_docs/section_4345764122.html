@@ -1,0 +1,1928 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/search Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="section_0618021129.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0304061100.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/search Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="section_0618021129.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0304061100.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/search Module</li>
+        </ol>
+        <h1 class="sect1">N/search Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/search module to create and run on-demand or saved searches, then analyze and work through the results. With this module, you can do things like:</p>
+        <ul>
+          <li>
+            <p>Search for a single record using keywords</p>
+          </li>
+          <li>
+            <p>Create and save searches</p>
+          </li>
+          <li>
+            <p>Load and run saved searches</p>
+          </li>
+          <li>
+            <p>Search for duplicate records</p>
+          </li>
+          <li>
+            <p>Return a set of records that match your defined filter criteria</p>
+          </li>
+        </ul>
+        <p>You can also paginate results and add navigation to jump between pages. This makes it great for handling large result sets.</p>
+        <div class="infobox-important">
+          <span class="notep1">Important: </span>
+          <p class="nshelp_first">The N/search module doesn't work in unauthenticated client-side contexts.</p>
+          <p>For details, see the SuiteAnswers <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/1013055" target="_blank">Outbound HTTPs in an unauthenticated client-side context</a>.</p>
+        </div>
+        <p>
+          <strong>
+            <a href="section_0304061100.html">N/search Module Script Samples</a>
+          </strong>
+        </p>
+        <div>
+          <h2 id="subsect_87180423808">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_4392314640">N/search Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4345764959">Column Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4345765033">Filter Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4485763752">Page Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4485762311">PagedData Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4485764034">PageRange Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4345764828">Result Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4345765156">ResultSet Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_4345764734">Search Object Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_1536245468">Setting Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_4392314640">N/search Module Members</h2>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.5%;" rowspan="9">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767216.html">search.Column</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a single search column in a <a href="section_4392315904.html">search.Search</a> object. Use the methods and properties available to the Column object to get or set Column properties.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767603.html">search.Filter</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a search filter used in a search. Use the properties for the Filter object to get and set the filter properties.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486547978.html">search.Page</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a set of search results for a single search page.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486558900.html">search.PagedData</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Holds metadata about a paginated query.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486559010.html">search.PageRange</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Defines the page range to bound the result set for a paginated query.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767112.html">search.Result</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulate a single search result row. Use the methods and properties for the Result object to get the column values for the result row.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767679.html">search.ResultSet</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a set of search results returned by <a href="section_452292724609.html">Search.run()</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392315904.html">search.Search</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a NetSuite search. Use the methods available to the Search object to create a search, run a search, or save a search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536244919.html">search.Setting</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Encapsulates a search setting. Search settings let you specify search parameters that are typically available only in the UI.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.5%;" rowspan="15">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345171487.html">search.create(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392315904.html">search.Search</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Creates a new search and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440790350.html">search.create.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392315904.html">search.Search</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Creates a new search asynchronously and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345776927.html">search.createColumn(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767216.html">search.Column</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Creates a new search column as a <a href="section_4345767216.html">search.Column</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345777107.html">search.createFilter(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767603.html">search.Filter</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Creates a new search filter as a <a href="section_4345767603.html">search.Filter</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536171305.html">search.createSetting(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536244919.html">search.Setting</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Creates a new search setting and returns it as a <a href="section_1536244919.html">search.Setting</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345775501.html">search.delete(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Deletes an existing saved search asynchronously and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440793315.html">search.delete.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Deletes an existing saved search and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345775593.html">search.duplicates(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a search for duplicate records based on the duplicate detection configuration for the account. Returns an array of <a href="section_4345767112.html">search.Result</a> objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440793863.html">search.duplicates.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a search for duplicate records asynchronously based on the duplicate detection configuration for the account. Returns an array of <a href="section_4345767112.html">search.Result</a> objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345775747.html">search.global(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a global search against a single keyword or multiple keywords.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440794809.html">search.global.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a global search asynchronously against a single keyword or multiple keywords.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345775360.html">search.load(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392315904.html">search.Search</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Loads an existing saved search and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440792540.html">search.load.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4392315904.html">search.Search</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Loads an existing saved search asynchronously and returns it as a <a href="section_4392315904.html">search.Search</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345776651.html">search.lookupFields(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object | array</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a search for one or more body fields on a record. Returns select fields as an object with value and text properties. Returns multiselect fields as an object with value:text pairs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440795405.html">search.lookupFields.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">Object | array</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Performs a search asynchronously for one or more body fields on a record. Returns select fields as an object with value and text properties. Returns multiselect fields as an object with value:text pairs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.5%;" rowspan="4">
+                  <p style="font-size:1em !important;">Enum</p>
+                </td>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345782273.html">search.Operator</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Holds the values for search operators to use with the <a href="section_4345767603.html">search.Filter</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486581209.html">search.Sort</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Holds the values for supported sorting directions used with <a href="section_4345776927.html">search.createColumn(options)</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345777923.html">search.Summary</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Holds the values for summary types used by the <a href="section_455339294433.html">Column.summary</a> object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.3%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4483165708.html">search.Type</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:12.7%;">
+                  <p style="font-size:1em !important;">enum</p>
+                </td>
+                <td style="padding:3.51px;width:16.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:35.5%;">
+                  <p style="font-size:1em !important;">Holds the string values for search types supported in the <a href="section_4345764122.html">N/search Module</a>. Use this enum to set the value for the <code>options.type</code> parameter of the <a href="section_4345171487.html">search.create(options)</a> method.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4345764959">Column Object Members</h2>
+        <p>The following members are available for a <a href="section_4345767216.html">search.Column</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13%;">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457130065917.html">Column.setWhenOrderedBy(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767216.html">search.Column</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Returns the search column for which the minimal or maximal value should be found when returning the <a href="section_4345767216.html">search.Column</a> value.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13%;" rowspan="6">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454645935058.html">Column.formula</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Formula used for a search column as a string.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_453268676757.html">Column.function</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Special function used in the search column as a string.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460655456542.html">Column.join</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Join ID for a search column as a string.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459848266600.html">Column.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Label used for the search column. You can only get or set custom labels with this property.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456729370116.html">Column.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Name of a search column as a string.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455339294433.html">Column.summary</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.1%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.7%;">
+                  <p style="font-size:1em !important;">Returns the summary type for a search column.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4345765033">Filter Object Members</h2>
+        <p>The following members are available for a <a href="section_4345767603.html">search.Filter</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:14.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:14.5%;" rowspan="5">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46683898925.html">Filter.formula</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Formula used by the search filter.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460736328124.html">Filter.join</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Join ID for the search filter.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459893737792.html">Filter.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Name or internal ID of the search field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452460571288.html">Filter.operator</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Operator used for the search filter.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:15.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46485229492.html">Filter.summary</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:22.4%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345777923.html">search.Summary</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:28.9%;">
+                  <p style="font-size:1em !important;">Summary type for the search filter.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4485763752">Page Object Members</h2>
+        <p>The following members are available for a <a href="section_4486547978.html">search.Page</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="4">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486605324.html">Page.next()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Gets the next segment of data from a paginated search</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4492410539.html">Page.next.promise()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Asynchronously gets the next segment of data from a paginated search</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486606245.html">Page.prev()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Gets the previous segment of data from a paginated search</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4492410589.html">Page.prev.promise()</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Asynchronously gets the previous segment of data from a paginated search</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="5">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486604985.html">Page.data</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">The results from a paginated search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486603498.html">Page.isFirst</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Indicates whether a page is the first page of data for a result set</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486603745.html">Page.isLast</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;">boolean (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">Indicates whether a page is the last page of data for a result set.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486604468.html">Page.pagedData</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4486558900.html">search.PagedData</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">The <code>PagedData</code> Object used to fetch this <code>Page</code> Object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486602257.html">Page.pageRange</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:20.8%;">
+                  <p style="font-size:1em !important;"><a href="section_4486559010.html">search.PageRange</a> (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:29.1%;">
+                  <p style="font-size:1em !important;">The <code>PageRange</code> Object used to fetch this <code>Page</code> Object.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4485762311">PagedData Object Members</h2>
+        <p>The following members are available for a <a href="section_4486558900.html">search.PagedData</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:14.2%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:14.2%;" rowspan="2">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486609298.html">PagedData.fetch(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486547978.html">search.Page</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">Retrieves the data within the specified page range.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4491674556.html">PagedData.fetch.promise()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486547978.html">search.Page</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">Asynchronously retrieves the data within the specified page range.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:14.2%;" rowspan="4">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486607957.html">PagedData.count</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">The total number of results when <a href="section_4486596158.html">Search.runPaged(options)</a> was executed.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486608251.html">PagedData.pageRanges</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;"><a href="section_4486559010.html">search.PageRange</a>[] (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">The collection of PageRange objects that divide the entire result set into smaller groups.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486608636.html">PagedData.pageSize</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">The maximum number of entries per page</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:20.7%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486608824.html">PagedData.searchDefinition</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17.6%;">
+                  <p style="font-size:1em !important;"><a href="section_4392315904.html">search.Search</a> (read-only)</p>
+                </td>
+                <td style="padding:3.51px;width:17.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:29.3%;">
+                  <p style="font-size:1em !important;">The search criteria used when <a href="section_4486596158.html">Search.runPaged(options)</a> was executed.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4485764034">PageRange Object Members</h2>
+        <p>The following members are available for a <a href="section_4486559010.html">search.PageRange</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.8%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:30.7%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.8%;" rowspan="2">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486607482.html">PageRange.compoundLabel</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:30.7%;">
+                  <p style="font-size:1em !important;">Human-readable label with beginning and ending range identifiers</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:21%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486606935.html">PageRange.index</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">number (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:17.5%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:30.7%;">
+                  <p style="font-size:1em !important;">The index of this page range.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4345764828">Result Object Members</h2>
+        <p>The following members are available for a <a href="section_4345767112.html">search.Result</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.7%;" rowspan="4">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460663391112.html">Result.getText(column)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">The text value for a <a href="section_4345767216.html">search.Column</a> if it is a stored select field.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456658264159.html">Result.getText(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">The UI display name, or text value, for a search result column. This method is supported only for non-stored select, image, and document fields.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46917053222.html">Result.getValue(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Used on formula fields and non-formula (standard) fields to get the value of a specified search return column.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_46988464355.html">Result.getValue(column)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Used on formula and non-formula (standard) fields. Returns the string value of a specified search result column. For convenience, this method takes a single <a href="section_4345767216.html">search.Column</a> Object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.7%;" rowspan="3">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452222534179.html">Result.columns</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767216.html">search.Column</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">Array of <a href="section_4345767216.html">search.Column</a> objects that encapsulate the columns returned in the search result row.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_454656921386.html">Result.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">The internal ID for the record returned in a search result row.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:19.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456526428222.html">Result.recordType</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.7%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:15.7%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:33.5%;">
+                  <p style="font-size:1em !important;">The type of record returned in a search result row.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4345765156">ResultSet Object Members</h2>
+        <p>The following members are available for a <a href="section_4345767679.html">search.ResultSet</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:12.8%;" rowspan="4">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_457160888671.html">ResultSet.each(callback)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Use a developer-defined function to invoke on each row in the search results, up to 4000 results at a time.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4629990761.html">ResultSet.each.promise(callback)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;">void</p>
+                </td>
+                <td style="padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Asynchronously use a developer-defined function to invoke on each row in the search results, up to 4000 results at a time.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456010986327.html">ResultSet.getRange(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Retrieve a slice of the search result as an array of <a href="section_4345767112.html">search.Result</a> objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.2%;word-wrap:break-word;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4629921431.html">ResultSet.getRange.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767112.html">search.Result</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Asynchronously retrieve a slice of the search result as an array of <a href="section_4345767112.html">search.Result</a> objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:12.8%;">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:20.2%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456520019530.html">ResultSet.columns</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:18.9%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767216.html">search.Column</a>[]</p>
+                </td>
+                <td style="padding:3.61px;width:15.9%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">An array of <a href="section_4345767216.html">search.Column</a> objects that represent the columns returned in the search results.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_4345764734">Search Object Members</h2>
+        <p>The following members are available for a <a href="section_4392315904.html">search.Search</a> object.</p>
+        <div style="font-size:11.64px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.51px;width:13.7%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="5">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452292724609.html">Search.run()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4345767679.html">search.ResultSet</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Runs an on demand search created with <a href="section_4345171487.html">search.create(options)</a> or a search loaded with <a href="section_4345775360.html">search.load(options)</a>, returning the results as a <a href="section_4345767679.html">search.ResultSet</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486596158.html">Search.runPaged(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486558900.html">search.PagedData</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Runs the current search and returns a <a href="section_4486558900.html">search.PagedData</a> Object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4492428680.html">Search.runPaged.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4486558900.html">search.PagedData</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Asynchronously runs the current search and returns a <a href="section_4486558900.html">search.PagedData</a> Object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_452655578613.html">Search.save()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Saves a search created by <a href="section_4345171487.html">search.create(options)</a> or loaded with <a href="section_4345775360.html">search.load(options)</a>. Returns the internal ID of the saved search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_4440796572.html">Search.save.promise()</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Asynchronously saves a search created by <a href="section_4345171487.html">search.create(options)</a> or loaded with <a href="section_4345775360.html">search.load(options)</a>. Returns the internal ID of the saved search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:13.7%;" rowspan="10">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_456374450683.html">Search.columns</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767216.html">search.Column</a>[] | string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Columns to return for this search as an array of <a href="section_4345767216.html">search.Column</a> objects or a string array of column names.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458440490721.html">Search.filterExpression</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">Object[]</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Search filter expression for the search as an array of expression objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459415222167.html">Search.filters</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;"><a href="section_4345767603.html">search.Filter</a>[]</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Filters for the search as an array of <a href="section_4345767603.html">search.Filter</a> objects.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_455917297362.html">Search.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Script ID for a saved search, starting with <code>customsearch</code>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_460638366698.html">Search.isPublic</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">boolean</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Value is <code>true</code> if the search is public, or <code>false</code> if it is not.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_156336419831.html">Search.packageId</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">The application ID for the search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458892150878.html">Search.searchId</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">number</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Internal ID of a search.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_459534851073.html">Search.searchType</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Search type on which a search is based.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536244062.html">Search.settings</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;"><a href="section_1536244919.html">search.Setting</a>[] | string[]</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Search settings for this search as an array of <a href="section_1536244919.html">search.Setting</a> objects or a string array of column names.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.51px;width:21.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_458807006835.html">Search.title</a>
+                  </p>
+                </td>
+                <td style="padding:3.51px;width:15.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.51px;width:17%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.51px;width:32.5%;">
+                  <p style="font-size:1em !important;">Title for a saved search. Use this property to set the title for a search before you save it for the first time.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_1536245468">Setting Object Members</h2>
+        <p>The following members are available for a <a href="section_1536244919.html">search.Setting</a> object.</p>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:15.5%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:19.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.3%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:30.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:15.5%;" rowspan="2">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536177181.html">Setting.name</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:20.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:30.6%;">
+                  <p style="font-size:1em !important;">The name of the search parameter.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.5%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1536177235.html">Setting.value</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:19.8%;">
+                  <p style="font-size:1em !important;">string (read-only)</p>
+                </td>
+                <td style="padding:3.61px;width:20.3%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:30.6%;">
+                  <p style="font-size:1em !important;">The value of the search parameter.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Support Article</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="https://suiteanswers.custhelp.com/app/answers/detail/a_id/86511" target="_blank">SuiteScript 2.0 &gt; N/search Module &gt; Add a Filter on a Loaded Search Record</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

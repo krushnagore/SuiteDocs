@@ -1,0 +1,196 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - Set Conditional Default Settings Using N/sftp Enums</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="subsect_156943356714.html" title="Previous" type="text/html">
+    <link rel="next" href="section_4855400554.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - Set Conditional Default Settings Using N/sftp Enums","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="subsect_156943356714.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_4855400554.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_4617004932.html" property="item" typeof="WebPage">
+              <span property="name">N/sftp Module</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="section_0304050535.html" property="item" typeof="WebPage">
+              <span property="name">N/sftp Module Script Samples</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">Set Conditional Default Settings Using N/sftp Enums</li>
+        </ol>
+        <h1 class="sect1">Set Conditional Default Settings Using N/sftp Enums</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>The following sample shows how to use the N/sftp module enums to set conditional default settings. The sample creates a secure connection and attempts to upload and add a large file.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">This script sample uses the <code translate="no">define</code> function, which is required for an entry point script (a script you attach to a script record and deploy). You must use the <code translate="no">require</code> function if you want to copy the script into the SuiteScript Debugger and test it. For more information, see <a href="chapter_4387171685.html">SuiteScript 2.1 Global Objects</a>.</p>
+        </div>
+        <pre class="line-numbers">
+          <code class="language-suitescript"> /**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ * @NModuleScope SameAccount
+ */
+
+define(['N/file', 'N/sftp', 'N/error'],
+function(file, sftp, error) {
+    return {
+        beforeLoad: function(){
+            var portNumber = -1;
+            var connectTimeout = -1;
+            var transferTimeout = -1;
+            //these variables can be taken as parameters of the script instead
+
+            if (portNumber &lt; sftp.MIN_PORT_NUMBER || portNumber &gt; sftp.MAX_PORT_NUMBER)
+                portNumber = sftp.DEFAULT_PORT_NUMBER;
+            if (connectTimeout &lt; sftp.MIN_CONNECT_TIMEOUT)
+                connectTimeout = sftp.MIN_CONNECT_TIMEOUT;
+            else if (connectTimeout &gt; sftp.MAX_CONNECT_TIMEOUT)
+                connectTimeout = sftp.MAX_CONNECT_TIMEOUT;
+
+            var connection = sftp.createConnection({
+                username: 'sftpuser',
+                keyId: 'custkey1',
+                url: '192.168.0.100',
+                port: portNumber,
+                directory: 'inbound',
+                timeout: connectTimeout,
+                hostKey: "AAAAB3NzaC1yc2EAAAADAQABAAABAQDMifKH2vTxdiype8nem7+lS3x7dTQR/A67KdsR/5C2WUcDipBzYhHbnG6Am12Nd2tlM01LnaBZA6/8P4Y9x/sGTxtsdE/MzeGDUBn6HBlQvgIrhX62wgoKGQ+P2lEAO1+Vz8y3/MB1NmD7Fc62cJ9Mu88YA6jwJOIPZeHYNVyIm9OrY6VyzYyvSJhH0x7SXyvGnijJQF4G8C4c8u/UVpF/sE16xKZtly2Rx0aDL2FsDRtpyPmM602/R6ISbsmgab3MzzAEIu+zLDMdIBJn3cDhNt1F7Rar6Tu0u18KCkk8GPxbnxDuG4sCNOnXPYkDXSMUbM/ocRjYGtqdZUMmeTf3"
+            });
+
+            // can also be a big file (created for example by async search)
+            var myFileToUpload = file.create({
+                name: 'originalname.txt',
+                fileType: file.Type.PLAINTEXT,
+                contents: 'I am a test file.'
+            });
+
+            if (myFileToUpload.size &gt; connection.MAX_FILE_SIZE)
+                throw error.create({name:"FILE_IS_TOO_BIG", message:"The file you are trying to upload is too big"});
+
+            var minTransferTimeout = 10;
+            if (transferTimeout &gt; connection.MAX_TRANSFER_TIMEOUT)
+                transferTimeout = connection.MAX_TRANSFER_TIMEOUT;
+            else if (transferTimeout &lt; minTransferTimeout)
+                transferTimeout = minTransferTimteout;
+
+            connection.upload({
+                directory: 'files',
+                filename: 'test.txt',
+                file: myFileToUpload,
+                replaceExisting: true,
+                timeout: transferTimeout
+            });
+        }
+    };
+}); 
+</code>
+        </pre>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="section_0304050535.html">N/sftp Module Script Samples</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156943354499.html">Upload and Download a File</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="subsect_156943356714.html">Manage Files and Directories</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>

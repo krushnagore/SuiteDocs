@@ -1,0 +1,442 @@
+[
+  {
+    "index": 1,
+    "name": "N/action Module",
+    "href": "section_1510761537.html",
+    "desc": "Load the N/action module to execute business logic to update the state of a record. Action APIs emulate NetSuite user interface buttons.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 2,
+    "name": "N/auth Module",
+    "href": "section_4296360422.html",
+    "desc": "Load the N/auth module to change your NetSuite login credentials.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 3,
+    "name": "N/cache Module",
+    "href": "section_4642573343.html",
+    "desc": "Load the N/cache module to enable the caching of needed data and improve performance.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 4,
+    "name": "N/certificateControl Module",
+    "href": "section_1547247950.html",
+    "desc": "Load the N/certificateControl module to enable scripting access to the Digital Certificates list found at Setup &gt; Company &gt; Certificates. You can use this module to find the correct certificate for a subsidiary and check the file type. For more information, see Digital Signing and Uploading Digital Certificates.",
+    "scripts": "Server scripts",
+    "permissions": "Certificate Management"
+  },
+  {
+    "index": 5,
+    "name": "N/commerce Modules",
+    "href": "section_1532341439.html",
+    "desc": "Load modules in the N/commerce namespace to access different assets in the web store context, such as items and shopping cart. The modules within the N/commerce namespace are supported by the latest version of SuiteCommerce and by SuiteCommerce Advanced 2019.2 onwards.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 6,
+    "name": "N/compress Module",
+    "href": "section_158584507367.html",
+    "desc": "Load the N/compress module to compress, decompress, and archive files.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 7,
+    "name": "N/config Module",
+    "href": "section_4261803800.html",
+    "desc": "Load the N/config module to access NetSuite configuration settings. See config.Type for a list of supported configuration pages.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 8,
+    "name": "N/crypto Module",
+    "href": "section_4358549582.html",
+    "desc": "Load the N/crypto module to work with hashing, hash-based message authentication (hmac), and symmetrical encryption. You can access a set of wrappers for OpenSSL's hash, hmac, cipher, and decipher methods.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 9,
+    "name": "N/crypto/certificate Module",
+    "href": "section_1543432423.html",
+    "desc": "Load the N/certificate module to sign XML documents or strings with digital certificates using asymmetric cryptography. In addition to signing XML documents, you can create signer and verifier objects and verify signed documents with this module.",
+    "scripts": "Server scripts",
+    "permissions": "Certificate Access"
+  },
+  {
+    "index": 10,
+    "name": "N/crypto/random Module",
+    "href": "section_13113107585.html",
+    "desc": "Load the N/crypto/random module to work with cryptographically-secure pseudo-random generator methods.",
+    "scripts": "Client and server scripts; server scripts support SuiteScript 2.1 only",
+    "permissions": "-"
+  },
+  {
+    "index": 11,
+    "name": "N/currency Module",
+    "href": "section_4358551775.html",
+    "desc": "Load the N/currency module to work with exchange rates within your NetSuite account. You can use this module to find the exchange rate between two currencies based on a certain date.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 12,
+    "name": "N/currentRecord Module",
+    "href": "section_4625600928.html",
+    "desc": "Load the N/currentRecord module to access the record instance that you are currently working on. You can then use the record instance in a client context.",
+    "scripts": "Client scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 13,
+    "name": "N/dataset Module",
+    "href": "article_158946741680.html",
+    "desc": "Load the N/dataset module to create and manage datasets in SuiteAnalytics Workbook. Use this module with the N/workbook module to manage all aspects of your datasets and workbooks in SuiteAnalytics Workbook.",
+    "scripts": "Server scripts",
+    "permissions": "SuiteAnalytics Workbook"
+  },
+  {
+    "index": 14,
+    "name": "N/documentCapture Module",
+    "href": "article_8134325498.html",
+    "desc": "Load the N/documentCapture module to extract text content from supported documents. This module lets you programmatically extract structured content and key information from a variety of document types (such as invoices, receipts, contracts, and so on).",
+    "scripts": "Server scripts SuiteScript 2.1 only",
+    "permissions": "-"
+  },
+  {
+    "index": 15,
+    "name": "N/email Module",
+    "href": "section_4358552361.html",
+    "desc": "Load the N/email module to send email messages from within NetSuite. You can use the email module to send regular, bulk, and campaign email.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 16,
+    "name": "N/encode Module",
+    "href": "section_4369847722.html",
+    "desc": "Load the N/encode module to convert a string to another type of encoding. See encode.Encoding for a list of supported character set encoding.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 17,
+    "name": "N/error Module",
+    "href": "section_4243798608.html",
+    "desc": "Load the N/error module to create your own custom SuiteScript errors. Use these custom errors in try-catch statements to abort script execution.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 18,
+    "name": "N/file Module",
+    "href": "section_4205693274.html",
+    "desc": "Load the N/file module to work with files in NetSuite.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 19,
+    "name": "N/format Module",
+    "href": "section_4388721627.html",
+    "desc": "Load the N/format module to convert strings into a specified format and to parse formatted data into strings.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 20,
+    "name": "N/format/i18n Module",
+    "href": "section_1543861741.html",
+    "desc": "Load the N/format/i18n module to format currency.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 21,
+    "name": "N/http Module",
+    "href": "section_4296361104.html",
+    "desc": "Load the N/http module to make http calls.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 22,
+    "name": "N/https Module",
+    "href": "section_4418229131.html",
+    "desc": "Load the N/https module to make https calls. You can also use this module to encode binary content or securely access a handle to the value in a NetSuite credential field.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 23,
+    "name": "N/https/clientCertificate Module",
+    "href": "section_1543986321.html",
+    "desc": "Load the N/clientCertificate module to send SSL requests with a digital certificate.",
+    "scripts": "Server scripts",
+    "permissions": "Certificate Access"
+  },
+  {
+    "index": 24,
+    "name": "N/keyControl Module",
+    "href": "section_1557413213.html",
+    "desc": "Load the N/keyControl module to access key storage.",
+    "scripts": "Server scripts",
+    "permissions": "Key Management"
+  },
+  {
+    "index": 25,
+    "name": "N/llm Module",
+    "href": "article_9123730083.html",
+    "desc": "Load the N/llm module to use generative artificial intelligence (AI) capabilities. You can use this module to send requests to the large language models (LLMs) supported by NetSuite and to receive LLM responses to use in your scripts.",
+    "scripts": "Server scripts SuiteScript 2.1 only",
+    "permissions": "-"
+  },
+  {
+    "index": 26,
+    "name": "N/log Module",
+    "href": "section_4574548135.html",
+    "desc": "Load the N/log module to access methods for logging script execution details. Module members are also supported by the global log Object.",
+    "scripts": "Client and server scripts Limitations apply to client scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 27,
+    "name": "N/machineTranslation Module",
+    "href": "article_3151132758.html",
+    "desc": "Load the N/machineTranslation module to translate text into supported languages using generative AI.",
+    "scripts": "Server scripts SuiteScript 2.1 only",
+    "permissions": "-"
+  },
+  {
+    "index": 28,
+    "name": "N/manufacturing/productionCharges Module",
+    "href": "article_1110531599.html",
+    "desc": "Load the N/manufacturing/productionCharges module to update unit costs of manufacturing charges on Assembly Build, Work Order Close, Work Order Completion transactions.",
+    "scripts": "\u00c2",
+    "permissions": "\u00c2"
+  },
+  {
+    "index": 29,
+    "name": "N/pgp Module",
+    "href": "article_5095832176.html",
+    "desc": "Load the N/pgp module to send secure messages to one or multiple receivers.",
+    "scripts": "Server scripts SuiteScript 2.1 only",
+    "permissions": "-"
+  },
+  {
+    "index": 30,
+    "name": "N/piremoval Module",
+    "href": "section_156173791240.html",
+    "desc": "Load the N/piremoval module to remove personal information (PI) from system notes, workflow history, and specific field values.",
+    "scripts": "Server scripts",
+    "permissions": "Remove Personal Information Create Remove Personal Information Run"
+  },
+  {
+    "index": 31,
+    "name": "N/plugin Module",
+    "href": "section_4558176297.html",
+    "desc": "Load the N/plugin module to load custom plug-in implementations.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 32,
+    "name": "N/portlet Module",
+    "href": "section_4473510730.html",
+    "desc": "Load the N/portlet module to resize or refresh a form portlet.",
+    "scripts": "Client scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 33,
+    "name": "N/query Module",
+    "href": "section_1510275060.html",
+    "desc": "Load the N/query module to create and run searches using the SuiteAnalytics Workbook query process.",
+    "scripts": "Client and server scripts",
+    "permissions": "SuiteAnalytics Workbook"
+  },
+  {
+    "index": 34,
+    "name": "N/record Module",
+    "href": "section_4267255811.html",
+    "desc": "Load the N/record module to work with NetSuite records.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 35,
+    "name": "N/recordContext Module",
+    "href": "section_158627324548.html",
+    "desc": "Load the N/recordContext module to get the context type of a record.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 36,
+    "name": "N/redirect Module",
+    "href": "section_4424286105.html",
+    "desc": "Load the N/redirect module to redirect users to a URL, a Suitelet, a record, a task link, a saved search, or an unsaved search.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 37,
+    "name": "N/render Module",
+    "href": "section_4412042824.html",
+    "desc": "Load the N/render module to create forms or email from templates and to print to PDF or HTML.",
+    "scripts": "Server scripts",
+    "permissions": "Advanced PDF/HTML Templates Custom PDF Layouts"
+  },
+  {
+    "index": 38,
+    "name": "N/runtime Module",
+    "href": "section_4296359529.html",
+    "desc": "Load the N/runtime module to access runtime settings for company, script, session, system, user, or version.",
+    "scripts": "Client and server scripts",
+    "permissions": "\u00c2"
+  },
+  {
+    "index": 39,
+    "name": "N/scriptTypes/restlet Module",
+    "href": "article_4130555042.html",
+    "desc": "Load the N/scriptTypes/restlet module to create custom handling for your RESTlet script.",
+    "scripts": "RESTlet scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 40,
+    "name": "N/search Module",
+    "href": "section_4345764122.html",
+    "desc": "Load the N/search module to create and run on-demand or saved searches and analyze and iterate through the search results. You can search for a single record by keywords, create saved searches, search for duplicate records, or return a set of records that match filters you define.",
+    "scripts": "Client and server scripts",
+    "permissions": "Perform Search Persist Search Publish Search"
+  },
+  {
+    "index": 41,
+    "name": "N/sftp Module",
+    "href": "section_4617004932.html",
+    "desc": "Load the N/sftp module to connect to a remote FTP server using SFTP and transfer files.",
+    "scripts": "Server scripts",
+    "permissions": "Key Access (needed when public key authentication is used)"
+  },
+  {
+    "index": 42,
+    "name": "N/sso Module",
+    "href": "",
+    "desc": "Note: As of NetSuite 2025.1, the support ended for the SuiteSignOn feature, which means the N/sso module is also no longer supported. Load the N/sso module to generate outbound single sign-on (SuiteSignOn) tokens.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 43,
+    "name": "N/suiteAppInfo Module",
+    "href": "article_160236086332.html",
+    "desc": "Load the N/suiteAppInfo module when you want to access information related to SuiteApps and Bundles.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 44,
+    "name": "N/task Module",
+    "href": "section_4345787858.html",
+    "desc": "Load the N/task module to create tasks and place them in the internal NetSuite scheduling or task queue. Use this module to schedule scripts, run Map/Reduce scripts, import CSV files, merge duplicate records, and execute asynchronous workflows.",
+    "scripts": "Server scripts",
+    "permissions": "Tasks"
+  },
+  {
+    "index": 45,
+    "name": "N/task/accounting/recognition Module",
+    "href": "section_1554472720.html",
+    "desc": "Load the task/accounting/recognition module to merge revenue arrangements or revenue elements. This module lets you combine revenue arrangements or revenue elements from multiple sources to represent a single contract for revenue allocation and recognition.",
+    "scripts": "Server scripts",
+    "permissions": "(Transactions) Revenue Arrangement"
+  },
+  {
+    "index": 46,
+    "name": "N/transaction Module",
+    "href": "section_4413162576.html",
+    "desc": "Load the N/transaction module to void transactions.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 47,
+    "name": "N/translation Module",
+    "href": "section_1538666156.html",
+    "desc": "Load the N/translation module to load NetSuite Translation Collections in SuiteScript.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 48,
+    "name": "N/ui/dialog Module",
+    "href": "section_4497725142.html",
+    "desc": "Load the N/dialog module to create a modal dialog that is displayed until a button on the dialog is pressed.",
+    "scripts": "Client scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 49,
+    "name": "N/ui/message Module",
+    "href": "section_4497735093.html",
+    "desc": "Load the N/message module to display a message at the top of the screen under the menu bar.",
+    "scripts": "Client scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 50,
+    "name": "N/ui/serverWidget Module",
+    "href": "section_4321345532.html",
+    "desc": "Load the N/serverWidget module to work with the user interface within NetSuite.",
+    "scripts": "Server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 51,
+    "name": "N/url Module",
+    "href": "section_4358552918.html",
+    "desc": "Load the N/url module to determine URL navigation paths within NetSuite or format URL strings.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 52,
+    "name": "N/util Module",
+    "href": "section_4569538303.html",
+    "desc": "Load the N/util module to manually access util methods. Module members are also supported by the global util Object.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  },
+  {
+    "index": 53,
+    "name": "N/workbook Module",
+    "href": "article_159006350818.html",
+    "desc": "Load the N/workbook module to create and manage workbooks in SuiteAnalytics Workbook. Use this module with the N/dataset module to manage all aspects of your datasets and workbooks in SuiteAnalytics Workbook.",
+    "scripts": "Server scripts",
+    "permissions": "SuiteAnalytics Workbook"
+  },
+  {
+    "index": 54,
+    "name": "N/workflow Module",
+    "href": "section_4341725558.html",
+    "desc": "Load the N/workflow module to initiate new workflow instances or trigger existing workflow instances.",
+    "scripts": "Server scripts",
+    "permissions": "Workflow"
+  },
+  {
+    "index": 55,
+    "name": "N/xml Module",
+    "href": "section_4344917661.html",
+    "desc": "Load the N/xml module to validate, parse, read, and modify XML documents.",
+    "scripts": "Client and server scripts",
+    "permissions": "-"
+  }
+]

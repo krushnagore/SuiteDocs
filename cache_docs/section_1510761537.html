@@ -1,0 +1,520 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Applications Suite - N/action Module</title>
+    <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+    <link rel="stylesheet" href="ns-enhanced.css">
+    <script>
+                 document.write('<style type="text/css">');
+                 document.write('body > .noscript, body > .noscript ~ * { opacity: 0; }');
+                 document.write('</style>');
+      </script>
+    <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"> </script>
+    <script>
+                 if (window.require === undefined) {
+                 document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                 document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+                 }
+      </script>
+    <meta property="og:site_name" content="Oracle Help Center">
+    <meta property="og:title" content="NetSuite Applications Suite">
+    <meta property="og:description" content="NetSuite Applications Suite">
+    <meta name="generator" content="Doc Generator v123">
+    <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+    <meta name="application-name" content="NetSuite Applications Suite">
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+    <meta name="dcterms.created" content="2016-05-06T23:01:47Z">
+    <meta name="dcterms.dateCopyrighted" content="2015, 2016">
+    <meta name="dcterms.category" content="cloud">
+    
+    <link rel="prev" href="chapter_4220488571.html" title="Previous" type="text/html">
+    <link rel="next" href="section_0302035713.html" title="Next" type="text/html">
+    <meta content="all" name="robots">
+    <meta content="yes" name="mos_crawl">
+    <meta content="F41230-01" name="partno">
+    <meta name="rel_num" content="21A">
+    <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"cloud","element_name":"Cloud","display_in_url":true},"suite":{"short_name":"saas","element_name":"Cloud Applications","display_in_url":true},"product_group":{"short_name":"netsuite-applications","element_name":"NetSuite Applications","display_in_url":false},"product":{"short_name":"netsuite","element_name":"NetSuite","display_in_url":true},"release":{"short_name":"latest","element_name":"Cloud Latest","display_in_url":false}}}</script>
+    
+  
+    <meta name="dcterms.title" content="NetSuite Applications Online Help">
+    <meta name="dcterms.product" content="en/cloud/saas/netsuite">
+    <meta name="dcterms.identifier" content="F41230-76">
+    <meta name="dcterms.release" content="Cloud Latest">
+    <meta name="dcterms.isVersionOf" content="NSOLH">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NetSuite Applications Suite - N/action Module","datePublished":"2026-08-17 CST","dateModified":"2026-08-17 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+  <body>
+    <div class="noscript alert alert-danger text-center" role="alert"><a class="pull-left" href="chapter_4220488571.html"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Previous</a><a class="pull-right" href="section_0302035713.html">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">&nbsp;</span></a><span class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</span> JavaScript must be enabled to correctly display this content
+				  </div>
+    <article>
+      <header>
+        <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_N2807372.html" property="item" typeof="WebPage">
+              <span property="name">SuiteCloud Platform</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="set_1502135122.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="article_4140956840.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.x API Reference</span>
+            </a>
+          </li>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="chapter_4220488571.html" property="item" typeof="WebPage">
+              <span property="name">SuiteScript 2.1 Modules</span>
+            </a>
+          </li>
+          <li class="active" property="itemListElement" typeof="ListItem">N/action Module</li>
+        </ol>
+        <h1 class="sect1">N/action Module</h1>
+      </header>
+      <div class="ns-enhanced-page">
+        <p>Use the N/action module to execute business logic to update the state of records in view mode. To execute business logic on records in edit mode, use the record macro APIs, which are included in the <a href="section_4267255811.html">N/record Module</a> module. See <a href="section_4267255811.html#bridgehead_4273190849">Record Object Members</a> and <a href="section_4267255811.html#bridgehead_1529088663">Macro Object Members</a>. Action and Macro APIs are the programmatic equivalent to clicking a button in the UI. To learn more, see <a href="section_1509640242.html">Overview of Record Action and Macro APIs</a>.</p>
+        <p>
+          <strong>
+            <a href="section_0302035713.html">N/action Module Script Samples</a>
+          </strong>
+        </p>
+        <p>The changes that you make to records with N/action module APIs are persisted in the database immediately. For example, consider the timebill record. After you click the <strong>Approve</strong> button in the UI, the timebill and its entries are saved in an approved state, and this change is immediately updated in the database.</p>
+        <p>Governance for action module APIs varies for actions and record types. See the action help for governance information specific to actions and record types.</p>
+        <p>A limited number of individual actions for specific record types are supported. For details, see <a href="section_1516982564.html">Supported Record Actions</a>.</p>
+        <div class="infobox-note">
+          <span class="notep1">Note: </span>
+          <p class="nshelp_first">For supported script types, see individual member topics listed below.</p>
+        </div>
+        <div>
+          <h2 id="subsect_12182840021">In This Help Topic</h2>
+          <ul>
+            <li>
+              <p>
+                <a href="#bridgehead_1509379229">N/action Module Members</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#bridgehead_1509379724">Action Object Members</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 id="bridgehead_1509379229">N/action Module Members</h2>
+        <div style="font-size:12px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.61px;width:13.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Return Type / Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="2">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509380249.html">action.Action</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Encapsulates a NetSuite record action.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">Plain JavaScript Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">A plain JavaScript object of actions available for a record type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:13.4%;" rowspan="7">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509391388.html">action.execute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Executes the record action and returns action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509392030.html">action.execute.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Asynchronously executes the record action and returns the action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1540815927.html">action.executeBulk(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Executes an asynchronous bulk record action and returns its task ID for later status inquiry.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509389605.html">action.find(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Returns a plain JavaScript object of available record actions for the given record type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509391246.html">action.find.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Asynchronously returns a plain JavaScript object of available record actions for the given record type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509384818.html">action.get(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509380249.html">action.Action</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Returns an executable record action for the given record type.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.61px;width:20.9%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509385970.html">action.get.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.61px;width:16.8%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.61px;width:31.9%;">
+                  <p style="font-size:1em !important;">Asynchronously returns an executable record action for the given record type.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="bridgehead_1509379724">Action Object Members</h2>
+        <p>The following members are called on <a href="section_1509380249.html">action.Action</a>.</p>
+        <div style="font-size:11.96px !important;word-wrap:normal;white-space:normal;overflow-wrap:break-word;">
+          <table class="grid" style="width:100%;table-layout:fixed;overflow-wrap:break-word;border-collapse:collapse;margin: 5px 0px 10px 0px;line-height: 125%;">
+            <thead>
+              <tr>
+                <th style="vertical-align:top;padding:3.6px;width:14.4%;">
+                  <p style="font-size:1em !important;">Member Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">Name</p>
+                </th>
+                <th style="vertical-align:top;padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Return Type/Value Type</p>
+                </th>
+                <th style="vertical-align:top;padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Supported Script Types</p>
+                </th>
+                <th style="vertical-align:top;padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Description</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:3.6px;width:14.4%;" rowspan="6">
+                  <p style="font-size:1em !important;">Method</p>
+                </td>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509387360.html">Action(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Executes the action and returns the action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509387674.html">Action.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Executes the action asynchronously and returns the action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509386224.html">Action.execute(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Executes the action and returns the action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509386721.html">Action.execute.promise(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Promise</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Executes the action asynchronously and returns the action results in an object.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1540816431.html">Action.executeBulk(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Executes an asynchronous bulk record action and returns its task ID for later status inquiry.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1540816132.html">action.getBulkStatus(options)</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">Returns the current status of <a href="section_1540815927.html">action.executeBulk(options)</a> with the given task ID.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:14.4%;" rowspan="5">
+                  <p style="font-size:1em !important;">Property</p>
+                </td>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509388207.html">Action.description</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">The action description.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509387777.html">Action.id</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">The ID of the action.</p>
+                  <p style="font-size:1em !important;">For a list of action IDs, see <a href="section_1516982564.html">Supported Record Actions</a>.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509388068.html">Action.label</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">The action label.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509389367.html">Action.parameters</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">Object</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">The action parameters.</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:3.6px;width:22.6%;">
+                  <p style="font-size:1em !important;">
+                    <a href="section_1509387977.html">Action.recordType</a>
+                  </p>
+                </td>
+                <td style="padding:3.6px;width:14.1%;">
+                  <p style="font-size:1em !important;">string</p>
+                </td>
+                <td style="padding:3.6px;width:18.2%;">
+                  <p style="font-size:1em !important;">Client and server scripts</p>
+                </td>
+                <td style="padding:3.6px;width:30.6%;">
+                  <p style="font-size:1em !important;">The type of the record on which the action is to be performed.</p>
+                  <p style="font-size:1em !important;">For a list of record types, see <a href="section_4273205732.html">record.Type</a>.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Related Topics</h3>
+          <div>
+            <div>
+              <ul class="ns-enhanced-minitoc">
+                <li>
+                  <span>
+                    <a href="chapter_4220488571.html">SuiteScript 2.1 Modules</a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a href="article_8161516336.html">SuiteScript 2.x</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 60px;">
+          <a rev="chapter_N000004" href="chapter_N000004.html">General Notices</a>
+        </p>
+      </div>
+    </article>
+  </body>
+</html>
