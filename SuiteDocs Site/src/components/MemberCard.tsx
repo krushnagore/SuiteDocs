@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApiMember } from '../types/doc';
-import { Zap, AlertTriangle, Hash, ExternalLink } from 'lucide-react';
+import { Zap, AlertTriangle, Hash, ExternalLink, Code2 } from 'lucide-react';
+import { CodeBlock } from './CodeBlock';
 
 interface MemberCardProps {
   member: ApiMember;
@@ -96,6 +97,24 @@ export const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
             </a>
           )}
         </div>
+
+        {member.codeSnippet && (
+          <div className="mt-3.5 pt-3 border-t border-slate-800/80">
+            <div className="mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide text-emerald-400">
+                <Code2 className="h-3.5 w-3.5" />
+                Official Code Reference
+              </span>
+              <span className="text-[10px] text-slate-500 font-mono">Oracle NetSuite Docs</span>
+            </div>
+            <CodeBlock
+              code={member.codeSnippet}
+              language="javascript"
+              title={member.name}
+              provenance="official"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

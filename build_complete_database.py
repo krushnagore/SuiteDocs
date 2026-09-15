@@ -49,6 +49,17 @@ def parse_html_table(table_html):
             grid.append(row_cells)
     return grid
 
+# Load scraped method code references if available
+method_snippets = {}
+method_snippets_file = 'scraped_method_samples.json'
+if os.path.exists(method_snippets_file):
+    try:
+        with open(method_snippets_file, 'r', encoding='utf-8') as f:
+            method_snippets = json.load(f)
+        print(f"Loaded {len(method_snippets)} method code references for database integration.")
+    except Exception as e:
+        print(f"Notice: loading method snippets: {e}")
+
 with open('modules_list.json', 'r', encoding='utf-8') as f:
     modules_meta = json.load(f)
 
@@ -73,8 +84,15 @@ for mod in modules_meta:
         'supported_scripts': scripts,
         'permissions': perms,
         'intro_paragraphs': [],
-        'sections': []
+        'sections': [],
+        'method_samples': {}
     }
+
+    # Populate module-specific method samples
+    if method_snippets:
+        for m_key, m_val in method_snippets.items():
+            if m_val.get('module_path') == mod_path or m_val.get('module') == name:
+                mod_data['method_samples'][m_key] = m_val.get('code', '')
     
     # Handle N/sso Module
     if not href and 'sso' in name.lower():

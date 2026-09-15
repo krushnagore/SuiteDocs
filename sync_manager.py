@@ -142,12 +142,22 @@ def run_synchronization():
         # Step 1: Scrape & refresh samples if updated
         scrape_script = os.path.join(BASE_DIR, "scrape_all_samples.py")
         if os.path.exists(scrape_script):
-            log_message("1/5: Checking and updating samples from Oracle documentation cache...")
+            log_message("1a/5: Checking and updating module samples from Oracle documentation cache...")
             res = subprocess.run([sys.executable, scrape_script], cwd=BASE_DIR, capture_output=True, text=True)
             if res.returncode != 0:
                 log_message(f"Warning: scrape_all_samples warning: {res.stderr[:200]}")
         else:
-            log_message("1/5: scrape_all_samples.py not present, using existing cache.")
+            log_message("1a/5: scrape_all_samples.py not present, using existing cache.")
+
+        # Step 1b: Scrape & refresh method-level code references from Oracle documentation
+        method_scrape_script = os.path.join(BASE_DIR, "scrape_all_method_samples.py")
+        if os.path.exists(method_scrape_script):
+            log_message("1b/5: Checking and updating official method code references from Oracle documentation...")
+            res = subprocess.run([sys.executable, method_scrape_script], cwd=BASE_DIR, capture_output=True, text=True)
+            if res.returncode != 0:
+                log_message(f"Warning: scrape_all_method_samples warning: {res.stderr[:200]}")
+        else:
+            log_message("1b/5: scrape_all_method_samples.py not present.")
 
         # Step 2: Build complete database
         build_db_script = os.path.join(BASE_DIR, "build_complete_database.py")
@@ -174,14 +184,21 @@ def run_synchronization():
         log_message("4/5: Syncing updated deliverables to SuiteDocs Site...")
         json_src = os.path.join(BASE_DIR, "suite_script_21_complete.json")
         pdf_src = os.path.join(BASE_DIR, "SuiteScript_2.1_Modules_Reference.pdf")
+        methods_src = os.path.join(BASE_DIR, "scraped_method_samples.json")
 
         site_data_dest = os.path.join(SITE_DIR, "public", "data", "suite_script_21_complete.json")
         site_pdf_dest = os.path.join(SITE_DIR, "public", "downloads", "SuiteScript_2.1_Modules_Reference.pdf")
+        site_methods_dest = os.path.join(SITE_DIR, "public", "data", "scraped_method_samples.json")
 
         if os.path.exists(json_src):
             os.makedirs(os.path.dirname(site_data_dest), exist_ok=True)
             shutil.copy2(json_src, site_data_dest)
             log_message(f"Copied {json_src} -> {site_data_dest}")
+
+        if os.path.exists(methods_src):
+            os.makedirs(os.path.dirname(site_methods_dest), exist_ok=True)
+            shutil.copy2(methods_src, site_methods_dest)
+            log_message(f"Copied {methods_src} -> {site_methods_dest}")
 
         if os.path.exists(pdf_src):
             os.makedirs(os.path.dirname(site_pdf_dest), exist_ok=True)

@@ -27,6 +27,17 @@ class DocService {
       const rawData = await res.json();
       const rawModules = Array.isArray(rawData) ? rawData : rawData.modules || [];
 
+      // Load official method-level code snippets
+      let methodSnippetsMap: Record<string, any> = {};
+      try {
+        const methodRes = await fetch('/data/scraped_method_samples.json');
+        if (methodRes.ok) {
+          methodSnippetsMap = await methodRes.json();
+        }
+      } catch {
+        // Fallback gracefully
+      }
+
       let memberCounter = 0;
 
       this.modules = rawModules.map((raw: any, index: number) => {
@@ -81,6 +92,20 @@ class DocService {
                       gov = '5 units';
                     }
 
+                    let codeSnippet: string | undefined = undefined;
+                    if (methodSnippetsMap) {
+                      const rawNoArgs = rawName.split('(')[0].trim();
+                      const snippetObj =
+                        methodSnippetsMap[rawName] ||
+                        methodSnippetsMap[rawNoArgs] ||
+                        methodSnippetsMap[`${modPath}.${cleanMemberName}`] ||
+                        methodSnippetsMap[`${cleanMemberName}(options)`] ||
+                        methodSnippetsMap[cleanMemberName];
+                      if (snippetObj) {
+                        codeSnippet = typeof snippetObj === 'string' ? snippetObj : snippetObj.code;
+                      }
+                    }
+
                     const mem: ApiMember = {
                       id: `mem-${slug}-${cleanMemberName}-${memberCounter++}`,
                       name: rawName,
@@ -94,7 +119,8 @@ class DocService {
                       availability: avail,
                       supportedScripts: avail.includes('Server') ? ['Server', 'User Event', 'Suitelet', 'Map/Reduce'] : ['Client', 'Server'],
                       deprecated: raw.name.toLowerCase().includes('sso') || desc.toLowerCase().includes('deprecated'),
-                      oracleUrl: raw.href ? `https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/${raw.href}` : undefined
+                      oracleUrl: raw.href ? `https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/${raw.href}` : undefined,
+                      codeSnippet
                     };
 
                     members.push(mem);

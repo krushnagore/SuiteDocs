@@ -13,6 +13,7 @@ export interface ApiMember {
   deprecated: boolean;
   deprecatedMessage?: string;
   oracleUrl?: string;
+  codeSnippet?: string;
 }
 
 export interface CodeExample {

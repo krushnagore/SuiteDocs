@@ -16,3 +16,4 @@ __pycache__/
 # Cache directories
 cache_docs/
 cache_samples/
+cache_methods/

@@ -4,6 +4,7 @@ import { Copy, Check, Code2, ShieldCheck } from 'lucide-react';
 interface CodeBlockProps {
   code: string;
   title?: string;
+  language?: string;
   scriptType?: string;
   provenance?: 'official' | 'platform' | 'community';
 }

@@ -5,8 +5,8 @@
   "time_of_day": "02:00",
   "auto_rebuild_site": true,
   "author": "Krushna Gore",
-  "last_sync": "2026-09-09T03:00:00Z",
+  "last_sync": "2026-09-16T04:53:43Z",
   "last_status": "SUCCESS",
-  "last_details": "55 modules synchronized, 321-page PDF generated and synced to SuiteDocs Site",
-  "next_scheduled_sync": "2026-09-10T02:00:00Z"
+  "last_details": "55 modules synchronized in 36.25s. All assets refreshed.",
+  "next_scheduled_sync": "2026-09-17T02:00:00Z"
 }
