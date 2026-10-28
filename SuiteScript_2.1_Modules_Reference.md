@@ -59,12 +59,12 @@
 | 47 | [N/translation Module](#ntranslation-module) | 5 sample(s) | Client and server scripts | - |
 | 48 | [N/ui/dialog Module](#nuidialog-module) | 4 sample(s) | Client scripts | - |
 | 49 | [N/ui/message Module](#nuimessage-module) | 1 sample(s) | Client scripts | - |
-| 50 | [N/ui/serverWidget Module](#nuiserverwidget-module) | 3 sample(s) | Server scripts | - |
+| 50 | [N/ui/serverWidget Module](#nuiserverwidget-module) | 10 sample(s) | Server scripts | - |
 | 51 | [N/url Module](#nurl-module) | 4 sample(s) | Client and server scripts | - |
 | 52 | [N/util Module](#nutil-module) | 1 sample(s) | Client and server scripts | - |
 | 53 | [N/workbook Module](#nworkbook-module) | 2 sample(s) | Server scripts | SuiteAnalytics Workbook |
 | 54 | [N/workflow Module](#nworkflow-module) | 1 sample(s) | Server scripts | Workflow |
-| 55 | [N/xml Module](#nxml-module) | 3 sample(s) | Client and server scripts | - |
+| 55 | [N/xml Module](#nxml-module) | 1 sample(s) | Client and server scripts | - |
 
 ---
 
@@ -156,230 +156,230 @@ Action.promise(options)
 #### Sample 1: Locate and Execute an Action on a Timebill Record
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/action', 'N/record'], function(action, record) {
-    // create timebill record  
-    var rec = record.create({
-        type: 'timebill',
-        isDynamic: true
-    });
-    rec.setValue({
-        fieldId: 'employee',
-        value: 104
-    });
-    rec.setValue({
-        fieldId: 'location',
-        value: 312
-    });
-    rec.setValue({
-        fieldId: 'hours',
-        value: 5
-    });
-    var recordId = rec.save();
-
-    var actions = action.find({
-        recordType: 'timebill',
-        recordId: recordId
-
-    });
-
-    log.debug("We've got the following actions: " + Object.keys(actions));
-    if (actions.approve) {
-        var result = actions.approve();
-        log.debug("Timebill has been successfully approved");
-    } else {
-        log.debug("The timebill is already approved");
-    }
-});
-
-// Outputs the following:
-// We've got the following actions: approve, reject
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/action', 'N/record'], function(action, record) {
+    // create timebill record  
+    var rec = record.create({
+        type: 'timebill',
+        isDynamic: true
+    });
+    rec.setValue({
+        fieldId: 'employee',
+        value: 104
+    });
+    rec.setValue({
+        fieldId: 'location',
+        value: 312
+    });
+    rec.setValue({
+        fieldId: 'hours',
+        value: 5
+    });
+    var recordId = rec.save();
+
+    var actions = action.find({
+        recordType: 'timebill',
+        recordId: recordId
+
+    });
+
+    log.debug("We've got the following actions: " + Object.keys(actions));
+    if (actions.approve) {
+        var result = actions.approve();
+        log.debug("Timebill has been successfully approved");
+    } else {
+        log.debug("The timebill is already approved");
+    }
+});
+
+// Outputs the following:
+// We've got the following actions: approve, reject
 // Timebill has been successfully approved
 ```
 
 #### Sample 2: Find Actions Available for the Timebill Record Asynchronously Using Promise Methods
 
 ```javascript
-/**
- * @NApiVersion 2.x
- * @NScriptType ClientScript
- */
-require(['N/action', 'N/record'], function(action, record) {
-    // create timebill record    
-    var rec = record.create({
-        type: 'timebill',
-        isDynamic: true
-    });
-    rec.setValue({
-        fieldId: 'employee',
-        value: 104
-    });
-    rec.setValue({
-        fieldId: 'location',
-        value: 312
-    });
-    rec.setValue({
-        fieldId: 'hours',
-        value: 5
-    });
-    var recordId = rec.save();
-
-    // find all qualified actions and then execute approve if available   
-    action.find.promise({
-        recordType: 'timebill',
-        recordId: recordId
-    }).then(function(actions) {
-        console.log("We've got the following actions: " + Object.keys(actions));
-        if (actions.approve) {
-            actions.approve.promise().then(function(result) {
-                console.log("Timebill has been successfully approved");
-            });
-        } else {
-            console.log("The timebill is already approved");
-        }
-    });
-});
-
-// Outputs the following:
-// We've got the following actions:
+/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ */
+require(['N/action', 'N/record'], function(action, record) {
+    // create timebill record    
+    var rec = record.create({
+        type: 'timebill',
+        isDynamic: true
+    });
+    rec.setValue({
+        fieldId: 'employee',
+        value: 104
+    });
+    rec.setValue({
+        fieldId: 'location',
+        value: 312
+    });
+    rec.setValue({
+        fieldId: 'hours',
+        value: 5
+    });
+    var recordId = rec.save();
+
+    // find all qualified actions and then execute approve if available   
+    action.find.promise({
+        recordType: 'timebill',
+        recordId: recordId
+    }).then(function(actions) {
+        console.log("We've got the following actions: " + Object.keys(actions));
+        if (actions.approve) {
+            actions.approve.promise().then(function(result) {
+                console.log("Timebill has been successfully approved");
+            });
+        } else {
+            console.log("The timebill is already approved");
+        }
+    });
+});
+
+// Outputs the following:
+// We've got the following actions:
 // The timebill has been successfully approved
 ```
 
 #### Sample 3: Execute a Bulk Action on a Timebill Record
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/action', 'N/util']function(action, util) {
-
-    // 1a) Bulk execute the specified action on a provided list of record IDs.
-    // The params property is an array of parameter objects where each object contains required recordId and arbitrary additional parameters.
-    var handle = action.executeBulk({
-        recordType: "timebill",
-        id: "approve",
-        params: [{
-                recordId: 1,
-                note: "this is a note for 1"
-            },
-            {
-                recordId: 5,
-                note: "this is a note for 5"
-            },
-            {
-                recordId: 23,
-                note: "this is a note for 23"
-            }
-        ]
-    })
-});
-
-// 1b) Bulk execute the specified action on a provided list of record IDs.
-// The parameters in the previous sample are similar and can be generated programatically using the map function.
-var searchResults = /* result of a search, for example, [1, 5, 23] */ ;
-var handle = action.executeBulk({
-    recordType: "timebill",
-    id: "approve",
-    params: searchResults.map(function(v) {
-        return {
-            recordId: v,
-            note: "this is a note for " + v
-        };
-    })
-});
-
-// 2a) Bulk execute the specified action on a provided list of record IDs.
-// This time with homogenous parameters, that is, all parameter objects are equal except recordId.
-var handle = action.executeBulk({
-    recordType: "timebill",
-    id: "approve",
-    params: searchResults.map(function(v) {
-        return {
-            recordId: v,
-            foo: "bar",
-            name: "John Doe"
-        };
-    })
-});
-
-// 2b) Bulk execute the specified action on a provided list of record IDs.
-// This time with homogenous parameters. Equivalent to the previous sample.
-var commonParams = {
-    foo: "bar",
-    name: "John Doe"
-};
-var handle = action.executeBulk({
-    recordType: "timebill",
-    id: "approve",
-    params: searchResults.map(function(v) {
-        return util.extend({
-            recordId: v
-        }, commonParams);
-    })
-});
-
-// 3) Bulk execute the specified action on a provided list of record IDs.
-// This is the simplest usage with no extra parameters besides the record ID.
-var handle = action.executeBulk({
-    recordType: "timebill",
-    id: "approve",
-    params: searchResults.map(function(v) {
-        return {
-            recordId: v
-        }
-    })
-});
-
-// 4) Bulk execute the specified action on all record instances that qualify.
-// Since we don't have a list of recordIds in hand, we only provide the callback
-// that will later be used to transform a recordId to the corresponding parameters object.
-var handle = action.executeBulk({
-    recordType: "timebill",
-    id: "approve",
-    condition: action.ALL_QUALIFIED_INSTANCES,
-    paramCallback: function(v) {
-        return {
-            recordId: v,
-            note: "this is a note for " + v
-        };
-    }
-});
-
-// 5) Get a particular action for a particular record type.
-var approveTimebill = action.get({
-    recordType: "timebill",
-    id: "approve"
-});
-
-// 6) Bulk execute the previously obtained action on a provided list of record IDs.
-// Params are generated the same way as above in action.executeBulk().
-var handle = approveTimebill.executeBulk({
-    params: searchResults.map(function(v) {
-        return {
-            recordId: v,
-            note: "this is a note for " + v
-        };
-    })
-});
-
-// 7) Bulk execute the previously obtained action on all record instances that qualify.
-var handle = approveTimebill.executeBulk({
-    condition: action.ALL_QUALIFIED_INSTANCES,
-    paramCallback: function(v) {
-        return {
-            recordId: v,
-            note: "this is a note for " + v
-        };
-    }
-});
-
-// 8) Get status of a bulk action execution.
-var res = action.getBulkStatus({
-    taskId: handle
-}); // returns a RecordActionTaskStatus object
-log.debug(res.status);
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/action', 'N/util']function(action, util) {
+
+    // 1a) Bulk execute the specified action on a provided list of record IDs.
+    // The params property is an array of parameter objects where each object contains required recordId and arbitrary additional parameters.
+    var handle = action.executeBulk({
+        recordType: "timebill",
+        id: "approve",
+        params: [{
+                recordId: 1,
+                note: "this is a note for 1"
+            },
+            {
+                recordId: 5,
+                note: "this is a note for 5"
+            },
+            {
+                recordId: 23,
+                note: "this is a note for 23"
+            }
+        ]
+    })
+});
+
+// 1b) Bulk execute the specified action on a provided list of record IDs.
+// The parameters in the previous sample are similar and can be generated programatically using the map function.
+var searchResults = /* result of a search, for example, [1, 5, 23] */ ;
+var handle = action.executeBulk({
+    recordType: "timebill",
+    id: "approve",
+    params: searchResults.map(function(v) {
+        return {
+            recordId: v,
+            note: "this is a note for " + v
+        };
+    })
+});
+
+// 2a) Bulk execute the specified action on a provided list of record IDs.
+// This time with homogenous parameters, that is, all parameter objects are equal except recordId.
+var handle = action.executeBulk({
+    recordType: "timebill",
+    id: "approve",
+    params: searchResults.map(function(v) {
+        return {
+            recordId: v,
+            foo: "bar",
+            name: "John Doe"
+        };
+    })
+});
+
+// 2b) Bulk execute the specified action on a provided list of record IDs.
+// This time with homogenous parameters. Equivalent to the previous sample.
+var commonParams = {
+    foo: "bar",
+    name: "John Doe"
+};
+var handle = action.executeBulk({
+    recordType: "timebill",
+    id: "approve",
+    params: searchResults.map(function(v) {
+        return util.extend({
+            recordId: v
+        }, commonParams);
+    })
+});
+
+// 3) Bulk execute the specified action on a provided list of record IDs.
+// This is the simplest usage with no extra parameters besides the record ID.
+var handle = action.executeBulk({
+    recordType: "timebill",
+    id: "approve",
+    params: searchResults.map(function(v) {
+        return {
+            recordId: v
+        }
+    })
+});
+
+// 4) Bulk execute the specified action on all record instances that qualify.
+// Since we don't have a list of recordIds in hand, we only provide the callback
+// that will later be used to transform a recordId to the corresponding parameters object.
+var handle = action.executeBulk({
+    recordType: "timebill",
+    id: "approve",
+    condition: action.ALL_QUALIFIED_INSTANCES,
+    paramCallback: function(v) {
+        return {
+            recordId: v,
+            note: "this is a note for " + v
+        };
+    }
+});
+
+// 5) Get a particular action for a particular record type.
+var approveTimebill = action.get({
+    recordType: "timebill",
+    id: "approve"
+});
+
+// 6) Bulk execute the previously obtained action on a provided list of record IDs.
+// Params are generated the same way as above in action.executeBulk().
+var handle = approveTimebill.executeBulk({
+    params: searchResults.map(function(v) {
+        return {
+            recordId: v,
+            note: "this is a note for " + v
+        };
+    })
+});
+
+// 7) Bulk execute the previously obtained action on all record instances that qualify.
+var handle = approveTimebill.executeBulk({
+    condition: action.ALL_QUALIFIED_INSTANCES,
+    paramCallback: function(v) {
+        return {
+            recordId: v,
+            note: "this is a note for " + v
+        };
+    }
+});
+
+// 8) Get status of a bulk action execution.
+var res = action.getBulkStatus({
+    taskId: handle
+}); // returns a RecordActionTaskStatus object
+log.debug(res.status);
 });
 ```
 
@@ -433,24 +433,24 @@ Changes the current user's NetSuite password.
 #### Sample 1: N/auth Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script changes the currently logged-in user's NetSuite email address and password.
-require(['N/auth'],function(auth) {
-    function changeEmailAndPassword() {
-        var password = 'myCurrentPassword';
-        auth.changeEmail({
-            password: password,
-            newEmail: 'auth_test@newemail.com'
-        });
-        auth.changePassword({
-            currentPassword: password,
-            newPassword: 'myNewPa55Word'   
-        });
-    }
-    changeEmailAndPassword();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script changes the currently logged-in user's NetSuite email address and password.
+require(['N/auth'],function(auth) {
+    function changeEmailAndPassword() {
+        var password = 'myCurrentPassword';
+        auth.changeEmail({
+            password: password,
+            newEmail: 'auth_test@newemail.com'
+        });
+        auth.changePassword({
+            currentPassword: password,
+            newPassword: 'myNewPa55Word'   
+        });
+    }
+    changeEmailAndPassword();
 });
 ```
 
@@ -527,159 +527,159 @@ Cache.put(options)
 #### Sample 1: Look Up Folder IDs
 
 ```javascript
-const FOLDER_CACHE_NAME = 'folder_cache';
-
-function folderCacheLoader(context) {
-    const PARENT_FOLDER_ID = 0;
-    const FOLDER_NAME = 1;
-    const folderCacheKey = context.key.split('/');
-    const parentFolderId = folderCacheKey[PARENT_FOLDER_ID];
-    const folderName = folderCacheKey[FOLDER_NAME];
-
-    var folderId = null;
-    search.create ({
-        type: search.Type.FOLDER,
-        columns: ['internalid'],
-        filters: [
-            ['parent', search.Operator.ANYOF, parentFolderId],
-            'AND',
-            ['name', search.Operator.IS, folderName]
-        ]
-    }).run()
-    .each(function(folder) {
-        folderId = folder.id;
-        return false;
-    });
-
-    if (!folderId) {
-        var folder = record.create({
-            type: record.Type.FOLDER
-        });
-        folder.setValue({
-            fieldId: 'parent',
-            value: parentFolderId
-        });
-        folder.setValue({
-            fieldId: 'name',
-            value: folderName
-        });
-        folderId = folder.save();
-    }
-    return folderId;
-}
-
-function getFolderCache() {
-    return cache.getCache({
-        name: FOLDER_CACHE_NAME
-    });
-} 
-
-function folderKey(folderName, parentFolderId) {
-    return[parentFolderId, folderName].join('/');
-}
-
-function getFolder(folderName, parentFolderId) {
-    return getFolderCache().get({
-        key: folderKey(folderName, parentFolderId),
-        loader: folderCacheLoader
-    });
+const FOLDER_CACHE_NAME = 'folder_cache';
+
+function folderCacheLoader(context) {
+    const PARENT_FOLDER_ID = 0;
+    const FOLDER_NAME = 1;
+    const folderCacheKey = context.key.split('/');
+    const parentFolderId = folderCacheKey[PARENT_FOLDER_ID];
+    const folderName = folderCacheKey[FOLDER_NAME];
+
+    var folderId = null;
+    search.create ({
+        type: search.Type.FOLDER,
+        columns: ['internalid'],
+        filters: [
+            ['parent', search.Operator.ANYOF, parentFolderId],
+            'AND',
+            ['name', search.Operator.IS, folderName]
+        ]
+    }).run()
+    .each(function(folder) {
+        folderId = folder.id;
+        return false;
+    });
+
+    if (!folderId) {
+        var folder = record.create({
+            type: record.Type.FOLDER
+        });
+        folder.setValue({
+            fieldId: 'parent',
+            value: parentFolderId
+        });
+        folder.setValue({
+            fieldId: 'name',
+            value: folderName
+        });
+        folderId = folder.save();
+    }
+    return folderId;
+}
+
+function getFolderCache() {
+    return cache.getCache({
+        name: FOLDER_CACHE_NAME
+    });
+} 
+
+function folderKey(folderName, parentFolderId) {
+    return[parentFolderId, folderName].join('/');
+}
+
+function getFolder(folderName, parentFolderId) {
+    return getFolderCache().get({
+        key: folderKey(folderName, parentFolderId),
+        loader: folderCacheLoader
+    });
 }
 ```
 
 #### Sample 2: Retrieve Name of a City Based on a ZIP Code Using Cache and a Custom Loader Function
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script retrieves the name of a city based on a ZIP code from a cache.
-define(['N/cache', '/SuiteScripts/zipToCityIndexCacheLoader'], function(cache, lib) {
-    const ZIP_CODES_CACHE_NAME = 'ZIP_CODES_CACHE';
-    const ZIP_TO_CITY_IDX_JSON = 'ZIP_TO_CITY_IDX_JSON';
-
-    function getZipCodeToCityLookupObj() {
-        const zipCache = cache.getCache({
-            name: ZIP_CODES_CACHE_NAME
-        });
-        const zipCacheJson = zipCache.get({
-            key: ZIP_TO_CITY_IDX_JSON,
-            loader: lib.zipCodeDatabaseLoader
-        });
-        return JSON.parse(zipCacheJson);
-    }
-
-    function findCityByZipCode(options) {
-        return getZipCodeToCityLookupObj()[String(options.zip)];
-    }
-
-    function onRequest(context) {
-        const start = new Date();
-        if (context.request.parameters.purgeZipCache === 'true') {
-            const zipCache = cache.getCache({
-                name: ZIP_CODES_CACHE_NAME
-            });
-            zipCache.remove({
-                key: ZIP_TO_CITY_IDX_JSON
-            });
-        }
-        const cityName = findCityByZipCode({
-            zip: context.request.parameters.zipcode
-        });
-
-        context.response.writeLine(cityName || 'Unknown :(');
-
-        if (context.request.parameters.auditPerf === 'true') {
-            context.response.writeLine('Time Elapsed: ' + (new Date().getTime() - start.getTime()) + ' ms');
-        }
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script retrieves the name of a city based on a ZIP code from a cache.
+define(['N/cache', '/SuiteScripts/zipToCityIndexCacheLoader'], function(cache, lib) {
+    const ZIP_CODES_CACHE_NAME = 'ZIP_CODES_CACHE';
+    const ZIP_TO_CITY_IDX_JSON = 'ZIP_TO_CITY_IDX_JSON';
+
+    function getZipCodeToCityLookupObj() {
+        const zipCache = cache.getCache({
+            name: ZIP_CODES_CACHE_NAME
+        });
+        const zipCacheJson = zipCache.get({
+            key: ZIP_TO_CITY_IDX_JSON,
+            loader: lib.zipCodeDatabaseLoader
+        });
+        return JSON.parse(zipCacheJson);
+    }
+
+    function findCityByZipCode(options) {
+        return getZipCodeToCityLookupObj()[String(options.zip)];
+    }
+
+    function onRequest(context) {
+        const start = new Date();
+        if (context.request.parameters.purgeZipCache === 'true') {
+            const zipCache = cache.getCache({
+                name: ZIP_CODES_CACHE_NAME
+            });
+            zipCache.remove({
+                key: ZIP_TO_CITY_IDX_JSON
+            });
+        }
+        const cityName = findCityByZipCode({
+            zip: context.request.parameters.zipcode
+        });
+
+        context.response.writeLine(cityName || 'Unknown :(');
+
+        if (context.request.parameters.auditPerf === 'true') {
+            context.response.writeLine('Time Elapsed: ' + (new Date().getTime() - start.getTime()) + ' ms');
+        }
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 3: Retrieve Name of a City Based on a ZIP Code Using Cache and a Custom Loader Function
 
 ```javascript
-/**
- * zipToCityIndexCacheLoader.js
- * @NApiVersion 2.1
- * @NModuleScope Public
- */
-
-//This custom module is a loader function that uses a CSV file to retrieve a value that was missing from a cache.
-define(['N/file', 'N/cache'], function(file, cache) {
-    const ZIP_CODES_CSV_PATH = '/SuiteScripts/Resources/free-zipcode-CA-database-primary.csv';
-
-    function trimOuterQuotes(str) {
-        return (str || '').replace(/^"+/, '').replace(/"+$/, '');
-    }
-
-    function zipCodeDatabaseLoader(context) {
-        log.audit({
-            title: 'Loading Zip Codes',
-            details: 'Loading Zip Codes for ZIP_CODES_CACHE'
-        });
-        const zipCodesCsvText = file.load({
-            id: ZIP_CODES_CSV_PATH
-        }).getContents();
-        const zipToCityIndex = {};
-        const csvLines = zipCodesCsvText.split('\n');
-        util.each(csvLines.slice(1), function(el) {
-            var cells = el.split(',');
-            var key = trimOuterQuotes(cells[0]);
-            var value = trimOuterQuotes(cells[2]);
-            if (parseInt(key, 10))
-                zipToCityIndex[String(key)] = value;
-        });
-        return zipToCityIndex;
-    }
-
-    return {
-        zipCodeDatabaseLoader: zipCodeDatabaseLoader
-    }
+/**
+ * zipToCityIndexCacheLoader.js
+ * @NApiVersion 2.1
+ * @NModuleScope Public
+ */
+
+//This custom module is a loader function that uses a CSV file to retrieve a value that was missing from a cache.
+define(['N/file', 'N/cache'], function(file, cache) {
+    const ZIP_CODES_CSV_PATH = '/SuiteScripts/Resources/free-zipcode-CA-database-primary.csv';
+
+    function trimOuterQuotes(str) {
+        return (str || '').replace(/^"+/, '').replace(/"+$/, '');
+    }
+
+    function zipCodeDatabaseLoader(context) {
+        log.audit({
+            title: 'Loading Zip Codes',
+            details: 'Loading Zip Codes for ZIP_CODES_CACHE'
+        });
+        const zipCodesCsvText = file.load({
+            id: ZIP_CODES_CSV_PATH
+        }).getContents();
+        const zipToCityIndex = {};
+        const csvLines = zipCodesCsvText.split('\n');
+        util.each(csvLines.slice(1), function(el) {
+            var cells = el.split(',');
+            var key = trimOuterQuotes(cells[0]);
+            var value = trimOuterQuotes(cells[2]);
+            if (parseInt(key, 10))
+                zipToCityIndex[String(key)] = value;
+        });
+        return zipToCityIndex;
+    }
+
+    return {
+        zipCodeDatabaseLoader: zipCodeDatabaseLoader
+    }
 });
 ```
 
@@ -759,158 +759,158 @@ Returns metadata about the certificate(s).
 #### Sample 1: Filter the Digital Certificate List by Subsidiary and File Type
 
 ```javascript
-/**
- * @NApiVersion 2.1
-   */
-require(['N/certificateControl'],
-      function(certificateControl){
-         var all = certificateControl.findCertificates();
-         var specificType = certificateControl.findCertificates({
-              type: 'PFX'
-         });
-         var specificSub = certificateControl.findCertificates({
-              subsidiary: 93
-         });
-         var specificTypeAndSub = certificateControl.findCertificates({
-               type: 'PFX',
-               subsidiary: 93
-         });
+/**
+ * @NApiVersion 2.1
+   */
+require(['N/certificateControl'],
+      function(certificateControl){
+         var all = certificateControl.findCertificates();
+         var specificType = certificateControl.findCertificates({
+              type: 'PFX'
+         });
+         var specificSub = certificateControl.findCertificates({
+              subsidiary: 93
+         });
+         var specificTypeAndSub = certificateControl.findCertificates({
+               type: 'PFX',
+               subsidiary: 93
+         });
       });;
 ```
 
 #### Sample 2: Find the Audit Trail of POST Operations for a Certificate Record Based on ID
 
 ```javascript
-/**
- * @NApiVersion 2.1
-   */
-
-require(['N/certificateControl'], function(cc){
-    var usages = cc.findUsages({
-        id: 'custcertificate_china',
-            operation: cc.Operation.POST
-       });
+/**
+ * @NApiVersion 2.1
+   */
+
+require(['N/certificateControl'], function(cc){
+    var usages = cc.findUsages({
+        id: 'custcertificate_china',
+            operation: cc.Operation.POST
+       });
 })
 ```
 
 #### Sample 3: Create, Modify, and Save Certificate Record Based on a File in the File Cabinet
 
 ```javascript
-/**
- * @NApiVersion 2.1
-   */
-
-require(['N/certificateControl','N/file'],function(cc, file){
-    var fileObj = file.load({
-        id: 'SuiteScripts/dsa.p12'
-    });
-    var options = {
-        file : fileObj,
-        password : '022b490ad4334c7e86a8304f937ec68f',
-        name : 'testCert',
-        description : 'testDescription',
-        scriptId : '_testid',
-        subsidiaries : [1,3],
-        weekReminder : false,
-        monthReminder : true,
-        threeMonthsReminder : false
-    };
-    var newCertificate = cc.createCertificate(options);
-    newCertificate.save();
-
-    var loadedCertificate = cc.loadCertificate({
-           scriptId : 'custcertificate_testid'
-    });
-    fileObj = file.load({
-        id: 'SuiteScripts/ecdsa.p12'
-    });
-    loadedCertificate.file = fileObj;
-    loadedCertificate.password = '022b490ad4334c7e86a8304f937ec68f';
-    loadedCertificate.save();
+/**
+ * @NApiVersion 2.1
+   */
+
+require(['N/certificateControl','N/file'],function(cc, file){
+    var fileObj = file.load({
+        id: 'SuiteScripts/dsa.p12'
+    });
+    var options = {
+        file : fileObj,
+        password : '022b490ad4334c7e86a8304f937ec68f',
+        name : 'testCert',
+        description : 'testDescription',
+        scriptId : '_testid',
+        subsidiaries : [1,3],
+        weekReminder : false,
+        monthReminder : true,
+        threeMonthsReminder : false
+    };
+    var newCertificate = cc.createCertificate(options);
+    newCertificate.save();
+
+    var loadedCertificate = cc.loadCertificate({
+           scriptId : 'custcertificate_testid'
+    });
+    fileObj = file.load({
+        id: 'SuiteScripts/ecdsa.p12'
+    });
+    loadedCertificate.file = fileObj;
+    loadedCertificate.password = '022b490ad4334c7e86a8304f937ec68f';
+    loadedCertificate.save();
 })
 ```
 
 #### Sample 4: Find and Use an Existing Certificate Record
 
 ```javascript
-/**
- * @NApiVersion 2.1
-   */
-
-require(['N/certificateControl','N/https/clientCertificate'],function(cc, cert){
-    var yodlee = cc.findCertificates({
-        name: 'Yodlee',
-        description: 'Yodlee certificate'
-    });
-    cert.post({
-        certId:yodlee[0].id,
-        url:'url',
-        body:'body',
-        headers:'headers'
-    });
+/**
+ * @NApiVersion 2.1
+   */
+
+require(['N/certificateControl','N/https/clientCertificate'],function(cc, cert){
+    var yodlee = cc.findCertificates({
+        name: 'Yodlee',
+        description: 'Yodlee certificate'
+    });
+    cert.post({
+        certId:yodlee[0].id,
+        url:'url',
+        body:'body',
+        headers:'headers'
+    });
 })
 ```
 
 #### Sample 5: Establish an SFTP Connection Using an SSH Key
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/file', 'N/sftp', 'N/certificateControl'], function(file, sftp, certificateControl) {
-    var certPath = 'yyy/certificates'
-    var certName = 'apiclient_cert.p12';
-
-    // Establish SFTP connection
-    var connection = sftp.createConnection({
-        username: 'sftpuser',
-        keyId: 'custkeysftp_nft_demo_key',
-        url: 'my.sftp.example.com',
-        port: 22,
-        directory: 'inbound',
-        hostKey: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC4gYD1K4lE9QnuYEgRRQChjrAM1+bTT95e71Xv0oQ60ywVQEiedhRqSMbPiCPPB4pjpBdOmPIQCCkug+3XwAQ6uNj3UM11zoGGmg86tyEJT6qGB0SsrQJzHTb3EG38BSrBO0WEzOWeJ8E8YODT3oAj1Nrf8Ls3JbGObRF+0uwJDIllSrFkYS3kWCV27NhBnaytGe7iLBgrJdNVlitNqkxZfK0NsAYCaJWQjQLtz+GFfN5zTbKKNsDa6s/YW7oAMMOI3Q5GQAqdXtKY728WvxYTjr2FsYS/KM6nbq/csTvZHWLE0z2TQtB2H0IIofvEP/QvXwmgEnCeVPcNgRwdHWQf'
-    });
-// ------------------------------------------------------------------------
-
-// Create new certificate
-    var certScriptId = '_' + (Math.random().toString(36).substring(2, 10));
-    var cert = certificateControl.createCertificate();
-    cert.name = 'Test Certificate China API';
-    cert.description = 'Test Certificate China created using API';
-// custcertificate prefix will be added automatically
-    cert.scriptId = certScriptId;
-    cert.file = connection.download({
-        directory: certPath,
-        filename: certName
-    });
-//guid corresponding to the certificate's password';
-    var pwd = '022b490ad4334c7e86a8304f937ec68f';
-    cert.password = pwd;
-    cert.save();
-/**/certScriptId = 'custcertificate' + certScriptId;
-    log.debug('Certificate "' + cert.name + '" successfuly created with id "' + certScriptId + '"!');
-// ------------------------------------------------------------------------
-// Rename certificate
-    cert = certificateControl.loadCertificate({scriptId: certScriptId});
-    cert.name = 'Test Certificate China API TEMP';
-    cert.save();
-// Verify new certificate name
-/**/cert = certificateControl.loadCertificate({scriptId: certScriptId});
-    log.debug('Certificate successfully renamed to "' + cert.name + '"');
-// ------------------------------------------------------------------------
-// Delete certificate
-    certificateControl.deleteCertificate(certScriptId);
-    log.debug('Certificate deleted!');
-// ------------------------------------------------------------------------
-// Load the deleted certificate
-    // attempt to load the deleted certificate - this should error
-    try {
-        cert = certificateControl.loadCertificate({scriptId: certScriptId});
-    }
-    catch (e) {
-        log.error(e.message);
-    }
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/file', 'N/sftp', 'N/certificateControl'], function(file, sftp, certificateControl) {
+    var certPath = 'yyy/certificates'
+    var certName = 'apiclient_cert.p12';
+
+    // Establish SFTP connection
+    var connection = sftp.createConnection({
+        username: 'sftpuser',
+        keyId: 'custkeysftp_nft_demo_key',
+        url: 'my.sftp.example.com',
+        port: 22,
+        directory: 'inbound',
+        hostKey: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC4gYD1K4lE9QnuYEgRRQChjrAM1+bTT95e71Xv0oQ60ywVQEiedhRqSMbPiCPPB4pjpBdOmPIQCCkug+3XwAQ6uNj3UM11zoGGmg86tyEJT6qGB0SsrQJzHTb3EG38BSrBO0WEzOWeJ8E8YODT3oAj1Nrf8Ls3JbGObRF+0uwJDIllSrFkYS3kWCV27NhBnaytGe7iLBgrJdNVlitNqkxZfK0NsAYCaJWQjQLtz+GFfN5zTbKKNsDa6s/YW7oAMMOI3Q5GQAqdXtKY728WvxYTjr2FsYS/KM6nbq/csTvZHWLE0z2TQtB2H0IIofvEP/QvXwmgEnCeVPcNgRwdHWQf'
+    });
+// ------------------------------------------------------------------------
+
+// Create new certificate
+    var certScriptId = '_' + (Math.random().toString(36).substring(2, 10));
+    var cert = certificateControl.createCertificate();
+    cert.name = 'Test Certificate China API';
+    cert.description = 'Test Certificate China created using API';
+// custcertificate prefix will be added automatically
+    cert.scriptId = certScriptId;
+    cert.file = connection.download({
+        directory: certPath,
+        filename: certName
+    });
+//guid corresponding to the certificate's password';
+    var pwd = '022b490ad4334c7e86a8304f937ec68f';
+    cert.password = pwd;
+    cert.save();
+/**/certScriptId = 'custcertificate' + certScriptId;
+    log.debug('Certificate "' + cert.name + '" successfuly created with id "' + certScriptId + '"!');
+// ------------------------------------------------------------------------
+// Rename certificate
+    cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    cert.name = 'Test Certificate China API TEMP';
+    cert.save();
+// Verify new certificate name
+/**/cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    log.debug('Certificate successfully renamed to "' + cert.name + '"');
+// ------------------------------------------------------------------------
+// Delete certificate
+    certificateControl.deleteCertificate(certScriptId);
+    log.debug('Certificate deleted!');
+// ------------------------------------------------------------------------
+// Load the deleted certificate
+    // attempt to load the deleted certificate - this should error
+    try {
+        cert = certificateControl.loadCertificate({scriptId: certScriptId});
+    }
+    catch (e) {
+        log.error(e.message);
+    }
 })
 ```
 
@@ -1076,71 +1076,71 @@ Archiver.archive(options)
 #### Sample 1: N/compress Module Script Sample
 
 ```javascript
-require(['N/compress', 'N/file'], function(compress, file) {
-    var unsavedTxtFile = file.create({
-        fileType: 'PLAINTEXT',
-        name: 'file.txt',
-        contents: 'This is a sample content. This is a sample content. This is a sample content. This is only a sample.'
-    });
-
-    log.debug('Name, size, and contents of the original, uncompressed file are: ');
-    log.debug('Name: ' + unsavedTxtFile.name);
-    log.debug('Size: ' + unsavedTxtFile.size + 'b');
-    log.debug('Contents: ' + unsavedTxtFile.getContents());
-
-    // gzip the file with max compression (level = 9)
-    var gzippedFile = compress.gzip({
-        file: unsavedTxtFile,
-        level: 9
-    });
-
-    log.debug('Name, size, and contents of the gzipped file are: ');
-    log.debug('Name: ' + gzippedFile.name);
-    log.debug('Size: ' + gzippedFile.size + 'b');
-    log.debug('Contents: ' + gzippedFile.getContents().substring(0, 100));
-
-    // gunzip the file
-    var gunzippedFile = compress.gunzip({
-        file: gzippedFile
-    });
-    
-    log.debug('Name, size, and contents of the gunzipped file are: ');
-    log.debug('Name: ' + gunzippedFile.name);
-    log.debug('File size: ' + gunzippedFile.size + 'b');
-    log.debug('Contents: ' + gunzippedFile.getContents());
+require(['N/compress', 'N/file'], function(compress, file) {
+    var unsavedTxtFile = file.create({
+        fileType: 'PLAINTEXT',
+        name: 'file.txt',
+        contents: 'This is a sample content. This is a sample content. This is a sample content. This is only a sample.'
+    });
+
+    log.debug('Name, size, and contents of the original, uncompressed file are: ');
+    log.debug('Name: ' + unsavedTxtFile.name);
+    log.debug('Size: ' + unsavedTxtFile.size + 'b');
+    log.debug('Contents: ' + unsavedTxtFile.getContents());
+
+    // gzip the file with max compression (level = 9)
+    var gzippedFile = compress.gzip({
+        file: unsavedTxtFile,
+        level: 9
+    });
+
+    log.debug('Name, size, and contents of the gzipped file are: ');
+    log.debug('Name: ' + gzippedFile.name);
+    log.debug('Size: ' + gzippedFile.size + 'b');
+    log.debug('Contents: ' + gzippedFile.getContents().substring(0, 100));
+
+    // gunzip the file
+    var gunzippedFile = compress.gunzip({
+        file: gzippedFile
+    });
+    
+    log.debug('Name, size, and contents of the gunzipped file are: ');
+    log.debug('Name: ' + gunzippedFile.name);
+    log.debug('File size: ' + gunzippedFile.size + 'b');
+    log.debug('Contents: ' + gunzippedFile.getContents());
 });
 ```
 
 #### Sample 2: N/compress Module Script Sample
 
 ```javascript
-require(['N/compress', 'N/file'], function(compress, file) {
-    // load/create files to be archived
-    var binaryFile = file.load({
-        id: 200
-    });
-    var textFile = file.create({
-        name: 'file.txt',
-        fileType: 'PLAINTEXT',
-        contents: 'This is sample content.'
-    });
-
-    // create an archive as a temporary file object
-    var archiver = compress.createArchiver();
-    archiver.add({
-        file: binaryFile
-    });
-    archiver.add({
-        file: textFile,
-        directory: 'txt/'
-    });
-    var zipFile = archiver.archive({
-        name: 'myarchive.zip'
-    });
-
-    // save the archive to file cabinet
-    zipFile.folder = 123;
-    zipFile.save();
+require(['N/compress', 'N/file'], function(compress, file) {
+    // load/create files to be archived
+    var binaryFile = file.load({
+        id: 200
+    });
+    var textFile = file.create({
+        name: 'file.txt',
+        fileType: 'PLAINTEXT',
+        contents: 'This is sample content.'
+    });
+
+    // create an archive as a temporary file object
+    var archiver = compress.createArchiver();
+    archiver.add({
+        file: binaryFile
+    });
+    archiver.add({
+        file: textFile,
+        directory: 'txt/'
+    });
+    var zipFile = archiver.archive({
+        name: 'myarchive.zip'
+    });
+
+    // save the archive to file cabinet
+    zipFile.folder = 123;
+    zipFile.save();
 });
 ```
 
@@ -1194,33 +1194,33 @@ Holds the string values for supported configuration objects. Use this enum to se
 #### Sample 1: N/config Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/config'],
-    function(config) {
-        function setTaxAndEmployerId() {
-            var companyInfo = config.load({
-                type: config.Type.COMPANY_INFORMATION
-            });
-            companyInfo.setValue({
-                fieldId: 'taxid',
-                value: '1122334455'
-            });
-            companyInfo.setValue({
-                fieldId: 'employerid',
-                value: '123456789'
-            });
-            companyInfo.save();
-            companyInfo = config.load({
-                type: config.Type.COMPANY_INFORMATION
-            });
-            var taxid = companyInfo.getValue({
-                fieldId: 'taxid'
-            });
-        }
-        setTaxAndEmployerId();
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/config'],
+    function(config) {
+        function setTaxAndEmployerId() {
+            var companyInfo = config.load({
+                type: config.Type.COMPANY_INFORMATION
+            });
+            companyInfo.setValue({
+                fieldId: 'taxid',
+                value: '1122334455'
+            });
+            companyInfo.setValue({
+                fieldId: 'employerid',
+                value: '123456789'
+            });
+            companyInfo.save();
+            companyInfo = config.load({
+                type: config.Type.COMPANY_INFORMATION
+            });
+            var taxid = companyInfo.getValue({
+                fieldId: 'taxid'
+            });
+        }
+        setTaxAndEmployerId();
     });
 ```
 
@@ -1402,111 +1402,111 @@ The encoding used for the clear text value of the secret key.
 #### Sample 1: Create a Secure Key Using SHA512
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-/**This sample demonstrates the APIs needed to generate a secure key using the SHA512 hashing algorithm.
-*  The mySecret variable is a placeholder that must be replaced with a valid secret from your NetSuite account. 
-*  For information about  secrets management page, see Account Administration &gt; Authentication &gt; Secrets Management
- * in the Help Center.
-**/
-
-require(['N/crypto', 'N/encode', 'N/runtime'], (crypto, encode, runtime) =&gt; {
-    function createSecureKeyWithHash() {
-        let mySecret = 'custsecret_my_secret';    //secret id take from secrets management page
-
-        let sKey = crypto.createSecretKey({
-            secret: mySecret,
-            encoding: encode.Encoding.UTF_8
-        });
-
-        let hmacSHA512 = crypto.createHmac({
-            algorithm: crypto.HashAlg.SHA512,
-            key: sKey
-        });
-
-        hmacSHA512.update({
-            input: inputString,
-            inputEncoding: encode.Encoding.BASE_64
-        });
-
-        let digestSHA512 = hmacSHA512.digest({
-            outputEncoding: encode.Encoding.HEX
-        });
-    }
-    createSecureKeyWithHash();
+/**
+ * @NApiVersion 2.1
+ */
+/**This sample demonstrates the APIs needed to generate a secure key using the SHA512 hashing algorithm.
+*  The mySecret variable is a placeholder that must be replaced with a valid secret from your NetSuite account. 
+*  For information about  secrets management page, see Account Administration &gt; Authentication &gt; Secrets Management
+ * in the Help Center.
+**/
+
+require(['N/crypto', 'N/encode', 'N/runtime'], (crypto, encode, runtime) =&gt; {
+    function createSecureKeyWithHash() {
+        let mySecret = 'custsecret_my_secret';    //secret id take from secrets management page
+
+        let sKey = crypto.createSecretKey({
+            secret: mySecret,
+            encoding: encode.Encoding.UTF_8
+        });
+
+        let hmacSHA512 = crypto.createHmac({
+            algorithm: crypto.HashAlg.SHA512,
+            key: sKey
+        });
+
+        hmacSHA512.update({
+            input: inputString,
+            inputEncoding: encode.Encoding.BASE_64
+        });
+
+        let digestSHA512 = hmacSHA512.digest({
+            outputEncoding: encode.Encoding.HEX
+        });
+    }
+    createSecureKeyWithHash();
 });
 ```
 
 #### Sample 2: Create a Suitelet to Request User Credentials, Create a Secret Key, and Encode a Sample String
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/ui/serverWidget', 'N/runtime', 'N/crypto', 'N/encode'], (serverWidget, runtime, crypto, encode) =&gt; {
-    function onRequest(option) {
-        if (option.request.method === 'GET') {
-            let form = serverWidget.createForm({
-                title: 'My Credential Form'
-            });
-            let skField = form.addSecretKeyField({
-                id: 'mycredential',
-                label: 'Credential',
-                restrictToScriptIds: [runtime.getCurrentScript().id],
-                restrictToCurrentUser: false
-            })
-            skField.maxLength = 200;
-
-            form.addSubmitButton();
-
-            option.response.writePage(form);
-        } else {
-            let form = serverWidget.createForm({
-                title: 'My Credential Form'
-            });
-
-            const inputString = "YWJjZGVmZwo=";
-            let myGuid = option.request.parameters.mycredential;
-
-            // Create the key
-            let sKey = crypto.createSecretKey({
-                guid: myGuid,
-                encoding: encode.Encoding.UTF_8
-            });
-
-            try {
-                let hmacSha512 = crypto.createHmac({
-                    algorithm: 'SHA512',
-                    key: sKey
-                });
-                hmacSha512.update({
-                    input: inputString,
-                    inputEncoding: encode.Encoding.BASE_64
-                });
-                let digestSha512 = hmacSha512.digest({
-                    outputEncoding: encode.Encoding.HEX
-                });
-            } catch (e) {
-                log.error({
-                    title: 'Failed to hash input',
-                    details: e
-                });
-            }
-
-            form.addField({
-                id: 'result',
-                label: 'Your digested hash value',
-                type: 'textarea'
-            }).defaultValue = digestSha512;
-
-            option.response.writePage(form);
-        }
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/ui/serverWidget', 'N/runtime', 'N/crypto', 'N/encode'], (serverWidget, runtime, crypto, encode) =&gt; {
+    function onRequest(option) {
+        if (option.request.method === 'GET') {
+            let form = serverWidget.createForm({
+                title: 'My Credential Form'
+            });
+            let skField = form.addSecretKeyField({
+                id: 'mycredential',
+                label: 'Credential',
+                restrictToScriptIds: [runtime.getCurrentScript().id],
+                restrictToCurrentUser: false
+            })
+            skField.maxLength = 200;
+
+            form.addSubmitButton();
+
+            option.response.writePage(form);
+        } else {
+            let form = serverWidget.createForm({
+                title: 'My Credential Form'
+            });
+
+            const inputString = "YWJjZGVmZwo=";
+            let myGuid = option.request.parameters.mycredential;
+
+            // Create the key
+            let sKey = crypto.createSecretKey({
+                guid: myGuid,
+                encoding: encode.Encoding.UTF_8
+            });
+
+            try {
+                let hmacSha512 = crypto.createHmac({
+                    algorithm: 'SHA512',
+                    key: sKey
+                });
+                hmacSha512.update({
+                    input: inputString,
+                    inputEncoding: encode.Encoding.BASE_64
+                });
+                let digestSha512 = hmacSha512.digest({
+                    outputEncoding: encode.Encoding.HEX
+                });
+            } catch (e) {
+                log.error({
+                    title: 'Failed to hash input',
+                    details: e
+                });
+            }
+
+            form.addField({
+                id: 'result',
+                label: 'Your digested hash value',
+                type: 'textarea'
+            }).defaultValue = digestSha512;
+
+            option.response.writePage(form);
+        }
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
@@ -1622,51 +1622,51 @@ Verifier.verify(options)
 #### Sample 1: Load an XML File from the File Cabinet and Sign It Using a Digital Certificate
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/crypto/certificate','N/file'],(certificate, file) =&gt; {
-    // Load the file from the File Cabinet.
-    // Note that the id value is hard-coded in this sample, and you should use
-    // a valid file id from your account.
-    let infNFe = file.load({
-        id: 922
-    });
-    let signedXml = certificate.signXml({
-        algorithm: certificate.HashAlg.SHA256,
-        certId: 'custcertificate1',
-        rootTag: 'infNFe',
-        xmlString: infNFe.getContents()
-    });
-    certificate.verifyXMLSignature({
-        signedXml:signedXml,
-        rootTag: 'infNFe'
-    });
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/crypto/certificate','N/file'],(certificate, file) =&gt; {
+    // Load the file from the File Cabinet.
+    // Note that the id value is hard-coded in this sample, and you should use
+    // a valid file id from your account.
+    let infNFe = file.load({
+        id: 922
+    });
+    let signedXml = certificate.signXml({
+        algorithm: certificate.HashAlg.SHA256,
+        certId: 'custcertificate1',
+        rootTag: 'infNFe',
+        xmlString: infNFe.getContents()
+    });
+    certificate.verifyXMLSignature({
+        signedXml:signedXml,
+        rootTag: 'infNFe'
+    });
 });
 ```
 
 #### Sample 2: Create Signer and Verifier Objects
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
- require(['N/crypto/certificate'], (certificate) =&gt; {
-    let signer = certificate.createSigner({
-        certId: 'custcertificate1',
-        algorithm: certificate.HashAlg.SHA256
-    });
-    signer.update('test');
-
-    let result = signer.sign();
-    let verifier = certificate.createVerifier({
-        certId: 'custcertificate1',
-        algorithm: certificate.HashAlg.SHA256
-    });
-    verifier.update('test');
-    verifier.verify(result);
+/**
+ * @NApiVersion 2.1
+ */
+
+ require(['N/crypto/certificate'], (certificate) =&gt; {
+    let signer = certificate.createSigner({
+        certId: 'custcertificate1',
+        algorithm: certificate.HashAlg.SHA256
+    });
+    signer.update('test');
+
+    let result = signer.sign();
+    let verifier = certificate.createVerifier({
+        certId: 'custcertificate1',
+        algorithm: certificate.HashAlg.SHA256
+    });
+    verifier.update('test');
+    verifier.verify(result);
 })
 ```
 
@@ -1723,18 +1723,18 @@ random.generateInt(options)
 #### Sample 1: N/crypto/random Module Samples
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType restlet
-*/
-define(['N/crypto/random'], function(random) {
-    return {
-     get : function() {
-          return JSON.stringify({
-            number: random.generateInt({min: 1, max:7})
-        })
-   }
-  }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType restlet
+*/
+define(['N/crypto/random'], function(random) {
+    return {
+     get : function() {
+          return JSON.stringify({
+            number: random.generateInt({min: 1, max:7})
+        })
+   }
+  }
  });
 ```
 
@@ -1789,23 +1789,23 @@ Returns an exchange rate between two currencies.
 #### Sample 1: N/currency Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/currency'], function(currency) {
-    function getUSDFromCAD() {
-        var canadianAmount = 100;
-        var rate = currency.exchangeRate({
-            source: 'CAD',
-            target: 'USD',
-            date: new Date('7/28/2015')
-        });
-
-        var usdAmount = canadianAmount * rate;
-    }
-
-    getUSDFromCAD();
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/currency'], function(currency) {
+    function getUSDFromCAD() {
+        var canadianAmount = 100;
+        var rate = currency.exchangeRate({
+            source: 'CAD',
+            target: 'USD',
+            date: new Date('7/28/2015')
+        });
+
+        var usdAmount = canadianAmount * rate;
+    }
+
+    getUSDFromCAD();
 });;
 ```
 
@@ -2006,205 +2006,205 @@ Returns a column in the sublist.
 #### Sample 1: Perform Field Sourcing Synchronously
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-
-define(['N/currentRecord'], (currentRecord) =&gt; {
-    const pageInit = () =&gt; {
-        const rec = currentRecord.get();
-
-        rec.selectNewLine({
-            sublistId: 'item'
-        });
-
-        rec.setCurrentSublistValue({
-            sublistId: 'item',
-            fieldId: 'item',
-            value: 39,
-            forceSyncSourcing: true
-        });
-
-        rec.setCurrentSublistValue({
-            sublistId: 'item',
-            fieldId: 'quantity',
-            value: 1,
-            forceSyncSourcing: true
-        });
-
-        rec.commitLine({
-            sublistId: 'item'
-        });
-    };
-
-    return {
-        pageInit
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+
+define(['N/currentRecord'], (currentRecord) =&gt; {
+    const pageInit = () =&gt; {
+        const rec = currentRecord.get();
+
+        rec.selectNewLine({
+            sublistId: 'item'
+        });
+
+        rec.setCurrentSublistValue({
+            sublistId: 'item',
+            fieldId: 'item',
+            value: 39,
+            forceSyncSourcing: true
+        });
+
+        rec.setCurrentSublistValue({
+            sublistId: 'item',
+            fieldId: 'quantity',
+            value: 1,
+            forceSyncSourcing: true
+        });
+
+        rec.commitLine({
+            sublistId: 'item'
+        });
+    };
+
+    return {
+        pageInit
+    };
 });
 ```
 
 #### Sample 2: SuiteScript Client Script Sample
 
 ```javascript
-/**
- *@NApiVersion 2.x
- *@NScriptType ClientScript
- */
-define(['N/error'], function(error) {
-    function pageInit(context) {
-        if (context.mode !== 'create')
-            return;
-        var currentRecord = context.currentRecord;
-        currentRecord.setValue({
-            fieldId: 'entity',
-            value: 107
-        });
-    }
-    function saveRecord(context) {
-        var currentRecord = context.currentRecord;
-        if (!currentRecord.getValue({fieldId: 'entity'}) || currentRecord.getLineCount({sublistId: 'item'}) &lt; 1)
-            throw error.create({
-                name: 'MISSING_REQ_ARG',
-                message: 'Please enter all the necessary fields on the salesorder before saving'
-             });
-        return true;
-    }
-    function validateField(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        var sublistFieldName = context.fieldId;
-        var line = context.line;
-        if (sublistName === 'item') {
-            if (sublistFieldName === 'quantity') {
-                if (currentRecord.getCurrentSublistValue({
-                    sublistId: sublistName,
-                    fieldId: sublistFieldName
-                }) &lt; 3)
-                    currentRecord.setValue({
-                        fieldId: 'otherrefnum',
-                        value: 'Quantity is less than 3'
-                    });
-                else
-                    currentRecord.setValue({
-                        fieldId: 'otherrefnum',
-                        value: 'Quantity accepted'
-                    });
-                }
-            }
-       return true;
-    }
-    function fieldChanged(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        var sublistFieldName = context.fieldId;
-        var line = context.line;
-        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
-            currentRecord.setValue({
-                fieldId: 'memo',
-                value: 'Item: ' + currentRecord.getCurrentSublistValue({
-                    sublistId: 'item',
-                    fieldId: 'item'
-                }) + ' is selected'
-            });
-    }
-    function postSourcing(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        var sublistFieldName = context.fieldId;
-        var line = context.line;
-        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
-            if (currentRecord.getCurrentSublistValue({
-                sublistId: sublistName,
-                fieldId: sublistFieldName
-            }) === '39')
-                if (currentRecord.getCurrentSublistValue({
-                    sublistId: sublistName,
-                    fieldId: 'pricelevels'
-                }) !== '1-1')
-                    currentRecord.setCurrentSublistValue({
-                        sublistId: sublistName,
-                        fieldId: 'pricelevels',
-                        value: '1-1'
-                    });
-    }
-    function lineInit(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        if (sublistName === 'partners')
-            currentRecord.setCurrentSublistValue({
-                sublistId: sublistName,
-                fieldId: 'partner',
-                value: '55'
-            });
-    }
-    function validateDelete(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        if (sublistName === 'partners')
-            if (currentRecord.getCurrentSublistValue({
-                sublistId: sublistName,
-                fieldId: 'partner'
-            }) === '55')
-                currentRecord.setValue({
-                    fieldId: 'memo',
-                    value: 'Removing partner sublist'
-                });
-        return true;
-    }
-    function validateInsert(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        if (sublistName === 'partners')
-            if (currentRecord.getCurrentSublistValue({
-                sublistId: sublistName,
-                fieldId: 'contribution'
-            }) !== '100.0%')
-                currentRecord.setCurrentSublistValue({
-                    sublistId: sublistName,
-                    fieldId: 'contribution',
-                    value: '100.0%'
-                });
-        return true;
-    }
-    function validateLine(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        if (sublistName === 'partners')
-            if (currentRecord.getCurrentSublistValue({
-                sublistId: sublistName,
-                fieldId: 'contribution'
-            }) !== '100.0%')
-                currentRecord.setCurrentSublistValue({
-                    sublistId: sublistName,
-                    fieldId: 'contribution',
-                    value: '100.0%'
-                });
-        return true;
-    }
-    function sublistChanged(context) {
-        var currentRecord = context.currentRecord;
-        var sublistName = context.sublistId;
-        var op = context.operation;
-        if (sublistName === 'item')
-            currentRecord.setValue({
-                fieldId: 'memo',
-                value: 'Total has changed to ' + currentRecord.getValue({fieldId: 'total'})
-            });
-    }
-    
-    return {
-        pageInit: pageInit,
-        fieldChanged: fieldChanged,
-        postSourcing: postSourcing,
-        sublistChanged: sublistChanged,
-        lineInit: lineInit,
-        validateField: validateField,
-        validateLine: validateLine,
-        validateInsert: validateInsert,
-        validateDelete: validateDelete,
-        saveRecord: saveRecord
-    };
+/**
+ *@NApiVersion 2.x
+ *@NScriptType ClientScript
+ */
+define(['N/error'], function(error) {
+    function pageInit(context) {
+        if (context.mode !== 'create')
+            return;
+        var currentRecord = context.currentRecord;
+        currentRecord.setValue({
+            fieldId: 'entity',
+            value: 107
+        });
+    }
+    function saveRecord(context) {
+        var currentRecord = context.currentRecord;
+        if (!currentRecord.getValue({fieldId: 'entity'}) || currentRecord.getLineCount({sublistId: 'item'}) &lt; 1)
+            throw error.create({
+                name: 'MISSING_REQ_ARG',
+                message: 'Please enter all the necessary fields on the salesorder before saving'
+             });
+        return true;
+    }
+    function validateField(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item') {
+            if (sublistFieldName === 'quantity') {
+                if (currentRecord.getCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: sublistFieldName
+                }) &lt; 3)
+                    currentRecord.setValue({
+                        fieldId: 'otherrefnum',
+                        value: 'Quantity is less than 3'
+                    });
+                else
+                    currentRecord.setValue({
+                        fieldId: 'otherrefnum',
+                        value: 'Quantity accepted'
+                    });
+                }
+            }
+       return true;
+    }
+    function fieldChanged(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
+            currentRecord.setValue({
+                fieldId: 'memo',
+                value: 'Item: ' + currentRecord.getCurrentSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'item'
+                }) + ' is selected'
+            });
+    }
+    function postSourcing(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var sublistFieldName = context.fieldId;
+        var line = context.line;
+        if (sublistName === 'item' &amp;&amp; sublistFieldName === 'item')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: sublistFieldName
+            }) === '39')
+                if (currentRecord.getCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'pricelevels'
+                }) !== '1-1')
+                    currentRecord.setCurrentSublistValue({
+                        sublistId: sublistName,
+                        fieldId: 'pricelevels',
+                        value: '1-1'
+                    });
+    }
+    function lineInit(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            currentRecord.setCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'partner',
+                value: '55'
+            });
+    }
+    function validateDelete(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'partner'
+            }) === '55')
+                currentRecord.setValue({
+                    fieldId: 'memo',
+                    value: 'Removing partner sublist'
+                });
+        return true;
+    }
+    function validateInsert(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'contribution'
+            }) !== '100.0%')
+                currentRecord.setCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'contribution',
+                    value: '100.0%'
+                });
+        return true;
+    }
+    function validateLine(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        if (sublistName === 'partners')
+            if (currentRecord.getCurrentSublistValue({
+                sublistId: sublistName,
+                fieldId: 'contribution'
+            }) !== '100.0%')
+                currentRecord.setCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'contribution',
+                    value: '100.0%'
+                });
+        return true;
+    }
+    function sublistChanged(context) {
+        var currentRecord = context.currentRecord;
+        var sublistName = context.sublistId;
+        var op = context.operation;
+        if (sublistName === 'item')
+            currentRecord.setValue({
+                fieldId: 'memo',
+                value: 'Total has changed to ' + currentRecord.getValue({fieldId: 'total'})
+            });
+    }
+    
+    return {
+        pageInit: pageInit,
+        fieldChanged: fieldChanged,
+        postSourcing: postSourcing,
+        sublistChanged: sublistChanged,
+        lineInit: lineInit,
+        validateField: validateField,
+        validateLine: validateLine,
+        validateInsert: validateInsert,
+        validateDelete: validateDelete,
+        saveRecord: saveRecord
+    };
 });
 ```
 
@@ -2386,96 +2386,96 @@ The ID of the field on which the join is performed.
 #### Sample 1: Create a Dataset, Run the Dataset, and List All Existing Datasets
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// The following script creates a dataset with three columns, one of which is based on a join, and a condition. Then, all datasets are listed and the newly created dataset is loaded and reviewed.
-
-require(['N/dataset', 'N/query'], function(dataset, query){ 
-    var myTransactionDateColumn = dataset.createColumn({
-        fieldId: 'trandate',
-        alias: 'date'
-    });
-    var myJoin = dataset.createJoin({
-        fieldId: 'createdby',
-        target: 'entity'
-    });
-    var myNameColumn = dataset.createColumn({
-        fieldId: 'lastname',
-        alias: 'name',
-        join: myJoin
-    });
-    var myTransactionIdColumn = dataset.createColumn({
-        fieldId: 'tranid',
-        alias: 'id'
-    });
-    var myTotalColumn = dataset.createColumn({
-        fieldId: 'foreigntotal',
-        alias: 'total'
-    });
-    var myColumns = [myTransactionIdColumn, myNameColumn, myTransactionDateColumn, myTotalColumn];
-    var myCondition = dataset.createCondition({
-        column: myNameColumn,
-        operator: query.Operator.EMPTY
-    });
-    var myDataset = dataset.create({
-        type: 'transaction',
-        columns: myColumns,
-        condition: myCondition
-    });
-
-    // List all created datasets
-    var allDatasets = dataset.list();
-    log.audit({
-        title: 'All datasets:',
-        details: allDatasets
-    });
-
-    // Review the newly created dataset components (in the log)
-    log.audit({
-        title: 'My Dataset = ',
-        details: myDataset
-    });
-   
-    // Now run the dataset
-    var runResult = myDataset.run();
-    var runPagedResult = myDataset.runPaged({
-        pageSize: 2
-    });
-    log.audit({
-        title: 'myDataset runResult: ',
-        details: runResult
-    });
-    log.audit({
-        title: 'myDataset runPagedResult: ',
-        details: runPagedResult
-    });
+/**
+ * @NApiVersion 2.x
+ */
+
+// The following script creates a dataset with three columns, one of which is based on a join, and a condition. Then, all datasets are listed and the newly created dataset is loaded and reviewed.
+
+require(['N/dataset', 'N/query'], function(dataset, query){ 
+    var myTransactionDateColumn = dataset.createColumn({
+        fieldId: 'trandate',
+        alias: 'date'
+    });
+    var myJoin = dataset.createJoin({
+        fieldId: 'createdby',
+        target: 'entity'
+    });
+    var myNameColumn = dataset.createColumn({
+        fieldId: 'lastname',
+        alias: 'name',
+        join: myJoin
+    });
+    var myTransactionIdColumn = dataset.createColumn({
+        fieldId: 'tranid',
+        alias: 'id'
+    });
+    var myTotalColumn = dataset.createColumn({
+        fieldId: 'foreigntotal',
+        alias: 'total'
+    });
+    var myColumns = [myTransactionIdColumn, myNameColumn, myTransactionDateColumn, myTotalColumn];
+    var myCondition = dataset.createCondition({
+        column: myNameColumn,
+        operator: query.Operator.EMPTY
+    });
+    var myDataset = dataset.create({
+        type: 'transaction',
+        columns: myColumns,
+        condition: myCondition
+    });
+
+    // List all created datasets
+    var allDatasets = dataset.list();
+    log.audit({
+        title: 'All datasets:',
+        details: allDatasets
+    });
+
+    // Review the newly created dataset components (in the log)
+    log.audit({
+        title: 'My Dataset = ',
+        details: myDataset
+    });
+   
+    // Now run the dataset
+    var runResult = myDataset.run();
+    var runPagedResult = myDataset.runPaged({
+        pageSize: 2
+    });
+    log.audit({
+        title: 'myDataset runResult: ',
+        details: runResult
+    });
+    log.audit({
+        title: 'myDataset runPagedResult: ',
+        details: runPagedResult
+    });
 });
 ```
 
 #### Sample 2: List All Datasets and Load the First Dataset
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// The following script lists all existing datasets and then loads the first dataset.
-
-require(['N/dataset'], function(dataset){ 
-    // List all created datasets
-    var allDatasets = dataset.list();
-    log.audit({
-        title: 'All datasets:',
-        details: allDatasets
-    });
-    
-    // Load the first dataset
-    var myFirstDataset = dataset.load({
-        id: allDatasets[0].id
-    });
-    log.audit('myFirstDataset:', myFirstDataset);
+/**
+ * @NApiVersion 2.x
+ */
+
+// The following script lists all existing datasets and then loads the first dataset.
+
+require(['N/dataset'], function(dataset){ 
+    // List all created datasets
+    var allDatasets = dataset.list();
+    log.audit({
+        title: 'All datasets:',
+        details: allDatasets
+    });
+    
+    // Load the first dataset
+    var myFirstDataset = dataset.load({
+        id: allDatasets[0].id
+    });
+    log.audit('myFirstDataset:', myFirstDataset);
 });
 ```
 
@@ -2751,113 +2751,113 @@ The extracted text of the word.
 #### Sample 1: Extract Text from a PDF File
 
 ```javascript
-require(['N/file', 'N/documentCapture', 'N/llm'],
-    function(file, documentCapture, llm) {
-        // "14" is the unique ID of a PDF stored in the NetSuite File Cabinet
-        const fileObj = file.load({
-            id: "14"
-        });
-        const extractedData = documentCapture.documentToText({
-            file: fileObj
-        });
-
-        const response = llm.generateText({
-            prompt: "What is this invoice for?",
-            documents: [{
-                id: '14',
-                data: extractedData
-            }]
-        });
-      
-        log.debug("Answer: ", response.text);
-        log.debug("Citations: ", response.citations);
-    }
+require(['N/file', 'N/documentCapture', 'N/llm'],
+    function(file, documentCapture, llm) {
+        // "14" is the unique ID of a PDF stored in the NetSuite File Cabinet
+        const fileObj = file.load({
+            id: "14"
+        });
+        const extractedData = documentCapture.documentToText({
+            file: fileObj
+        });
+
+        const response = llm.generateText({
+            prompt: "What is this invoice for?",
+            documents: [{
+                id: '14',
+                data: extractedData
+            }]
+        });
+      
+        log.debug("Answer: ", response.text);
+        log.debug("Citations: ", response.citations);
+    }
 );
 ```
 
 #### Sample 2: Extract Feature Content from a Document Synchronously
 
 ```javascript
-require(['N/file', 'N/documentCapture', 'N/llm'],
-    function(file, documentCapture, llm) { 
-        // "14" is the internal ID of a file stored in the NetSuite File Cabinet 
-        const extractedData = documentCapture.documentToStructure({
-            file: file.load(
-                id: "14"
-            ),
-            features: [
-                documentCapture.Feature.TEXT_EXTRACTION,
-                documentCapture.Feature.TABLE_EXTRACTION,
-                documentCapture.Feature.FIELD_EXTRACTION
-            ],
-            documentType: documentCapture.DocumentType.INVOICE
-        });
-
-        const documentText = extractedData.getText();
-         
-        const response = llm.chat({
-            preamble: "Your task is to parse the provided document and answer questions about that document.",
-            prompt: "What is this invoice for?",
-            documents: [{
-                id: "1",
-                data: documentText
-            }]
-        });
-
-        log.debug("Answer: ", response.text);
-        log.debug("Citations: ", response.citations);
-    }
+require(['N/file', 'N/documentCapture', 'N/llm'],
+    function(file, documentCapture, llm) { 
+        // "14" is the internal ID of a file stored in the NetSuite File Cabinet 
+        const extractedData = documentCapture.documentToStructure({
+            file: file.load(
+                id: "14"
+            ),
+            features: [
+                documentCapture.Feature.TEXT_EXTRACTION,
+                documentCapture.Feature.TABLE_EXTRACTION,
+                documentCapture.Feature.FIELD_EXTRACTION
+            ],
+            documentType: documentCapture.DocumentType.INVOICE
+        });
+
+        const documentText = extractedData.getText();
+         
+        const response = llm.chat({
+            preamble: "Your task is to parse the provided document and answer questions about that document.",
+            prompt: "What is this invoice for?",
+            documents: [{
+                id: "1",
+                data: documentText
+            }]
+        });
+
+        log.debug("Answer: ", response.text);
+        log.debug("Citations: ", response.citations);
+    }
 );
 ```
 
 #### Sample 3: Extract Content from a Document Asynchronously
 
 ```javascript
-require(['N/task', 'N/file', 'N/documentCapture'],
-    function(task, file, documentCapture) {
-        // Create the document capture task
-        var docTask = task.create(task.TaskType.DOCUMENT_CAPTURE);
-        
-        // Specify task parameters
-        docTask.inputFile = file.load("443");
-        docTask.outputFilePath="SuiteScripts/result.json";
-        docTask.documentType = documentCapture.DocumentType.INVOICE;
-     
-        // Submit the task
-        const submissionId = docTask.submit();
-        log.debug("Submission ID: ", submissionId);
+require(['N/task', 'N/file', 'N/documentCapture'],
+    function(task, file, documentCapture) {
+        // Create the document capture task
+        var docTask = task.create(task.TaskType.DOCUMENT_CAPTURE);
+        
+        // Specify task parameters
+        docTask.inputFile = file.load("443");
+        docTask.outputFilePath="SuiteScripts/result.json";
+        docTask.documentType = documentCapture.DocumentType.INVOICE;
+     
+        // Submit the task
+        const submissionId = docTask.submit();
+        log.debug("Submission ID: ", submissionId);
 });
 ```
 
 #### Sample 4: Extract Content from a Document Asynchronously
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ScheduledScript
- * @NModuleScope SameAccount
- */
-define(['N/documentCapture', 'N/file', 'N/llm'],
-    function(documentCapture, file, llm) {
-        function execute(scriptContext) {
-            const resultFile = file.load("SuiteScripts/result.json");
-            const resultDocument = documentCapture.parseResult(resultFile);
-            const resultText = resultDocument.getText();
-
-            const response = llm.chat({
-                preamble: "Your task is to parse the provided document and answer questions about that document.",
-                prompt: "What is this invoice for?",
-                documents:[{
-                    id: "1",
-                    data: resultText
-                }]
-            });
-            log.debug("Response: ", response.text);
-        }
-        return {
-            execute: execute
-        };
-    }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ScheduledScript
+ * @NModuleScope SameAccount
+ */
+define(['N/documentCapture', 'N/file', 'N/llm'],
+    function(documentCapture, file, llm) {
+        function execute(scriptContext) {
+            const resultFile = file.load("SuiteScripts/result.json");
+            const resultDocument = documentCapture.parseResult(resultFile);
+            const resultText = resultDocument.getText();
+
+            const response = llm.chat({
+                preamble: "Your task is to parse the provided document and answer questions about that document.",
+                prompt: "What is this invoice for?",
+                documents:[{
+                    id: "1",
+                    data: resultText
+                }]
+            });
+            log.debug("Response: ", response.text);
+        }
+        return {
+            execute: execute
+        };
+    }
 );
 ```
 
@@ -2915,54 +2915,54 @@ To send email on another user's behalf, the user triggering the email send must 
 #### Sample 1: N/email Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-// This script sends an email with an attachment.
-
-require(['N/email', 'N/record', 'N/file'], (email, record, file) =&gt; {
-    const senderId = -515;
-    const recipientEmail = 'notify@myCompany.com';
-    let timeStamp = new Date().getUTCMilliseconds();
-
-    let recipient = record.create({
-        type: record.Type.CUSTOMER,
-        isDynamic: true
-    });
-    recipient.setValue({
-        fieldId: 'subsidiary',
-        value: '1'
-    });
-    recipient.setValue({
-        fieldId: 'companyname',
-        value: 'Test Company' + timeStamp
-    });
-    recipient.setValue({
-        fieldId: 'email',
-        value: recipientEmail
-    });
-
-    let recipientId = recipient.save();
-
-    let fileObj = file.load({
-        id: 88
-    });
-
-    email.send({
-        author: senderId,
-        recipients: recipientId,
-        subject: 'Test Sample Email Module',
-        body: 'email body',
-        attachments: [fileObj],
-        relatedRecords: {
-            entityId: recipientId,
-            customRecord: {
-                id: recordId,
-                recordType: recordTypeId
-            }
-        }
-    });
+/**
+ * @NApiVersion 2.1
+ */
+
+// This script sends an email with an attachment.
+
+require(['N/email', 'N/record', 'N/file'], (email, record, file) =&gt; {
+    const senderId = -515;
+    const recipientEmail = 'notify@myCompany.com';
+    let timeStamp = new Date().getUTCMilliseconds();
+
+    let recipient = record.create({
+        type: record.Type.CUSTOMER,
+        isDynamic: true
+    });
+    recipient.setValue({
+        fieldId: 'subsidiary',
+        value: '1'
+    });
+    recipient.setValue({
+        fieldId: 'companyname',
+        value: 'Test Company' + timeStamp
+    });
+    recipient.setValue({
+        fieldId: 'email',
+        value: recipientEmail
+    });
+
+    let recipientId = recipient.save();
+
+    let fileObj = file.load({
+        id: 88
+    });
+
+    email.send({
+        author: senderId,
+        recipients: recipientId,
+        subject: 'Test Sample Email Module',
+        body: 'email body',
+        attachments: [fileObj],
+        relatedRecords: {
+            entityId: recipientId,
+            customRecord: {
+                id: recordId,
+                recordType: recordTypeId
+            }
+        }
+    });
 });
 ```
 
@@ -3012,26 +3012,26 @@ Holds the string values for the supported character set encoding. Use this enum 
 #### Sample 1: N/encode Module Script Samples
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/encode'], function(encode) {
-    function convertStringToDifferentEncoding() {
-        var stringInput = "TÃƒÂ©st StriÃƒÂ±g Input";
-        var base64EncodedString = encode.convert({
-            string: stringInput,
-            inputEncoding: encode.Encoding.UTF_8,
-            outputEncoding: encode.Encoding.BASE_64
-        });
-        var hexEncodedString = encode.convert({
-            string: stringInput,
-            inputEncoding: encode.Encoding.UTF_8,
-            outputEncoding: encode.Encoding.HEX
-        });
-    }
-    
-    convertStringToDifferentEncoding();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/encode'], function(encode) {
+    function convertStringToDifferentEncoding() {
+        var stringInput = "TÃƒÂ©st StriÃƒÂ±g Input";
+        var base64EncodedString = encode.convert({
+            string: stringInput,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.BASE_64
+        });
+        var hexEncodedString = encode.convert({
+            string: stringInput,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.HEX
+        });
+    }
+    
+    convertStringToDifferentEncoding();
 });
 ```
 
@@ -3108,48 +3108,48 @@ SuiteScriptError.id
 #### Sample 1: Create a Custom Error
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script creates a custom error.
-require(['N/error'], function(error) {
-    function createError() {
-        var myCustomError = error.create({
-            name: 'MY_ERROR_CODE',
-            message: 'My custom error details',
-            notifyOff: true
-        });
-    }
-    createError();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script creates a custom error.
+require(['N/error'], function(error) {
+    function createError() {
+        var myCustomError = error.create({
+            name: 'MY_ERROR_CODE',
+            message: 'My custom error details',
+            notifyOff: true
+        });
+    }
+    createError();
 });
 ```
 
 #### Sample 2: Create an Error Based on a Condition
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script conditionally creates and throws an error.
-require(['N/error'], function(error) {
-    function showError() {
-        var someVariable = false;
-
-        if (!someVariable) {
-            var myCustomError = error.create({
-                name: 'WRONG_PARAMETER_TYPE',
-                message: 'Wrong parameter type selected.',
-                notifyOff: false
-            });
-
-            // This will write 'Error: WRONG_PARAMETER_TYPE Wrong parameter type selected' to the log
-            log.error('Error: ' + myCustomError.name , myCustomError.message);
-            throw myCustomError;
-        }
-    }
-    showError();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script conditionally creates and throws an error.
+require(['N/error'], function(error) {
+    function showError() {
+        var someVariable = false;
+
+        if (!someVariable) {
+            var myCustomError = error.create({
+                name: 'WRONG_PARAMETER_TYPE',
+                message: 'Wrong parameter type selected.',
+                notifyOff: false
+            });
+
+            // This will write 'Error: WRONG_PARAMETER_TYPE Wrong parameter type selected' to the log
+            log.error('Error: ' + myCustomError.name , myCustomError.message);
+            throw myCustomError;
+        }
+    }
+    showError();
 });
 ```
 
@@ -3271,223 +3271,223 @@ Reader.readUntil(options)
 #### Sample 1: Create and Save a File to the File Cabinet
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/file'], file =&gt; {
-    // Create a file containing text
-    let fileObj = file.create({
-        name: 'testHelloWorld.txt',
-        fileType: file.Type.PLAINTEXT,
-        contents: 'Hello World\nHello World'
-    });
- 
-    // Set the folder for the file
-    // Note that this value is hard-coded in this sample, and you should use
-    // a valid folder ID from your account
-    fileObj.folder = -15;
- 
-    // Save the file
-    let id = fileObj.save();
- 
-    // Load the same file to ensure it was saved correctly
-    fileObj = file.load({
-        id: id
-    });
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/file'], file =&gt; {
+    // Create a file containing text
+    let fileObj = file.create({
+        name: 'testHelloWorld.txt',
+        fileType: file.Type.PLAINTEXT,
+        contents: 'Hello World\nHello World'
+    });
+ 
+    // Set the folder for the file
+    // Note that this value is hard-coded in this sample, and you should use
+    // a valid folder ID from your account
+    fileObj.folder = -15;
+ 
+    // Save the file
+    let id = fileObj.save();
+ 
+    // Load the same file to ensure it was saved correctly
+    fileObj = file.load({
+        id: id
+    });
 });
 ```
 
 #### Sample 2: Create a File, Set Property Values, and Save It to the File Cabinet
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/file'], file =&gt; {
-    // Create a file containing text
-    // Note that the folder value is hard-coded in this sample, and you should
-    // use a valid folder ID from your account
-    let fileObj = file.create({
-        name: 'testHelloWorld3.txt',
-        fileType: file.Type.PLAINTEXT,
-        contents: 'Hello World\nHello World',
-        folder: -15,
-        isOnline: true
-    });
- 
-    // Save the file
-    let id = fileObj.save();
- 
-    // Load the same file to ensure it was saved correctly
-    fileObj = file.load({
-        id: id
-    });
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/file'], file =&gt; {
+    // Create a file containing text
+    // Note that the folder value is hard-coded in this sample, and you should
+    // use a valid folder ID from your account
+    let fileObj = file.create({
+        name: 'testHelloWorld3.txt',
+        fileType: file.Type.PLAINTEXT,
+        contents: 'Hello World\nHello World',
+        folder: -15,
+        isOnline: true
+    });
+ 
+    // Save the file
+    let id = fileObj.save();
+ 
+    // Load the same file to ensure it was saved correctly
+    fileObj = file.load({
+        id: id
+    });
 });
 ```
 
 #### Sample 3: Create and Save a CSV File then Reload the File and Parse Its Contents
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/file', 'N/error', 'N/log'], function (file, error, log) {
-    // This sample calculates the total for the
-    // second column value in a CSV file.
-    //
-    // Each line in the CSV file has the following format:
-    // date,amount
-    //
-    // Here is the data that the script adds to the file:
-    // 10/21/14,200.0
-    // 10/21/15,210.2
-    // 10/21/16,250.3
-
-    // Create the CSV file
-    var csvFile = file.create({
-        name: 'data.csv', 
-        contents: 'date,amount\n', 
-        folder: 39, 
-        fileType: 'CSV'
-    });
-
-    // Add the data
-    csvFile.appendLine({
-        value: '10/21/14,200.0'
-    });
-    csvFile.appendLine({
-        value: '10/21/15,210.2'
-    });
-    csvFile.appendLine({
-        value: '10/21/16,250.3'
-    });
-
-    // Save the file
-    var csvFileId = csvFile.save();
-
-    // Create a variable to store the calculated total
-    var total = 0.0;
-
-    // Load the file
-    var invoiceFile = file.load({
-        id: csvFileId
-    });
-
-    // Obtain an iterator to process each line in the file
-    var iterator = invoiceFile.lines.iterator();
-
-    // Skip the first line, which is the CSV header line
-    iterator.each(function () {return false;});
-
-    // Process each line in the file
-    iterator.each(function (line) {
-        // Update the total based on the line value
-        var lineValues = line.value.split(',');
-        var lineAmount = parseFloat(lineValues[1]);
-        if (!lineAmount) {
-            throw error.create({
-                name: 'INVALID_INVOICE_FILE',
-                message: 'Invoice file contained non-numeric value for total: ' + lineValues[1]
-            });
-        }
-        total += lineAmount;
-        return true;
-    });
-
-    // At the completion of the iteration.each function, the total is 660.5
-    
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/file', 'N/error', 'N/log'], function (file, error, log) {
+    // This sample calculates the total for the
+    // second column value in a CSV file.
+    //
+    // Each line in the CSV file has the following format:
+    // date,amount
+    //
+    // Here is the data that the script adds to the file:
+    // 10/21/14,200.0
+    // 10/21/15,210.2
+    // 10/21/16,250.3
+
+    // Create the CSV file
+    var csvFile = file.create({
+        name: 'data.csv', 
+        contents: 'date,amount\n', 
+        folder: 39, 
+        fileType: 'CSV'
+    });
+
+    // Add the data
+    csvFile.appendLine({
+        value: '10/21/14,200.0'
+    });
+    csvFile.appendLine({
+        value: '10/21/15,210.2'
+    });
+    csvFile.appendLine({
+        value: '10/21/16,250.3'
+    });
+
+    // Save the file
+    var csvFileId = csvFile.save();
+
+    // Create a variable to store the calculated total
+    var total = 0.0;
+
+    // Load the file
+    var invoiceFile = file.load({
+        id: csvFileId
+    });
+
+    // Obtain an iterator to process each line in the file
+    var iterator = invoiceFile.lines.iterator();
+
+    // Skip the first line, which is the CSV header line
+    iterator.each(function () {return false;});
+
+    // Process each line in the file
+    iterator.each(function (line) {
+        // Update the total based on the line value
+        var lineValues = line.value.split(',');
+        var lineAmount = parseFloat(lineValues[1]);
+        if (!lineAmount) {
+            throw error.create({
+                name: 'INVALID_INVOICE_FILE',
+                message: 'Invoice file contained non-numeric value for total: ' + lineValues[1]
+            });
+        }
+        total += lineAmount;
+        return true;
+    });
+
+    // At the completion of the iteration.each function, the total is 660.5
+    
 });
 ```
 
 #### Sample 4: Read and Log File Contents Using Commas and New Lines as Separators
 
 ```javascript
-/**
- * @NApiVersion 2.x
- * @NScriptType bankStatementParserPlugin
- */
-
-define(['N/file', 'N/log'], function(file, log)   {
-    return {
-        parseBankStatement: function(context) {
-            var reader = context.input.file.getReader();
-
-            var textUntilFirstComma = reader.readUntil(',');
-            var next10Characters = reader.readChars(10);
-            var textUntilNextNewLine = reader.readUntil('\n');
-            var next100Characters = reader.readChars(100);
-
-            log.debug({
-                title: 'STATEMENT TEXT',
-                details: textUntilFirstComma
-            });
-
-            log.debug({
-                title: 'STATEMENT TEXT',
-                details: next10Characters
-            });
-
-            log.debug({
-                title: 'STATEMENT TEXT',
-                details: textUntilNextNewLine
-            });
-
-            log.debug({
-                title: 'STATEMENT TEXT',
-                details: next100Characters
-            })
-        }
-    }
+/**
+ * @NApiVersion 2.x
+ * @NScriptType bankStatementParserPlugin
+ */
+
+define(['N/file', 'N/log'], function(file, log)   {
+    return {
+        parseBankStatement: function(context) {
+            var reader = context.input.file.getReader();
+
+            var textUntilFirstComma = reader.readUntil(',');
+            var next10Characters = reader.readChars(10);
+            var textUntilNextNewLine = reader.readUntil('\n');
+            var next100Characters = reader.readChars(100);
+
+            log.debug({
+                title: 'STATEMENT TEXT',
+                details: textUntilFirstComma
+            });
+
+            log.debug({
+                title: 'STATEMENT TEXT',
+                details: next10Characters
+            });
+
+            log.debug({
+                title: 'STATEMENT TEXT',
+                details: textUntilNextNewLine
+            });
+
+            log.debug({
+                title: 'STATEMENT TEXT',
+                details: next100Characters
+            })
+        }
+    }
 });
 ```
 
 #### Sample 5: Read and Log Segments of a File Using a Set of Characters as Separators
 
 ```javascript
-/**
- * @NApiVersion 2.x
- * @NScriptType bankStatementParserPlugin
- */
-
-define(['N/file', 'N/log'], function(file, log)   {
-    return {
-        parseBankStatement: function(context) {
-            var statementFile = context.input.file;
-
-            var statementSegmentIterator = statementFile.getSegments({separator: '\\|_|/'}).iterator();
-            statementSegmentIterator.each(function (segment) {
-                log.debug({
-                    title: 'STATEMENT TEXT',
-                    details: segment.value
-                });
-                return true;
-            });
-        }
-    }
+/**
+ * @NApiVersion 2.x
+ * @NScriptType bankStatementParserPlugin
+ */
+
+define(['N/file', 'N/log'], function(file, log)   {
+    return {
+        parseBankStatement: function(context) {
+            var statementFile = context.input.file;
+
+            var statementSegmentIterator = statementFile.getSegments({separator: '\\|_|/'}).iterator();
+            statementSegmentIterator.each(function (segment) {
+                log.debug({
+                    title: 'STATEMENT TEXT',
+                    details: segment.value
+                });
+                return true;
+            });
+        }
+    }
 });
 ```
 
 #### Sample 6: Copy a File Using Conflict Resolution
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/file'], function(file) {
-    var fileObj = file.create({
-        name: 'test.txt',
-        fileType: file.Type.PLAINTEXT,
-        contents: 'Hello World\nHello World'
-    });
-    fileObj.folder = 2667;
-    var id = fileObj.save();
-
-    fileObj = file.copy({
-        id: id,
-        folder: 2670,
-        conflictResolution: file.NameConflictResolution.RENAME_TO_UNIQUE
-    });
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/file'], function(file) {
+    var fileObj = file.create({
+        name: 'test.txt',
+        fileType: file.Type.PLAINTEXT,
+        contents: 'Hello World\nHello World'
+    });
+    fileObj.folder = 2667;
+    var id = fileObj.save();
+
+    fileObj = file.copy({
+        id: id,
+        folder: 2670,
+        conflictResolution: file.NameConflictResolution.RENAME_TO_UNIQUE
+    });
 });
 ```
 
@@ -3541,106 +3541,106 @@ This method is overloaded when you format a datetime or datetimetz value.
 #### Sample 1: Parse a String to a Date Object
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/ui/serverWidget', 'N/format'], function(serverWidget, format) {
-    function parseAndFormatDateString() {
-        // Assuming Date format is MM/DD/YYYY
-        var initialFormattedDateString = "07/28/2015";
-        var parsedDateStringAsRawDateObject = format.parse({
-            value: initialFormattedDateString,
-            type: format.Type.DATE
-        });
-        var formattedDateString = format.format({
-            value: parsedDateStringAsRawDateObject,
-            type: format.Type.DATE
-        });
-        return [parsedDateStringAsRawDateObject, formattedDateString];
-    }
-    function onRequest(context) {
-        var data = parseAndFormatDateString();
-
-        var form = serverWidget.createForm({
-            title: "Date"
-        });
-
-        var fldDate = form.addField({
-            type: serverWidget.FieldType.DATE,
-            id: "date",
-            label: "Date"
-        });
-        fldDate.defaultValue = data[0];
-
-        var fldString = form.addField({
-            type: serverWidget.FieldType.TEXT,
-            id: "dateastext",
-            label: "Date as text"
-        });
-        fldString.defaultValue = data[1];
-
-        context.response.writePage(form);
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/ui/serverWidget', 'N/format'], function(serverWidget, format) {
+    function parseAndFormatDateString() {
+        // Assuming Date format is MM/DD/YYYY
+        var initialFormattedDateString = "07/28/2015";
+        var parsedDateStringAsRawDateObject = format.parse({
+            value: initialFormattedDateString,
+            type: format.Type.DATE
+        });
+        var formattedDateString = format.format({
+            value: parsedDateStringAsRawDateObject,
+            type: format.Type.DATE
+        });
+        return [parsedDateStringAsRawDateObject, formattedDateString];
+    }
+    function onRequest(context) {
+        var data = parseAndFormatDateString();
+
+        var form = serverWidget.createForm({
+            title: "Date"
+        });
+
+        var fldDate = form.addField({
+            type: serverWidget.FieldType.DATE,
+            id: "date",
+            label: "Date"
+        });
+        fldDate.defaultValue = data[0];
+
+        var fldString = form.addField({
+            type: serverWidget.FieldType.TEXT,
+            id: "dateastext",
+            label: "Date as text"
+        });
+        fldString.defaultValue = data[1];
+
+        context.response.writePage(form);
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 2: Parse a String to a Number
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/format'], 
-    function(format){
-         function parseToValue() {
-              // Assume number format is 1.000.000,00 and negative format is -100
-              var formattedNum = "-20.000,25"
-              return format.parse({value:formattedNum, type: format.Type.FLOAT})
-              }
-         var rawNum = parseToValue(); // -20000.25 -- a number 
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/format'], 
+    function(format){
+         function parseToValue() {
+              // Assume number format is 1.000.000,00 and negative format is -100
+              var formattedNum = "-20.000,25"
+              return format.parse({value:formattedNum, type: format.Type.FLOAT})
+              }
+         var rawNum = parseToValue(); // -20000.25 -- a number 
    });
 ```
 
 #### Sample 3: Format a Number as a String
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/format'], 
-    function(format){
-         function formatToString() {
-              // Assume number format is 1.000.000,00 and negative format is (100)
-              var rawNum2 =  -44444.44
-              return format.format({value:rawNum2, type: format.Type.FLOAT}) 
-              }
-         var formattedNum2 = formatToString(); // "44.444,44" -- a string
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/format'], 
+    function(format){
+         function formatToString() {
+              // Assume number format is 1.000.000,00 and negative format is (100)
+              var rawNum2 =  -44444.44
+              return format.format({value:rawNum2, type: format.Type.FLOAT}) 
+              }
+         var formattedNum2 = formatToString(); // "44.444,44" -- a string
    });
 ```
 
 #### Sample 4: Format Time of Day as a String
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/format'],
-    function(format){
-         function formatTimeOfDay() {
-              // Instantiate a new Date object assuming it's now 7:01PM.
-              const now = new Date();
-              // Select a format from the format.Type enum. In this case TIMEOFDAY
-              return format.format({value: now, type: format.Type.TIMEOFDAY})
-              }
-         const formattedTime = formatTimeOfDay(); // "7:01 pm" -- a string
-  }); const formattedTime = formatTimeOfDay(); // "7:01 pm" -- a string 
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/format'],
+    function(format){
+         function formatTimeOfDay() {
+              // Instantiate a new Date object assuming it's now 7:01PM.
+              const now = new Date();
+              // Select a format from the format.Type enum. In this case TIMEOFDAY
+              return format.format({value: now, type: format.Type.TIMEOFDAY})
+              }
+         const formattedTime = formatTimeOfDay(); // "7:01 pm" -- a string
+  }); const formattedTime = formatTimeOfDay(); // "7:01 pm" -- a string 
  });
 ```
 
@@ -3772,240 +3772,240 @@ The object that formats the phone number to string.
 #### Sample 1: Format 12345 as a German String
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/format/i18n'], function(format) {
-     var spellOut = format.spellOut({
-        number: 12345, 
-        locale: "DE"
-    });
-    // spellOut is 'zwölf­tausend­drei­hundert­fünf­und­vierzig'
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/format/i18n'], function(format) {
+     var spellOut = format.spellOut({
+        number: 12345, 
+        locale: "DE"
+    });
+    // spellOut is 'zwölf­tausend­drei­hundert­fünf­und­vierzig'
 });
 ```
 
 #### Sample 2: Format a Number as a String Using N/format/i18n
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/format/i18n'], function(format) {
-    var numberFormatter = format.getNumberFormatter();
-        
-    var gs = numberFormatter.groupSeparator;         // gs is ','
-    var ds = numberFormatter.decimalSeparator;       // ds is '.'
-    var precision = numberFormatter.precision;       // precision is '2'
-    var nnf = numberFormatter.negativeNumberFormat;  // nnf is 'BRACKETS'
- 
-    var formatNum1 = numberFormatter.format({
-        number: 12.53
-    }); // formatNum1 is '12.53'
-    
-    var formatNum2 = numberFormatter.format({
-        number: 12845.22
-    }); // formatNum2 is '12,845.22'
-    
-    var formatNum3 = numberFormatter.format({
-        number: -5421
-    }); // formatNum3 is '(5,421.00)'
-    
-    var formatNum4 = numberFormatter.format({
-        number: 0.00
-    }); // formatNum4 is '0.00'
-    
-    var formatNum5 = numberFormatter.format({
-        number: 0.3456789
-    }); // formatNum5 is '0.35'
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/format/i18n'], function(format) {
+    var numberFormatter = format.getNumberFormatter();
+        
+    var gs = numberFormatter.groupSeparator;         // gs is ','
+    var ds = numberFormatter.decimalSeparator;       // ds is '.'
+    var precision = numberFormatter.precision;       // precision is '2'
+    var nnf = numberFormatter.negativeNumberFormat;  // nnf is 'BRACKETS'
+ 
+    var formatNum1 = numberFormatter.format({
+        number: 12.53
+    }); // formatNum1 is '12.53'
+    
+    var formatNum2 = numberFormatter.format({
+        number: 12845.22
+    }); // formatNum2 is '12,845.22'
+    
+    var formatNum3 = numberFormatter.format({
+        number: -5421
+    }); // formatNum3 is '(5,421.00)'
+    
+    var formatNum4 = numberFormatter.format({
+        number: 0.00
+    }); // formatNum4 is '0.00'
+    
+    var formatNum5 = numberFormatter.format({
+        number: 0.3456789
+    }); // formatNum5 is '0.35'
 });
 ```
 
 #### Sample 3: Format Numbers as Currency Strings
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/format/i18n'], function(format) {
-    var curFormatter = format.getCurrencyFormatter({
-        currency: "EUR"
-    });
-
-    var curCur = curFormatter.currency;                  // curCur is 'EUR'
-    var numberFormat = curFormatter.numberFormatter;
-
-    var curSymbol = curFormatter.symbol;                 // curSymbol is '€'
-    var curSeparator = numberFormat.groupSeparator;      // curSeparator is ' '
-    var curDecimalSep = numberFormat.decimalSeparator;   // curDecimalSep is ','
-    var curPrecision = numberFormat.precision;           // curPrecision is 2
-    var curNNF = numberFormat.negativeNumberFormat;      // curNNF is MINUS
-
-    curFormatNum1 = curFormatter.format({
-        number: 12.53
-    }); // curFormat1 is '€12,53'
-
-    curFormatNum2 = curFormatter.format({
-        number: -5421
-    }); // curFormat2 is '€-5 421,00'
-
-    curFormatNum3 = curFormatter.format({
-        number: 0.00
-    }); // curFormat3 is '€0,00'
-
-    curFormatNum4 = curFormatter.format({
-        number: 0.3456789
-    }); // curFormat4 is '€0,35'
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/format/i18n'], function(format) {
+    var curFormatter = format.getCurrencyFormatter({
+        currency: "EUR"
+    });
+
+    var curCur = curFormatter.currency;                  // curCur is 'EUR'
+    var numberFormat = curFormatter.numberFormatter;
+
+    var curSymbol = curFormatter.symbol;                 // curSymbol is '€'
+    var curSeparator = numberFormat.groupSeparator;      // curSeparator is ' '
+    var curDecimalSep = numberFormat.decimalSeparator;   // curDecimalSep is ','
+    var curPrecision = numberFormat.precision;           // curPrecision is 2
+    var curNNF = numberFormat.negativeNumberFormat;      // curNNF is MINUS
+
+    curFormatNum1 = curFormatter.format({
+        number: 12.53
+    }); // curFormat1 is '€12,53'
+
+    curFormatNum2 = curFormatter.format({
+        number: -5421
+    }); // curFormat2 is '€-5 421,00'
+
+    curFormatNum3 = curFormatter.format({
+        number: 0.00
+    }); // curFormat3 is '€0,00'
+
+    curFormatNum4 = curFormatter.format({
+        number: 0.3456789
+    }); // curFormat4 is '€0,35'
 });
 ```
 
 #### Sample 4: Parse a Czech Phone Number
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/format/i18n'], function(format) {
-    var origNumberStr = "602547854ext.154";
-    var pnParser = format.getPhoneNumberParser({
-        defaultCountry: format.Country.CZECH_REPUBLIC
-    });
-    var phoneNumber = pnParser.parse({
-        number: origNumberStr
-    });
-
-    /* after parsing:
-       phoneNumber.countryCode is '420'
-       phoneNumber.extension is '154'
-       phoneNumber.nationalNumber is '602547854'
-       phoneNumber.numberofLeadingZeros is 1
-       phoneNumber.carrierCode is ' '
-       phoneNumber.rawInput is '602547854ext.154'
-    */
-
-    var pnFormatter = format.getPhoneNumberFormatter({});
-    var strNumber = pnFormatter.format({
-        number: phoneNumber
-    });  // strNumber is '+420 602 547 854 ext. 154'
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/format/i18n'], function(format) {
+    var origNumberStr = "602547854ext.154";
+    var pnParser = format.getPhoneNumberParser({
+        defaultCountry: format.Country.CZECH_REPUBLIC
+    });
+    var phoneNumber = pnParser.parse({
+        number: origNumberStr
+    });
+
+    /* after parsing:
+       phoneNumber.countryCode is '420'
+       phoneNumber.extension is '154'
+       phoneNumber.nationalNumber is '602547854'
+       phoneNumber.numberofLeadingZeros is 1
+       phoneNumber.carrierCode is ' '
+       phoneNumber.rawInput is '602547854ext.154'
+    */
+
+    var pnFormatter = format.getPhoneNumberFormatter({});
+    var strNumber = pnFormatter.format({
+        number: phoneNumber
+    });  // strNumber is '+420 602 547 854 ext. 154'
 });
 ```
 
 #### Sample 5: Parse a U.S. Phone Number
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/format/i18n'], function(format) {
-    var origNumberStr = "7524105210ext.154";
-    var pnParser = format.getPhoneNumberParser({
-        defaultCountry: format.Country.UNITED_STATES
-    });
-    var phoneNumber = pnParser.parse({
-        number: origNumberStr
-    });
-
-    /* after parsing:
-       phoneNumber.countryCode is '1'
-       phoneNumber.extension is '154'
-       phoneNumber.nationalNumber is '7524105210'
-       phoneNumber.numberofLeadingZeros is 1
-       phoneNumber.carrierCode is ' '
-       phoneNumber.rawInput is '7524105210ext.154'
-    */
-
-    var pnFormatter = format.getPhoneNumberFormatter({
-        formatType: format.PhoneNumberFormatType.NATIONAL
-    });
-    var strNumber = pnFormatter.format({
-        number: phoneNumber
-    }); // strNumber is '(752) 410-5210 ext. 154'
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/format/i18n'], function(format) {
+    var origNumberStr = "7524105210ext.154";
+    var pnParser = format.getPhoneNumberParser({
+        defaultCountry: format.Country.UNITED_STATES
+    });
+    var phoneNumber = pnParser.parse({
+        number: origNumberStr
+    });
+
+    /* after parsing:
+       phoneNumber.countryCode is '1'
+       phoneNumber.extension is '154'
+       phoneNumber.nationalNumber is '7524105210'
+       phoneNumber.numberofLeadingZeros is 1
+       phoneNumber.carrierCode is ' '
+       phoneNumber.rawInput is '7524105210ext.154'
+    */
+
+    var pnFormatter = format.getPhoneNumberFormatter({
+        formatType: format.PhoneNumberFormatType.NATIONAL
+    });
+    var strNumber = pnFormatter.format({
+        number: phoneNumber
+    }); // strNumber is '(752) 410-5210 ext. 154'
 });
 ```
 
 #### Sample 6: Format Numbers Based on the Locale Parameter
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/format/i18n'], function(format) {
-    var numberFormatter = format.getNumberFormatter({
-        locale: "fr_FR"
-    });
-
-    var gs = numberFormatter.groupSeparator;        // gs is ' '
-    var ds = numberFormatter.decimalSeparator;      // ds is ','
-    var prec = numberFormatter.precision;           // prec is 2
-    var nnf = numberFormatter.negativeNumberFormat; // nnf is MINUS
-
-    var number1 = numberFormatter.format({
-        number: 123456.55
-    });  // number1 is '123 456,55'
-
-    var number2 = numberFormatter.format({
-        number: -123456.55
-    });  // number2 is '-123 456,55'
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/format/i18n'], function(format) {
+    var numberFormatter = format.getNumberFormatter({
+        locale: "fr_FR"
+    });
+
+    var gs = numberFormatter.groupSeparator;        // gs is ' '
+    var ds = numberFormatter.decimalSeparator;      // ds is ','
+    var prec = numberFormatter.precision;           // prec is 2
+    var nnf = numberFormatter.negativeNumberFormat; // nnf is MINUS
+
+    var number1 = numberFormatter.format({
+        number: 123456.55
+    });  // number1 is '123 456,55'
+
+    var number2 = numberFormatter.format({
+        number: -123456.55
+    });  // number2 is '-123 456,55'
 });
 ```
 
 #### Sample 7: Format Currency Based on the Locale Parameter
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/format/i18n'], function(format) {
-    var curFormatter = format.getCurrencyFormatter({
-        locale: "IT_IT"
-    });
-
-    var curCur = curFormatter.currency;   // curCur is 'EUR'
-    var sym = curFormatter.symbol;        // sym is '€'
-
-    var numberFormat = curFormatter.numberFormatter;
-
-    var gs = numberFormat.groupSeparator;         // gs is '.'
-    var ds = numberFormat.decimalSeparator;       // ds is ','
-    var prec = numberFormat.precision;            // prec is 2
-    var nnf = numberFormat.negativeNumberFormat;  // nnf is MINUS
-
-    var currency1 = curFormatter.format({
-        number: 123456.55
-    });// currency1 is '€123.456,55'
-
-    var currency2 = curFormatter.format({
-        number: -123456.55
-    });  // currency2 is '€-123.456,55'
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/format/i18n'], function(format) {
+    var curFormatter = format.getCurrencyFormatter({
+        locale: "IT_IT"
+    });
+
+    var curCur = curFormatter.currency;   // curCur is 'EUR'
+    var sym = curFormatter.symbol;        // sym is '€'
+
+    var numberFormat = curFormatter.numberFormatter;
+
+    var gs = numberFormat.groupSeparator;         // gs is '.'
+    var ds = numberFormat.decimalSeparator;       // ds is ','
+    var prec = numberFormat.precision;            // prec is 2
+    var nnf = numberFormat.negativeNumberFormat;  // nnf is MINUS
+
+    var currency1 = curFormatter.format({
+        number: 123456.55
+    });// currency1 is '€123.456,55'
+
+    var currency2 = curFormatter.format({
+        number: -123456.55
+    });  // currency2 is '€-123.456,55'
 });
 ```
 
 #### Sample 8: Format Numbers and Currencies Based on the English-India Locale Parameter
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/format/i18n'], function(format) {
-    var curFormatter = format.getCurrencyFormatter({
-        locale: "en_IN"
-    });
-
-    var curCur = curFormatter.currency;  // curCur is 'INR'
-
-    var numberFormat = curFormatter.numberFormatter;
-    var sym = curFormatter.symbol;                  // sym is '₹'
-    var gs = numberFormat.groupSeparator;           // gs is ','
-    var ds = numberFormat.decimalSeparator;         // ds is '.'
-    var prec = numberFormat.precision;              // prec is 2
-    var nnf = numberFormat.negativeNumberFormat;    // nnf is MINUS
-
-    var currency1 = curFormatter.format({
-        number: 12345678.55
-    });  // currency1 is '₹1,23,45,678.55'
-
-    var currency2 = curFormatter.format({
-        number: -345678.55
-    });  // currency2 is '₹-3,45,678.55'
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/format/i18n'], function(format) {
+    var curFormatter = format.getCurrencyFormatter({
+        locale: "en_IN"
+    });
+
+    var curCur = curFormatter.currency;  // curCur is 'INR'
+
+    var numberFormat = curFormatter.numberFormatter;
+    var sym = curFormatter.symbol;                  // sym is '₹'
+    var gs = numberFormat.groupSeparator;           // gs is ','
+    var ds = numberFormat.decimalSeparator;         // ds is '.'
+    var prec = numberFormat.precision;              // prec is 2
+    var nnf = numberFormat.negativeNumberFormat;    // nnf is MINUS
+
+    var currency1 = curFormatter.format({
+        number: 12345678.55
+    });  // currency1 is '₹1,23,45,678.55'
+
+    var currency2 = curFormatter.format({
+        number: -345678.55
+    });  // currency2 is '₹-3,45,678.55'
 });
 ```
 
@@ -4169,43 +4169,43 @@ ServerResponse.getHeader(options)
 #### Sample 1: Request a URL
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-// This script uses an HTTP GET request for a URL.
-require(['N/http'], (http)=&gt; {
-    function sendGetRequest() {
-        let response = http.get({
-            url: 'http://www.google.com'
-        });
-    }
-    sendGetRequest();
+/**
+ * @NApiVersion 2.1
+ */
+
+// This script uses an HTTP GET request for a URL.
+require(['N/http'], (http)=&gt; {
+    function sendGetRequest() {
+        let response = http.get({
+            url: 'http://www.google.com'
+        });
+    }
+    sendGetRequest();
 });
 ```
 
 #### Sample 2: Redirect a record
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script redirects a new sales order record and sets the entity.
-define(['N/record', 'N/http'], (record, http)=&gt; {
-    function onRequest(context) {
-        context.response.sendRedirect({
-            type: http.RedirectType.RECORD,
-            identifier: record.Type.SALES_ORDER,
-            parameters: ({
-                entity: 6
-            })
-        });
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script redirects a new sales order record and sets the entity.
+define(['N/record', 'N/http'], (record, http)=&gt; {
+    function onRequest(context) {
+        context.response.sendRedirect({
+            type: http.RedirectType.RECORD,
+            identifier: record.Type.SALES_ORDER,
+            parameters: ({
+                entity: 6
+            })
+        });
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
@@ -4419,460 +4419,460 @@ ServerResponse.getHeader(options)
 #### Sample 1: Generate a Secure Token and a Secret Key
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-// This script uses a GUID to generate a secure token and a secret key.
-require(['N/https', 'N/runtime'], (https, runtime) =&gt; {
-    function createSecureString() {
-        const passwordGuid = '{284CFB2D225B1D76FB94D150207E49DF}';
-        let secureToken = https.createSecureString({
-            input: passwordGuid
-        });
-        let secretKey = https.createSecretKey({
-            input: passwordGuid
-        });
-        secureToken = secureToken.hmac({
-            algorithm: https.HashAlg.SHA256,
-            key: secretKey
-        });
-    }
-    createSecureString();
+/**
+ * @NApiVersion 2.1
+ */
+
+// This script uses a GUID to generate a secure token and a secret key.
+require(['N/https', 'N/runtime'], (https, runtime) =&gt; {
+    function createSecureString() {
+        const passwordGuid = '{284CFB2D225B1D76FB94D150207E49DF}';
+        let secureToken = https.createSecureString({
+            input: passwordGuid
+        });
+        let secretKey = https.createSecretKey({
+            input: passwordGuid
+        });
+        secureToken = secureToken.hmac({
+            algorithm: https.HashAlg.SHA256,
+            key: secretKey
+        });
+    }
+    createSecureString();
 });
 ```
 
 #### Sample 2: Create a Form with a Credential Field
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script creates a form with a credential field.
-define(['N/ui/serverWidget', 'N/https', 'N/url'], (serverWidget, https, url) =&gt; {
-    function onRequest(context) {
-        if (context.request.method === 'GET') {
-            const form = serverWidget.createForm({
-             title: 'Password Form'
-            });
-
-            const credField = form.addCredentialField({
-                id: 'password',
-                label: 'Password',
-                restrictToDomains: ['&lt;accountID&gt;.app.netsuite.com'],
-                restrictToCurrentUser: false,
-                restrictToScriptIds: 'customscript_my_script'
-            });
-
-            credField.maxLength = 32;
-
-            form.addSubmitButton();
-
-            context.response.writePage({
-                pageObject: form
-                });
-        } 
-        else {
-            // Request to an existing Suitelet with credentials
-            let passwordGuid = context.request.parameters.password;
-
-            // Replace SCRIPTID and DEPLOYMENTID with the internal ID of the suitelet script and deployment in your account 
-            let baseUrl = url.resolveScript({
-                scriptId: SCRIPTID,
-                deploymentId: DEPLOYMENTID,
-                returnExternalURL: true
-            });
-
-            let authUrl = baseUrl + '&amp;pwd={' + passwordGuid + '}';
-
-            let secureStringUrl = https.createSecureString({
-                input: authUrl
-            });
-
-            let headers = ({
-               'pwd': passwordGuid
-            });
-
-            let response = https.post({
-                credentials: [passwordGuid],
-                url: secureStringUrl,
-                body: {authorization:' '+ passwordGuid + '', data:'anything can be here'},
-                headers: headers
-            });
-        }
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script creates a form with a credential field.
+define(['N/ui/serverWidget', 'N/https', 'N/url'], (serverWidget, https, url) =&gt; {
+    function onRequest(context) {
+        if (context.request.method === 'GET') {
+            const form = serverWidget.createForm({
+             title: 'Password Form'
+            });
+
+            const credField = form.addCredentialField({
+                id: 'password',
+                label: 'Password',
+                restrictToDomains: ['&lt;accountID&gt;.app.netsuite.com'],
+                restrictToCurrentUser: false,
+                restrictToScriptIds: 'customscript_my_script'
+            });
+
+            credField.maxLength = 32;
+
+            form.addSubmitButton();
+
+            context.response.writePage({
+                pageObject: form
+                });
+        } 
+        else {
+            // Request to an existing Suitelet with credentials
+            let passwordGuid = context.request.parameters.password;
+
+            // Replace SCRIPTID and DEPLOYMENTID with the internal ID of the suitelet script and deployment in your account 
+            let baseUrl = url.resolveScript({
+                scriptId: SCRIPTID,
+                deploymentId: DEPLOYMENTID,
+                returnExternalURL: true
+            });
+
+            let authUrl = baseUrl + '&amp;pwd={' + passwordGuid + '}';
+
+            let secureStringUrl = https.createSecureString({
+                input: authUrl
+            });
+
+            let headers = ({
+               'pwd': passwordGuid
+            });
+
+            let response = https.post({
+                credentials: [passwordGuid],
+                url: secureStringUrl,
+                body: {authorization:' '+ passwordGuid + '', data:'anything can be here'},
+                headers: headers
+            });
+        }
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 3: Create an Authentication Header Using a Secure String
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
- 
-// This script creates an authentication header using an https.SecureString.
-define(['N/https', 'N/encode'], (https, encode) =&gt; {
-    function onRequest(context) {
-
-        // Secrets with these two Script IDs must be existing and allowed for this script
-        const nameToken = "custsecret_myName";
-        const passwordToken = "custsecret_mypPassword";
-
-        // Create BASE-64 encoded name:password pair
-        const secStringKeyInBase64 = https.createSecureString({
-            input: "{" + nameToken + "}:{" + passwordToken + "}"
-        });
-
-        secStringKeyInBase64.convertEncoding({
-            toEncoding: encode.Encoding.BASE_64,
-            fromEncoding: encode.Encoding.UTF_8
-        });
-
-        // Construct the Authorization header
-        const secStringBasicAuthHeader = https.createSecureString({
-            input: "Basic "
-        });
-
-        secStringBasicAuthHeader.appendSecureString({
-            secureString: secStringKeyInBase64,
-            keepEncoding: true
-        });
-
-        // Send the request to third party with the Authorization header
-        const resp = https.get({
-            url: "myUrl",
-            headers: {
-                "Authorization": secStringBasicAuthHeader
-            }
-        });
-    };
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+ 
+// This script creates an authentication header using an https.SecureString.
+define(['N/https', 'N/encode'], (https, encode) =&gt; {
+    function onRequest(context) {
+
+        // Secrets with these two Script IDs must be existing and allowed for this script
+        const nameToken = "custsecret_myName";
+        const passwordToken = "custsecret_mypPassword";
+
+        // Create BASE-64 encoded name:password pair
+        const secStringKeyInBase64 = https.createSecureString({
+            input: "{" + nameToken + "}:{" + passwordToken + "}"
+        });
+
+        secStringKeyInBase64.convertEncoding({
+            toEncoding: encode.Encoding.BASE_64,
+            fromEncoding: encode.Encoding.UTF_8
+        });
+
+        // Construct the Authorization header
+        const secStringBasicAuthHeader = https.createSecureString({
+            input: "Basic "
+        });
+
+        secStringBasicAuthHeader.appendSecureString({
+            secureString: secStringKeyInBase64,
+            keepEncoding: true
+        });
+
+        // Send the request to third party with the Authorization header
+        const resp = https.get({
+            url: "myUrl",
+            headers: {
+                "Authorization": secStringBasicAuthHeader
+            }
+        });
+    };
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 4: Concatenate API Secrets with Strings
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-// This script uses appendSecureString to concatenate strings to use as an API secret.
-require(['N/https', 'N/runtime'], (https, runtime) =&gt; {
-    function concatToCreateSecureString() {
-        let baseUrl = https.createSecureString({
-            input: 'www.someurl.com/add?apikey='
-         });
-        let apiKey = https.createSecureString({
-            input: '{CUSTSECRET_SOME_INTEGRATION}'
-        });
-        let url = baseUrl.appendSecureString({
-            secureString: apiKey
-        });
-    }
-    concatToCreateSecureString();
+/**
+ * @NApiVersion 2.1
+ */
+
+// This script uses appendSecureString to concatenate strings to use as an API secret.
+require(['N/https', 'N/runtime'], (https, runtime) =&gt; {
+    function concatToCreateSecureString() {
+        let baseUrl = https.createSecureString({
+            input: 'www.someurl.com/add?apikey='
+         });
+        let apiKey = https.createSecureString({
+            input: '{CUSTSECRET_SOME_INTEGRATION}'
+        });
+        let url = baseUrl.appendSecureString({
+            secureString: apiKey
+        });
+    }
+    concatToCreateSecureString();
 });
 ```
 
 #### Sample 5: Create a JWT Token Using a SecureString
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script creates a JWT token using https.SecureString.
-define(['N/https', 'N/encode'], (https, encode) =&gt; {
-    function onRequest(context) {
-        let nameToken = "custsecret_myName";
-        let passwordToken = "custsecret_myPassword";
-        let headerObj = {
-            "alg": "HS256",
-            "typ": "JWT"
-        }
-        let payloadObj = {
-            "sub": "1234567890",
-            "name": "John Doe",
-            "iat": 1516239002
-        }
-
-        let headerJSON = JSON.stringify(headerObj);
-        let payloadJSON = JSON.stringify(payloadObj);
-        let headerBASE64 = encode.convert({
-            string: headerJSON,
-            inputEncoding: encode.Encoding.UTF_8,
-            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
-        });
-
-        let payloadBASE64 = encode.convert({
-            string: payloadJSON,
-            inputEncoding: encode.Encoding.UTF_8,
-            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
-        });
-
-        headerBASE64 = headerBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
-        payloadBASE64 = payloadBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
-        
-        let secStringJwtSignature = https .createSecureString({
-            input: headerBASE64 + "." + payloadBASE64
-        })
-        .hmac({
-            algorithm: https.HashAlg.SHA256,
-            key: https.createSecretKey({
-                     secret: passwordToken,
-                     encoding: encode.Encoding.UTF_8
-            }),
-           resultEncoding: encode.Encoding.BASE_64_URL_SAFE
-        })
-        .replaceString({ // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
-             pattern: "=", 
-             replacement: ""
-        })
-
-        let secStringJwtAuthHeader = https .createSecureString({
-            input: "Bearer " + headerBASE64 + "." + payloadBASE64 + "."
-        })
-        .appendSecureString({
-            secureString: secStringJwtSignature,
-            keepEncoding: true
-        })
-
-        // Reflect the response using a echo-request suitelet
-        let resp = https.get({
-            url: "myURL",
-            headers: {
-                "Authorization": secStringJwtAuthHeader
-            } 
-        });
-
-        { 
-            log.debug("resp-code", resp.code);
-            log.debug("resp-body", resp.body);
-
-            let respAuth = JSON.parse(resp.body)["headers"]["Authorization"];
-
-            log.debug("reps-head-auth", respAuth);
-            log.debug("reps-head-auth-expected", 
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.uel3RLILSJ9Q9W2Gomh8vAJQAgdbnd6TS4b7plyFOtA" ); // see https://jwt.io/#debugger-io
-        } 
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script creates a JWT token using https.SecureString.
+define(['N/https', 'N/encode'], (https, encode) =&gt; {
+    function onRequest(context) {
+        let nameToken = "custsecret_myName";
+        let passwordToken = "custsecret_myPassword";
+        let headerObj = {
+            "alg": "HS256",
+            "typ": "JWT"
+        }
+        let payloadObj = {
+            "sub": "1234567890",
+            "name": "John Doe",
+            "iat": 1516239002
+        }
+
+        let headerJSON = JSON.stringify(headerObj);
+        let payloadJSON = JSON.stringify(payloadObj);
+        let headerBASE64 = encode.convert({
+            string: headerJSON,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
+        });
+
+        let payloadBASE64 = encode.convert({
+            string: payloadJSON,
+            inputEncoding: encode.Encoding.UTF_8,
+            outputEncoding: encode.Encoding.BASE_64_URL_SAFE
+        });
+
+        headerBASE64 = headerBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+        payloadBASE64 = payloadBASE64.replace(/=/g, ""); // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+        
+        let secStringJwtSignature = https .createSecureString({
+            input: headerBASE64 + "." + payloadBASE64
+        })
+        .hmac({
+            algorithm: https.HashAlg.SHA256,
+            key: https.createSecretKey({
+                     secret: passwordToken,
+                     encoding: encode.Encoding.UTF_8
+            }),
+           resultEncoding: encode.Encoding.BASE_64_URL_SAFE
+        })
+        .replaceString({ // remove = padding as per JWT spec 'base64UrlEncode' - URL-safe BASE-64 without padding
+             pattern: "=", 
+             replacement: ""
+        })
+
+        let secStringJwtAuthHeader = https .createSecureString({
+            input: "Bearer " + headerBASE64 + "." + payloadBASE64 + "."
+        })
+        .appendSecureString({
+            secureString: secStringJwtSignature,
+            keepEncoding: true
+        })
+
+        // Reflect the response using a echo-request suitelet
+        let resp = https.get({
+            url: "myURL",
+            headers: {
+                "Authorization": secStringJwtAuthHeader
+            } 
+        });
+
+        { 
+            log.debug("resp-code", resp.code);
+            log.debug("resp-body", resp.body);
+
+            let respAuth = JSON.parse(resp.body)["headers"]["Authorization"];
+
+            log.debug("reps-head-auth", respAuth);
+            log.debug("reps-head-auth-expected", 
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.uel3RLILSJ9Q9W2Gomh8vAJQAgdbnd6TS4b7plyFOtA" ); // see https://jwt.io/#debugger-io
+        } 
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 6: Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/https'],
-    
-    (https) =&gt; {
-        /**
-         * Defines the Suitelet script trigger point.
-         * @param {Object} scriptContext
-         * @param {ServerRequest} scriptContext.request - Incoming request
-         * @param {ServerResponse} scriptContext.response - Suitelet response
-         * @since 2015.2
-         */
-        const onRequest = (scriptContext) =&gt; {
-            // Get the employee ID from the parameters
-            const employeeId = scriptContext.request.parameters.employeeId || '0';
-
-            // Define output variable
-            let output = '';
-
-            // Retrieve the employee name 
-            const restletResponse = https.requestRestlet({
-                body: JSON.stringify({ employeeId }),
-                deploymentId: 'customdeploy_samples_rs_requestrestlet',
-                scriptId: 'customscript_samples_rs_requestrestlet',
-                headers: { 'Content-Type': 'application/json' },
-                method: 'POST'
-            });
-
-            // Check if the RESTlet call is successful
-            if (restletResponse.code === 200) {
-                if (restletResponse.body !== '') {
-                    // Parse the RESTlet response
-                    const restletBody = JSON.parse(restletResponse.body);
-
-                    // Write the suitelet output
-                    output = `Employee Name is: ${restletBody.name}`;
-                } else {
-                    // Write error message.
-                    output = 'No employee found.';
-                }
-
-            } else {
-                // Write error message.
-                output = 'Unexpected error. Please check script logs.';
-            }
-
-            // Write output to response object.
-            scriptContext.response.write(output);
-        }
-
-        return {onRequest}
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/https'],
+    
+    (https) =&gt; {
+        /**
+         * Defines the Suitelet script trigger point.
+         * @param {Object} scriptContext
+         * @param {ServerRequest} scriptContext.request - Incoming request
+         * @param {ServerResponse} scriptContext.response - Suitelet response
+         * @since 2015.2
+         */
+        const onRequest = (scriptContext) =&gt; {
+            // Get the employee ID from the parameters
+            const employeeId = scriptContext.request.parameters.employeeId || '0';
+
+            // Define output variable
+            let output = '';
+
+            // Retrieve the employee name 
+            const restletResponse = https.requestRestlet({
+                body: JSON.stringify({ employeeId }),
+                deploymentId: 'customdeploy_samples_rs_requestrestlet',
+                scriptId: 'customscript_samples_rs_requestrestlet',
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST'
+            });
+
+            // Check if the RESTlet call is successful
+            if (restletResponse.code === 200) {
+                if (restletResponse.body !== '') {
+                    // Parse the RESTlet response
+                    const restletBody = JSON.parse(restletResponse.body);
+
+                    // Write the suitelet output
+                    output = `Employee Name is: ${restletBody.name}`;
+                } else {
+                    // Write error message.
+                    output = 'No employee found.';
+                }
+
+            } else {
+                // Write error message.
+                output = 'Unexpected error. Please check script logs.';
+            }
+
+            // Write output to response object.
+            scriptContext.response.write(output);
+        }
+
+        return {onRequest}
+
     });
 ```
 
 #### Sample 7: Retrieve Employee Information Using a Suitelet and a RESTlet Script with a Defined Content-Type Header
 
 ```javascript
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates.
- */
-
-/**
- * @NApiVersion 2.1
- * @NScriptType Restlet
- */
-define(['N/scriptTypes/restlet', 'N/query'], function (restlet, query) {
-    // Restlet entry point
-    const post = function (requestBody) {
-        // Define the output variable
-        let returnValue = '';
-
-        // Create the Employee Query
-        const qObj = query.create({
-            type: query.Type.EMPLOYEE
-        });
-
-        // Check if the requestBody and the employeeId field is defined
-        if (!!requestBody &amp;&amp; !!requestBody.employeeId) {
-            // Define the query condition for employee ID field in Employee record
-            qObj.condition = qObj.createCondition({
-                fieldId: 'id',
-                operator: query.Operator.EQUAL,
-                values: requestBody.employeeId
-            });
-
-            // Add the desired columns in the Query
-            qObj.columns = [
-                qObj.createColumn({
-                    fieldId: 'firstname'
-                }),
-                qObj.createColumn({
-                    fieldId: 'lastname'
-                })
-            ];
-
-            // Retrieve the results
-            const results = qObj.run().asMappedResults();
-            for (let i = 0; i &lt; results.length; i++) {
-                const result = results[i];
-                returnValue = {
-                    name: result.firstname + ' ' + (result.lastname || '')
-                };
-            }
-        }
-        
-        return returnValue;
-    }
-
-    return { post };
+/*
+ * Copyright (c) 2022, Oracle and/or its affiliates.
+ */
+
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Restlet
+ */
+define(['N/scriptTypes/restlet', 'N/query'], function (restlet, query) {
+    // Restlet entry point
+    const post = function (requestBody) {
+        // Define the output variable
+        let returnValue = '';
+
+        // Create the Employee Query
+        const qObj = query.create({
+            type: query.Type.EMPLOYEE
+        });
+
+        // Check if the requestBody and the employeeId field is defined
+        if (!!requestBody &amp;&amp; !!requestBody.employeeId) {
+            // Define the query condition for employee ID field in Employee record
+            qObj.condition = qObj.createCondition({
+                fieldId: 'id',
+                operator: query.Operator.EQUAL,
+                values: requestBody.employeeId
+            });
+
+            // Add the desired columns in the Query
+            qObj.columns = [
+                qObj.createColumn({
+                    fieldId: 'firstname'
+                }),
+                qObj.createColumn({
+                    fieldId: 'lastname'
+                })
+            ];
+
+            // Retrieve the results
+            const results = qObj.run().asMappedResults();
+            for (let i = 0; i &lt; results.length; i++) {
+                const result = results[i];
+                returnValue = {
+                    name: result.firstname + ' ' + (result.lastname || '')
+                };
+            }
+        }
+        
+        return returnValue;
+    }
+
+    return { post };
 });
 ```
 
 #### Sample 8: Call a Suitelet from a Client Script
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType UserEventScript
- */
-
-// This script adds a button to a form and calls a custom function defined in a client script.
-define(['N/ui/serverWidget'], 
-    
-    function (serverWidget) {
-        function beforeLoad(scriptContext) {
- 
-            // Add a button that calls the callSuitelet function
-            scriptContext.form.addButton({
-                id: 'custpage_call_suitelet_button',
-                label: 'Click to Open Suitelet',
-                functionName: 'callSuitelet'
-            })
-             
-            // Specify the path to the client script where the callSuitelet function is defined
-            scriptContext.form.clientScriptModulePath = './cs_request_suitelet.js' // Replace with the path to your client script
-        }
-
-        return {beforeLoad} 
+/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ */
+
+// This script adds a button to a form and calls a custom function defined in a client script.
+define(['N/ui/serverWidget'], 
+    
+    function (serverWidget) {
+        function beforeLoad(scriptContext) {
+ 
+            // Add a button that calls the callSuitelet function
+            scriptContext.form.addButton({
+                id: 'custpage_call_suitelet_button',
+                label: 'Click to Open Suitelet',
+                functionName: 'callSuitelet'
+            })
+             
+            // Specify the path to the client script where the callSuitelet function is defined
+            scriptContext.form.clientScriptModulePath = './cs_request_suitelet.js' // Replace with the path to your client script
+        }
+
+        return {beforeLoad} 
     });
 ```
 
 #### Sample 9: Call a Suitelet from a Client Script
 
 ```javascript
-/**
- * @NApiVersion 2.x
- * @NScriptType ClientScript
- * @NModuleScope SameAccount
- */
-
-// This script defines a custom function to call a Suitelet.
-define(['N/https', 'N/ui/dialog'],
- 
-    function(https, dialog) {
-        function pageInit(scriptContext) {}
-
-        // Create a custom function that calls a Suitelet and displays the response in a dialog
-        function callSuitelet() {
-            const response = https.requestSuitelet({
-                scriptId: 'customscript_sl_plf_requestsuitelet', // Replace with your Suitelet script ID
-                deploymentId: 'customdeploy_sl_plf_requestsuitelet', // Replace with your Suitelet deployment ID
-            });
-            dialog.alert({
-                title: 'Suitelet Response',
-                message: response.body
-            });
-        }
-     
-        return {
-            pageInit: pageInit,
-            callSuitelet: callSuitelet
-        };
-         
+/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ * @NModuleScope SameAccount
+ */
+
+// This script defines a custom function to call a Suitelet.
+define(['N/https', 'N/ui/dialog'],
+ 
+    function(https, dialog) {
+        function pageInit(scriptContext) {}
+
+        // Create a custom function that calls a Suitelet and displays the response in a dialog
+        function callSuitelet() {
+            const response = https.requestSuitelet({
+                scriptId: 'customscript_sl_plf_requestsuitelet', // Replace with your Suitelet script ID
+                deploymentId: 'customdeploy_sl_plf_requestsuitelet', // Replace with your Suitelet deployment ID
+            });
+            dialog.alert({
+                title: 'Suitelet Response',
+                message: response.body
+            });
+        }
+     
+        return {
+            pageInit: pageInit,
+            callSuitelet: callSuitelet
+        };
+         
     });
 ```
 
 #### Sample 10: Call a Suitelet from a Client Script
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This Suitelet shows the text 'Hello World!' in plain text.
-define([],
-
-    function() {
-        function onRequest(context) {
-            context.response.setHeader({name: 'Content-Type', value: 'text/plain'});
-            context.response.write('Hello World!');
-        }
-
-        return {onRequest};
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This Suitelet shows the text 'Hello World!' in plain text.
+define([],
+
+    function() {
+        function onRequest(context) {
+            context.response.setHeader({name: 'Content-Type', value: 'text/plain'});
+            context.response.write('Hello World!');
+        }
+
+        return {onRequest};
+
     });
 ```
 
@@ -4929,28 +4929,28 @@ clientCertificate.get(options)
 #### Sample 1: N/https/clientCertificate Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/https/clientCertificate'],(cert)=&gt; {
-    // Set the URL
-    const url = "https://nfe.fazenda.sp.gov.br/ws/cadconsultacadastro4.asmx";
-
-    let data = "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;&lt;soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\"&gt;&lt;soapenv:Body&gt;&lt;ns1:nfeDadosMsg xmlns:ns1=\"http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4\"&gt;&lt;ConsCad xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"2.00\"&gt;&lt;infCons&gt;&lt;xServ&gt;CONS-CAD&lt;/xServ&gt;&lt;UF&gt;SP&lt;/UF&gt;&lt;CNPJ&gt;47508411000156&lt;/CNPJ&gt;&lt;/infCons&gt; &lt;/ConsCad&gt;&lt;/ns1:nfeDadosMsg&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;";
-
-    const key = "custcertificate1";
-
-    let headers = {
-        "Content-Type": "application/soap+xml"
-         };
-
-    let response = cert.post({
-        url: url,
-        certId: key,
-        body: data,
-        headers: headers
-    });
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/https/clientCertificate'],(cert)=&gt; {
+    // Set the URL
+    const url = "https://nfe.fazenda.sp.gov.br/ws/cadconsultacadastro4.asmx";
+
+    let data = "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;&lt;soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\"&gt;&lt;soapenv:Body&gt;&lt;ns1:nfeDadosMsg xmlns:ns1=\"http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4\"&gt;&lt;ConsCad xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"2.00\"&gt;&lt;infCons&gt;&lt;xServ&gt;CONS-CAD&lt;/xServ&gt;&lt;UF&gt;SP&lt;/UF&gt;&lt;CNPJ&gt;47508411000156&lt;/CNPJ&gt;&lt;/infCons&gt; &lt;/ConsCad&gt;&lt;/ns1:nfeDadosMsg&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;";
+
+    const key = "custcertificate1";
+
+    let headers = {
+        "Content-Type": "application/soap+xml"
+         };
+
+    let response = cert.post({
+        url: url,
+        certId: key,
+        body: data,
+        headers: headers
+    });
 })
 ```
 
@@ -5034,64 +5034,64 @@ You can create a GUID using Form.addSecretKeyField(options). This property also 
 #### Sample 1: Create a Secret Key
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/keyControl','N/file'],function(keyControl,file){
-            var key = keyControl.createKey();
-            key.file = file.load(422); 
-         //id of file containing private key (id_ecdsa or id_rsa)
-            key.name = "SFTP key";
-            key.save();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/keyControl','N/file'],function(keyControl,file){
+            var key = keyControl.createKey();
+            key.file = file.load(422); 
+         //id of file containing private key (id_ecdsa or id_rsa)
+            key.name = "SFTP key";
+            key.save();
 })
 ```
 
 #### Sample 2: Add a Secret Key Field to a Form
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/ui/serverWidget', 'N/file', 'N/keyControl', 'N/runtime'], function(serverWidget, file, keyControl, runtime) {
-    function onRequest(context) {
-        var request = context.request;
-        var response = context.response;
-
-        if (request.method === 'GET') {
-            var form = serverWidget.createForm({
-                title: 'Enter Password'
-            });
-
-            var credField = form.addSecretKeyField({
-                id: 'custfield_password',
-                label: 'Password',
-                restrictToScriptIds: [runtime.getCurrentScript().id],
-                restrictToCurrentUser: true //Depends on use case
-            });
-            credField.maxLength = 64;
-
-            form.addSubmitButton();
-            response.writePage(form);
-        } else {
-            // Read the request parameter matching the field ID we specified in the form
-            var passwordToken = request.parameters.custfield_password;
-
-            var pem = file.load({
-                id: 422
-            });
-
-            var key = keyControl.createKey();
-            key.file = pem;
-            key.name = 'Test';
-            key.password = passwordToken;
-            key.save();
-        }
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/ui/serverWidget', 'N/file', 'N/keyControl', 'N/runtime'], function(serverWidget, file, keyControl, runtime) {
+    function onRequest(context) {
+        var request = context.request;
+        var response = context.response;
+
+        if (request.method === 'GET') {
+            var form = serverWidget.createForm({
+                title: 'Enter Password'
+            });
+
+            var credField = form.addSecretKeyField({
+                id: 'custfield_password',
+                label: 'Password',
+                restrictToScriptIds: [runtime.getCurrentScript().id],
+                restrictToCurrentUser: true //Depends on use case
+            });
+            credField.maxLength = 64;
+
+            form.addSubmitButton();
+            response.writePage(form);
+        } else {
+            // Read the request parameter matching the field ID we specified in the form
+            var passwordToken = request.parameters.custfield_password;
+
+            var pem = file.load({
+                id: 422
+            });
+
+            var key = keyControl.createKey();
+            key.file = pem;
+            key.name = 'Test';
+            key.password = passwordToken;
+            key.save();
+        }
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
@@ -5445,665 +5445,665 @@ The number of tokens in the request to the LLM.
 #### Sample 1: Send a Prompt to the LLM and Receive a Response
 
 ```javascript
-/**
-*@NApiVersion 2.1
-*/
-// This example shows how to query the default LLM
-require(['N/llm'],
-    function(llm) {        
-        const response = llm.generateText({
-            // modelFamily is optional. When omitted, the Cohere Command A model is used.
-            prompt: "Hello World!",
-            modelParameters: {
-                maxTokens: 1000,
-                temperature: 0.2,
-                topK: 3,
-                topP: 0.7,
-                frequencyPenalty: 0.4,
-                presencePenalty: 0
-            }
-        });
-        const responseText = response.text;
-        const remainingUsage = llm.getRemainingUsage(); // View remaining AI Units
+/**
+*@NApiVersion 2.1
+*/
+// This example shows how to query the default LLM
+require(['N/llm'],
+    function(llm) {        
+        const response = llm.generateText({
+            // modelFamily is optional. When omitted, the Cohere Command A model is used.
+            prompt: "Hello World!",
+            modelParameters: {
+                maxTokens: 1000,
+                temperature: 0.2,
+                topK: 3,
+                topP: 0.7,
+                frequencyPenalty: 0.4,
+                presencePenalty: 0
+            }
+        });
+        const responseText = response.text;
+        const remainingUsage = llm.getRemainingUsage(); // View remaining AI Units
     });
 ```
 
 #### Sample 2: Clean Up Content for Text Area Fields After Saving a Record
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType UserEventScript
- */
-define(['N/llm'], (llm) =&gt; {
-    /**
-     * @param {Object} scriptContext The updated inventory item
-     * record to clean up typo errors for purchase description and
-     * sales description fields. The values are set before the record
-     * is submitted to be saved.
-     */ 
-    function fixTypos(scriptContext) {
-        const purchaseDescription = scriptContext.newRecord.getValue({
-            fieldId: 'purchasedescription'
-        })
-        const salesDescription = scriptContext.newRecord.getValue({
-            fieldId: 'salesdescription'
-        })
-
-        const p1 = llm.generateText.promise({
-            prompt: `Please clean up typos in the following text: 
-                     ${purchaseDescription} and return just the corrected text. 
-                     Return the text as is if there's no typo 
-                     or you don't understand the text.`
-        })
-        const p2 = llm.generateText.promise({
-            prompt: `Please clean up typos in the following text: 
-                     ${salesDescription} and return just the corrected text. 
-                     Return the text as is if there's no typo 
-                     or you don't understand the text.`
-        })
-
-        // When both promises are resolved, set the updated values for the
-        // record
-        Promise.all([p1, p2]).then((results) =&gt; {
-            scriptContext.newRecord.setValue({
-                fieldId: 'purchasedescription',
-                value: results[0].value.text
-            })
-            scriptContext.newRecord.setValue({
-                fieldId: 'salesdescription',
-                value: results[1].value.text
-            })
-        })
-    }
-
-    return { beforeSubmit: fixTypos }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ */
+define(['N/llm'], (llm) =&gt; {
+    /**
+     * @param {Object} scriptContext The updated inventory item
+     * record to clean up typo errors for purchase description and
+     * sales description fields. The values are set before the record
+     * is submitted to be saved.
+     */ 
+    function fixTypos(scriptContext) {
+        const purchaseDescription = scriptContext.newRecord.getValue({
+            fieldId: 'purchasedescription'
+        })
+        const salesDescription = scriptContext.newRecord.getValue({
+            fieldId: 'salesdescription'
+        })
+
+        const p1 = llm.generateText.promise({
+            prompt: `Please clean up typos in the following text: 
+                     ${purchaseDescription} and return just the corrected text. 
+                     Return the text as is if there's no typo 
+                     or you don't understand the text.`
+        })
+        const p2 = llm.generateText.promise({
+            prompt: `Please clean up typos in the following text: 
+                     ${salesDescription} and return just the corrected text. 
+                     Return the text as is if there's no typo 
+                     or you don't understand the text.`
+        })
+
+        // When both promises are resolved, set the updated values for the
+        // record
+        Promise.all([p1, p2]).then((results) =&gt; {
+            scriptContext.newRecord.setValue({
+                fieldId: 'purchasedescription',
+                value: results[0].value.text
+            })
+            scriptContext.newRecord.setValue({
+                fieldId: 'salesdescription',
+                value: results[1].value.text
+            })
+        })
+    }
+
+    return { beforeSubmit: fixTypos }
 })
 ```
 
 #### Sample 3: Provide an LLM-based ChatBot for NetSuite Users
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-define(['N/ui/serverWidget', 'N/llm'], (serverWidget, llm) =&gt; {
-  /**
-   * Creates NetSuite form to communicate with LLM
-   */  
-  function onRequest (context) {
-    const form = serverWidget.createForm({
-      title: 'Chat Bot'
-    })
-    const fieldgroup = form.addFieldGroup({
-      id: 'fieldgroupid',
-      label: 'Chat'
-    })
-    fieldgroup.isSingleColumn = true
-    const historySize = parseInt(
-      context.request.parameters.custpage_num_chats || '0')
-    const numChats = form.addField({
-      id: 'custpage_num_chats',
-      type: serverWidget.FieldType.INTEGER,
-      container: 'fieldgroupid',
-      label: 'History Size'
-    })
-    numChats.updateDisplayType({
-      displayType: serverWidget.FieldDisplayType.HIDDEN
-    })
-
-    if (context.request.method === 'POST') {
-      numChats.defaultValue = historySize + 2
-      const chatHistory = []
-      for (let i = historySize - 2; i &gt;= 0; i -= 2) {
-        const you = form.addField({
-          id: 'custpage_hist' + (i + 2),
-          type: serverWidget.FieldType.TEXTAREA,
-          label: 'You',
-          container: 'fieldgroupid'
-        })
-        const yourMessage = context.request.parameters['custpage_hist' + i]
-        you.defaultValue = yourMessage
-        you.updateDisplayType({
-          displayType: serverWidget.FieldDisplayType.INLINE
-        })
-
-        const chatbot = form.addField({
-          id: 'custpage_hist' + (i + 3),
-          type: serverWidget.FieldType.TEXTAREA,
-          label: 'ChatBot',
-          container: 'fieldgroupid'
-        })
-        const chatBotMessage =
-          context.request.parameters['custpage_hist' + (i + 1)]
-        chatbot.defaultValue = chatBotMessage
-        chatbot.updateDisplayType({
-          displayType: serverWidget.FieldDisplayType.INLINE
-        })
-        chatHistory.push({
-          role: llm.ChatRole.USER,
-          text: yourMessage
-        })
-        chatHistory.push({
-          role: llm.ChatRole.CHATBOT,
-          text: chatBotMessage
-        })
-      }
-
-      const prompt = context.request.parameters.custpage_text
-      const promptField = form.addField({
-        id: 'custpage_hist0',
-        type: serverWidget.FieldType.TEXTAREA,
-        label: 'You',
-        container: 'fieldgroupid'
-      })
-      promptField.defaultValue = prompt
-      promptField.updateDisplayType({
-        displayType: serverWidget.FieldDisplayType.INLINE
-      })
-      const result = form.addField({
-        id: 'custpage_hist1',
-        type: serverWidget.FieldType.TEXTAREA,
-        label: 'ChatBot',
-        container: 'fieldgroupid'
-      })
-      result.defaultValue = llm.generateText({
-        prompt: prompt,
-        chatHistory: chatHistory
-      }).text
-      result.updateDisplayType({
-        displayType: serverWidget.FieldDisplayType.INLINE
-      })
-    } else {
-      numChats.defaultValue = 0
-    }
-
-    form.addField({
-      id: 'custpage_text',
-      type: serverWidget.FieldType.TEXTAREA,
-      label: 'Prompt',
-      container: 'fieldgroupid'
-    })
-
-    form.addSubmitButton({
-      label: 'Submit'
-    })
-
-    context.response.writePage(form)
-  }
-
-  return {
-    onRequest: onRequest
-  }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+define(['N/ui/serverWidget', 'N/llm'], (serverWidget, llm) =&gt; {
+  /**
+   * Creates NetSuite form to communicate with LLM
+   */  
+  function onRequest (context) {
+    const form = serverWidget.createForm({
+      title: 'Chat Bot'
+    })
+    const fieldgroup = form.addFieldGroup({
+      id: 'fieldgroupid',
+      label: 'Chat'
+    })
+    fieldgroup.isSingleColumn = true
+    const historySize = parseInt(
+      context.request.parameters.custpage_num_chats || '0')
+    const numChats = form.addField({
+      id: 'custpage_num_chats',
+      type: serverWidget.FieldType.INTEGER,
+      container: 'fieldgroupid',
+      label: 'History Size'
+    })
+    numChats.updateDisplayType({
+      displayType: serverWidget.FieldDisplayType.HIDDEN
+    })
+
+    if (context.request.method === 'POST') {
+      numChats.defaultValue = historySize + 2
+      const chatHistory = []
+      for (let i = historySize - 2; i &gt;= 0; i -= 2) {
+        const you = form.addField({
+          id: 'custpage_hist' + (i + 2),
+          type: serverWidget.FieldType.TEXTAREA,
+          label: 'You',
+          container: 'fieldgroupid'
+        })
+        const yourMessage = context.request.parameters['custpage_hist' + i]
+        you.defaultValue = yourMessage
+        you.updateDisplayType({
+          displayType: serverWidget.FieldDisplayType.INLINE
+        })
+
+        const chatbot = form.addField({
+          id: 'custpage_hist' + (i + 3),
+          type: serverWidget.FieldType.TEXTAREA,
+          label: 'ChatBot',
+          container: 'fieldgroupid'
+        })
+        const chatBotMessage =
+          context.request.parameters['custpage_hist' + (i + 1)]
+        chatbot.defaultValue = chatBotMessage
+        chatbot.updateDisplayType({
+          displayType: serverWidget.FieldDisplayType.INLINE
+        })
+        chatHistory.push({
+          role: llm.ChatRole.USER,
+          text: yourMessage
+        })
+        chatHistory.push({
+          role: llm.ChatRole.CHATBOT,
+          text: chatBotMessage
+        })
+      }
+
+      const prompt = context.request.parameters.custpage_text
+      const promptField = form.addField({
+        id: 'custpage_hist0',
+        type: serverWidget.FieldType.TEXTAREA,
+        label: 'You',
+        container: 'fieldgroupid'
+      })
+      promptField.defaultValue = prompt
+      promptField.updateDisplayType({
+        displayType: serverWidget.FieldDisplayType.INLINE
+      })
+      const result = form.addField({
+        id: 'custpage_hist1',
+        type: serverWidget.FieldType.TEXTAREA,
+        label: 'ChatBot',
+        container: 'fieldgroupid'
+      })
+      result.defaultValue = llm.generateText({
+        prompt: prompt,
+        chatHistory: chatHistory
+      }).text
+      result.updateDisplayType({
+        displayType: serverWidget.FieldDisplayType.INLINE
+      })
+    } else {
+      numChats.defaultValue = 0
+    }
+
+    form.addField({
+      id: 'custpage_text',
+      type: serverWidget.FieldType.TEXTAREA,
+      label: 'Prompt',
+      container: 'fieldgroupid'
+    })
+
+    form.addSubmitButton({
+      label: 'Submit'
+    })
+
+    context.response.writePage(form)
+  }
+
+  return {
+    onRequest: onRequest
+  }
 })
 ```
 
 #### Sample 4: Evaluate an Existing Prompt and Receive a Response
 
 ```javascript
-/**
-* @NApiVersion 2.1
-*/
-require(['N/llm'],
-    function(llm) {        
-        const response = llm.evaluatePrompt({
-            id: 'stdprompt_gen_purch_desc_invt_item',
-            variables: {
-                "form": {
-                    "itemid": "My Inventory Item",
-                    "stockdescription": "This is the stock description of the item.",
-                    "vendorname": "My Item Vendor Inc.",
-                    "isdropshipitem": "false",
-                    "isspecialorderitem": "true",
-                    "displayname": "My Amazing Inventory Item"
-                },
-                "text": "This is the purchase description of the item."
-            }
-        });
-        const responseText = response.text;
-        const remainingUsage = llm.getRemainingUsage(); // View remaining AI Units
+/**
+* @NApiVersion 2.1
+*/
+require(['N/llm'],
+    function(llm) {        
+        const response = llm.evaluatePrompt({
+            id: 'stdprompt_gen_purch_desc_invt_item',
+            variables: {
+                "form": {
+                    "itemid": "My Inventory Item",
+                    "stockdescription": "This is the stock description of the item.",
+                    "vendorname": "My Item Vendor Inc.",
+                    "isdropshipitem": "false",
+                    "isspecialorderitem": "true",
+                    "displayname": "My Amazing Inventory Item"
+                },
+                "text": "This is the purchase description of the item."
+            }
+        });
+        const responseText = response.text;
+        const remainingUsage = llm.getRemainingUsage(); // View remaining AI Units
     });
 ```
 
 #### Sample 5: Create a Prompt and Evaluate It
 
 ```javascript
-/**
-* @NApiVersion 2.1
-*/
-require(['N/record', 'N/llm'], function(record, llm) {
-    const rec = record.create({
-        type: "prompt"
-    });
-    
-    rec.setValue({
-        fieldId: "name",
-        value: "Test"
-    });
-    rec.setValue({
-        fieldId: "prompttype",
-        value: "GENERIC"
-    });
-    rec.setValue({
-        fieldId: "modelfamily",
-        value: "COHERE_COMMAND"
-    });
-    rec.setValue({
-        fieldId: "template",
-        value: "${mandatoryVariable} &lt;#if optionalVariable?has_content&gt;${optionalVariable}&lt;#else&gt;World&lt;/#if&gt;"
-    });
-    
-    const id = rec.save();
-    
-    try {
-        llm.evaluatePrompt({
-            id: id
-        });
-    }
-    catch (e) {
-        if (e.name === "TEMPLATE_PROCESSING_EXCEPTION")
-            log.debug("Exception", "Expected exception was thrown");
-    }
-    
-    const response = llm.evaluatePrompt({
-        id: id,
-        variables: {
-            mandatoryVariable: "Hello",
-            optionalVariable: "People"
-        }
-    });
-    if ("Hello People" === response.chatHistory[0].text)
-        log.debug("Evaluation", "Correct prompt got evaluated");
-        
-    llm.evaluatePrompt.promise({
-        id: id,
-        variables: {
-            mandatoryVariable: "Hello",
-            optionalVariable: "World"
-        }
-    }).then(function(response) {
-        if ("Hello World" === response.chatHistory[0].text)
-            log.debug("Evaluation", "Correct prompt got evaluated");
-        record.delete({
-            type: "prompt",
-            id: id
-        });
-        debugger;
-    })
+/**
+* @NApiVersion 2.1
+*/
+require(['N/record', 'N/llm'], function(record, llm) {
+    const rec = record.create({
+        type: "prompt"
+    });
+    
+    rec.setValue({
+        fieldId: "name",
+        value: "Test"
+    });
+    rec.setValue({
+        fieldId: "prompttype",
+        value: "GENERIC"
+    });
+    rec.setValue({
+        fieldId: "modelfamily",
+        value: "COHERE_COMMAND"
+    });
+    rec.setValue({
+        fieldId: "template",
+        value: "${mandatoryVariable} &lt;#if optionalVariable?has_content&gt;${optionalVariable}&lt;#else&gt;World&lt;/#if&gt;"
+    });
+    
+    const id = rec.save();
+    
+    try {
+        llm.evaluatePrompt({
+            id: id
+        });
+    }
+    catch (e) {
+        if (e.name === "TEMPLATE_PROCESSING_EXCEPTION")
+            log.debug("Exception", "Expected exception was thrown");
+    }
+    
+    const response = llm.evaluatePrompt({
+        id: id,
+        variables: {
+            mandatoryVariable: "Hello",
+            optionalVariable: "People"
+        }
+    });
+    if ("Hello People" === response.chatHistory[0].text)
+        log.debug("Evaluation", "Correct prompt got evaluated");
+        
+    llm.evaluatePrompt.promise({
+        id: id,
+        variables: {
+            mandatoryVariable: "Hello",
+            optionalVariable: "World"
+        }
+    }).then(function(response) {
+        if ("Hello World" === response.chatHistory[0].text)
+            log.debug("Evaluation", "Correct prompt got evaluated");
+        record.delete({
+            type: "prompt",
+            id: id
+        });
+        debugger;
+    })
 });
 ```
 
 #### Sample 6: Provide Source Documents When Calling the LLM
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/llm'], function(llm) {
-    const doc1 = llm.createDocument({
-        id: "doc1",
-        data: "Emperor penguins are the tallest."
-    });
-    const doc2 = llm.createDocument({
-        id: "doc2",
-        data: "Emperor penguins only live in the Sahara desert."
-    });
-    
-    llm.generateText({
-        prompt: "Where do the tallest penguins live?",
-        documents: [doc1, doc2],
-        modelFamily: llm.ModelFamily.COHERE_COMMAND,
-        modelParameters: {
-            maxTokens: 1000,
-            temperature: 0.2,
-            topK: 3,
-            topP: 0.7,
-            frequencyPenalty: 0.4,
-            presencePenalty: 0
-        }
-    });
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/llm'], function(llm) {
+    const doc1 = llm.createDocument({
+        id: "doc1",
+        data: "Emperor penguins are the tallest."
+    });
+    const doc2 = llm.createDocument({
+        id: "doc2",
+        data: "Emperor penguins only live in the Sahara desert."
+    });
+    
+    llm.generateText({
+        prompt: "Where do the tallest penguins live?",
+        documents: [doc1, doc2],
+        modelFamily: llm.ModelFamily.COHERE_COMMAND,
+        modelParameters: {
+            maxTokens: 1000,
+            temperature: 0.2,
+            topK: 3,
+            topP: 0.7,
+            frequencyPenalty: 0.4,
+            presencePenalty: 0
+        }
+    });
 });
 ```
 
 #### Sample 7: Receive a Partial Response from the LLM
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/llm'], function(llm) {
-    const response = llm.generateTextStreamed({
-       preamble: "You are a script writer for TV shows.", 
-       prompt: "Write a 300 word pitch for a TV show about tigers.",
-       modelFamily: llm.ModelFamily.COHERE_COMMAND,
-       modelParameters: {
-          maxTokens: 1000,
-          temperature: 0.8,          // High temperature values result in more varied and
-                                     // creative responses
-          topK: 3,
-          topP: 0.7,
-          frequencyPenalty: 0.4,
-          presencePenalty: 0
-       }
-    });
-
-    var iter = response.iterator();
-    iter.each(function(token){
-        log.debug("token.value: " + token.value);
-        log.debug("response.text: " + response.text);
-        return true;
-    })
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/llm'], function(llm) {
+    const response = llm.generateTextStreamed({
+       preamble: "You are a script writer for TV shows.", 
+       prompt: "Write a 300 word pitch for a TV show about tigers.",
+       modelFamily: llm.ModelFamily.COHERE_COMMAND,
+       modelParameters: {
+          maxTokens: 1000,
+          temperature: 0.8,          // High temperature values result in more varied and
+                                     // creative responses
+          topK: 3,
+          topP: 0.7,
+          frequencyPenalty: 0.4,
+          presencePenalty: 0
+       }
+    });
+
+    var iter = response.iterator();
+    iter.each(function(token){
+        log.debug("token.value: " + token.value);
+        log.debug("response.text: " + response.text);
+        return true;
+    })
 });
 ```
 
 #### Sample 8: Find Similar Items Using Embeddings
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- * @NModuleScope SameAccount
- */
-define(['N/ui/serverWidget','N/query', 'N/llm'],
-    function(serverWidget, query, llm) {
-
-        function cosineSimilarity(array1, array2) {
-            const dotProduct = array1.reduce((sum, value, index) =&gt; sum + value
-                                              * array2[index], 0);
-            const magnitude1 = Math.sqrt(array1.reduce((sum, value) =&gt; sum + 
-                                         value * value, 0));
-            const magnitude2 = Math.sqrt(array2.reduce((sum, value) =&gt; sum + 
-                                         value * value, 0));
-            return dotProduct / (magnitude1 * magnitude2);
-        }
-
-        function onRequest(context) {
-            if (context.request.method === 'GET') {
-                var form = serverWidget.createForm({
-                    title: 'Item Similarity Form'
-                });
-
-                var selectField = form.addField({
-                    id: 'custpage_myselect',
-                    type: serverWidget.FieldType.SELECT,
-                    label: 'Select an Item to find similar items for'
-                });
-
-                var res = query.runSuiteQL("SELECT id, case when displayname 
-                is not null then displayname else itemid end name from item 
-                where rownum &lt;= 96 order by id").asMappedResults();
-
-                for (let i = 0; i &lt; res.length; i++)
-                {
-                    selectField.addSelectOption({
-                        value: res[i]['id'],
-                        text: res[i]['name']
-                    });
-                }
-
-                form.addSubmitButton({
-                    label: 'Submit'
-                });
-
-                context.response.writePage(form);
-            } else {
-                var selectedValue = context.request.parameters.custpage_myselect;
-                var res = query.runSuiteQL("SELECT id, case when displayname 
-                is not null then displayname else itemid end name from item 
-                where rownum &lt;= 96 order by id").asMappedResults();
-                
-                const inputs = [];
-                let selectedName;
-                let selectedIndex = 0;
-
-                for (let i = 0; i &lt; res.length; i++)
-                {
-                    if (res[i]['id'] == selectedValue)
-                    {
-                        selectedName = res[i]["name"];
-                        selectedIndex = i;
-                    }
-                    inputs.push(res[i]["name"]);
-                }
-
-                var embeddingResult = llm.embed({
-                    embedModelFamily: llm.EmbedModelFamily.COHERE_EMBED,
-                    inputs: inputs
-                });
-                
-                var item = embeddingResult.embeddings[selectedIndex];
-                var similarityResults = [];
-
-                for (var j = 0; j &lt; embeddingResult.inputs.length; j++)
-                    similarityResults.push({
-                        itemName: embeddingResult.inputs[j],
-                        similarity: cosineSimilarity(item, embeddingResult.embeddings[j])
-                    });
-
-                similarityResults.sort((a,b) =&gt; b.similarity - a.similarity);
-                context.response.write(JSON.stringify(similarityResults, null, 2));
-            }
-        }
-
-        return {
-            onRequest: onRequest
-        };
-    }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ * @NModuleScope SameAccount
+ */
+define(['N/ui/serverWidget','N/query', 'N/llm'],
+    function(serverWidget, query, llm) {
+
+        function cosineSimilarity(array1, array2) {
+            const dotProduct = array1.reduce((sum, value, index) =&gt; sum + value
+                                              * array2[index], 0);
+            const magnitude1 = Math.sqrt(array1.reduce((sum, value) =&gt; sum + 
+                                         value * value, 0));
+            const magnitude2 = Math.sqrt(array2.reduce((sum, value) =&gt; sum + 
+                                         value * value, 0));
+            return dotProduct / (magnitude1 * magnitude2);
+        }
+
+        function onRequest(context) {
+            if (context.request.method === 'GET') {
+                var form = serverWidget.createForm({
+                    title: 'Item Similarity Form'
+                });
+
+                var selectField = form.addField({
+                    id: 'custpage_myselect',
+                    type: serverWidget.FieldType.SELECT,
+                    label: 'Select an Item to find similar items for'
+                });
+
+                var res = query.runSuiteQL("SELECT id, case when displayname 
+                is not null then displayname else itemid end name from item 
+                where rownum &lt;= 96 order by id").asMappedResults();
+
+                for (let i = 0; i &lt; res.length; i++)
+                {
+                    selectField.addSelectOption({
+                        value: res[i]['id'],
+                        text: res[i]['name']
+                    });
+                }
+
+                form.addSubmitButton({
+                    label: 'Submit'
+                });
+
+                context.response.writePage(form);
+            } else {
+                var selectedValue = context.request.parameters.custpage_myselect;
+                var res = query.runSuiteQL("SELECT id, case when displayname 
+                is not null then displayname else itemid end name from item 
+                where rownum &lt;= 96 order by id").asMappedResults();
+                
+                const inputs = [];
+                let selectedName;
+                let selectedIndex = 0;
+
+                for (let i = 0; i &lt; res.length; i++)
+                {
+                    if (res[i]['id'] == selectedValue)
+                    {
+                        selectedName = res[i]["name"];
+                        selectedIndex = i;
+                    }
+                    inputs.push(res[i]["name"]);
+                }
+
+                var embeddingResult = llm.embed({
+                    embedModelFamily: llm.EmbedModelFamily.COHERE_EMBED,
+                    inputs: inputs
+                });
+                
+                var item = embeddingResult.embeddings[selectedIndex];
+                var similarityResults = [];
+
+                for (var j = 0; j &lt; embeddingResult.inputs.length; j++)
+                    similarityResults.push({
+                        itemName: embeddingResult.inputs[j],
+                        similarity: cosineSimilarity(item, embeddingResult.embeddings[j])
+                    });
+
+                similarityResults.sort((a,b) =&gt; b.similarity - a.similarity);
+                context.response.write(JSON.stringify(similarityResults, null, 2));
+            }
+        }
+
+        return {
+            onRequest: onRequest
+        };
+    }
 );
 ```
 
 #### Sample 9: Use Tools to Enhance the Response from the LLM
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-define(['N/ui/serverWidget', 'N/llm', 'N/query'], (serverWidget, llm, query) =&gt; {
-    const TOOL_HANDLERS = {
-      getNumberOfCustomerPurchasesForItem: (options) =&gt; {
-        const res = query.runSuiteQL({
-          query: "SELECT count(*) cnt from transactionline where entity=? and item=?",
-          params: [options.userId, options.itemId]
-        }).asMappedResults();
-        return res[0]["cnt"];
-      },
-
-      findItemId: (options) =&gt; {
-        const res = query.runSuiteQL({
-          query: "SELECT id from item where itemid=?",
-          params: [options.itemName]
-        }).asMappedResults();
-        return res.length === 0 ? -1 : res[0]["id"];
-      },
-
-      findUserId: (options) =&gt; {
-        const res = query.runSuiteQL({
-          query: "SELECT id from entity where fullname=?",
-          params: [options.userName]
-        }).asMappedResults();
-        return res.length === 0 ? -1 : res[0]["id"];
-      }
-    };
-
-    const TOOL_DEFINITIONS = {
-        'findUserId': llm.createTool({
-            name: "findUserId",
-            description: "Looks up user id based on his/her name",
-            parameters: [
-                llm.createToolParameter({ name: "userName", description: "name of the user", type: "STRING" })
-            ]
-        }),
-        'findItemId': llm.createTool({
-            name: "findItemId",
-            description: "Looks up item id based on its name",
-            parameters: [
-                llm.createToolParameter({ name: "itemName", description: "name of the item", type: "STRING" })
-            ]
-        }),
-        'getNumberOfCustomerPurchasesForItem': llm.createTool({
-            name: "getNumberOfCustomerPurchasesForItem",
-            description: "Looks up how many times did user purchase given item, both user and item are specified by id.",
-            parameters: [
-                llm.createToolParameter({ name: "userId", description: "id of the user", type: "INTEGER" }),
-                llm.createToolParameter({ name: "itemId", description: "id of the item", type: "INTEGER" })
-            ]
-        })
-    }
-
-    const createFromHeader = (context) =&gt; {
-        const form = serverWidget.createForm({ title: 'Tool Use Example' });
-
-        const fieldgroup = form.addFieldGroup({
-            id: 'fieldgroupid',
-            label: 'Chat'
-        });
-        fieldgroup.isSingleColumn = true;
-
-        const history = form.addField({
-            id: 'custpage_history',
-            type: serverWidget.FieldType.LONGTEXT,
-            container: 'fieldgroupid',
-            label: "History"
-        });
-        history.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
-
-        const numChats = form.addField({
-            id: 'custpage_num_chats',
-            type: serverWidget.FieldType.INTEGER,
-            container: 'fieldgroupid',
-            label: "History Size"
-        });
-        numChats.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
-        return form;
-    }
-
-    const displayHistory = (context, form) =&gt; {
-        const historySize = parseInt(context.request.parameters["custpage_num_chats"] || "0", 10);
-        form.getField({id: 'custpage_num_chats'}).defaultValue = String(historySize + 2);
-        //numChats.defaultValue = String(historySize + 2);
-
-        // Recreate the chat history fields (in reverse order)
-        for (let i = historySize - 2; i &gt;= 0; i -= 2) {
-            const you = form.addField({
-                id: 'custpage_hist' + (i + 2),
-                type: serverWidget.FieldType.TEXTAREA,
-                label: 'You',
-                container: 'fieldgroupid'
-            });
-            const yourMessage = context.request.parameters["custpage_hist" + i];
-            you.defaultValue = yourMessage;
-            you.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
-
-            const chatbot = form.addField({
-                id: 'custpage_hist' + (i + 3),
-                type: serverWidget.FieldType.TEXTAREA,
-                label: 'ChatBot',
-                container: 'fieldgroupid'
-            });
-            const chatBotMessage = context.request.parameters["custpage_hist" + (i + 1)];
-            chatbot.defaultValue = chatBotMessage;
-            chatbot.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
-        }
-    }
-
-    const runToolLoop = (prompt, chatHistory) =&gt; {
-        const preamble = "You are an AI assistant. Don't be chatty. If you're asking for further
-               information, keep it very brief and instructive. All the input variables for tools 
-               have to be explicitly stated.";
-        const tools = Object.values(TOOL_DEFINITIONS);
-
-        let llmResult = llm.generateText({
-            modelFamily: llm.ModelFamily.COHERE_COMMAND,
-            preamble,
-            tools,
-            prompt,
-            chatHistory: chatHistory ? JSON.parse(chatHistory) : undefined
-        });
-
-        while (llmResult.toolCalls.length &gt; 0) {
-            const toolResults = [];
-            for (const call of llmResult.toolCalls) {
-                const resultValue = TOOL_HANDLERS[call.name](call.parameters);
-                const toolResult = llm.createToolResult({
-                    call,
-                    outputs: [{ result: resultValue }]
-                });
-                toolResults.push(toolResult);
-            }
-
-            llmResult = llm.generateText({
-                modelFamily: llm.ModelFamily.COHERE_COMMAND,
-                tools,
-                toolResults,
-                chatHistory: llmResult.chatHistory
-            });
-        }
-        return llmResult;
-    }
-
-    const displayResult = (prompt, llmResult, form) =&gt; {
-        const promptField = form.addField({
-                id: 'custpage_hist0',
-                type: serverWidget.FieldType.TEXTAREA,
-                label: 'You',
-                container: 'fieldgroupid'
-            });
-            promptField.defaultValue = prompt;
-            promptField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
-
-            const resultField = form.addField({
-                id: 'custpage_hist1',
-                type: serverWidget.FieldType.TEXTAREA,
-                label: 'ChatBot',
-                container: 'fieldgroupid'
-            });
-            resultField.defaultValue = llmResult.text;
-            resultField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
-
-            form.getField({id: 'custpage_history'}).defaultValue = JSON.stringify(llmResult.chatHistory);
-            //history.defaultValue = JSON.stringify(llmResult.chatHistory);
-    }
-
-    const createFormFooter = (form) =&gt; {
-    // Field for new prompt input
-        form.addField({
-            id: 'custpage_text',
-            type: serverWidget.FieldType.TEXTAREA,
-            container: 'fieldgroupid',
-            label: 'Prompt'
-        });
-
-        form.addSubmitButton({ label: 'Submit' });
-    }
-
-    const onRequest = (context) =&gt; {
-
-        const form = createFromHeader(context);
-
-        if (context.request.method === 'POST') {
-            displayHistory(context, form);
-
-            const prompt = context.request.parameters["custpage_text"];
-            const chatHistory = context.request.parameters["custpage_history"];
-
-            const llmResult = runToolLoop(prompt, chatHistory)
-
-            displayResult(prompt, llmResult, form);
-
-        } else { // GET
-            form.getField({id: 'custpage_num_chats'}).defaultValue = '0';
-            //numChats.defaultValue = "0";
-        }
-
-        createFormFooter(form);
-        context.response.writePage(form);
-    };
-
-    return { onRequest };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+define(['N/ui/serverWidget', 'N/llm', 'N/query'], (serverWidget, llm, query) =&gt; {
+    const TOOL_HANDLERS = {
+      getNumberOfCustomerPurchasesForItem: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT count(*) cnt from transactionline where entity=? and item=?",
+          params: [options.userId, options.itemId]
+        }).asMappedResults();
+        return res[0]["cnt"];
+      },
+
+      findItemId: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT id from item where itemid=?",
+          params: [options.itemName]
+        }).asMappedResults();
+        return res.length === 0 ? -1 : res[0]["id"];
+      },
+
+      findUserId: (options) =&gt; {
+        const res = query.runSuiteQL({
+          query: "SELECT id from entity where fullname=?",
+          params: [options.userName]
+        }).asMappedResults();
+        return res.length === 0 ? -1 : res[0]["id"];
+      }
+    };
+
+    const TOOL_DEFINITIONS = {
+        'findUserId': llm.createTool({
+            name: "findUserId",
+            description: "Looks up user id based on his/her name",
+            parameters: [
+                llm.createToolParameter({ name: "userName", description: "name of the user", type: "STRING" })
+            ]
+        }),
+        'findItemId': llm.createTool({
+            name: "findItemId",
+            description: "Looks up item id based on its name",
+            parameters: [
+                llm.createToolParameter({ name: "itemName", description: "name of the item", type: "STRING" })
+            ]
+        }),
+        'getNumberOfCustomerPurchasesForItem': llm.createTool({
+            name: "getNumberOfCustomerPurchasesForItem",
+            description: "Looks up how many times did user purchase given item, both user and item are specified by id.",
+            parameters: [
+                llm.createToolParameter({ name: "userId", description: "id of the user", type: "INTEGER" }),
+                llm.createToolParameter({ name: "itemId", description: "id of the item", type: "INTEGER" })
+            ]
+        })
+    }
+
+    const createFromHeader = (context) =&gt; {
+        const form = serverWidget.createForm({ title: 'Tool Use Example' });
+
+        const fieldgroup = form.addFieldGroup({
+            id: 'fieldgroupid',
+            label: 'Chat'
+        });
+        fieldgroup.isSingleColumn = true;
+
+        const history = form.addField({
+            id: 'custpage_history',
+            type: serverWidget.FieldType.LONGTEXT,
+            container: 'fieldgroupid',
+            label: "History"
+        });
+        history.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
+
+        const numChats = form.addField({
+            id: 'custpage_num_chats',
+            type: serverWidget.FieldType.INTEGER,
+            container: 'fieldgroupid',
+            label: "History Size"
+        });
+        numChats.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
+        return form;
+    }
+
+    const displayHistory = (context, form) =&gt; {
+        const historySize = parseInt(context.request.parameters["custpage_num_chats"] || "0", 10);
+        form.getField({id: 'custpage_num_chats'}).defaultValue = String(historySize + 2);
+        //numChats.defaultValue = String(historySize + 2);
+
+        // Recreate the chat history fields (in reverse order)
+        for (let i = historySize - 2; i &gt;= 0; i -= 2) {
+            const you = form.addField({
+                id: 'custpage_hist' + (i + 2),
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'You',
+                container: 'fieldgroupid'
+            });
+            const yourMessage = context.request.parameters["custpage_hist" + i];
+            you.defaultValue = yourMessage;
+            you.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            const chatbot = form.addField({
+                id: 'custpage_hist' + (i + 3),
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'ChatBot',
+                container: 'fieldgroupid'
+            });
+            const chatBotMessage = context.request.parameters["custpage_hist" + (i + 1)];
+            chatbot.defaultValue = chatBotMessage;
+            chatbot.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+        }
+    }
+
+    const runToolLoop = (prompt, chatHistory) =&gt; {
+        const preamble = "You are an AI assistant. Don't be chatty. If you're asking for further
+               information, keep it very brief and instructive. All the input variables for tools 
+               have to be explicitly stated.";
+        const tools = Object.values(TOOL_DEFINITIONS);
+
+        let llmResult = llm.generateText({
+            modelFamily: llm.ModelFamily.COHERE_COMMAND,
+            preamble,
+            tools,
+            prompt,
+            chatHistory: chatHistory ? JSON.parse(chatHistory) : undefined
+        });
+
+        while (llmResult.toolCalls.length &gt; 0) {
+            const toolResults = [];
+            for (const call of llmResult.toolCalls) {
+                const resultValue = TOOL_HANDLERS[call.name](call.parameters);
+                const toolResult = llm.createToolResult({
+                    call,
+                    outputs: [{ result: resultValue }]
+                });
+                toolResults.push(toolResult);
+            }
+
+            llmResult = llm.generateText({
+                modelFamily: llm.ModelFamily.COHERE_COMMAND,
+                tools,
+                toolResults,
+                chatHistory: llmResult.chatHistory
+            });
+        }
+        return llmResult;
+    }
+
+    const displayResult = (prompt, llmResult, form) =&gt; {
+        const promptField = form.addField({
+                id: 'custpage_hist0',
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'You',
+                container: 'fieldgroupid'
+            });
+            promptField.defaultValue = prompt;
+            promptField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            const resultField = form.addField({
+                id: 'custpage_hist1',
+                type: serverWidget.FieldType.TEXTAREA,
+                label: 'ChatBot',
+                container: 'fieldgroupid'
+            });
+            resultField.defaultValue = llmResult.text;
+            resultField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.INLINE });
+
+            form.getField({id: 'custpage_history'}).defaultValue = JSON.stringify(llmResult.chatHistory);
+            //history.defaultValue = JSON.stringify(llmResult.chatHistory);
+    }
+
+    const createFormFooter = (form) =&gt; {
+    // Field for new prompt input
+        form.addField({
+            id: 'custpage_text',
+            type: serverWidget.FieldType.TEXTAREA,
+            container: 'fieldgroupid',
+            label: 'Prompt'
+        });
+
+        form.addSubmitButton({ label: 'Submit' });
+    }
+
+    const onRequest = (context) =&gt; {
+
+        const form = createFromHeader(context);
+
+        if (context.request.method === 'POST') {
+            displayHistory(context, form);
+
+            const prompt = context.request.parameters["custpage_text"];
+            const chatHistory = context.request.parameters["custpage_history"];
+
+            const llmResult = runToolLoop(prompt, chatHistory)
+
+            displayResult(prompt, llmResult, form);
+
+        } else { // GET
+            form.getField({id: 'custpage_num_chats'}).defaultValue = '0';
+            //numChats.defaultValue = "0";
+        }
+
+        createFormFooter(form);
+        context.response.writePage(form);
+    };
+
+    return { onRequest };
   });
 ```
 
@@ -6218,48 +6218,48 @@ log.debug(options)
 #### Sample 1: N/log Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType UserEventScript
- */
-
-// This script creates each type of log message.
-define(['N/log'],function(log) {
-    function beforeLoad(context) {
-        var myValue = 'value';
-
-        var myObject = {
-            name: 'Jane',
-            id: '123'
-        };
-
-        // An audit log message
-        log.audit({
-            title: 'Audit Entry',
-            details: myObject
-        });
-
-        // A debug log message
-        log.debug({
-            title: 'Debug Entry',
-            details: 'Value of myValue is: ' + myValue
-        });
-
-        // An emergency log message
-        log.emergency({
-            title: 'Emergency Entry',
-            details: 'Value of myValue is: ' + myValue
-        });
-
-        // An error log message
-        log.error({
-            title: 'Error Entry',
-            details: 'Value of myValue is: ' + myValue
-        });
-    }
-    return {
-        beforeLoad: beforeLoad
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ */
+
+// This script creates each type of log message.
+define(['N/log'],function(log) {
+    function beforeLoad(context) {
+        var myValue = 'value';
+
+        var myObject = {
+            name: 'Jane',
+            id: '123'
+        };
+
+        // An audit log message
+        log.audit({
+            title: 'Audit Entry',
+            details: myObject
+        });
+
+        // A debug log message
+        log.debug({
+            title: 'Debug Entry',
+            details: 'Value of myValue is: ' + myValue
+        });
+
+        // An emergency log message
+        log.emergency({
+            title: 'Emergency Entry',
+            details: 'Value of myValue is: ' + myValue
+        });
+
+        // An error log message
+        log.error({
+            title: 'Error Entry',
+            details: 'Value of myValue is: ' + myValue
+        });
+    }
+    return {
+        beforeLoad: beforeLoad
+    };
 });
 ```
 
@@ -6388,25 +6388,25 @@ machineTranslation.Document[]
 #### Sample 1: N/machineTranslation Module Script Samples
 
 ```javascript
-/**
-*@NApiVersion 2.1
-*/
-require(['N/machineTranslation'],
-    function(mt) {        
-        const myDocument = mt.createDocument({
-            id: 'myDoc',
-            text: 'Hello everyone! How are you today?',
-            language: mt.Language.ENGLISH
-        });
-        
-        const translationResults = mt.translate({
-            documents: [myDocument],
-            targetLanguage: mt.Language.CZECH
-        });
-        
-        // Work with the translated document
-        log.debug('Translated text', translationResults.results[0].text);
-    }
+/**
+*@NApiVersion 2.1
+*/
+require(['N/machineTranslation'],
+    function(mt) {        
+        const myDocument = mt.createDocument({
+            id: 'myDoc',
+            text: 'Hello everyone! How are you today?',
+            language: mt.Language.ENGLISH
+        });
+        
+        const translationResults = mt.translate({
+            documents: [myDocument],
+            targetLanguage: mt.Language.CZECH
+        });
+        
+        // Work with the translated document
+        log.debug('Translated text', translationResults.results[0].text);
+    }
 );
 ```
 
@@ -6721,178 +6721,178 @@ Date when the message was signed.
 #### Sample 1: Send a Message
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/pgp', 'N/email'], (pgp, email) =&gt; {
-  const keys = {
-    ours: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
-        password: { scriptId: 'custsecret_pgp_key_ours_private_password' } 
-      })
-    }
-  }
-
-  const data = pgp.createMessageData({ 
-    content: 'Hello, world!'
-  })
-  const message = data.encrypt({ 
-    encryptionKeys: keys.ours.pub,
-    signingKeys: keys.ours.pri
-  })
-  const payload = message.asArmored()
-
-  const senderId = -5
-  const recipientId = 'notify@myCompany.com'
-  email.send({
-    author: senderId,
-    recipients: recipientId,
-    subject: 'Test PGP',
-    body: 'Payload: ' + payload
-  })
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/pgp', 'N/email'], (pgp, email) =&gt; {
+  const keys = {
+    ours: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
+        password: { scriptId: 'custsecret_pgp_key_ours_private_password' } 
+      })
+    }
+  }
+
+  const data = pgp.createMessageData({ 
+    content: 'Hello, world!'
+  })
+  const message = data.encrypt({ 
+    encryptionKeys: keys.ours.pub,
+    signingKeys: keys.ours.pri
+  })
+  const payload = message.asArmored()
+
+  const senderId = -5
+  const recipientId = 'notify@myCompany.com'
+  email.send({
+    author: senderId,
+    recipients: recipientId,
+    subject: 'Test PGP',
+    body: 'Payload: ' + payload
+  })
 })
 ```
 
 #### Sample 2: Receive a Message
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/pgp', 'N/email'], (pgp, email) =&gt; {
-  const keys = {
-    ours: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
-        password: { scriptId: 'custsecret_pgp_key_ours_private_password' }
-      })
-    }
-  }
-  const data = pgp.createMessageData({ 
-    content: 'Hello, world!'
-  })
-  const message = data.encrypt({ 
-    encryptionKeys: keys.ours.pub,
-    signingKeys: keys.ours.pri
-  })
-  const payload = message.asArmored()
-  const parseMessage = pgp.parseMessage({ 
-    value: payload
-  })
-  const msgData = parseMessage.decrypt({ 
-    decryptionKeys: keys.ours.pri,
-    verificationKeys: keys.ours.pub
-  })
-  msgData.getText()
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/pgp', 'N/email'], (pgp, email) =&gt; {
+  const keys = {
+    ours: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
+        password: { scriptId: 'custsecret_pgp_key_ours_private_password' }
+      })
+    }
+  }
+  const data = pgp.createMessageData({ 
+    content: 'Hello, world!'
+  })
+  const message = data.encrypt({ 
+    encryptionKeys: keys.ours.pub,
+    signingKeys: keys.ours.pri
+  })
+  const payload = message.asArmored()
+  const parseMessage = pgp.parseMessage({ 
+    value: payload
+  })
+  const msgData = parseMessage.decrypt({ 
+    decryptionKeys: keys.ours.pri,
+    verificationKeys: keys.ours.pub
+  })
+  msgData.getText()
 })
 ```
 
 #### Sample 3: Send a Message to Multiple Receivers
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/pgp'], (pgp) =&gt; {
-  // public and private keys for multiple receivers
-  const keys = {
-    alice: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_alice_public' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_alice_private' },
-        password: { scriptId: 'custsecret_pgp_key_bob_private_password' }
-      })
-    },
-    bob: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_bob_public' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_bob_private' },
-        password: { scriptId: 'custsecret_pgp_key_bob_private_password' }
-      })
-    },
-    netsuite: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_netsuite_pub' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_netsuite_pri' }
-      })
-    },
-    example: {
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_example_pri' }
-      })
-    }
-  }
-  const data = pgp.createMessageData({ 
-    content: 'Hello Alice and Bob!'
-  }) 
-  const message = data.encrypt({ 
-    encryptionKeys: [keys.alice.pub, keys.bob.pub],
-    signingKeys: [keys.netsuite.pri, keys.example.pri]
-  })
-  /*
-   * Alice decryption.
-   */
-  message.decrypt({ 
-    decryptionKeys: keys.alice.pri,
-    verificationKeys: [keys.netsuite.pub]
-  }) 
-  /*
-   * Bob decryption.
-   */
-  message.decrypt({ 
-    decryptionKeys: [keys.bob.pri],
-    verificationKeys: keys.example.pub
-  })
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/pgp'], (pgp) =&gt; {
+  // public and private keys for multiple receivers
+  const keys = {
+    alice: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_alice_public' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_alice_private' },
+        password: { scriptId: 'custsecret_pgp_key_bob_private_password' }
+      })
+    },
+    bob: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_bob_public' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_bob_private' },
+        password: { scriptId: 'custsecret_pgp_key_bob_private_password' }
+      })
+    },
+    netsuite: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_netsuite_pub' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_netsuite_pri' }
+      })
+    },
+    example: {
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_example_pri' }
+      })
+    }
+  }
+  const data = pgp.createMessageData({ 
+    content: 'Hello Alice and Bob!'
+  }) 
+  const message = data.encrypt({ 
+    encryptionKeys: [keys.alice.pub, keys.bob.pub],
+    signingKeys: [keys.netsuite.pri, keys.example.pri]
+  })
+  /*
+   * Alice decryption.
+   */
+  message.decrypt({ 
+    decryptionKeys: keys.alice.pri,
+    verificationKeys: [keys.netsuite.pub]
+  }) 
+  /*
+   * Bob decryption.
+   */
+  message.decrypt({ 
+    decryptionKeys: [keys.bob.pri],
+    verificationKeys: keys.example.pub
+  })
 })
 ```
 
 #### Sample 4: Use a Cryptographic Key for a Signature
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/pgp', 'N/crypto/certificate', 'N/encode'], (pgp, cryptoCertificate, encode) =&gt; {
-  const keys = {
-    ours: {
-      pub: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
-      }),
-      pri: pgp.loadKeyFromSecret({
-        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
-        password: { scriptId: 'custsecret_pgp_key_ours_private_password' }
-      })
-    }
-  }
-  const signer = pgp.createSigner({
-    key: keys.ours.pri,
-    algorithm: cryptoCertificate.HashAlg.SHA256
-  })
-  signer.update({
-    input: 'Test'
-  })
-  const signature = signer.sign({
-    outputEncoding: encode.Encoding.BASE_64_URL_SAFE
-  })
-
-  log.debug(signature)
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/pgp', 'N/crypto/certificate', 'N/encode'], (pgp, cryptoCertificate, encode) =&gt; {
+  const keys = {
+    ours: {
+      pub: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_public' }
+      }),
+      pri: pgp.loadKeyFromSecret({
+        secret: { scriptId: 'custsecret_pgp_key_ours_private' },
+        password: { scriptId: 'custsecret_pgp_key_ours_private_password' }
+      })
+    }
+  }
+  const signer = pgp.createSigner({
+    key: keys.ours.pri,
+    algorithm: cryptoCertificate.HashAlg.SHA256
+  })
+  signer.update({
+    input: 'Test'
+  })
+  const signature = signer.sign({
+    outputEncoding: encode.Encoding.BASE_64_URL_SAFE
+  })
+
+  log.debug(signature)
 })
 ```
 
@@ -7031,31 +7031,31 @@ PiRemovalTaskStatus.status
 #### Sample 1: N/piremoval Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/piremoval'], function(piremoval) {
-    function removePersonalInformation() {
-        var piRemovalTask = piremoval.createTask({
-            recordType: 'customer',
-            recordIds: [11, 19],
-            fieldIds: ['comments', 'phone'],
-            workflowIds: [1],
-            historyOnly: false,
-            historyReplacement: 'removed_value'
-        });
-
-        piRemovalTask.save();
-        var taskId = piRemovalTask.id;
-
-        var piRemovalTaskInProgress = piremoval.loadTask(taskId);
-        piRemovalTaskInProgress.run();
-
-        var status = piremoval.getTaskStatus(taskId);
-    };
-
-    removePersonalInformation();
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/piremoval'], function(piremoval) {
+    function removePersonalInformation() {
+        var piRemovalTask = piremoval.createTask({
+            recordType: 'customer',
+            recordIds: [11, 19],
+            fieldIds: ['comments', 'phone'],
+            workflowIds: [1],
+            historyOnly: false,
+            historyReplacement: 'removed_value'
+        });
+
+        piRemovalTask.save();
+        var taskId = piRemovalTask.id;
+
+        var piRemovalTaskInProgress = piremoval.loadTask(taskId);
+        piRemovalTaskInProgress.run();
+
+        var status = piremoval.getTaskStatus(taskId);
+    };
+
+    removePersonalInformation();
 });
 ```
 
@@ -7119,49 +7119,49 @@ Instantiates an implementation of the custom plug-in type.
 #### Sample 1: N/plugin Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType plugintypeimpl
- */
-define(function() {
-    return {
-        doTheMagic: function(operand1, operand2) {
-            return operand1 + operand2;
-        }
-    }
+/**
+ * @NApiVersion 2.1
+ * @NScriptType plugintypeimpl
+ */
+define(function() {
+    return {
+        doTheMagic: function(operand1, operand2) {
+            return operand1 + operand2;
+        }
+    }
 });
 ```
 
 #### Sample 2: N/plugin Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/plugin'], function(plugin) {
-    function onRequest(context) {
-        var impls = plugin.findImplementations({
-            type: 'customscript_magic_plugin'
-        });
-
-        for (var i = 0; i &lt; impls.length; i++) {
-            var pl = plugin.loadImplementation({
-                type: 'customscript_magic_plugin',
-                implementation: impls[i]
-            });
-            log.debug('impl ' + impls[i] + ' result = ' + pl.doTheMagic(10, 20));
-        }
-
-        var pl = plugin.loadImplementation({
-            type: 'customscript_magic_plugin'
-        });
-        log.debug('default impl result = ' + pl.doTheMagic(10, 20));
-    }
-
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/plugin'], function(plugin) {
+    function onRequest(context) {
+        var impls = plugin.findImplementations({
+            type: 'customscript_magic_plugin'
+        });
+
+        for (var i = 0; i &lt; impls.length; i++) {
+            var pl = plugin.loadImplementation({
+                type: 'customscript_magic_plugin',
+                implementation: impls[i]
+            });
+            log.debug('impl ' + impls[i] + ' result = ' + pl.doTheMagic(10, 20));
+        }
+
+        var pl = plugin.loadImplementation({
+            type: 'customscript_magic_plugin'
+        });
+        log.debug('default impl result = ' + pl.doTheMagic(10, 20));
+    }
+
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
@@ -7213,94 +7213,94 @@ Refreshes a form portlet immediately.
 #### Sample 1: N/portlet Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.x
- * @NScriptType Portlet
- * @NScriptPortletType form
- */
-
-define([], function() {
-    function render(context) {
-        var portletObj = context.portlet;
-        portletObj.title = 'Test Form Portlet';
-        setComponentsForResize();
-        setComponentsForRefresh();
-
-        function setComponentsForResize() {
-            var DEFAULT_HEIGHT = '50';
-            var DEFAULT_WIDTH = '50';
-            var inlineHTMLField = portletObj.addField({
-                id: 'divfield',
-                type: 'inlinehtml',
-                label: 'Test inline HTML'
-            });
-            inlineHTMLField.defaultValue = '&lt;div id=\'divfield_elem\' style=\'border: 1px dotted red; height: ' + DEFAULT_HEIGHT + 'px; width: ' + DEFAULT_WIDTH + 'px;\'&gt;&lt;/div&gt;';
-            inlineHTMLField.updateLayoutType({
-                layoutType: 'normal'
-            });
-            inlineHTMLField.updateBreakType({
-                breakType: 'startcol'
-            });
-            var resizeHeight = portletObj.addField({
-                id: 'resize_height',
-                type: 'text',
-                label: 'Resize Height'
-            });
-            resizeHeight.defaultValue = DEFAULT_HEIGHT;
-            var resizeWidth = portletObj.addField({
-                id: 'resize_width',
-                type: 'text',
-                label: 'Resize Width'
-            });
-            resizeWidth.defaultValue = DEFAULT_WIDTH;
-            var resizeLink = portletObj.addField({
-                id: 'resize_link',
-                type: 'inlinehtml',
-                label: 'Resize link'
-            });
-            resizeLink.defaultValue = resizeLink.defaultValue = '&lt;a id=\'resize_link\' onclick=\"require([\'SuiteScripts/portletApiTestHelper\'], function(portletApiTestHelper) {portletApiTestHelper.resizePortlet(); }) \" href=\'#\'&gt;Resize&lt;/a&gt;&lt;br&gt;';
-        }
-
-        function setComponentsForRefresh() {
-            var textField = portletObj.addField({
-                id: 'refresh_output',
-                type: 'text',
-                label: 'Date.now().toString()'
-            });
-            textField.defaultValue = Date.now().toString();
-            var refreshLink = portletObj.addField({
-                id: 'refresh_link',
-                type: 'inlinehtml',
-                label: 'Refresh link'
-            });
-            refreshLink.defaultValue = '&lt;a id=\'refresh_link\' onclick=\'require([\"SuiteScripts/portletApiTestHelper\"], function(portletApiTestHelper) {portletApiTestHelper.refreshPortlet(); }) \' href=\'#\'&gt;Refresh&lt;/a&gt;';
-        }
-    }
-
-    return {
-        render: render
-    };
-})
-
-// portletApiTestHelper.js
-define(['N/portlet'], function(portlet) {
-    function refreshPortlet() {
-        portlet.refresh();
-    }
-
-    function resizePortlet() {
-        var div = document.getElementById('divfield_elem');
-        var newHeight = parseInt(document.getElementById('resize_height').value);
-        var newWidth = parseInt(document.getElementById('resize_width').value);
-        div.style.height = newHeight + 'px';
-        div.style.width = newWidth + 'px';
-        portlet.resize();
-    }
-
-    return {
-        refreshPortlet: refreshPortlet,
-        resizePortlet: resizePortlet
-    };
+/**
+ * @NApiVersion 2.x
+ * @NScriptType Portlet
+ * @NScriptPortletType form
+ */
+
+define([], function() {
+    function render(context) {
+        var portletObj = context.portlet;
+        portletObj.title = 'Test Form Portlet';
+        setComponentsForResize();
+        setComponentsForRefresh();
+
+        function setComponentsForResize() {
+            var DEFAULT_HEIGHT = '50';
+            var DEFAULT_WIDTH = '50';
+            var inlineHTMLField = portletObj.addField({
+                id: 'divfield',
+                type: 'inlinehtml',
+                label: 'Test inline HTML'
+            });
+            inlineHTMLField.defaultValue = '&lt;div id=\'divfield_elem\' style=\'border: 1px dotted red; height: ' + DEFAULT_HEIGHT + 'px; width: ' + DEFAULT_WIDTH + 'px;\'&gt;&lt;/div&gt;';
+            inlineHTMLField.updateLayoutType({
+                layoutType: 'normal'
+            });
+            inlineHTMLField.updateBreakType({
+                breakType: 'startcol'
+            });
+            var resizeHeight = portletObj.addField({
+                id: 'resize_height',
+                type: 'text',
+                label: 'Resize Height'
+            });
+            resizeHeight.defaultValue = DEFAULT_HEIGHT;
+            var resizeWidth = portletObj.addField({
+                id: 'resize_width',
+                type: 'text',
+                label: 'Resize Width'
+            });
+            resizeWidth.defaultValue = DEFAULT_WIDTH;
+            var resizeLink = portletObj.addField({
+                id: 'resize_link',
+                type: 'inlinehtml',
+                label: 'Resize link'
+            });
+            resizeLink.defaultValue = resizeLink.defaultValue = '&lt;a id=\'resize_link\' onclick=\"require([\'SuiteScripts/portletApiTestHelper\'], function(portletApiTestHelper) {portletApiTestHelper.resizePortlet(); }) \" href=\'#\'&gt;Resize&lt;/a&gt;&lt;br&gt;';
+        }
+
+        function setComponentsForRefresh() {
+            var textField = portletObj.addField({
+                id: 'refresh_output',
+                type: 'text',
+                label: 'Date.now().toString()'
+            });
+            textField.defaultValue = Date.now().toString();
+            var refreshLink = portletObj.addField({
+                id: 'refresh_link',
+                type: 'inlinehtml',
+                label: 'Refresh link'
+            });
+            refreshLink.defaultValue = '&lt;a id=\'refresh_link\' onclick=\'require([\"SuiteScripts/portletApiTestHelper\"], function(portletApiTestHelper) {portletApiTestHelper.refreshPortlet(); }) \' href=\'#\'&gt;Refresh&lt;/a&gt;';
+        }
+    }
+
+    return {
+        render: render
+    };
+})
+
+// portletApiTestHelper.js
+define(['N/portlet'], function(portlet) {
+    function refreshPortlet() {
+        portlet.refresh();
+    }
+
+    function resizePortlet() {
+        var div = document.getElementById('divfield_elem');
+        var newHeight = parseInt(document.getElementById('resize_height').value);
+        var newWidth = parseInt(document.getElementById('resize_width').value);
+        div.style.height = newHeight + 'px';
+        div.style.width = newWidth + 'px';
+        portlet.resize();
+    }
+
+    return {
+        refreshPortlet: refreshPortlet,
+        resizePortlet: resizePortlet
+    };
 });
 ```
 
@@ -7735,305 +7735,305 @@ SuiteQL.runPaged(options)
 #### Sample 1: Create a Query for Customer Records and Run It as a Non-Paged Query
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/query'], query =&gt; {
-    // Create a query definition for customer records
-    let myCustomerQuery = query.create({
-        type: query.Type.CUSTOMER
-    });
-
-    // Join the original query definition based on the salesrep field. In a customer
-    // record, the salesrep field contains a reference to an employee record. When you
-    // join based on this field, you are joining the query definition with the employee
-    // query type, and you can access the fields of the joined employee record in
-    // your query.
-    let mySalesRepJoin = myCustomerQuery.autoJoin({
-        fieldId: 'salesrep'
-    });
-
-    // Join the joined query definition based on the location field. In an employee
-    // record, the location field contains a reference to a location record.
-    let myLocationJoin = mySalesRepJoin.autoJoin({
-        fieldId: 'location'
-    });
-
-    // Create conditions for the query
-    let firstCondition = myCustomerQuery.createCondition({
-        fieldId: 'id',
-        operator: query.Operator.EQUAL,
-        values: 107
-    });
-    let secondCondition = myCustomerQuery.createCondition({
-        fieldId: 'id',
-        operator: query.Operator.EQUAL,
-        values: 2647
-    });
-    let thirdCondition = mySalesRepJoin.createCondition({
-        fieldId: 'email',
-        operator: query.Operator.START_WITH_NOT,
-        values: 'example'
-    });
-
-    // Combine conditions using and() and or() operator methods. In this example,
-    // the combined condition states that the id field of the customer record must
-    // have a value of either 107 or 2647, and the email field of the employee
-    // record (the record that is referenced in the salesrep field of the customer
-    // record) must not start with 'example'.
-    myCustomerQuery.condition = myCustomerQuery.and(
-        thirdCondition, myCustomerQuery.or(firstCondition, secondCondition)
-    );
-
-    // Create query columns
-    myCustomerQuery.columns = [
-        myCustomerQuery.createColumn({
-            fieldId: 'entityid'
-        }),
-        myCustomerQuery.createColumn({
-            fieldId: 'id'
-        }),
-        mySalesRepJoin.createColumn({
-            fieldId: 'entityid'
-        }),
-        mySalesRepJoin.createColumn({
-            fieldId: 'email'
-        }),
-        mySalesRepJoin.createColumn({
-            fieldId: 'hiredate'
-        }),
-        myLocationJoin.createColumn({
-            fieldId: 'name'
-        })
-    ];
-
-    // Sort the query results based on query columns
-    myCustomerQuery.sort = [
-        myCustomerQuery.createSort({
-            column: myCustomerQuery.columns[3]
-        }),
-        myCustomerQuery.createSort({
-            column: myCustomerQuery.columns[0],
-            ascending: false
-        })
-    ];
-
-    // Run the query
-    let resultSet = myCustomerQuery.run();
-
-    // Retrieve and log the results
-    let results = resultSet.results;
-    for (let i = results.length - 1; i &gt;= 0; i--)
-        log.debug(results[i].values);
-    log.debug(resultSet.types);
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/query'], query =&gt; {
+    // Create a query definition for customer records
+    let myCustomerQuery = query.create({
+        type: query.Type.CUSTOMER
+    });
+
+    // Join the original query definition based on the salesrep field. In a customer
+    // record, the salesrep field contains a reference to an employee record. When you
+    // join based on this field, you are joining the query definition with the employee
+    // query type, and you can access the fields of the joined employee record in
+    // your query.
+    let mySalesRepJoin = myCustomerQuery.autoJoin({
+        fieldId: 'salesrep'
+    });
+
+    // Join the joined query definition based on the location field. In an employee
+    // record, the location field contains a reference to a location record.
+    let myLocationJoin = mySalesRepJoin.autoJoin({
+        fieldId: 'location'
+    });
+
+    // Create conditions for the query
+    let firstCondition = myCustomerQuery.createCondition({
+        fieldId: 'id',
+        operator: query.Operator.EQUAL,
+        values: 107
+    });
+    let secondCondition = myCustomerQuery.createCondition({
+        fieldId: 'id',
+        operator: query.Operator.EQUAL,
+        values: 2647
+    });
+    let thirdCondition = mySalesRepJoin.createCondition({
+        fieldId: 'email',
+        operator: query.Operator.START_WITH_NOT,
+        values: 'example'
+    });
+
+    // Combine conditions using and() and or() operator methods. In this example,
+    // the combined condition states that the id field of the customer record must
+    // have a value of either 107 or 2647, and the email field of the employee
+    // record (the record that is referenced in the salesrep field of the customer
+    // record) must not start with 'example'.
+    myCustomerQuery.condition = myCustomerQuery.and(
+        thirdCondition, myCustomerQuery.or(firstCondition, secondCondition)
+    );
+
+    // Create query columns
+    myCustomerQuery.columns = [
+        myCustomerQuery.createColumn({
+            fieldId: 'entityid'
+        }),
+        myCustomerQuery.createColumn({
+            fieldId: 'id'
+        }),
+        mySalesRepJoin.createColumn({
+            fieldId: 'entityid'
+        }),
+        mySalesRepJoin.createColumn({
+            fieldId: 'email'
+        }),
+        mySalesRepJoin.createColumn({
+            fieldId: 'hiredate'
+        }),
+        myLocationJoin.createColumn({
+            fieldId: 'name'
+        })
+    ];
+
+    // Sort the query results based on query columns
+    myCustomerQuery.sort = [
+        myCustomerQuery.createSort({
+            column: myCustomerQuery.columns[3]
+        }),
+        myCustomerQuery.createSort({
+            column: myCustomerQuery.columns[0],
+            ascending: false
+        })
+    ];
+
+    // Run the query
+    let resultSet = myCustomerQuery.run();
+
+    // Retrieve and log the results
+    let results = resultSet.results;
+    for (let i = results.length - 1; i &gt;= 0; i--)
+        log.debug(results[i].values);
+    log.debug(resultSet.types);
 });
 ```
 
 #### Sample 2: Create a Query for Transaction Records and Run It as a Paged Query
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/query'], query =&gt; {
-    // Create a query definition for transaction records
-    let myTransactionQuery = query.create({
-        type: query.Type.TRANSACTION
-    });
-
-    // Join the original query definition based on the employee field. In a transaction
-    // record, the employee field contains a reference to an employee record. When you
-    // join based on this field, you are joining the query definition with the employee
-    // query type, and you can access the fields of the joined employee record in
-    // your query.
-    let myEmployeeJoin = myTransactionQuery.autoJoin({
-        fieldId: 'employee'
-    });
-
-    // Create a condition for the transaction query
-    let transactionCondition = myTransactionQuery.createCondition({
-        fieldId: 'isreversal',
-        operator: query.Operator.IS,
-        values: true
-    });
-    myTransactionQuery.condition = transactionCondition;
-
-    // Create a query column
-    myTransactionQuery.columns = [
-        myEmployeeJoin.createColumn({
-            fieldId: 'subsidiary'
-        })
-    ];
-
-    // Sort the query results based on a query column
-    myTransactionQuery.sort = [
-        myTransactionQuery.createSort({
-            column: myTransactionQuery.columns[0],
-            ascending: false
-        })
-    ];
-
-    // Run the query as a paged query with 10 results per page
-    let results = myTransactionQuery.runPaged({
-        pageSize: 10
-    });
-
-    log.debug(results.pageRanges.length);
-    log.debug(results.count);
-
-    // Retrieve the query results using an iterator
-    let iterator = results.iterator();
-    iterator.each(function(result) {
-        let page = result.value;
-        log.debug(page.pageRange.size);
-        return true;
-    })
-
-    // Alternatively, retrieve the query results by looping through
-    // each result
-    for (let i = 0; i &lt; results.pageRanges.length; i++)  {
-        let page = results.fetch(i);
-        log.debug(page.pageRange.size);
-    }
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/query'], query =&gt; {
+    // Create a query definition for transaction records
+    let myTransactionQuery = query.create({
+        type: query.Type.TRANSACTION
+    });
+
+    // Join the original query definition based on the employee field. In a transaction
+    // record, the employee field contains a reference to an employee record. When you
+    // join based on this field, you are joining the query definition with the employee
+    // query type, and you can access the fields of the joined employee record in
+    // your query.
+    let myEmployeeJoin = myTransactionQuery.autoJoin({
+        fieldId: 'employee'
+    });
+
+    // Create a condition for the transaction query
+    let transactionCondition = myTransactionQuery.createCondition({
+        fieldId: 'isreversal',
+        operator: query.Operator.IS,
+        values: true
+    });
+    myTransactionQuery.condition = transactionCondition;
+
+    // Create a query column
+    myTransactionQuery.columns = [
+        myEmployeeJoin.createColumn({
+            fieldId: 'subsidiary'
+        })
+    ];
+
+    // Sort the query results based on a query column
+    myTransactionQuery.sort = [
+        myTransactionQuery.createSort({
+            column: myTransactionQuery.columns[0],
+            ascending: false
+        })
+    ];
+
+    // Run the query as a paged query with 10 results per page
+    let results = myTransactionQuery.runPaged({
+        pageSize: 10
+    });
+
+    log.debug(results.pageRanges.length);
+    log.debug(results.count);
+
+    // Retrieve the query results using an iterator
+    let iterator = results.iterator();
+    iterator.each(function(result) {
+        let page = result.value;
+        log.debug(page.pageRange.size);
+        return true;
+    })
+
+    // Alternatively, retrieve the query results by looping through
+    // each result
+    for (let i = 0; i &lt; results.pageRanges.length; i++)  {
+        let page = results.fetch(i);
+        log.debug(page.pageRange.size);
+    }
 });
 ```
 
 #### Sample 3: Convert a Query to a SuiteQL and Run It
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/query'], function(query) {
-    var myCustomerQuery = query.create({
-        type: query.Type.CUSTOMER
-    });
-
-    myCustomerQuery.columns = [
-        myCustomerQuery.createColumn({
-            fieldId: 'entityid'
-        }),
-        myCustomerQuery.createColumn({
-            fieldId: 'email'
-        })
-    ];
-
-    myCustomerQuery.condition = myCustomerQuery.createCondition({
-        fieldId: 'isperson',
-        operator: query.Operator.IS,
-        values: [true]
-    });
-
-    var mySQLCustomerQuery = myCustomerQuery.toSuiteQL();
-
-    var results = mySQLCustomerQuery.run();
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/query'], function(query) {
+    var myCustomerQuery = query.create({
+        type: query.Type.CUSTOMER
+    });
+
+    myCustomerQuery.columns = [
+        myCustomerQuery.createColumn({
+            fieldId: 'entityid'
+        }),
+        myCustomerQuery.createColumn({
+            fieldId: 'email'
+        })
+    ];
+
+    myCustomerQuery.condition = myCustomerQuery.createCondition({
+        fieldId: 'isperson',
+        operator: query.Operator.IS,
+        values: [true]
+    });
+
+    var mySQLCustomerQuery = myCustomerQuery.toSuiteQL();
+
+    var results = mySQLCustomerQuery.run();
 });
 ```
 
 #### Sample 4: Run an Arbitrary SuiteQL Query
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-require(['N/query'], function(query) {
-   var sql =
-        "SELECT " +
-        "  scriptDeployment.primarykey, scriptexecutioncontextmap.executioncontext " +
-        " FROM " +
-        "  scriptDeployment, scriptexecutioncontextmap " +
-        " WHERE " +
-        "  scriptexecutioncontextmap.scriptrecord = scriptDeployment.primarykey " +
-        " AND " +
-        "  scriptexecutioncontextmap.executioncontext IN ('WEBSTORE', 'WEBAPPLICATION')";
-
-    var resultIterator = query.runSuiteQLPaged({
-        query: sql,
-        pageSize: 10
-    }).iterator();
-
-    resultIterator.each(function(page) {
-        var pageIterator = page.value.data.iterator();
-        pageIterator.each(function(row) {
-            log.debug('ID: ' + row.value.getValue(0) + ', Context: ' + row.value.getValue(1));
-            return true;
-        });
-        return true;
-    });
+/**
+ * @NApiVersion 2.x
+ */
+require(['N/query'], function(query) {
+   var sql =
+        "SELECT " +
+        "  scriptDeployment.primarykey, scriptexecutioncontextmap.executioncontext " +
+        " FROM " +
+        "  scriptDeployment, scriptexecutioncontextmap " +
+        " WHERE " +
+        "  scriptexecutioncontextmap.scriptrecord = scriptDeployment.primarykey " +
+        " AND " +
+        "  scriptexecutioncontextmap.executioncontext IN ('WEBSTORE', 'WEBAPPLICATION')";
+
+    var resultIterator = query.runSuiteQLPaged({
+        query: sql,
+        pageSize: 10
+    }).iterator();
+
+    resultIterator.each(function(page) {
+        var pageIterator = page.value.data.iterator();
+        pageIterator.each(function(row) {
+            log.debug('ID: ' + row.value.getValue(0) + ', Context: ' + row.value.getValue(1));
+            return true;
+        });
+        return true;
+    });
 });
 ```
 
 #### Sample 5: Create a Query for a Custom Field
 
 ```javascript
-/*
- * @NApiVersion 2.x
- */
-require(['N/query'], function(query) {
-    var customFieldIdQuery = query.create({
-        type: query.Type.CUSTOM_FIELD
-    });
-    customFieldIdQuery.columns = [
-        customFieldIdQuery.createColumn({
-            fieldId: 'internalid'
-        })
-    ];
-    customFieldIdQuery.condition = customFieldIdQuery.createCondition({
-        fieldId: 'scriptid',
-        operator: query.Operator.IS,
-        values: 'custrecord_my_custom_field'
-    });
-
-    var results = customFieldIdQuery.run().asMappedResults();
-    var customFieldInternalId = results[0].internalid;
-    log.debug({
-        title: 'Internal ID of the custom field is ',
-        details: customFieldInternalId
-    });
+/*
+ * @NApiVersion 2.x
+ */
+require(['N/query'], function(query) {
+    var customFieldIdQuery = query.create({
+        type: query.Type.CUSTOM_FIELD
+    });
+    customFieldIdQuery.columns = [
+        customFieldIdQuery.createColumn({
+            fieldId: 'internalid'
+        })
+    ];
+    customFieldIdQuery.condition = customFieldIdQuery.createCondition({
+        fieldId: 'scriptid',
+        operator: query.Operator.IS,
+        values: 'custrecord_my_custom_field'
+    });
+
+    var results = customFieldIdQuery.run().asMappedResults();
+    var customFieldInternalId = results[0].internalid;
+    log.debug({
+        title: 'Internal ID of the custom field is ',
+        details: customFieldInternalId
+    });
 });
 ```
 
 #### Sample 6: Create a Query Using a Specific Record Field
 
 ```javascript
-/**
-* @NApiVersion 2.x
-*/
-require(['N/query'], function(query) {
-    var mfgComponent = query.create({
-        type: query.Type.MANUFACTURING_COMPONENT
-    });
-
-    var mfgOperation = mfgComponent.autoJoin({
-        fieldId: 'operationdisplaytext'
-    });
-
-    mfgComponent.columns = [
-        mfgComponent.createColumn({
-            fieldId: 'operationdisplaytext'
-        }),
-        mfgComponent.createColumn({
-            fieldId: 'item'
-        }),
-        mfgOperation.createColumn({
-            fieldId: 'operationsequence'
-        })
-    ];
-
-    mfgComponent.condition = mfgComponent.and(
-        mfgComponent.createCondition({
-            fieldId: 'transaction',
-            operator: query.Operator.ANY_OF,
-            values: &lt;transactionId&gt;
-        }),
-        mfgOperation.createCondition({
-            fieldId: 'operationsequence',
-            operator: query.Operator.EQUAL,
-            values: 20
-        })
-    );
-
-    var results = mfgComponent.run();
+/**
+* @NApiVersion 2.x
+*/
+require(['N/query'], function(query) {
+    var mfgComponent = query.create({
+        type: query.Type.MANUFACTURING_COMPONENT
+    });
+
+    var mfgOperation = mfgComponent.autoJoin({
+        fieldId: 'operationdisplaytext'
+    });
+
+    mfgComponent.columns = [
+        mfgComponent.createColumn({
+            fieldId: 'operationdisplaytext'
+        }),
+        mfgComponent.createColumn({
+            fieldId: 'item'
+        }),
+        mfgOperation.createColumn({
+            fieldId: 'operationsequence'
+        })
+    ];
+
+    mfgComponent.condition = mfgComponent.and(
+        mfgComponent.createCondition({
+            fieldId: 'transaction',
+            operator: query.Operator.ANY_OF,
+            values: &lt;transactionId&gt;
+        }),
+        mfgOperation.createCondition({
+            fieldId: 'operationsequence',
+            operator: query.Operator.EQUAL,
+            values: 20
+        })
+    );
+
+    var results = mfgComponent.run();
 });
 ```
 
@@ -8593,315 +8593,315 @@ Saint Barthélemy
 #### Sample 1: Create and Save a Contact Record
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/record'], record =&gt; {
-    // Create an object to hold name data for the contact
-    const nameData = {
-        firstname: 'John',
-        middlename: 'Doe',
-        lastname: 'Smith'
-    };
-
-    // Create a contact record
-    let objRecord = record.create({
-        type: record.Type.CONTACT,
-        isDynamic: true
-    });
-
-    // Set the values of the subsidiary, firstname, middlename,
-    // and lastname properties
-    objRecord.setValue({
-        fieldId: 'subsidiary',
-        value: '1'
-    });
-    for (let key in nameData) {
-        if (nameData.hasOwnProperty(key)) {
-            objRecord.setValue({
-                fieldId: key,
-                value: nameData[key]
-            });
-        }
-    }
-
-    // Save the record
-    let recordId = objRecord.save({
-        enableSourcing: false,
-        ignoreMandatoryFields: false
-    });
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/record'], record =&gt; {
+    // Create an object to hold name data for the contact
+    const nameData = {
+        firstname: 'John',
+        middlename: 'Doe',
+        lastname: 'Smith'
+    };
+
+    // Create a contact record
+    let objRecord = record.create({
+        type: record.Type.CONTACT,
+        isDynamic: true
+    });
+
+    // Set the values of the subsidiary, firstname, middlename,
+    // and lastname properties
+    objRecord.setValue({
+        fieldId: 'subsidiary',
+        value: '1'
+    });
+    for (let key in nameData) {
+        if (nameData.hasOwnProperty(key)) {
+            objRecord.setValue({
+                fieldId: key,
+                value: nameData[key]
+            });
+        }
+    }
+
+    // Save the record
+    let recordId = objRecord.save({
+        enableSourcing: false,
+        ignoreMandatoryFields: false
+    });
 });
 ```
 
 #### Sample 2: Create and Save a Contact Record Asynchronously Using Promise Methods
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-require(['N/record'], record =&gt; {
-    // Create an object to hold name data for the contact
-    const nameData = {
-        firstname: 'John',
-        middlename: 'Doe',
-        lastname: 'Smith'
-    };
-     
-    // Create a contact record using the promise method
-    let createRecordPromise = record.create.promise({
-        type: record.Type.CONTACT,
-        isDynamic: true
-    });
- 
-    // When the promise is fulfilled, set the values of the subsidiary,
-    // firstname, middlename, and lastname properties, and save the
-    // record
-    createRecordPromise.then(objRecord =&gt; {
-        log.debug('Start evaluating promise content...');
-        objRecord.setValue({
-            fieldId: 'subsidiary',
-            value: '1'
-        });
-        for (let key in nameData) {
-            if (nameData.hasOwnProperty(key)) {
-                objRecord.setValue({
-                    fieldId: key,
-                    value: nameData[key]
-                });
-            }
-        }
-        let recordId = objRecord.save({
-            enableSourcing: false,
-            ignoreMandatoryFields: false
-        });
-    }, function(e) {
-        log.error('Unable to create contact', e.name);
-    });
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+require(['N/record'], record =&gt; {
+    // Create an object to hold name data for the contact
+    const nameData = {
+        firstname: 'John',
+        middlename: 'Doe',
+        lastname: 'Smith'
+    };
+     
+    // Create a contact record using the promise method
+    let createRecordPromise = record.create.promise({
+        type: record.Type.CONTACT,
+        isDynamic: true
+    });
+ 
+    // When the promise is fulfilled, set the values of the subsidiary,
+    // firstname, middlename, and lastname properties, and save the
+    // record
+    createRecordPromise.then(objRecord =&gt; {
+        log.debug('Start evaluating promise content...');
+        objRecord.setValue({
+            fieldId: 'subsidiary',
+            value: '1'
+        });
+        for (let key in nameData) {
+            if (nameData.hasOwnProperty(key)) {
+                objRecord.setValue({
+                    fieldId: key,
+                    value: nameData[key]
+                });
+            }
+        }
+        let recordId = objRecord.save({
+            enableSourcing: false,
+            ignoreMandatoryFields: false
+        });
+    }, function(e) {
+        log.error('Unable to create contact', e.name);
+    });
 });
 ```
 
 #### Sample 3: Create Multiple Sales Records Using a Scheduled Script
 
 ```javascript
-/**
-* @NApiVersion 2.1
-* @NScriptType ScheduledScript
-*/
-
-// This script creates multiple sales records and logs the record creation progress.
-define(['N/runtime', 'N/record'], function(runtime, record) {
-    return {
-        execute: function(context) {
-            var script = runtime.getCurrentScript();
-            for (x = 0; x &lt; 500; x++) {
-                var rec = record.create({
-                    type: record.Type.SALES_ORDER
-                });
-                script.percentComplete = (x * 100)/500;
-                log.debug({
-                    title: 'New Sales Orders',
-                    details: 'Record creation progress: ' + script.percentComplete + '%'
-                });
-            }
-         }
-    };
+/**
+* @NApiVersion 2.1
+* @NScriptType ScheduledScript
+*/
+
+// This script creates multiple sales records and logs the record creation progress.
+define(['N/runtime', 'N/record'], function(runtime, record) {
+    return {
+        execute: function(context) {
+            var script = runtime.getCurrentScript();
+            for (x = 0; x &lt; 500; x++) {
+                var rec = record.create({
+                    type: record.Type.SALES_ORDER
+                });
+                script.percentComplete = (x * 100)/500;
+                log.debug({
+                    title: 'New Sales Orders',
+                    details: 'Record creation progress: ' + script.percentComplete + '%'
+                });
+            }
+         }
+    };
 });
 ```
 
 #### Sample 4: Access Sublists and a Subrecord from a Record
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/record'], function(record) {
-    function createPurchaseOrder() {
-        var rec = record.create({
-            type: 'purchaseorder',
-            isDynamic: true
-        });
-        rec.setValue({
-            fieldId: 'entity',
-            value: 52
-        });
-        rec.setValue({
-            fieldId: 'location',
-            value: 2
-        });
-        rec.selectNewLine({
-            sublistId: 'item'
-        });
-        rec.setCurrentSublistValue({
-            sublistId: 'item',
-            fieldId: 'item',
-            value: 190
-        });
-        rec.setCurrentSublistValue({
-            sublistId: 'item',
-            fieldId: 'quantity',
-            value: 2
-        });
-        subrecordInvDetail = rec.getCurrentSublistSubrecord({
-            sublistId: 'item',
-            fieldId: 'inventorydetail'
-        });
-        subrecordInvDetail.selectNewLine({
-            sublistId: 'inventoryassignment'
-        });
-        subrecordInvDetail.setCurrentSublistValue({
-            sublistId: 'inventoryassignment',
-            fieldId: 'receiptinventorynumber',
-            value: 'myinventoryNumber'
-        });
-        subrecordInvDetail.commitLine({
-            sublistId: 'inventoryassignment'
-        });
-        subrecordInvDetail.selectLine({
-            sublistId: 'inventoryassignment',
-            line: 0
-        });
-        var myInventoryNumber = subrecordInvDetail.getCurrentSublistValue({
-            sublistId: 'inventoryassignment',
-            fieldId: 'receiptinventorynumber'
-        });
-        rec.commitLine({
-            sublistId: 'item'
-        });
-        var recordId = rec.save();
-    }
-    createPurchaseOrder();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/record'], function(record) {
+    function createPurchaseOrder() {
+        var rec = record.create({
+            type: 'purchaseorder',
+            isDynamic: true
+        });
+        rec.setValue({
+            fieldId: 'entity',
+            value: 52
+        });
+        rec.setValue({
+            fieldId: 'location',
+            value: 2
+        });
+        rec.selectNewLine({
+            sublistId: 'item'
+        });
+        rec.setCurrentSublistValue({
+            sublistId: 'item',
+            fieldId: 'item',
+            value: 190
+        });
+        rec.setCurrentSublistValue({
+            sublistId: 'item',
+            fieldId: 'quantity',
+            value: 2
+        });
+        subrecordInvDetail = rec.getCurrentSublistSubrecord({
+            sublistId: 'item',
+            fieldId: 'inventorydetail'
+        });
+        subrecordInvDetail.selectNewLine({
+            sublistId: 'inventoryassignment'
+        });
+        subrecordInvDetail.setCurrentSublistValue({
+            sublistId: 'inventoryassignment',
+            fieldId: 'receiptinventorynumber',
+            value: 'myinventoryNumber'
+        });
+        subrecordInvDetail.commitLine({
+            sublistId: 'inventoryassignment'
+        });
+        subrecordInvDetail.selectLine({
+            sublistId: 'inventoryassignment',
+            line: 0
+        });
+        var myInventoryNumber = subrecordInvDetail.getCurrentSublistValue({
+            sublistId: 'inventoryassignment',
+            fieldId: 'receiptinventorynumber'
+        });
+        rec.commitLine({
+            sublistId: 'item'
+        });
+        var recordId = rec.save();
+    }
+    createPurchaseOrder();
 });
 ```
 
 #### Sample 5: Access Sublists and a Subrecord from a Record Asynchronously Using Promise Methods
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/record'], function(record) {
-    function createPurchaseOrder() {
-        var createRecordPromise = record.create.promise({
-            type: 'purchaseorder',
-            isDynamic: true
-        });
-        createRecordPromise.then(function(rec) {
-            rec.setValue({
-                fieldId: 'entity',
-                value: 52
-            });
-            rec.setValue({
-                fieldId: 'location',
-                value: 2
-            });
-            rec.selectNewLine({
-                sublistId: 'item'
-            });
-            rec.setCurrentSublistValue({
-                sublistId: 'item',
-                fieldId: 'item',
-                value: 190
-            });
-            rec.setCurrentSublistValue({
-                sublistId: 'item',
-                fieldId: 'quantity',
-                value: 2
-            });
-            subrecordInvDetail = rec.getCurrentSublistSubrecord({
-                sublistId: 'item',
-                fieldId: 'inventorydetail'
-            });
-            subrecordInvDetail.selectNewLine({
-                sublistId: 'inventoryassignment'
-            });
-            subrecordInvDetail.setCurrentSublistValue({
-                sublistId: 'inventoryassignment',
-                fieldId: 'receiptinventorynumber',
-                value: 'myinventoryNumber'
-            });
-            subrecordInvDetail.commitLine({
-                sublistId: 'inventoryassignment'
-            });
-            subrecordInvDetail.selectLine({
-                sublistId: 'inventoryassignment',
-                line: 0
-            });
-            var myInventoryNumber = subrecordInvDetail.getCurrentSublistValue({
-                sublistId: 'inventoryassignment',
-                fieldId: 'receiptinventorynumber'
-            });
-            rec.commitLine({
-                sublistId: 'item'
-            });
-              var recordId = rec.save();
-        }, function(err) {
-            log.error('Unable to create purchase order!', err.name);
-        });
-    }
-    createPurchaseOrder();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/record'], function(record) {
+    function createPurchaseOrder() {
+        var createRecordPromise = record.create.promise({
+            type: 'purchaseorder',
+            isDynamic: true
+        });
+        createRecordPromise.then(function(rec) {
+            rec.setValue({
+                fieldId: 'entity',
+                value: 52
+            });
+            rec.setValue({
+                fieldId: 'location',
+                value: 2
+            });
+            rec.selectNewLine({
+                sublistId: 'item'
+            });
+            rec.setCurrentSublistValue({
+                sublistId: 'item',
+                fieldId: 'item',
+                value: 190
+            });
+            rec.setCurrentSublistValue({
+                sublistId: 'item',
+                fieldId: 'quantity',
+                value: 2
+            });
+            subrecordInvDetail = rec.getCurrentSublistSubrecord({
+                sublistId: 'item',
+                fieldId: 'inventorydetail'
+            });
+            subrecordInvDetail.selectNewLine({
+                sublistId: 'inventoryassignment'
+            });
+            subrecordInvDetail.setCurrentSublistValue({
+                sublistId: 'inventoryassignment',
+                fieldId: 'receiptinventorynumber',
+                value: 'myinventoryNumber'
+            });
+            subrecordInvDetail.commitLine({
+                sublistId: 'inventoryassignment'
+            });
+            subrecordInvDetail.selectLine({
+                sublistId: 'inventoryassignment',
+                line: 0
+            });
+            var myInventoryNumber = subrecordInvDetail.getCurrentSublistValue({
+                sublistId: 'inventoryassignment',
+                fieldId: 'receiptinventorynumber'
+            });
+            rec.commitLine({
+                sublistId: 'item'
+            });
+              var recordId = rec.save();
+        }, function(err) {
+            log.error('Unable to create purchase order!', err.name);
+        });
+    }
+    createPurchaseOrder();
 });
 ```
 
 #### Sample 6: Call a Macro on a Sales Order Record
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/record'],
-    function(record) {
-
-     var recordObj = record.create({
-         type: record.Type.SALES_ORDER,
-         isDynamic: true
-     });
-
-     var ENTITY_VALUE = 1;    
-     var ITEM_VALUE = 1;
-     recordObj.setValue({
-         fieldId: 'entity',
-         value: ENTITY_VALUE
-    });
-    recordObj.selectNewLine({
-         sublistId: 'item'
-    });
-    recordObj.setCurrentSublistValue({
-         sublistId: 'item',
-         fieldId: 'item',
-         value: ITEM_VALUE
-    });
-    recordObj.setCurrentSublistValue({
-         sublistId: 'item',
-         fieldId: 'quantity',
-         value: 1
-    });
-    recordObj.commitLine({
-         sublistId:'item'
-    });
-
-    var totalBeforeTax = recordObj.getValue({fieldId: 'total'});
-
-    // get macros available on the record
-    var macros = recordObj.getMacros();
-
-    // execute the macro
-    if ('calculateTax' in macros)
-    {
-        macros.calculateTax(); // For promise version use: macros.calculateTax.promise()
-    }
-    // Alternative (direct) macro execution
-    // var calculateTax = recordObj.getMacro({id: 'calculateTax'});
-    // calculateTax(); // For promise version use: calculateTax.promise()
-    var totalAfterTax = recordObj.getValue({fieldId: 'total'});
-
-    var recordId = recordObj.save({
-       enableSourcing: false,  
-       ignoreMandatoryFields: false
-    });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/record'],
+    function(record) {
+
+     var recordObj = record.create({
+         type: record.Type.SALES_ORDER,
+         isDynamic: true
+     });
+
+     var ENTITY_VALUE = 1;    
+     var ITEM_VALUE = 1;
+     recordObj.setValue({
+         fieldId: 'entity',
+         value: ENTITY_VALUE
+    });
+    recordObj.selectNewLine({
+         sublistId: 'item'
+    });
+    recordObj.setCurrentSublistValue({
+         sublistId: 'item',
+         fieldId: 'item',
+         value: ITEM_VALUE
+    });
+    recordObj.setCurrentSublistValue({
+         sublistId: 'item',
+         fieldId: 'quantity',
+         value: 1
+    });
+    recordObj.commitLine({
+         sublistId:'item'
+    });
+
+    var totalBeforeTax = recordObj.getValue({fieldId: 'total'});
+
+    // get macros available on the record
+    var macros = recordObj.getMacros();
+
+    // execute the macro
+    if ('calculateTax' in macros)
+    {
+        macros.calculateTax(); // For promise version use: macros.calculateTax.promise()
+    }
+    // Alternative (direct) macro execution
+    // var calculateTax = recordObj.getMacro({id: 'calculateTax'});
+    // calculateTax(); // For promise version use: calculateTax.promise()
+    var totalAfterTax = recordObj.getValue({fieldId: 'total'});
+
+    var recordId = recordObj.save({
+       enableSourcing: false,  
+       ignoreMandatoryFields: false
+    });
 });
 ```
 
@@ -8958,45 +8958,45 @@ Contains key-value pairs that represent context types and their values.
 #### Sample 1: N/recordContext Module Sample
 
 ```javascript
-/**
- *@NApiVersion 2.x
- */
-// This example calls the getContext() API with options recordType, recordId and  record.
-require(['N/record', 'N/recordContext'],
-    function(record, recordContext) {
-        // Create record
-        var employee = record.create({
-            type : record.Type.EMPLOYEE,
-            isDynamic: true
-        })
-        // Setup CA subsidiary          
-        employee.setValue('subsidiary', 2); 
-        employee.setValue('entityid', 'test_emp_' + Date.now())
-        employeeId = employee.save()
-         
-        // getContext() with options recordType, recordId and contextTypes
-        var employeeContext = recordContext.getContext({
-            recordType : record.Type.EMPLOYEE,
-            recordId: employeeId,
-            contextTypes: [recordContext.ContextType.LOCALIZATION]
-        })
-        log.debug(employeeContext);  // expected log will list {"localization":["CA"]}
-
-         // Change employee subsidiary to AU
-         employee.setValue('subsidiary', 3); 
-
-        // getContext() with options record and contextTypes
-        var employeeContext = recordContext.getContext({
-            record : employee,
-            contextTypes: [recordContext.ContextType.LOCALIZATION]
-        })
-        log.debug(employeeContext);  // expected log will list {"localization":["AU"]}
-
-        // Delete record
-        record.delete({
-            type : record.Type.EMPLOYEE,
-            id: 1
-        })
+/**
+ *@NApiVersion 2.x
+ */
+// This example calls the getContext() API with options recordType, recordId and  record.
+require(['N/record', 'N/recordContext'],
+    function(record, recordContext) {
+        // Create record
+        var employee = record.create({
+            type : record.Type.EMPLOYEE,
+            isDynamic: true
+        })
+        // Setup CA subsidiary          
+        employee.setValue('subsidiary', 2); 
+        employee.setValue('entityid', 'test_emp_' + Date.now())
+        employeeId = employee.save()
+         
+        // getContext() with options recordType, recordId and contextTypes
+        var employeeContext = recordContext.getContext({
+            recordType : record.Type.EMPLOYEE,
+            recordId: employeeId,
+            contextTypes: [recordContext.ContextType.LOCALIZATION]
+        })
+        log.debug(employeeContext);  // expected log will list {"localization":["CA"]}
+
+         // Change employee subsidiary to AU
+         employee.setValue('subsidiary', 3); 
+
+        // getContext() with options record and contextTypes
+        var employeeContext = recordContext.getContext({
+            record : employee,
+            contextTypes: [recordContext.ContextType.LOCALIZATION]
+        })
+        log.debug(employeeContext);  // expected log will list {"localization":["AU"]}
+
+        // Delete record
+        record.delete({
+            type : record.Type.EMPLOYEE,
+            id: 1
+        })
     });
 ```
 
@@ -9071,27 +9071,27 @@ Suitelets, beforeLoad user events, and synchronous afterSubmit user events
 #### Sample 1: N/redirect Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/record', 'N/redirect'], function(record, redirect) {
-    function redirectToTaskRecord() {
-        var taskTitle = 'New Opportunity';
-        var taskRecord = record.create({
-            type: record.Type.TASK
-        });
-        taskRecord.setValue('title', taskTitle);
-
-        var taskRecordId = taskRecord.save();
-
-        redirect.toRecord({
-            type: record.Type.TASK,
-            id: taskRecordId
-        });
-    }
-
-    redirectToTaskRecord();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/record', 'N/redirect'], function(record, redirect) {
+    function redirectToTaskRecord() {
+        var taskTitle = 'New Opportunity';
+        var taskRecord = record.create({
+            type: record.Type.TASK
+        });
+        taskRecord.setValue('title', taskTitle);
+
+        var taskRecordId = taskRecord.save();
+
+        redirect.toRecord({
+            type: record.Type.TASK,
+            id: taskRecordId
+        });
+    }
+
+    redirectToTaskRecord();
 });
 ```
 
@@ -9202,111 +9202,111 @@ Uses Query as the renderer's data source.
 #### Sample 1: Generate a PDF File from a Raw XML String
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/render'],
-    function(render) {
-        function generatePdfFileFromRawXml() {
-            var xmlStr = "&lt;?xml version=\"1.0\"?&gt;\n" +
-                "&lt;!DOCTYPE pdf PUBLIC \"-//big.faceless.org//report\" \"report-1.1.dtd\"&gt;\n" +
-                "&lt;pdf&gt;\n&lt;body font-size=\"18\"&gt;\nHello World!\n&lt;/body&gt;\n&lt;/pdf&gt;";
-            var pdfFile = render.xmlToPdf({
-                xmlString: xmlStr
-            });
-        }
-        generatePdfFileFromRawXml();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/render'],
+    function(render) {
+        function generatePdfFileFromRawXml() {
+            var xmlStr = "&lt;?xml version=\"1.0\"?&gt;\n" +
+                "&lt;!DOCTYPE pdf PUBLIC \"-//big.faceless.org//report\" \"report-1.1.dtd\"&gt;\n" +
+                "&lt;pdf&gt;\n&lt;body font-size=\"18\"&gt;\nHello World!\n&lt;/body&gt;\n&lt;/pdf&gt;";
+            var pdfFile = render.xmlToPdf({
+                xmlString: xmlStr
+            });
+        }
+        generatePdfFileFromRawXml();
     });
 ```
 
 #### Sample 2: Render a Transaction Record Into an HTML Page
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/render'],
-    function(render) {
-        function renderTransactionToHtml() {
-            var transactionFile = render.transaction({
-            entityId: 23,
-            printMode: render.PrintMode.HTML
-            });
-        }
-        renderTransactionToHtml();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/render'],
+    function(render) {
+        function renderTransactionToHtml() {
+            var transactionFile = render.transaction({
+            entityId: 23,
+            printMode: render.PrintMode.HTML
+            });
+        }
+        renderTransactionToHtml();
     });
 ```
 
 #### Sample 3: Render an Invoice Into a PDF File Using an XML Template
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This sample shows how to render an invoice into a PDF file using an XML template in the file cabinet.
-// Note that this example requires the Advanced PDF/HTML Templates feature.
-require(['N/render', 'N/file', 'N/record'],
-    function(render, file, record) {
-        function renderRecordToPdfWithTemplate() {
-            var xmlTemplateFile = file.load('Templates/PDF Templates/invoicePDFTemplate.xml');
-            var renderer = render.create();
-            renderer.templateContent = xmlTemplateFile.getContents();
-            renderer.addRecord('record', record.load({
-                type: record.Type.INVOICE,
-                id: 37
-            }));
-            var invoicePdf = renderer.renderAsPdf();
-        }
-        renderRecordToPdfWithTemplate();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This sample shows how to render an invoice into a PDF file using an XML template in the file cabinet.
+// Note that this example requires the Advanced PDF/HTML Templates feature.
+require(['N/render', 'N/file', 'N/record'],
+    function(render, file, record) {
+        function renderRecordToPdfWithTemplate() {
+            var xmlTemplateFile = file.load('Templates/PDF Templates/invoicePDFTemplate.xml');
+            var renderer = render.create();
+            renderer.templateContent = xmlTemplateFile.getContents();
+            renderer.addRecord('record', record.load({
+                type: record.Type.INVOICE,
+                id: 37
+            }));
+            var invoicePdf = renderer.renderAsPdf();
+        }
+        renderRecordToPdfWithTemplate();
     });
 ```
 
 #### Sample 4: Render Search Results Into a PDF File
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-// This sample shows how to render search results into a PDF file.
-define(['N/render', 'N/search'], function(render, search) {
-    function onRequest(options) {
-        var request = options.request;
-        var response = options.response;
-
-        var xmlStr = '&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n' +
-            '&lt;!DOCTYPE pdf PUBLIC \"-//big.faceless.org//report\" \"report-1.1.dtd\"&gt;\n' +
-            '&lt;pdf lang=\"ru=RU\" xml:lang=\"ru-RU\"&gt;\n" + "&lt;head&gt;\n' +
-            '&lt;link name=\"russianfont\" type=\"font\" subtype=\"opentype\" ' +
-            'src=\"NetSuiteFonts/verdana.ttf\" " + "src-bold=\"NetSuiteFonts/verdanab.ttf\"' +
-            'src-italic=\"NetSuiteFonts/verdanai.ttf\" " + "src-bolditalic=\"NetSuiteFonts/verdanabi.ttf\"' +
-            'bytes=\"2\"/&gt;\n" + "&lt;/head&gt;\n' +
-            '&lt;body font-family=\"russianfont\" font-size=\"18\"&gt;\n??????? ?????&lt;/body&gt;\n" + "&lt;/pdf&gt;';
-
-        var rs = search.create({
-            type: search.Type.TRANSACTION,
-            columns: ['trandate', 'amount', 'entity'],
-            filters: []
-        }).run();
-
-        var results = rs.getRange(0, 1000);
-        var renderer = render.create();
-        renderer.templateContent = xmlStr;
-        renderer.addSearchResults({
-            templateName: 'results',
-            searchResult: results
-        });
-
-        var newfile = renderer.renderAsPdf();
-        response.writeFile(newfile, false);
-    }
-
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+// This sample shows how to render search results into a PDF file.
+define(['N/render', 'N/search'], function(render, search) {
+    function onRequest(options) {
+        var request = options.request;
+        var response = options.response;
+
+        var xmlStr = '&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n' +
+            '&lt;!DOCTYPE pdf PUBLIC \"-//big.faceless.org//report\" \"report-1.1.dtd\"&gt;\n' +
+            '&lt;pdf lang=\"ru=RU\" xml:lang=\"ru-RU\"&gt;\n" + "&lt;head&gt;\n' +
+            '&lt;link name=\"russianfont\" type=\"font\" subtype=\"opentype\" ' +
+            'src=\"NetSuiteFonts/verdana.ttf\" " + "src-bold=\"NetSuiteFonts/verdanab.ttf\"' +
+            'src-italic=\"NetSuiteFonts/verdanai.ttf\" " + "src-bolditalic=\"NetSuiteFonts/verdanabi.ttf\"' +
+            'bytes=\"2\"/&gt;\n" + "&lt;/head&gt;\n' +
+            '&lt;body font-family=\"russianfont\" font-size=\"18\"&gt;\n??????? ?????&lt;/body&gt;\n" + "&lt;/pdf&gt;';
+
+        var rs = search.create({
+            type: search.Type.TRANSACTION,
+            columns: ['trandate', 'amount', 'entity'],
+            filters: []
+        }).run();
+
+        var results = rs.getRange(0, 1000);
+        var renderer = render.create();
+        renderer.templateContent = xmlStr;
+        renderer.addSearchResults({
+            templateName: 'results',
+            searchResult: results
+        });
+
+        var newfile = renderer.renderAsPdf();
+        response.writeFile(newfile, false);
+    }
+
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
@@ -9447,66 +9447,66 @@ User.getPreference(options)
 #### Sample 1: Return User and Session Information
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script writes user and session information for the currently executing script to the response.
-define(['N/runtime'], function(runtime) {
-    function onRequest(context) {
-        var remainingUsage = runtime.getCurrentScript().getRemainingUsage();
-        var userRole = runtime.getCurrentUser().role;
-        var currentSession = runtime.getCurrentSession();
-
-        // Set the current sessions's scope
-        currentSession.set({
-            name: 'scope',
-            value: 'global'
-        });
-
-        var sessionScope = runtime.getCurrentSession().get({
-            name: 'scope'
-        });
-
-        log.debug('Remaining Usage:', remainingUsage);
-        log.debug('Role:', userRole);
-        log.debug('Session Scope:', sessionScope);
-
-        context.response.write('Executing under role: ' + userRole
-            + '. Session scope: ' + sessionScope + '.');
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script writes user and session information for the currently executing script to the response.
+define(['N/runtime'], function(runtime) {
+    function onRequest(context) {
+        var remainingUsage = runtime.getCurrentScript().getRemainingUsage();
+        var userRole = runtime.getCurrentUser().role;
+        var currentSession = runtime.getCurrentSession();
+
+        // Set the current sessions's scope
+        currentSession.set({
+            name: 'scope',
+            value: 'global'
+        });
+
+        var sessionScope = runtime.getCurrentSession().get({
+            name: 'scope'
+        });
+
+        log.debug('Remaining Usage:', remainingUsage);
+        log.debug('Role:', userRole);
+        log.debug('Session Scope:', sessionScope);
+
+        context.response.write('Executing under role: ' + userRole
+            + '. Session scope: ' + sessionScope + '.');
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 2: Create Multiple Sales Records Using a Scheduled Script
 
 ```javascript
-/**
-* @NApiVersion 2.1
-* @NScriptType ScheduledScript
-*/
-
-// This script creates multiple sales records and logs the record creation progress.
-define(['N/runtime', 'N/record'], function(runtime, record) {
-    return {
-        execute: function(context) {
-            var script = runtime.getCurrentScript();
-            for (x = 0; x &lt; 500; x++) {
-                var rec = record.create({
-                    type: record.Type.SALES_ORDER
-                });
-                script.percentComplete = (x * 100)/500;
-                log.debug({
-                    title: 'New Sales Orders',
-                    details: 'Record creation progress: ' + script.percentComplete + '%'
-                });
-            }
-         }
-    };
+/**
+* @NApiVersion 2.1
+* @NScriptType ScheduledScript
+*/
+
+// This script creates multiple sales records and logs the record creation progress.
+define(['N/runtime', 'N/record'], function(runtime, record) {
+    return {
+        execute: function(context) {
+            var script = runtime.getCurrentScript();
+            for (x = 0; x &lt; 500; x++) {
+                var rec = record.create({
+                    type: record.Type.SALES_ORDER
+                });
+                script.percentComplete = (x * 100)/500;
+                log.debug({
+                    title: 'New Sales Orders',
+                    details: 'Record creation progress: ' + script.percentComplete + '%'
+                });
+            }
+         }
+    };
 });
 ```
 
@@ -9581,50 +9581,50 @@ The content of the RESTlet HTTP response.
 #### Sample 1: N/scriptTypes/restlet Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType RESTlet
- */
-define(['N/scriptTypes/restlet', 'N/query'], 
-    function(restlet, query) {
-   
-    // RESTlet entry point
-    const get = function (requestParams) {
-        // Create Employee query
-        const qObj = query.create({
-            type: query.Type.EMPLOYEE
-        });
-        // Set query condition for the Supervisor field on the employee record, it should not be empty
-        qObj.condition = qObj.createCondition({
-            fieldId: 'supervisor',
-            operator: query.Operator.EMPTY_NOT
-        });
-        // Add supervisor value in the query results
-        qObj.columns = [qObj.createColumn({
-            fieldId: 'supervisor'
-        })]
-
-        const returnArray = [];
-        
-        // Retrieve the results
-        const results = qObj.run().results;
-        for (var i = results.length - 1; i &gt;= 0; i--) {
-            const obj = results[i];
-            returnArray.push(obj.values[0]);
-        }
-        
-        // Create a RESTlet custom response to set the Content-Type header to JSON object
-        const response = restlet.createResponse({ 
-            content: JSON.stringify(returnArray),
-            contentType: 'application/json'
-        });
-
-        log.debug('response', JSON.stringify(response))
-
-        return response;
-    }
-
-    return { get };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType RESTlet
+ */
+define(['N/scriptTypes/restlet', 'N/query'], 
+    function(restlet, query) {
+   
+    // RESTlet entry point
+    const get = function (requestParams) {
+        // Create Employee query
+        const qObj = query.create({
+            type: query.Type.EMPLOYEE
+        });
+        // Set query condition for the Supervisor field on the employee record, it should not be empty
+        qObj.condition = qObj.createCondition({
+            fieldId: 'supervisor',
+            operator: query.Operator.EMPTY_NOT
+        });
+        // Add supervisor value in the query results
+        qObj.columns = [qObj.createColumn({
+            fieldId: 'supervisor'
+        })]
+
+        const returnArray = [];
+        
+        // Retrieve the results
+        const results = qObj.run().results;
+        for (var i = results.length - 1; i &gt;= 0; i--) {
+            const obj = results[i];
+            returnArray.push(obj.values[0]);
+        }
+        
+        // Create a RESTlet custom response to set the Content-Type header to JSON object
+        const response = restlet.createResponse({ 
+            content: JSON.stringify(returnArray),
+            contentType: 'application/json'
+        });
+
+        log.debug('response', JSON.stringify(response))
+
+        return response;
+    }
+
+    return { get };
 });
 ```
 
@@ -9929,246 +9929,246 @@ The name of the search parameter.
 #### Sample 1: Search for Customer Records and Log First 50 Results
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/search'], function(search) {
-    var mySearch = search.create({
-        type: search.Type.CUSTOMER,
-        columns: ['entityid', 'firstname', 'lastname', 'salesrep'],
-        filters: ['entityid', 'contains', 'Adam']
-    });
-
-    var myResultSet = mySearch.run();
-
-    var resultRange = myResultSet.getRange({
-        start: 0,
-        end: 50
-    });
-
-    for (var i = 0; i &lt; resultRange.length; i++) {
-        log.debug(resultRange[i]);
-    }
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/search'], function(search) {
+    var mySearch = search.create({
+        type: search.Type.CUSTOMER,
+        columns: ['entityid', 'firstname', 'lastname', 'salesrep'],
+        filters: ['entityid', 'contains', 'Adam']
+    });
+
+    var myResultSet = mySearch.run();
+
+    var resultRange = myResultSet.getRange({
+        start: 0,
+        end: 50
+    });
+
+    for (var i = 0; i &lt; resultRange.length; i++) {
+        log.debug(resultRange[i]);
+    }
 });
 ```
 
 #### Sample 2: Search for Sales Order Records
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    function createSearch() {
-        var mySalesOrderSearch = search.create({
-            type: search.Type.SALES_ORDER,
-            title: 'My SalesOrder Search',
-            id: 'customsearch_my_so_search',
-            columns: ['entity', 'subsidiary', 'name', 'currency'],
-            filters: [
-                ['mainline', 'is', 'T'],
-                'and', ['subsidiary.name', 'contains', 'CAD']
-            ]
-        });
-
-        mySalesOrderSearch.save();
-    }
-
-    createSearch();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    function createSearch() {
+        var mySalesOrderSearch = search.create({
+            type: search.Type.SALES_ORDER,
+            title: 'My SalesOrder Search',
+            id: 'customsearch_my_so_search',
+            columns: ['entity', 'subsidiary', 'name', 'currency'],
+            filters: [
+                ['mainline', 'is', 'T'],
+                'and', ['subsidiary.name', 'contains', 'CAD']
+            ]
+        });
+
+        mySalesOrderSearch.save();
+    }
+
+    createSearch();
 });
 ```
 
 #### Sample 3: Load a Search for Sales Order Records and Use a Callback Function to Process Results
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    function loadAndRunSearch() {
-        var mySearch = search.load({
-            id: 'customsearch_my_so_search'
-        });
-
-        mySearch.run().each(function(result) {
-            var entity = result.getValue({
-                name: 'entity'
-            });
-            var subsidiary = result.getValue({
-                name: 'subsidiary'
-            });
-
-            return true;
-        });
-    }
-
-    loadAndRunSearch();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    function loadAndRunSearch() {
+        var mySearch = search.load({
+            id: 'customsearch_my_so_search'
+        });
+
+        mySearch.run().each(function(result) {
+            var entity = result.getValue({
+                name: 'entity'
+            });
+            var subsidiary = result.getValue({
+                name: 'subsidiary'
+            });
+
+            return true;
+        });
+    }
+
+    loadAndRunSearch();
 });
 ```
 
 #### Sample 4: Load a Search for Sales Order Records and Return the First 100 Search Results
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    function runSearchAndFetchResult() {
-        var mySearch = search.load({
-            id: 'customsearch_my_so_search'
-        });
-
-        var searchResult = mySearch.run().getRange({
-            start: 0,
-            end: 100
-        });
-        for (var i = 0; i &lt; searchResult.length; i++) {
-            var entity = searchResult[i].getValue({
-                name: 'entity'
-            });
-            var subsidiary = searchResult[i].getValue({
-                name: 'subsidiary'
-            });
-        }
-    }
-
-    runSearchAndFetchResult();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    function runSearchAndFetchResult() {
+        var mySearch = search.load({
+            id: 'customsearch_my_so_search'
+        });
+
+        var searchResult = mySearch.run().getRange({
+            start: 0,
+            end: 100
+        });
+        for (var i = 0; i &lt; searchResult.length; i++) {
+            var entity = searchResult[i].getValue({
+                name: 'entity'
+            });
+            var subsidiary = searchResult[i].getValue({
+                name: 'subsidiary'
+            });
+        }
+    }
+
+    runSearchAndFetchResult();
 });
 ```
 
 #### Sample 5: Load and Run a Paginated Search and Process the Results
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    function loadAndRunSearch() {
-        var mySearch = search.load({
-            id: 'customsearch_my_so_search'
-        });
-
-        var myPagedData = mySearch.runPaged();
-        myPagedData.pageRanges.forEach(function(pageRange){
-            var myPage = myPagedData.fetch({index: pageRange.index});
-            myPage.data.forEach(function(result){
-                var entity = result.getValue({
-                    name: 'entity'
-                });
-                var subsidiary = result.getValue({
-                    name: 'subsidiary'
-                });
-            });
-        });
-    }
-
-    loadAndRunSearch();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    function loadAndRunSearch() {
+        var mySearch = search.load({
+            id: 'customsearch_my_so_search'
+        });
+
+        var myPagedData = mySearch.runPaged();
+        myPagedData.pageRanges.forEach(function(pageRange){
+            var myPage = myPagedData.fetch({index: pageRange.index});
+            myPage.data.forEach(function(result){
+                var entity = result.getValue({
+                    name: 'entity'
+                });
+                var subsidiary = result.getValue({
+                    name: 'subsidiary'
+                });
+            });
+        });
+    }
+
+    loadAndRunSearch();
 });
 ```
 
 #### Sample 6: Create a Search for a Custom Record Type
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    var myCustomRecordSearch = search.create({
-        type: search.Type.CUSTOM_RECORD + '6',
-        title: 'My Search Title',
-        columns: ['custrecord1']
-    }).run().each(function(result) {
-        // Process each result
-        return true;
-    });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    var myCustomRecordSearch = search.create({
+        type: search.Type.CUSTOM_RECORD + '6',
+        title: 'My Search Title',
+        columns: ['custrecord1']
+    }).run().each(function(result) {
+        // Process each result
+        return true;
+    });
 });
 ```
 
 #### Sample 7: Search for Items in a Custom List
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    var internalId = -1;
-    var myCustomListSearch = search.create({
-        type: 'customlist_mylist',
-        columns: [
-            { name : 'internalId' },
-            { name : 'abbreviation' }
-        ]
-    });
-
-    myCustomListSearch.filters = [
-        search.createFilter({
-            name: 'formulatext',
-            formula: '{abbreviation}',
-            operator: search.Operator.IS,
-            values: abbreviation
-        });
-    ]
-
-    var resultSet = myCustomListSearch.run();
-    var results = resultSet.getRange({
-        start: 0,
-        end: 1
-    });
-    for(var i in results) {
-        // log.debug('Found custom list record', results[i]);
-        internalId = results[i].getValue({
-            name:'internalId'
-        });
-    };
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    var internalId = -1;
+    var myCustomListSearch = search.create({
+        type: 'customlist_mylist',
+        columns: [
+            { name : 'internalId' },
+            { name : 'abbreviation' }
+        ]
+    });
+
+    myCustomListSearch.filters = [
+        search.createFilter({
+            name: 'formulatext',
+            formula: '{abbreviation}',
+            operator: search.Operator.IS,
+            values: abbreviation
+        });
+    ]
+
+    var resultSet = myCustomListSearch.run();
+    var results = resultSet.getRange({
+        start: 0,
+        end: 1
+    });
+    for(var i in results) {
+        // log.debug('Found custom list record', results[i]);
+        internalId = results[i].getValue({
+            name:'internalId'
+        });
+    };
 });
 ```
 
 #### Sample 8: Delete a Saved Search
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/search'], function(search) {
-    function deleteSearch() {
-        search.delete({
-            id: 'customsearch_my_so_search'
-        });
-    }
-
-    deleteSearch();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/search'], function(search) {
+    function deleteSearch() {
+        search.delete({
+            id: 'customsearch_my_so_search'
+        });
+    }
+
+    deleteSearch();
 });
 ```
 
 #### Sample 9: Search Using a Specific Record Field
 
 ```javascript
-/**
-* @NApiVersion 2.x
-*/
-require(['N/search'], function(search) {
-    var mySearch = search.create({
-        type: search.Type.TRANSACTION,
-        columns: ['item', 'operationdisplaytext'],
-        filters: [
-            ['internalid', search.Operator.ANYOF, &lt;transactionId&gt;],
-            'and',
-            ['operationdisplaytext', search.Operator.EQUALTO, 20]]
-    });
-
-    var myResultSet = mySearch.run();
-    var resultRange = myResultSet.getRange({
-        start: 0,
-        end: 20
-    });
+/**
+* @NApiVersion 2.x
+*/
+require(['N/search'], function(search) {
+    var mySearch = search.create({
+        type: search.Type.TRANSACTION,
+        columns: ['item', 'operationdisplaytext'],
+        filters: [
+            ['internalid', search.Operator.ANYOF, &lt;transactionId&gt;],
+            'and',
+            ['operationdisplaytext', search.Operator.EQUALTO, 20]]
+    });
+
+    var myResultSet = mySearch.run();
+    var resultRange = myResultSet.getRange({
+        start: 0,
+        end: 20
+    });
 });
 ```
 
@@ -10262,237 +10262,237 @@ Connection.upload(options)
 #### Sample 1: Upload and Download a File
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/sftp', 'N/file'], (sftp, file) =&gt; {
-    const myPwdGuid = "B34672495064525E5D65032D63B52301";
-    const myHostKey = "AAA1234567890Q=";
-
-    // Establish a connection to a remote FTP server
-    let connection = sftp.createConnection({
-        username: 'myuser',
-        passwordGuid: myPwdGuid,
-        url: 'host.somewhere.com',
-        directory: 'myuser/wheres/my/file',
-        hostKey: myHostKey
-    });
-
-    // Create a file to upload using the N/file module
-    let myFileToUpload = file.create({
-        name: 'originalname.js',
-        fileType: file.Type.PLAINTEXT,
-        contents: 'I am a test file.'
-    });
-
-    // Upload the file to the remote server
-    connection.upload({
-        directory: 'relative/path/to/remote/dir',
-        filename: 'newFileNameOnServer.js',
-        file: myFileToUpload,
-        replaceExisting: true
-    });
-
-    // Download the file from the remote server
-    let downloadedFile = connection.download({
-        directory: 'relative/path/to/file',
-        filename: 'downloadMe.js'
-    });
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/sftp', 'N/file'], (sftp, file) =&gt; {
+    const myPwdGuid = "B34672495064525E5D65032D63B52301";
+    const myHostKey = "AAA1234567890Q=";
+
+    // Establish a connection to a remote FTP server
+    let connection = sftp.createConnection({
+        username: 'myuser',
+        passwordGuid: myPwdGuid,
+        url: 'host.somewhere.com',
+        directory: 'myuser/wheres/my/file',
+        hostKey: myHostKey
+    });
+
+    // Create a file to upload using the N/file module
+    let myFileToUpload = file.create({
+        name: 'originalname.js',
+        fileType: file.Type.PLAINTEXT,
+        contents: 'I am a test file.'
+    });
+
+    // Upload the file to the remote server
+    connection.upload({
+        directory: 'relative/path/to/remote/dir',
+        filename: 'newFileNameOnServer.js',
+        file: myFileToUpload,
+        replaceExisting: true
+    });
+
+    // Download the file from the remote server
+    let downloadedFile = connection.download({
+        directory: 'relative/path/to/file',
+        filename: 'downloadMe.js'
+    });
 });
 ```
 
 #### Sample 2: Manage Files and Directories
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/sftp', 'N/file'], (sftp, file) =&gt; {
-    // Establish a connection
-    log.debug('Establishing SFTP connection...');
-    let connection = sftp.createConnection({
-        username: 'sftpuser',
-        keyId: 'custkeysftp_nft_demo_key',
-        url: 'myurl',
-        port: 22,
-        directory: 'inbound',
-        hostKey: 'myhostkey'
-    });
-    log.debug('Connection established!');
-     
-    // List the directory and log the number of elements there
-    let list = connection.list({
-        path: 'yyy/test'
-    });
-    log.debug('Items in directory "test" at the beginning: ' + list.length);
- 
-    // Generate the test file
-    log.debug('Generating test file...');
-    let myFileToUpload = file.create({
-        name: 'asdf.txt',
-        fileType: file.Type.PLAINTEXT,
-        contents: 'I am a test file.'
-    });
-    log.debug('Test file generated, uploading to "test" directory...');
- 
-    // Upload the test file
-    connection.upload({
-        directory: 'yyy/test',
-        filename: 'af.txt',
-        file: myFileToUpload,
-        replaceExisting: true
-    });
-    log.debug('Upload complete!');
- 
-    // List the directory to confirm there is one more file than before
-    list = connection.list({
-        path: 'yyy/test'
-    });
-    log.debug('Items in directory "test" after the upload: ' + list.length);
- 
-    // Create a new directory
-    log.debug('Creating directory "test2"...');
-    try {
-        connection.makeDirectory({
-            path: 'yyy/test2'
-        });
-        log.debug('Directory created.');
-    } catch (e) {
-        log.debug('Directory not created.');
-        log.error(e.message);
-    }
-    list = connection.list({
-        path: 'yyy/test2'
-    });
-    log.debug('Items in directory "test2": ' + list.length);
- 
-    // Move the test file to the new directory
-    log.debug('Moving the test file from "test" to "test2"...');
-    connection.move({
-        from: 'yyy/test/af.txt',
-        to: 'yyy/test2/af.txt'
-    })
-    log.debug('File moved!');
- 
-    // List the original directory again to see the file is moved
-    list = connection.list({
-        path: 'yyy/test'
-    });
-    log.debug('Items in directory "test" after the upload: ' + list.length);
- 
-    // List the new directory for the file
-    list = connection.list({path: 'yyy/test2'});
-    log.debug('Items in directory "test2" after the upload: ' + list.length);
-    log.debug(JSON.stringify(list));
- 
-    // Try to remove the directory
-    log.debug('Removing directory "test2"...');
-    try {
-        connection.removeDirectory({
-            path: 'yyy/test2'
-        });
-        log.debug('Directory removed!');
-    } catch (e) {
-        log.debug('Directory not removed!');
-        log.error(e.message);
-    }
- 
-    // The directory is not empty so delete the file first
-    log.debug('Removing test file from "test2" directory...');
-    connection.removeFile({
-        path: 'yyy/test2/af.txt'
-    });
-    log.debug('Test file removed!');
-     
-    list = connection.list({
-        path: 'yyy/test2'
-    });
-    log.debug('Items in directory "test2": ' + list.length);
- 
-    // Try to remove the directory again
-    log.debug('Removing directory "test2"...');
-    try {
-        connection.removeDirectory({
-            path: 'yyy/test2'
-        });
-        log.debug('Directory removed!');
-    } catch (e) {
-        log.debug('Directory not removed!');
-        log.error(e.message);
-    }
- 
-    // Try to list the removed directory
-    log.debug('Trying to list directory "test2"...');
-    try {
-        list = connection.list({
-            path: 'yyy/test2'
-        });
-    } catch (e) {
-        log.error(e.message);  
-    }
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/sftp', 'N/file'], (sftp, file) =&gt; {
+    // Establish a connection
+    log.debug('Establishing SFTP connection...');
+    let connection = sftp.createConnection({
+        username: 'sftpuser',
+        keyId: 'custkeysftp_nft_demo_key',
+        url: 'myurl',
+        port: 22,
+        directory: 'inbound',
+        hostKey: 'myhostkey'
+    });
+    log.debug('Connection established!');
+     
+    // List the directory and log the number of elements there
+    let list = connection.list({
+        path: 'yyy/test'
+    });
+    log.debug('Items in directory "test" at the beginning: ' + list.length);
+ 
+    // Generate the test file
+    log.debug('Generating test file...');
+    let myFileToUpload = file.create({
+        name: 'asdf.txt',
+        fileType: file.Type.PLAINTEXT,
+        contents: 'I am a test file.'
+    });
+    log.debug('Test file generated, uploading to "test" directory...');
+ 
+    // Upload the test file
+    connection.upload({
+        directory: 'yyy/test',
+        filename: 'af.txt',
+        file: myFileToUpload,
+        replaceExisting: true
+    });
+    log.debug('Upload complete!');
+ 
+    // List the directory to confirm there is one more file than before
+    list = connection.list({
+        path: 'yyy/test'
+    });
+    log.debug('Items in directory "test" after the upload: ' + list.length);
+ 
+    // Create a new directory
+    log.debug('Creating directory "test2"...');
+    try {
+        connection.makeDirectory({
+            path: 'yyy/test2'
+        });
+        log.debug('Directory created.');
+    } catch (e) {
+        log.debug('Directory not created.');
+        log.error(e.message);
+    }
+    list = connection.list({
+        path: 'yyy/test2'
+    });
+    log.debug('Items in directory "test2": ' + list.length);
+ 
+    // Move the test file to the new directory
+    log.debug('Moving the test file from "test" to "test2"...');
+    connection.move({
+        from: 'yyy/test/af.txt',
+        to: 'yyy/test2/af.txt'
+    })
+    log.debug('File moved!');
+ 
+    // List the original directory again to see the file is moved
+    list = connection.list({
+        path: 'yyy/test'
+    });
+    log.debug('Items in directory "test" after the upload: ' + list.length);
+ 
+    // List the new directory for the file
+    list = connection.list({path: 'yyy/test2'});
+    log.debug('Items in directory "test2" after the upload: ' + list.length);
+    log.debug(JSON.stringify(list));
+ 
+    // Try to remove the directory
+    log.debug('Removing directory "test2"...');
+    try {
+        connection.removeDirectory({
+            path: 'yyy/test2'
+        });
+        log.debug('Directory removed!');
+    } catch (e) {
+        log.debug('Directory not removed!');
+        log.error(e.message);
+    }
+ 
+    // The directory is not empty so delete the file first
+    log.debug('Removing test file from "test2" directory...');
+    connection.removeFile({
+        path: 'yyy/test2/af.txt'
+    });
+    log.debug('Test file removed!');
+     
+    list = connection.list({
+        path: 'yyy/test2'
+    });
+    log.debug('Items in directory "test2": ' + list.length);
+ 
+    // Try to remove the directory again
+    log.debug('Removing directory "test2"...');
+    try {
+        connection.removeDirectory({
+            path: 'yyy/test2'
+        });
+        log.debug('Directory removed!');
+    } catch (e) {
+        log.debug('Directory not removed!');
+        log.error(e.message);
+    }
+ 
+    // Try to list the removed directory
+    log.debug('Trying to list directory "test2"...');
+    try {
+        list = connection.list({
+            path: 'yyy/test2'
+        });
+    } catch (e) {
+        log.error(e.message);  
+    }
 });
 ```
 
 #### Sample 3: Set Conditional Default Settings Using N/sftp Enums
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType UserEventScript
- * @NModuleScope SameAccount
- */
-
-define(['N/file', 'N/sftp', 'N/error'],
-function(file, sftp, error) {
-    return {
-        beforeLoad: function(){
-            var portNumber = -1;
-            var connectTimeout = -1;
-            var transferTimeout = -1;
-            //these variables can be taken as parameters of the script instead
-
-            if (portNumber &lt; sftp.MIN_PORT_NUMBER || portNumber &gt; sftp.MAX_PORT_NUMBER)
-                portNumber = sftp.DEFAULT_PORT_NUMBER;
-            if (connectTimeout &lt; sftp.MIN_CONNECT_TIMEOUT)
-                connectTimeout = sftp.MIN_CONNECT_TIMEOUT;
-            else if (connectTimeout &gt; sftp.MAX_CONNECT_TIMEOUT)
-                connectTimeout = sftp.MAX_CONNECT_TIMEOUT;
-
-            var connection = sftp.createConnection({
-                username: 'sftpuser',
-                keyId: 'custkey1',
-                url: '192.168.0.100',
-                port: portNumber,
-                directory: 'inbound',
-                timeout: connectTimeout,
-                hostKey: "AAAAB3NzaC1yc2EAAAADAQABAAABAQDMifKH2vTxdiype8nem7+lS3x7dTQR/A67KdsR/5C2WUcDipBzYhHbnG6Am12Nd2tlM01LnaBZA6/8P4Y9x/sGTxtsdE/MzeGDUBn6HBlQvgIrhX62wgoKGQ+P2lEAO1+Vz8y3/MB1NmD7Fc62cJ9Mu88YA6jwJOIPZeHYNVyIm9OrY6VyzYyvSJhH0x7SXyvGnijJQF4G8C4c8u/UVpF/sE16xKZtly2Rx0aDL2FsDRtpyPmM602/R6ISbsmgab3MzzAEIu+zLDMdIBJn3cDhNt1F7Rar6Tu0u18KCkk8GPxbnxDuG4sCNOnXPYkDXSMUbM/ocRjYGtqdZUMmeTf3"
-            });
-
-            // can also be a big file (created for example by async search)
-            var myFileToUpload = file.create({
-                name: 'originalname.txt',
-                fileType: file.Type.PLAINTEXT,
-                contents: 'I am a test file.'
-            });
-
-            if (myFileToUpload.size &gt; connection.MAX_FILE_SIZE)
-                throw error.create({name:"FILE_IS_TOO_BIG", message:"The file you are trying to upload is too big"});
-
-            var minTransferTimeout = 10;
-            if (transferTimeout &gt; connection.MAX_TRANSFER_TIMEOUT)
-                transferTimeout = connection.MAX_TRANSFER_TIMEOUT;
-            else if (transferTimeout &lt; minTransferTimeout)
-                transferTimeout = minTransferTimteout;
-
-            connection.upload({
-                directory: 'files',
-                filename: 'test.txt',
-                file: myFileToUpload,
-                replaceExisting: true,
-                timeout: transferTimeout
-            });
-        }
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType UserEventScript
+ * @NModuleScope SameAccount
+ */
+
+define(['N/file', 'N/sftp', 'N/error'],
+function(file, sftp, error) {
+    return {
+        beforeLoad: function(){
+            var portNumber = -1;
+            var connectTimeout = -1;
+            var transferTimeout = -1;
+            //these variables can be taken as parameters of the script instead
+
+            if (portNumber &lt; sftp.MIN_PORT_NUMBER || portNumber &gt; sftp.MAX_PORT_NUMBER)
+                portNumber = sftp.DEFAULT_PORT_NUMBER;
+            if (connectTimeout &lt; sftp.MIN_CONNECT_TIMEOUT)
+                connectTimeout = sftp.MIN_CONNECT_TIMEOUT;
+            else if (connectTimeout &gt; sftp.MAX_CONNECT_TIMEOUT)
+                connectTimeout = sftp.MAX_CONNECT_TIMEOUT;
+
+            var connection = sftp.createConnection({
+                username: 'sftpuser',
+                keyId: 'custkey1',
+                url: '192.168.0.100',
+                port: portNumber,
+                directory: 'inbound',
+                timeout: connectTimeout,
+                hostKey: "AAAAB3NzaC1yc2EAAAADAQABAAABAQDMifKH2vTxdiype8nem7+lS3x7dTQR/A67KdsR/5C2WUcDipBzYhHbnG6Am12Nd2tlM01LnaBZA6/8P4Y9x/sGTxtsdE/MzeGDUBn6HBlQvgIrhX62wgoKGQ+P2lEAO1+Vz8y3/MB1NmD7Fc62cJ9Mu88YA6jwJOIPZeHYNVyIm9OrY6VyzYyvSJhH0x7SXyvGnijJQF4G8C4c8u/UVpF/sE16xKZtly2Rx0aDL2FsDRtpyPmM602/R6ISbsmgab3MzzAEIu+zLDMdIBJn3cDhNt1F7Rar6Tu0u18KCkk8GPxbnxDuG4sCNOnXPYkDXSMUbM/ocRjYGtqdZUMmeTf3"
+            });
+
+            // can also be a big file (created for example by async search)
+            var myFileToUpload = file.create({
+                name: 'originalname.txt',
+                fileType: file.Type.PLAINTEXT,
+                contents: 'I am a test file.'
+            });
+
+            if (myFileToUpload.size &gt; connection.MAX_FILE_SIZE)
+                throw error.create({name:"FILE_IS_TOO_BIG", message:"The file you are trying to upload is too big"});
+
+            var minTransferTimeout = 10;
+            if (transferTimeout &gt; connection.MAX_TRANSFER_TIMEOUT)
+                transferTimeout = connection.MAX_TRANSFER_TIMEOUT;
+            else if (transferTimeout &lt; minTransferTimeout)
+                transferTimeout = minTransferTimteout;
+
+            connection.upload({
+                directory: 'files',
+                filename: 'test.txt',
+                file: myFileToUpload,
+                replaceExisting: true,
+                timeout: transferTimeout
+            });
+        }
+    };
 });
 ```
 
@@ -10620,34 +10620,34 @@ suiteAppInfo.isSuiteAppInstalled(options)
 #### Sample 1: N/suiteAppInfo Module Script Sample
 
 ```javascript
-/*
- * @NApiVersion 2.x
- * 
- */
-
-// This script sample uses each method available in the N/suiteAppInfo module to retrieve information about installed bundles and SuiteApps installed in the current account.
-
-require(['N/suiteAppInfo'], function (suiteAppInfo){
-    var isBundleInstalled = suiteAppInfo.isBundleInstalled({
-        bundleId: '1234'
-    });
-   
-   var isSuiteAppInstalled = suiteAppInfo.isSuiteAppInstalled({
-        suiteAppId: '789'
-    });
-
-    var allMyBundlesInstalled = suiteAppInfo.listInstalledBundles();
-
-    var allMySuiteAppsInstalled = suiteAppInfo.listInstalledSuiteApps();
-
-    var myScripts = {"scriptA", "scriptB", "scriptC"};
-    var scriptInBundles = suiteAppInfo.listBundlesContainingScripts({
-        scriptIds: myScripts
-    });
-
-    var scriptInSuiteApps = suiteAppInfo.listSuiteAppsContainingScripts({
-        scriptsIds: myScripts
-    });
+/*
+ * @NApiVersion 2.x
+ * 
+ */
+
+// This script sample uses each method available in the N/suiteAppInfo module to retrieve information about installed bundles and SuiteApps installed in the current account.
+
+require(['N/suiteAppInfo'], function (suiteAppInfo){
+    var isBundleInstalled = suiteAppInfo.isBundleInstalled({
+        bundleId: '1234'
+    });
+   
+   var isSuiteAppInstalled = suiteAppInfo.isSuiteAppInstalled({
+        suiteAppId: '789'
+    });
+
+    var allMyBundlesInstalled = suiteAppInfo.listInstalledBundles();
+
+    var allMySuiteAppsInstalled = suiteAppInfo.listInstalledSuiteApps();
+
+    var myScripts = {"scriptA", "scriptB", "scriptC"};
+    var scriptInBundles = suiteAppInfo.listBundlesContainingScripts({
+        scriptIds: myScripts
+    });
+
+    var scriptInSuiteApps = suiteAppInfo.listSuiteAppsContainingScripts({
+        scriptsIds: myScripts
+    });
 })
 ```
 
@@ -11198,250 +11198,250 @@ Status for a asynchronous workflow placed in the NetSuite task queue. Returns a 
 #### Sample 1: Create and Submit a Map/Reduce Script Task
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/task', 'N/runtime', 'N/email'], (task, runtime, email) =&gt; {
-    // Store the script ID of the script to submit
-    //
-    // Update the following statement so it uses the script ID
-    // of the map/reduce script record you want to submit
-    const mapReduceScriptId = 'customscript_test_mapreduce_script';
- 
-    // Create a map/reduce task
-    //
-    // Update the deploymentId parameter to use the script ID of
-    // the deployment record for your map/reduce script
-    let mrTask = task.create({
-        taskType: task.TaskType.MAP_REDUCE,
-        scriptId: mapReduceScriptId,
-        deploymentId: 'customdeploy_test_mapreduce_script'
-    });
- 
-    // Submit the map/reduce task
-    let mrTaskId = mrTask.submit();
- 
-    // Check the status of the task, and send an email if the
-    // task has a status of FAILED
-    //
-    // Update the authorId value with the internal ID of the user
-    // who is the email sender. Update the recipientEmail value
-    // with the email address of the recipient.
-    let taskStatus = task.checkStatus(mrTaskId);
-    if (taskStatus.status === 'FAILED') {
-        const authorId = -5;
-        const recipientEmail = 'notify@myCompany.com';
-        email.send({
-            author: authorId,
-            recipients: recipientEmail,
-            subject: 'Failure executing map/reduce job!',
-            body: 'Map reduce task: ' + mapReduceScriptId + ' has failed.'
-        });
-    }
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/task', 'N/runtime', 'N/email'], (task, runtime, email) =&gt; {
+    // Store the script ID of the script to submit
+    //
+    // Update the following statement so it uses the script ID
+    // of the map/reduce script record you want to submit
+    const mapReduceScriptId = 'customscript_test_mapreduce_script';
+ 
+    // Create a map/reduce task
+    //
+    // Update the deploymentId parameter to use the script ID of
+    // the deployment record for your map/reduce script
+    let mrTask = task.create({
+        taskType: task.TaskType.MAP_REDUCE,
+        scriptId: mapReduceScriptId,
+        deploymentId: 'customdeploy_test_mapreduce_script'
+    });
+ 
+    // Submit the map/reduce task
+    let mrTaskId = mrTask.submit();
+ 
+    // Check the status of the task, and send an email if the
+    // task has a status of FAILED
+    //
+    // Update the authorId value with the internal ID of the user
+    // who is the email sender. Update the recipientEmail value
+    // with the email address of the recipient.
+    let taskStatus = task.checkStatus(mrTaskId);
+    if (taskStatus.status === 'FAILED') {
+        const authorId = -5;
+        const recipientEmail = 'notify@myCompany.com';
+        email.send({
+            author: authorId,
+            recipients: recipientEmail,
+            subject: 'Failure executing map/reduce job!',
+            body: 'Map reduce task: ' + mapReduceScriptId + ' has failed.'
+        });
+    }
 });
 ```
 
 #### Sample 2: Create and Submit an Asynchronous Search Task and Export the Results into a CSV File
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-require(['N/task'], task =&gt; {
-    // Do one of the following:
-    //
-    // - Create a saved search and capture its ID. To do this, you can use
-    //   the following code snippet (replacing the type, id, filters, and
-    //   columns values as appropriate):
-    //
-    //   let mySearch = search.create({
-    //       type: search.Type.SALES_ORDER,
-    //       id: 'customsearch_my_search',
-    //       filters: [...],
-    //       columns: [...]
-    //   });
-    //   mySearch.save();
-    //   let savedSearchId = mySearch.searchId;
-    //
-    // - Use the ID of an existing saved search. This is the approach that
-    //   this script sample uses. Update the following statement with the
-    //   internal ID of the search you want to use.
-    const savedSearchId = 669;
- 
-    // Create the search task
-    let myTask = task.create({
-        taskType: task.TaskType.SEARCH
-    });
-    myTask.savedSearchId = savedSearchId;
- 
-    // Specify the ID of the file that search results will be exported into
-    //
-    // Update the following statement so it uses the internal ID of the file
-    // you want to use
-    myTask.fileId = 448;
- 
-    // Submit the search task
-    let myTaskId = myTask.submit();
- 
-    // Retrieve the status of the search task
-    let taskStatus = task.checkStatus({
-        taskId: myTaskId
-    });
- 
-    // Optionally, add logic that executes when the task is complete
-    if (taskStatus.status === task.TaskStatus.COMPLETE) {
-        // Add any code that is appropriate. For example, if this script created
-        // a saved search, you may want to delete it.
-    }
+/**
+ * @NApiVersion 2.1
+ */
+require(['N/task'], task =&gt; {
+    // Do one of the following:
+    //
+    // - Create a saved search and capture its ID. To do this, you can use
+    //   the following code snippet (replacing the type, id, filters, and
+    //   columns values as appropriate):
+    //
+    //   let mySearch = search.create({
+    //       type: search.Type.SALES_ORDER,
+    //       id: 'customsearch_my_search',
+    //       filters: [...],
+    //       columns: [...]
+    //   });
+    //   mySearch.save();
+    //   let savedSearchId = mySearch.searchId;
+    //
+    // - Use the ID of an existing saved search. This is the approach that
+    //   this script sample uses. Update the following statement with the
+    //   internal ID of the search you want to use.
+    const savedSearchId = 669;
+ 
+    // Create the search task
+    let myTask = task.create({
+        taskType: task.TaskType.SEARCH
+    });
+    myTask.savedSearchId = savedSearchId;
+ 
+    // Specify the ID of the file that search results will be exported into
+    //
+    // Update the following statement so it uses the internal ID of the file
+    // you want to use
+    myTask.fileId = 448;
+ 
+    // Submit the search task
+    let myTaskId = myTask.submit();
+ 
+    // Retrieve the status of the search task
+    let taskStatus = task.checkStatus({
+        taskId: myTaskId
+    });
+ 
+    // Optionally, add logic that executes when the task is complete
+    if (taskStatus.status === task.TaskStatus.COMPLETE) {
+        // Add any code that is appropriate. For example, if this script created
+        // a saved search, you may want to delete it.
+    }
 });
 ```
 
 #### Sample 3: Create and Submit a Task with Dependent Scripts
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/task'], (task) =&gt; {
-    // Specify a file for the search results
-    const asyncSearchResultFile = 'SuiteScripts/ExportFile.csv';
-
-    // Create a map/reduce script task
-    const mapReduceScript = task.create({
-        taskType: task.TaskType.MAP_REDUCE
-    });
-    mapReduceScript.scriptId = 'customscript_mr_create_submit';
-    mapReduceScript.deploymentId = 'customdeploy_mr_create_submit';
-    mapReduceScript.params = {
-        'custscript_mr_as_srch_res' : asyncSearchResultFile
-    };
-
-    // Create the search task
-    const asyncTask = task.create({
-        taskType: task.TaskType.SEARCH
-    };
-    asyncTask.savedSearchId = 'customsearch35';
-    asyncTask.filePath = asyncSearchResultFile;
-
-    // Add dependent scripts to the search task before it is submitted
-    asyncTask.addInboundDependency(mapReduceScript);
-
-    // Submit the search task
-    const asyncTaskId = asyncTask.submit();
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/task'], (task) =&gt; {
+    // Specify a file for the search results
+    const asyncSearchResultFile = 'SuiteScripts/ExportFile.csv';
+
+    // Create a map/reduce script task
+    const mapReduceScript = task.create({
+        taskType: task.TaskType.MAP_REDUCE
+    });
+    mapReduceScript.scriptId = 'customscript_mr_create_submit';
+    mapReduceScript.deploymentId = 'customdeploy_mr_create_submit';
+    mapReduceScript.params = {
+        'custscript_mr_as_srch_res' : asyncSearchResultFile
+    };
+
+    // Create the search task
+    const asyncTask = task.create({
+        taskType: task.TaskType.SEARCH
+    };
+    asyncTask.savedSearchId = 'customsearch35';
+    asyncTask.filePath = asyncSearchResultFile;
+
+    // Add dependent scripts to the search task before it is submitted
+    asyncTask.addInboundDependency(mapReduceScript);
+
+    // Submit the search task
+    const asyncTaskId = asyncTask.submit();
 });
 ```
 
 #### Sample 4: Create and Submit a Task with Dependent Scripts
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType MapReduceScript
- * @NModuleScope SameAccount
- */
-
-define(['N/runtime', 'N/file', 'N/log', 'N/email'], (runtime, file, log, email) =&gt; {
-    // Load the search results file, count the number of letters in the file, and
-    // store this count in another file
-
-    function getInputData() {
-        // Retrieve the ID of the search results file
-        //
-        // Update the completionScriptParameterName value to use the script
-        // ID of the original search task
-        const fileId = runtime.getCurrentScript().getParameter({
-            name: 'custscript_mr_new_submit_task_field'
-        });
-
-        if (!fileId) {
-            log.error({
-                details: 'fileId is not valid. Please check the script parameter stored in the completionScriptParameterName variable in getInputData().'
-            });
-        }
-
-        return {
-            type: 'file',
-            id: fileId
-        };
-    }
-
-    function map(context) {
-        log.debug('map context: ', context);
-        context.write({
-           key: context.key,
-           value: 1           
-        });
-    }
-
-    function reduce(context) {
-        log.debug('reduce context: ', context);
-        log.debug('context.values.length', context.values.length);
-        
-        // Count the number of rows 
-        let rowCount = 0;
-        rowCount = context.values.length - 1 // Subtracting 1 to remove header row from the count.
-        log.debug('rowCount: ', rowCount);
- 
-       // Send an email to the user who ran the script, and attach the
-       // CSV file with the search results
-       const completionScriptParameterName = 'custscript_mr_new_submit_task_field';
-       const resFileId = runtime.getCurrentScript().getParameter({
-          name: completionScriptParameterName
-       });
-       const fileObj = file.load({  
-          id: resFileId
-       });
-       const userId = runtime.getCurrentUser().id;
-       email.send({
-          author: userId,
-          recipients: userId,
-          subject: 'Search completed',
-          body: 'CSV file attached, ' + rowCount + ' record(s) found.', 
-          attachments: [fileObj]            
-       });
-    }
-
-    function summarize(summary) {
-        const type = summary.toString();
-        log.audit({ title: type + ' Usage Consumed ', details: summary.usage });
-        log.audit({ title: type + ' Concurrency Number ', details: summary.concurrency });
-        log.audit({ title: type + ' Number of Yields ', details: summary.yields });
-    }
-    return {
-        getInputData: getInputData,
-        map: map,
-        reduce: reduce,
-        summarize: summarize
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType MapReduceScript
+ * @NModuleScope SameAccount
+ */
+
+define(['N/runtime', 'N/file', 'N/log', 'N/email'], (runtime, file, log, email) =&gt; {
+    // Load the search results file, count the number of letters in the file, and
+    // store this count in another file
+
+    function getInputData() {
+        // Retrieve the ID of the search results file
+        //
+        // Update the completionScriptParameterName value to use the script
+        // ID of the original search task
+        const fileId = runtime.getCurrentScript().getParameter({
+            name: 'custscript_mr_new_submit_task_field'
+        });
+
+        if (!fileId) {
+            log.error({
+                details: 'fileId is not valid. Please check the script parameter stored in the completionScriptParameterName variable in getInputData().'
+            });
+        }
+
+        return {
+            type: 'file',
+            id: fileId
+        };
+    }
+
+    function map(context) {
+        log.debug('map context: ', context);
+        context.write({
+           key: context.key,
+           value: 1           
+        });
+    }
+
+    function reduce(context) {
+        log.debug('reduce context: ', context);
+        log.debug('context.values.length', context.values.length);
+        
+        // Count the number of rows 
+        let rowCount = 0;
+        rowCount = context.values.length - 1 // Subtracting 1 to remove header row from the count.
+        log.debug('rowCount: ', rowCount);
+ 
+       // Send an email to the user who ran the script, and attach the
+       // CSV file with the search results
+       const completionScriptParameterName = 'custscript_mr_new_submit_task_field';
+       const resFileId = runtime.getCurrentScript().getParameter({
+          name: completionScriptParameterName
+       });
+       const fileObj = file.load({  
+          id: resFileId
+       });
+       const userId = runtime.getCurrentUser().id;
+       email.send({
+          author: userId,
+          recipients: userId,
+          subject: 'Search completed',
+          body: 'CSV file attached, ' + rowCount + ' record(s) found.', 
+          attachments: [fileObj]            
+       });
+    }
+
+    function summarize(summary) {
+        const type = summary.toString();
+        log.audit({ title: type + ' Usage Consumed ', details: summary.usage });
+        log.audit({ title: type + ' Concurrency Number ', details: summary.concurrency });
+        log.audit({ title: type + ' Number of Yields ', details: summary.yields });
+    }
+    return {
+        getInputData: getInputData,
+        map: map,
+        reduce: reduce,
+        summarize: summarize
+    };
 });
 ```
 
 #### Sample 5: Submit a Record Action Task and Check Status
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/task'], function(task) {
-    var recordActionTask = task.create({
-        taskType: task.TaskType.RECORD_ACTION
-    });
-    recordActionTask.recordType = 'timebill';
-    recordActionTask.action = 'approve';
-    recordActionTask.params = [
-        {recordId: 1, note: 'This is a note for 1'},
-        {recordId: 5, note: 'This is a note for 5'},
-        {recordId: 23, note: 'This is a note for 23'}
-    ];
-
-    var handle = recordActionTask.submit();
-
-    var res = task.checkStatus({
-        taskId: handle
-    });   // Returns a RecordActionTaskStatus object
-    log.debug('Initial status: ' + res.status);
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/task'], function(task) {
+    var recordActionTask = task.create({
+        taskType: task.TaskType.RECORD_ACTION
+    });
+    recordActionTask.recordType = 'timebill';
+    recordActionTask.action = 'approve';
+    recordActionTask.params = [
+        {recordId: 1, note: 'This is a note for 1'},
+        {recordId: 5, note: 'This is a note for 5'},
+        {recordId: 23, note: 'This is a note for 23'}
+    ];
+
+    var handle = recordActionTask.submit();
+
+    var res = task.checkStatus({
+        taskId: handle
+    });   // Returns a RecordActionTaskStatus object
+    log.debug('Initial status: ' + res.status);
 });
 ```
 
@@ -11590,102 +11590,102 @@ Submits the merge task for processing.
 #### Sample 1: Merge Revenue Elements Using Internal IDs
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/task/accounting/recognition'], function(recognition){
-    var elementsList = [];
-    elementsList.push(401);
-    elementsList.push(402);
-
-    var recognitionTask = recognition.create({
-        taskType: recognition.TaskType.MERGE_ELEMENTS_TASK
-    });
-    recognitionTask.elements = elementsList;
-    var taskStatusId = recognitionTask.submit();
-
-    var mergeTaskState = recognition.checkStatus({
-        taskId: taskStatusId
-    });
-
-    log.debug('Submission ID = ' + mergeTaskState.submissionId);
-    log.debug('Resulting Arrangement ID = ' + mergeTaskState.resultingArrangement);
-    log.debug('status = ' + mergeTaskState.status);
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/task/accounting/recognition'], function(recognition){
+    var elementsList = [];
+    elementsList.push(401);
+    elementsList.push(402);
+
+    var recognitionTask = recognition.create({
+        taskType: recognition.TaskType.MERGE_ELEMENTS_TASK
+    });
+    recognitionTask.elements = elementsList;
+    var taskStatusId = recognitionTask.submit();
+
+    var mergeTaskState = recognition.checkStatus({
+        taskId: taskStatusId
+    });
+
+    log.debug('Submission ID = ' + mergeTaskState.submissionId);
+    log.debug('Resulting Arrangement ID = ' + mergeTaskState.resultingArrangement);
+    log.debug('status = ' + mergeTaskState.status);
 });
 ```
 
 #### Sample 2: Merge Revenue Arrangements Using a Saved Search
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/task/accounting/recognition', 'N/search'], function(recognition, search){
-    var mySearch = search.load({
-        id: 'customsearch22'
-    });
-
-    var elementsList = [];
-    mySearch.run().each(function(result) {
-        var id = result.getValue({
-            name: 'internalid'
-        });
-        elementsList.push(id);
-    });
-
-    var recognitionTask = recognition.create({
-        taskType: recognition.TaskType.MERGE_ARRANGEMENTS_TASK
-    });
-
-    recognitionTask.arrangements = elementsList;
-    recognitionTask.revenueArrangementDate = new Date(2019, 2, 10);
-
-    var taskStatusId = recognitionTask.submit();
-    log.debug('taskId = ' + taskStatusId);
-
-    var mergeTaskState = recognition.checkStatus({
-        taskId: taskStatusId
-    });
-
-    log.debug('Submission ID = ' + mergeTaskState.submissionId);
-    log.debug('Resulting Arrangement ID = ' + mergeTaskState.resultingArrangement);
-    log.debug('status = ' + mergeTaskState.status);
-    log.debug('Error message = ' + mergeTaskState.errorMessage);
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/task/accounting/recognition', 'N/search'], function(recognition, search){
+    var mySearch = search.load({
+        id: 'customsearch22'
+    });
+
+    var elementsList = [];
+    mySearch.run().each(function(result) {
+        var id = result.getValue({
+            name: 'internalid'
+        });
+        elementsList.push(id);
+    });
+
+    var recognitionTask = recognition.create({
+        taskType: recognition.TaskType.MERGE_ARRANGEMENTS_TASK
+    });
+
+    recognitionTask.arrangements = elementsList;
+    recognitionTask.revenueArrangementDate = new Date(2019, 2, 10);
+
+    var taskStatusId = recognitionTask.submit();
+    log.debug('taskId = ' + taskStatusId);
+
+    var mergeTaskState = recognition.checkStatus({
+        taskId: taskStatusId
+    });
+
+    log.debug('Submission ID = ' + mergeTaskState.submissionId);
+    log.debug('Resulting Arrangement ID = ' + mergeTaskState.resultingArrangement);
+    log.debug('status = ' + mergeTaskState.status);
+    log.debug('Error message = ' + mergeTaskState.errorMessage);
 });
 ```
 
 #### Sample 3: Merge Revenue Arrangements Using an Ad-Hoc Search
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/task/accounting/recognition', 'N/search'], function(recognition, search) {
-    var elementsList = [];
-    var rs = search.create({
-        type: 'revenueelement',
-        columns: [
-            'internalid'
-        ]
-    }).run();
-
-    var results = rs.getRange(0, 50);
-    for (var i = 0; i &lt; results.length; i++) {
-        var id = result.getValue('elementsList');
-        elementsList.push(id);
-    }
-
-    var t = recognition.create({
-        taskType: recognition.TaskType.MERGE_ELEMENTS_TASK
-    });
-    t.elements = elementsList;
-    t.revenueArrangementDate = new Date(2019, 1, 1);
-
-    var taskId = t.submit();
-    log.debug('Initial status: ' + res.status);
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/task/accounting/recognition', 'N/search'], function(recognition, search) {
+    var elementsList = [];
+    var rs = search.create({
+        type: 'revenueelement',
+        columns: [
+            'internalid'
+        ]
+    }).run();
+
+    var results = rs.getRange(0, 50);
+    for (var i = 0; i &lt; results.length; i++) {
+        var id = result.getValue('elementsList');
+        elementsList.push(id);
+    }
+
+    var t = recognition.create({
+        taskType: recognition.TaskType.MERGE_ELEMENTS_TASK
+    });
+    t.elements = elementsList;
+    t.revenueArrangementDate = new Date(2019, 1, 1);
+
+    var taskId = t.submit();
+    log.debug('Initial status: ' + res.status);
 });
 ```
 
@@ -11750,62 +11750,62 @@ transaction.void.promise(options)
 #### Sample 1: N/transaction Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/transaction', 'N/config', 'N/record'], function(transaction, config, record) {
-    function voidSalesOrder() {
-        var accountingConfig = config.load({
-            type: config.Type.ACCOUNTING_PREFERENCES
-        });
-        accountingConfig.setValue({
-            fieldId: 'REVERSALVOIDING',
-            value: false
-        });
-
-        accountingConfig.save();
-
-        var salesOrderObj = record.create({
-            type: 'salesorder',
-            isDynamic: false
-        });
-        salesOrderObj.setValue({
-            fieldId: 'entity',
-            value: 107
-        });
-        salesOrderObj.setSublistValue({
-            sublistId: 'item',
-            fieldId: 'item',
-            value: 233,
-            line: 0
-        });
-        salesOrderObj.setSublistValue({
-            sublistId: 'item',
-            fieldId: 'amount',
-            value: 1,
-            line: 0
-        });
-
-        var salesOrderId = salesOrderObj.save();
-
-        var voidSalesOrderId = transaction.void({
-            type: record.Type.SALES_ORDER,
-            id: salesOrderId
-        });
-
-        var salesOrder = record.load({
-            type: 'salesorder',
-            id: voidSalesOrderId
-        });
-
-        // The value of the memo field is 'VOID'
-        var memo = salesOrder.getValue({
-            fieldId: 'memo'
-        });
-    }
-
-    voidSalesOrder();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/transaction', 'N/config', 'N/record'], function(transaction, config, record) {
+    function voidSalesOrder() {
+        var accountingConfig = config.load({
+            type: config.Type.ACCOUNTING_PREFERENCES
+        });
+        accountingConfig.setValue({
+            fieldId: 'REVERSALVOIDING',
+            value: false
+        });
+
+        accountingConfig.save();
+
+        var salesOrderObj = record.create({
+            type: 'salesorder',
+            isDynamic: false
+        });
+        salesOrderObj.setValue({
+            fieldId: 'entity',
+            value: 107
+        });
+        salesOrderObj.setSublistValue({
+            sublistId: 'item',
+            fieldId: 'item',
+            value: 233,
+            line: 0
+        });
+        salesOrderObj.setSublistValue({
+            sublistId: 'item',
+            fieldId: 'amount',
+            value: 1,
+            line: 0
+        });
+
+        var salesOrderId = salesOrderObj.save();
+
+        var voidSalesOrderId = transaction.void({
+            type: record.Type.SALES_ORDER,
+            id: salesOrderId
+        });
+
+        var salesOrder = record.load({
+            type: 'salesorder',
+            id: voidSalesOrderId
+        });
+
+        // The value of the memo field is 'VOID'
+        var memo = salesOrder.getValue({
+            fieldId: 'memo'
+        });
+    }
+
+    voidSalesOrder();
 });
 ```
 
@@ -11875,164 +11875,164 @@ translation.Translator
 #### Sample 1: Access Translation Strings
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/ui/message', 'N/translation'],
-    function(message, translation) {
-
-        // Create a message with translated strings
-        var myMsg = message.create({
-            title: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'MY_TITLE'
-            })(),
-            message: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'MY_MESSAGE'
-            })(),
-            type: message.Type.CONFIRMATION
-        });
-
-        // Show the message for 5 seconds
-        myMsg.show({
-            duration: 5000
-        });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/ui/message', 'N/translation'],
+    function(message, translation) {
+
+        // Create a message with translated strings
+        var myMsg = message.create({
+            title: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'MY_TITLE'
+            })(),
+            message: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'MY_MESSAGE'
+            })(),
+            type: message.Type.CONFIRMATION
+        });
+
+        // Show the message for 5 seconds
+        myMsg.show({
+            duration: 5000
+        });
 });
 ```
 
 #### Sample 2: Access Translation Strings Using a Non-Default Locale
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/ui/message', 'N/translation'],
-    function(message, translation) {
-
-        // Create a message with translated strings
-        var myMsg = message.create({
-            title: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'MY_TITLE',
-                locale: translation.Locale.COMPANY_DEFAULT
-            })(),
-            message: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'MY_MESSAGE',
-                locale: translation.Locale.COMPANY_DEFAULT
-            })(),
-            type: message.Type.CONFIRMATION
-        });
-
-        // Show the message for 5 seconds
-        myMsg.show({
-            duration: 5000
-        });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/ui/message', 'N/translation'],
+    function(message, translation) {
+
+        // Create a message with translated strings
+        var myMsg = message.create({
+            title: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'MY_TITLE',
+                locale: translation.Locale.COMPANY_DEFAULT
+            })(),
+            message: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'MY_MESSAGE',
+                locale: translation.Locale.COMPANY_DEFAULT
+            })(),
+            type: message.Type.CONFIRMATION
+        });
+
+        // Show the message for 5 seconds
+        myMsg.show({
+            duration: 5000
+        });
 });
 ```
 
 #### Sample 3: Access Parameterized Translation Strings
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/ui/message', 'N/translation'],
-    function(message, translation) {
-
-        // Create a message with translated strings
-        var myMsg = message.create({
-            title: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'MY_TITLE'
-            })(),
-            message: translation.get({
-                collection: 'custcollection_my_strings',
-                key: 'HELLO_1'
-            })({
-                params: ['NetSuite']
-            }),
-            type: message.Type.CONFIRMATION
-        });
-
-        // Show the message for 5 seconds
-        myMsg.show({
-            duration: 5000
-        });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/ui/message', 'N/translation'],
+    function(message, translation) {
+
+        // Create a message with translated strings
+        var myMsg = message.create({
+            title: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'MY_TITLE'
+            })(),
+            message: translation.get({
+                collection: 'custcollection_my_strings',
+                key: 'HELLO_1'
+            })({
+                params: ['NetSuite']
+            }),
+            type: message.Type.CONFIRMATION
+        });
+
+        // Show the message for 5 seconds
+        myMsg.show({
+            duration: 5000
+        });
 });
 ```
 
 #### Sample 4: Load Specific Translation Strings from a Collection
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/ui/message', 'N/translation'],
-    function(message, translation) {
-
-        // Load translation strings by key
-        var localizedStrings = translation.load({
-            collections: [{
-                alias: 'myCollection',
-                collection: 'custcollection_my_strings',
-                keys: ['MY_TITLE', 'MY_MESSAGE']
-            }]
-        });
-
-        // Create a message with translated strings
-        var myMsg = message.create({
-            title: localizedStrings.myCollection.MY_TITLE(),
-            message: localizedStrings.myCollection.MY_MESSAGE(),
-            type: message.Type.CONFIRMATION
-        });
-
-        // Show the message for 5 seconds
-        myMsg.show({
-            duration: 5000
-        });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/ui/message', 'N/translation'],
+    function(message, translation) {
+
+        // Load translation strings by key
+        var localizedStrings = translation.load({
+            collections: [{
+                alias: 'myCollection',
+                collection: 'custcollection_my_strings',
+                keys: ['MY_TITLE', 'MY_MESSAGE']
+            }]
+        });
+
+        // Create a message with translated strings
+        var myMsg = message.create({
+            title: localizedStrings.myCollection.MY_TITLE(),
+            message: localizedStrings.myCollection.MY_MESSAGE(),
+            type: message.Type.CONFIRMATION
+        });
+
+        // Show the message for 5 seconds
+        myMsg.show({
+            duration: 5000
+        });
 });
 ```
 
 #### Sample 5: Load Translation Strings By Key from Multiple Translation Collections
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/ui/message', 'N/translation'],
-    function(message, translation) {
-
-        // Load two Translation Collections
-        var localizedStrings = translation.load({
-            collections: [{
-                alias: 'myCollection',
-                collection: 'custcollection_my_strings',
-                keys: ['MY_TITLE']
-            },{
-                alias: 'myOtherCollection',
-                collection: 'custcollection_other_strings',
-                keys: ['MY_OTHER_MESSAGE']
-            }]
-        });
-
-        // Create a message with translated strings
-        var myMsg = message.create({
-            title: localizedStrings.myCollection.MY_TITLE(),
-            message: localizedStrings.myOtherCollection.MY_OTHER_MESSAGE(),
-            type: message.Type.CONFIRMATION
-        });
-
-        // Show the message for 5 seconds
-        myMsg.show({
-            duration: 5000
-        });
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/ui/message', 'N/translation'],
+    function(message, translation) {
+
+        // Load two Translation Collections
+        var localizedStrings = translation.load({
+            collections: [{
+                alias: 'myCollection',
+                collection: 'custcollection_my_strings',
+                keys: ['MY_TITLE']
+            },{
+                alias: 'myOtherCollection',
+                collection: 'custcollection_other_strings',
+                keys: ['MY_OTHER_MESSAGE']
+            }]
+        });
+
+        // Create a message with translated strings
+        var myMsg = message.create({
+            title: localizedStrings.myCollection.MY_TITLE(),
+            message: localizedStrings.myOtherCollection.MY_OTHER_MESSAGE(),
+            type: message.Type.CONFIRMATION
+        });
+
+        // Show the message for 5 seconds
+        myMsg.show({
+            duration: 5000
+        });
 });
 ```
 
@@ -12085,141 +12085,141 @@ Creates a Confirm dialog with OK and Cancel buttons.
 #### Sample 1: Create an Alert Dialog
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-define(['N/ui/dialog'], (dialog) =&gt; {
-    function pageInit() {
-        let options = {
-            title: 'I am an Alert',
-            message: 'Click OK to continue.'
-        };
-        
-        function success(result) {
-            console.log('Success with value ' + result);
-        }
-        
-        function failure(reason) {
-            console.log('Failure: ' + reason);
-        }
-
-        dialog.alert(options).then(success).catch(failure);
-    }
-
-    return {
-        pageInit: pageInit
-    };
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+define(['N/ui/dialog'], (dialog) =&gt; {
+    function pageInit() {
+        let options = {
+            title: 'I am an Alert',
+            message: 'Click OK to continue.'
+        };
+        
+        function success(result) {
+            console.log('Success with value ' + result);
+        }
+        
+        function failure(reason) {
+            console.log('Failure: ' + reason);
+        }
+
+        dialog.alert(options).then(success).catch(failure);
+    }
+
+    return {
+        pageInit: pageInit
+    };
+
 });
 ```
 
 #### Sample 2: Create a Confirmation Dialog
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-define(['N/ui/dialog'], (dialog) =&gt; {
-    function pageInit() {
-        let options = {
-            title: 'I am a Confirmation',
-            message: 'Press OK or Cancel'
-        };
-        
-        function success(result) {
-            console.log('Success with value ' + result);
-        }
-        
-        function failure(reason) {
-            console.log('Failure: ' + reason);
-        }
-
-        dialog.confirm(options).then(success).catch(failure);
-    }
-
-    return {
-        pageInit: pageInit
-    };
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+define(['N/ui/dialog'], (dialog) =&gt; {
+    function pageInit() {
+        let options = {
+            title: 'I am a Confirmation',
+            message: 'Press OK or Cancel'
+        };
+        
+        function success(result) {
+            console.log('Success with value ' + result);
+        }
+        
+        function failure(reason) {
+            console.log('Failure: ' + reason);
+        }
+
+        dialog.confirm(options).then(success).catch(failure);
+    }
+
+    return {
+        pageInit: pageInit
+    };
+
 });
 ```
 
 #### Sample 3: Create a Dialog with Buttons
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-define(['N/ui/dialog'], (dialog) =&gt; {
-    function pageInit() {
-        let button1 = {
-            label: 'I am A',
-            value: 1
-        };
-        let button2 = {
-            label: 'I am B',
-            value: 2
-        };
-        let button3 = {
-            label: 'I am C',
-            value: 3
-        };
-        let options = {
-            title: 'Alphabet Test',
-            message: 'Which One?',
-            buttons: [button1, button2, button3]
-        };
-        
-        function success(result) {
-            console.log('Success with value ' + result);
-        }
-        
-        function failure(reason) {
-            console.log('Failure: ' + reason);
-        }
-
-        dialog.create(options).then(success).catch(failure);
-    }
-
-    return {
-        pageInit: pageInit
-    };
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+define(['N/ui/dialog'], (dialog) =&gt; {
+    function pageInit() {
+        let button1 = {
+            label: 'I am A',
+            value: 1
+        };
+        let button2 = {
+            label: 'I am B',
+            value: 2
+        };
+        let button3 = {
+            label: 'I am C',
+            value: 3
+        };
+        let options = {
+            title: 'Alphabet Test',
+            message: 'Which One?',
+            buttons: [button1, button2, button3]
+        };
+        
+        function success(result) {
+            console.log('Success with value ' + result);
+        }
+        
+        function failure(reason) {
+            console.log('Failure: ' + reason);
+        }
+
+        dialog.create(options).then(success).catch(failure);
+    }
+
+    return {
+        pageInit: pageInit
+    };
+
 });
 ```
 
 #### Sample 4: Create a Dialog that Includes a Default Button
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType ClientScript
- */
-define(['N/ui/dialog'], (dialog) =&gt; {
-    function pageInit() {
-        let options = {
-            title: 'I am a Dialog with the default button',
-            message: 'Click a button to continue.',
-        };
-        
-        function success(result) {
-            console.log('Success with value ' + result);
-        }
-        
-        function failure(reason) {
-            console.log('Failure: ' + reason);
-        }
-
-        dialog.create(options).then(success).catch(failure);
-    }
-
-    return {
-        pageInit: pageInit
-    };
-
+/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */
+define(['N/ui/dialog'], (dialog) =&gt; {
+    function pageInit() {
+        let options = {
+            title: 'I am a Dialog with the default button',
+            message: 'Click a button to continue.',
+        };
+        
+        function success(result) {
+            console.log('Success with value ' + result);
+        }
+        
+        function failure(reason) {
+            console.log('Failure: ' + reason);
+        }
+
+        dialog.create(options).then(success).catch(failure);
+    }
+
+    return {
+        pageInit: pageInit
+    };
+
 });
 ```
 
@@ -12291,41 +12291,41 @@ Shows the message.
 #### Sample 1: N/ui/message Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-define(['N/ui/message'], (message) =&gt; {
-    let myMsg = message.create({
-        title: 'My Title',
-        message: 'My Message',
-        type: message.Type.CONFIRMATION
-    });
-    myMsg.show({
-        duration: 5000 // will disappear after 5s
-    });
-
-    let myMsg2 = message.create({
-        title: 'My Title 2',
-        message: 'My Message 2',
-        type: message.Type.INFORMATION
-    });
-    myMsg2.show();
-    setTimeout(myMsg2.hide, 15000); // will disappear after 15s
-
-    let myMsg3 = message.create({
-        title: 'My Title 3',
-        message: 'My Message 3',
-        type: message.Type.WARNING,
-        duration: 20000
-    });
-    myMsg3.show(); // will disappear after 20s
-
-    let myMsg4 = message.create({
-        title: 'My Title 4',
-        message: 'My Message 4',
-        type: message.Type.ERROR
-    });
-    myMsg4.show(); // will stay up until hide is called.
+/**
+ * @NApiVersion 2.1
+ */
+define(['N/ui/message'], (message) =&gt; {
+    let myMsg = message.create({
+        title: 'My Title',
+        message: 'My Message',
+        type: message.Type.CONFIRMATION
+    });
+    myMsg.show({
+        duration: 5000 // will disappear after 5s
+    });
+
+    let myMsg2 = message.create({
+        title: 'My Title 2',
+        message: 'My Message 2',
+        type: message.Type.INFORMATION
+    });
+    myMsg2.show();
+    setTimeout(myMsg2.hide, 15000); // will disappear after 15s
+
+    let myMsg3 = message.create({
+        title: 'My Title 3',
+        message: 'My Message 3',
+        type: message.Type.WARNING,
+        duration: 20000
+    });
+    myMsg3.show(); // will disappear after 20s
+
+    let myMsg4 = message.create({
+        title: 'My Title 4',
+        message: 'My Message 4',
+        type: message.Type.ERROR
+    });
+    myMsg4.show(); // will stay up until hide is called.
 });
 ```
 
@@ -12689,163 +12689,253 @@ The label for a tab or subtab.
 | Property | Tab.helpText | string | Suitelets and beforeLoad user events | The inline help text for a tab or subtab. |
 | Property | Tab.label | string | Suitelets and beforeLoad user events | The label for a tab or subtab. |
 
-### Official Code Samples (3 Sample(s))
+### Official Code Samples (10 Sample(s))
 
 #### Sample 1: Create a Form with a Credential Field
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-// This script creates a form with a credential field.
-define(['N/ui/serverWidget', 'N/https', 'N/url'], (serverWidget, https, url) =&gt; {
-    function onRequest(context) {
-        if (context.request.method === 'GET') {
-            const form = serverWidget.createForm({
-             title: 'Password Form'
-            });
-
-            const credField = form.addCredentialField({
-                id: 'password',
-                label: 'Password',
-                restrictToDomains: ['&lt;accountID&gt;.app.netsuite.com'],
-                restrictToCurrentUser: false,
-                restrictToScriptIds: 'customscript_my_script'
-            });
-
-            credField.maxLength = 32;
-
-            form.addSubmitButton();
-
-            context.response.writePage({
-                pageObject: form
-                });
-        } 
-        else {
-            // Request to an existing Suitelet with credentials
-            let passwordGuid = context.request.parameters.password;
-
-            // Replace SCRIPTID and DEPLOYMENTID with the internal ID of the suitelet script and deployment in your account 
-            let baseUrl = url.resolveScript({
-                scriptId: SCRIPTID,
-                deploymentId: DEPLOYMENTID,
-                returnExternalURL: true
-            });
-
-            let authUrl = baseUrl + '&amp;pwd={' + passwordGuid + '}';
-
-            let secureStringUrl = https.createSecureString({
-                input: authUrl
-            });
-
-            let headers = ({
-               'pwd': passwordGuid
-            });
-
-            let response = https.post({
-                credentials: [passwordGuid],
-                url: secureStringUrl,
-                body: {authorization:' '+ passwordGuid + '', data:'anything can be here'},
-                headers: headers
-            });
-        }
-    }
-    return {
-        onRequest: onRequest
-    };
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+
+// This script creates a form with a credential field.
+define(['N/ui/serverWidget', 'N/https', 'N/url'], (serverWidget, https, url) =&gt; {
+    function onRequest(context) {
+        if (context.request.method === 'GET') {
+            const form = serverWidget.createForm({
+             title: 'Password Form'
+            });
+
+            const credField = form.addCredentialField({
+                id: 'password',
+                label: 'Password',
+                restrictToDomains: ['&lt;accountID&gt;.app.netsuite.com'],
+                restrictToCurrentUser: false,
+                restrictToScriptIds: 'customscript_my_script'
+            });
+
+            credField.maxLength = 32;
+
+            form.addSubmitButton();
+
+            context.response.writePage({
+                pageObject: form
+                });
+        } 
+        else {
+            // Request to an existing Suitelet with credentials
+            let passwordGuid = context.request.parameters.password;
+
+            // Replace SCRIPTID and DEPLOYMENTID with the internal ID of the suitelet script and deployment in your account 
+            let baseUrl = url.resolveScript({
+                scriptId: SCRIPTID,
+                deploymentId: DEPLOYMENTID,
+                returnExternalURL: true
+            });
+
+            let authUrl = baseUrl + '&amp;pwd={' + passwordGuid + '}';
+
+            let secureStringUrl = https.createSecureString({
+                input: authUrl
+            });
+
+            let headers = ({
+               'pwd': passwordGuid
+            });
+
+            let response = https.post({
+                credentials: [passwordGuid],
+                url: secureStringUrl,
+                body: {authorization:' '+ passwordGuid + '', data:'anything can be here'},
+                headers: headers
+            });
+        }
+    }
+    return {
+        onRequest: onRequest
+    };
 });
 ```
 
 #### Sample 2: Complete Custom List Page Sample Script
 
 ```javascript
-/**
- *@NApiVersion 2.1
- *@NScriptType Suitelet
-*/
-define(['N/ui/serverWidget'],
-    function(serverWidget) {
-        function onRequest(context){
-            if(context.request.method === 'GET'){
-                // Section One - List - See 'Steps for Creating a List', Step Five
-                // Section Two - Columns  - See 'Steps for Creating a List', Step Seven
-                context.response.writePage(list); 
-            }else{
-            }
-        }
-    return {
-        onRequest: onRequest 
-    }
-
-});
+/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/
 ```
 
 #### Sample 3: Complete Custom List Page Sample Script
 
 ```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/ui/serverWidget'], function(serverWidget) {
-    function onRequest(context){
-        if(context.request.method === 'GET'){
-            // Section One - List - See 'Steps for Creating a Custom List Page', Step Five
-            var list = serverWidget.createList({
-                title: 'Purchase History'
-            });
-
-            list.style = serverWidget.ListStyle.REPORT;
-
-            list.addButton({
-                id: 'buttonid',
-                label: 'Test',
-                functionName: '' // the function called when the button is pressed
-            });
-
-            // Section Two - Columns  - See 'Steps for Creating a Custom List Page', Step Seven
-            var datecol = list.addColumn({
-                id: 'column1',
-                type: serverWidget.FieldType.DATE,
-                label: 'Date',
-                align: serverWidget.LayoutJustification.RIGHT
-            });
-
-            list.addColumn({
-                id: 'column2',
-                type: serverWidget.FieldType.TEXT,
-                label: 'Product',
-                align: serverWidget.LayoutJustification.RIGHT
-            });
-
-            list.addColumn({
-                id: 'column3',
-                type: serverWidget.FieldType.INTEGER,
-                label: 'Quantity',
-                align: serverWidget.LayoutJustification.RIGHT
-            });
-
-            list.addColumn({
-                id: 'column4',
-                type: serverWidget.FieldType.CURRENCY,
-                label: 'Unit Cost',
-                align: serverWidget.LayoutJustification.RIGHT
-            });
-
-            list.addRows({
-                rows: [{column1: '05/30/2018', column2: 'Widget', column3: '4', column4: '4.50'},
-                    {column1: '05/30/2018', column2: 'Sprocket', column3: '6', column4: '11.50'},
-                    {column1: '05/30/2018', column2: 'Gizmo', column3: '9', column4: '1.25'}]
-            });
-            context.response.writePage(list);
-        }
-    }
-
-    return {
-        onRequest: onRequest
-    }
+/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/
+define(['N/ui/serverWidget'],
+    function(serverWidget) {
+};
+```
+
+#### Sample 4: Complete Custom List Page Sample Script
+
+```javascript
+/**
+ *@NApiVersion 2.1
+ *@NScriptType Suitelet
+*/
+define(['N/ui/serverWidget'],
+    function(serverWidget) {
+        function onRequest(context){
+            if(context.request.method === 'GET'){
+                // Section One - List - See 'Steps for Creating a List', Step Five
+                // Section Two - Columns  - See 'Steps for Creating a List', Step Seven
+                context.response.writePage(list); 
+            }else{
+            }
+        }
+    return {
+        onRequest: onRequest 
+    }
+
+});
+```
+
+#### Sample 5: Complete Custom List Page Sample Script
+
+```javascript
+var list = serverWidget.createList({
+    title: 'Purchase History'
+});
+list.style = serverWidget.ListStyle.REPORT;
+```
+
+#### Sample 6: Complete Custom List Page Sample Script
+
+```javascript
+list.addButton({
+    id : 'buttonid',
+    label : 'Test',
+    functionName: '' // the function called when the button is pressed
+});
+```
+
+#### Sample 7: Complete Custom List Page Sample Script
+
+```javascript
+var datecol = list.addColumn({
+               id : 'column1',
+               type : serverWidget.FieldType.DATE,
+               label : 'Date',
+               align : serverWidget.LayoutJustification.RIGHT
+            });
+            
+               list.addColumn({
+               id : 'column2',
+               type : serverWidget.FieldType.TEXT,
+               label : 'Product',
+               align : serverWidget.LayoutJustification.RIGHT
+            });   
+               
+               list.addColumn({
+               id : 'column3',
+               type : serverWidget.FieldType.INTEGER,
+               label : 'Quantity',
+               align : serverWidget.LayoutJustification.RIGHT
+            });   
+            
+               list.addColumn({
+               id : 'column4',
+               type : serverWidget.FieldType.CURRENCY,
+               label : 'Unit Cost',
+               align : serverWidget.LayoutJustification.RIGHT
+            });
+```
+
+#### Sample 8: Complete Custom List Page Sample Script
+
+```javascript
+list.addRow({
+    row : { column1 : '02/12/2018', column2 : 'Widget', column3: '4', column4:'4.50' }
+});
+```
+
+#### Sample 9: Complete Custom List Page Sample Script
+
+```javascript
+list.addRows({
+    rows :[{column1 : '02/12/2018', column2 : 'Widget', column3: '4', column4:'4.50'},
+        {column1 : '02/14/2018', column2 : 'Sprocket', column3: '6', column4:'11.50'},
+        {column1 : '02/16/2018', column2 : 'Gizmo', column3: '9', column4:'1.25'}]
+});
+```
+
+#### Sample 10: Complete Custom List Page Sample Script
+
+```javascript
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Suitelet
+ */
+define(['N/ui/serverWidget'], function(serverWidget) {
+    function onRequest(context){
+        if(context.request.method === 'GET'){
+            // Section One - List - See 'Steps for Creating a Custom List Page', Step Five
+            var list = serverWidget.createList({
+                title: 'Purchase History'
+            });
+
+            list.style = serverWidget.ListStyle.REPORT;
+
+            list.addButton({
+                id: 'buttonid',
+                label: 'Test',
+                functionName: '' // the function called when the button is pressed
+            });
+
+            // Section Two - Columns  - See 'Steps for Creating a Custom List Page', Step Seven
+            var datecol = list.addColumn({
+                id: 'column1',
+                type: serverWidget.FieldType.DATE,
+                label: 'Date',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column2',
+                type: serverWidget.FieldType.TEXT,
+                label: 'Product',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column3',
+                type: serverWidget.FieldType.INTEGER,
+                label: 'Quantity',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addColumn({
+                id: 'column4',
+                type: serverWidget.FieldType.CURRENCY,
+                label: 'Unit Cost',
+                align: serverWidget.LayoutJustification.RIGHT
+            });
+
+            list.addRows({
+                rows: [{column1: '05/30/2018', column2: 'Widget', column3: '4', column4: '4.50'},
+                    {column1: '05/30/2018', column2: 'Sprocket', column3: '6', column4: '11.50'},
+                    {column1: '05/30/2018', column2: 'Gizmo', column3: '9', column4: '1.25'}]
+            });
+            context.response.writePage(list);
+        }
+    }
+
+    return {
+        onRequest: onRequest
+    }
 });
 ```
 
@@ -12901,91 +12991,91 @@ url.resolveDomain(options)
 #### Sample 1: Retrieve the Relative URL of a Record
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script retrieves the relative URL of a record.
-require(['N/url'], function(url) {
-    var output = url.resolveRecord({
-        recordType: 'salesorder',
-        recordId: 6,
-        isEditMode: true
-    });
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script retrieves the relative URL of a record.
+require(['N/url'], function(url) {
+    var output = url.resolveRecord({
+        recordType: 'salesorder',
+        recordId: 6,
+        isEditMode: true
+    });
 });
 ```
 
 #### Sample 2: Generate an Absolute URL to a Specific Resource
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script generates an absolute URL to a specific resource.
-require(['N/url', 'N/record'], function(url, record) {
-    function resolveRecordUrl() {
-        var scheme = 'https://';
-        var host = url.resolveDomain({
-            hostType: url.HostType.APPLICATION
-        });
-        var relativePath = url.resolveRecord({
-            recordType: record.Type.SALES_ORDER,
-            recordId: 6,
-            isEditMode: true
-        });
-        var myURL = scheme + host + relativePath;
-    }
-    resolveRecordUrl();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script generates an absolute URL to a specific resource.
+require(['N/url', 'N/record'], function(url, record) {
+    function resolveRecordUrl() {
+        var scheme = 'https://';
+        var host = url.resolveDomain({
+            hostType: url.HostType.APPLICATION
+        });
+        var relativePath = url.resolveRecord({
+            recordType: record.Type.SALES_ORDER,
+            recordId: 6,
+            isEditMode: true
+        });
+        var myURL = scheme + host + relativePath;
+    }
+    resolveRecordUrl();
 });
 ```
 
 #### Sample 3: Retrieve the Domain for Calling a RESTlet
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script retrieves the domain for calling a RESTlet.
-require(['N/url'], function(url) {
-    function resolveDomainUrl() {
-        var sCompId = 'MSTRWLF';
-        var output = url.resolveDomain({
-            hostType: url.HostType.RESTLET,
-            accountId: sCompId
-        });
-    }
-    resolveDomainUrl();
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script retrieves the domain for calling a RESTlet.
+require(['N/url'], function(url) {
+    function resolveDomainUrl() {
+        var sCompId = 'MSTRWLF';
+        var output = url.resolveDomain({
+            hostType: url.HostType.RESTLET,
+            accountId: sCompId
+        });
+    }
+    resolveDomainUrl();
 });
 ```
 
 #### Sample 4: Create a URL and Send a Secure HTTPS Post Request to the URL
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-// This script creates a URL, sends a secure HTTPS POST request to that URL, and logs the server's response.
-require(['N/url', 'N/https'], function(url, https) {
-    var script = 'customscript1';
-    var deployment = 'customdeploy1';
-    var parameters = '';
-    try {
-        var suiteletURL = url.resolveScript({
-            scriptId: script,
-            deploymentId: deployment
-        });
-        var response = https.post({
-            url: suiteletURL,
-            body: parameters
-        });
-        log.debug(response.body.toString());
-    }
-    catch(e) {
-        log.error(e.toString()); 
-    }
+/**
+ * @NApiVersion 2.x
+ */
+
+// This script creates a URL, sends a secure HTTPS POST request to that URL, and logs the server's response.
+require(['N/url', 'N/https'], function(url, https) {
+    var script = 'customscript1';
+    var deployment = 'customdeploy1';
+    var parameters = '';
+    try {
+        var suiteletURL = url.resolveScript({
+            scriptId: script,
+            deploymentId: deployment
+        });
+        var response = https.post({
+            url: suiteletURL,
+            body: parameters
+        });
+        log.debug(response.body.toString());
+    }
+    catch(e) {
+        log.error(e.toString()); 
+    }
 });
 ```
 
@@ -13054,36 +13144,36 @@ util.extend(receiver, contributor)
 #### Sample 1: N/util Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/record'], function(record){
-    // Create a sales order
-    var rec = record.create({
-        type: 'salesorder', 
-        isDynamic: true
-    });
-    rec.setValue({
-        fieldId: 'entity',
-        value: 107
-    });
-
-    // Set up an object containing an item's internal ID and the corresponding quantity
-    var itemList = {
-        39: 5, 
-        38: 1
-    }
-
-    // Iterate through the object and set the key-value pairs on the record
-    util.each(itemList, function(quantity, itemId){     // (5, 39) and (1, 38)
-        rec.selectNewLine('item');
-        rec.setCurrentSublistValue('item','item',itemId);
-        rec.setCurrentSublistValue('item','quantity',quantity);
-        rec.commitLine('item');
-    });
-
-    var id = rec.save();
+/**
+ * @NApiVersion 2.x
+ */
+
+require(['N/record'], function(record){
+    // Create a sales order
+    var rec = record.create({
+        type: 'salesorder', 
+        isDynamic: true
+    });
+    rec.setValue({
+        fieldId: 'entity',
+        value: 107
+    });
+
+    // Set up an object containing an item's internal ID and the corresponding quantity
+    var itemList = {
+        39: 5, 
+        38: 1
+    }
+
+    // Iterate through the object and set the key-value pairs on the record
+    util.each(itemList, function(quantity, itemId){     // (5, 39) and (1, 38)
+        rec.selectNewLine('item');
+        rec.setCurrentSublistValue('item','item',itemId);
+        rec.setCurrentSublistValue('item','quantity',quantity);
+        rec.commitLine('item');
+    });
+
+    var id = rec.save();
 });
 ```
 
@@ -14273,326 +14363,326 @@ Runs a pivot in the workbook and returns the results as a set of row-column inte
 #### Sample 1: Create Datasets, Dataset Links, and a Workbook with a Pivot and Run the Workbook
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-// The following script creates a simple workbook that contains a simple table
-require(['N/workbook', 'N/dataset', 'N/datasetLink'], function(nWorkbook, nDataset, datasetLink) {
-    var join = nDataset.createJoin({
-        fieldId: "budgetmachine"
-    });
-
-    var period = nDataset.createColumn({
-        join: join,
-        fieldId: "period",
-        alias: "budgetmachineperiod",
-        label: "Accounting Period"
-    });
-
-    var department = nDataset.createColumn({
-        fieldId: "department",
-        alias: "department",
-        label: "Department"
-    });
-
-    var total = nDataset.createColumn({
-        fieldId: "total",
-        alias: "total",
-        label: "Amount (Total)"
-    });
-
-    var budget = nDataset.create({
-        type: 'budgets',
-        columns: [period, department, total]
-    });
-
-    var postingperiod = nDataset.createColumn({
-        fieldId: "postingperiod",
-        alias: "postingperiod",
-        label: "Posting Period"
-    });
-
-    var amount = nDataset.createColumn({
-        fieldId: "amount",
-        alias: "amount",
-        label: "Amount"
-    });
-
-    var sales = nDataset.create({
-        type: 'salesinvoiced',
-        columns: [postingperiod, department, amount],
-    });
-
-
-    var budgetmachineperiod = budget.getExpressionFromColumn({
-        alias:"budgetmachineperiod"
-    });
-    var postingperiodExpression = sales.getExpressionFromColumn({
-        alias:"postingperiod"
-    });
-    var link = datasetLink.create({
-        datasets: [budget, sales],
-        expressions: [[budgetmachineperiod, postingperiodExpression]],
-        id: "link"
-    });
-
-    var postingPeriodItem = nWorkbook.createDataDimensionItem({
-        expression: postingperiodExpression
-    });
-    var postingPeriodDimension = nWorkbook.createDataDimension({
-        items: [postingPeriodItem]
-    });
-    var rowSection = nWorkbook.createSection({
-        children: [postingPeriodDimension]
-    });
-
-    var departmentItem = nWorkbook.createDataDimensionItem({
-        expression: budget.getExpressionFromColumn({
-            alias: "department"
-        })
-    });
-    var departmentDimension = nWorkbook.createDataDimension({
-        items: [departmentItem]
-    });
-
-    var sumTotal = nWorkbook.createDataMeasure({
-        label: 'Sum Total',
-        expression: budget.getExpressionFromColumn({
-            alias: 'total'
-        }),
-        aggregation: 'SUM'
-    });
-
-    var sumAmountNet = nWorkbook.createDataMeasure({
-        label: 'Sum Amount',
-        expression: sales.getExpressionFromColumn({
-            alias: 'amount'
-        }),
-        aggregation: 'SUM'
-    });
-
-    var columnSection = nWorkbook.createSection({
-        children: [departmentDimension, sumTotal, sumAmountNet]
-    });
-
-    var pivot = nWorkbook.createPivot({
-        id: "pivot",
-        rowAxis:  nWorkbook.createPivotAxis({
-            root: rowSection
-        }),
-        columnAxis: nWorkbook.createPivotAxis({
-            root: columnSection
-        }),
-        name: "Pivot",
-        datasetLink: link
-    });
-
-    var wb = nWorkbook.create({
-        pivots: [pivot]
-    });
-
-    wb.runPivot.promise("pivot").then(function(intersections){
-        for (var i in intersections)
-        {
-            var intersection = intersections[i];
-            if (intersection.row.itemValues) //skip header
-            {
-                console.log("Period: " + intersection.row.itemValues[0].value.name);
-                console.log(intersection.column.section.children[1].label + ":");
-                console.log(intersection.measureValues[0] ? intersection.measureValues[0].value.amount : 0);
-                console.log(intersection.column.section.children[2].label + ":");
-                console.log(intersection.measureValues[1] ? intersection.measureValues[1].value.amount : 0);
-            }
-        }
-    })
+/**
+ * @NApiVersion 2.x
+ */
+// The following script creates a simple workbook that contains a simple table
+require(['N/workbook', 'N/dataset', 'N/datasetLink'], function(nWorkbook, nDataset, datasetLink) {
+    var join = nDataset.createJoin({
+        fieldId: "budgetmachine"
+    });
+
+    var period = nDataset.createColumn({
+        join: join,
+        fieldId: "period",
+        alias: "budgetmachineperiod",
+        label: "Accounting Period"
+    });
+
+    var department = nDataset.createColumn({
+        fieldId: "department",
+        alias: "department",
+        label: "Department"
+    });
+
+    var total = nDataset.createColumn({
+        fieldId: "total",
+        alias: "total",
+        label: "Amount (Total)"
+    });
+
+    var budget = nDataset.create({
+        type: 'budgets',
+        columns: [period, department, total]
+    });
+
+    var postingperiod = nDataset.createColumn({
+        fieldId: "postingperiod",
+        alias: "postingperiod",
+        label: "Posting Period"
+    });
+
+    var amount = nDataset.createColumn({
+        fieldId: "amount",
+        alias: "amount",
+        label: "Amount"
+    });
+
+    var sales = nDataset.create({
+        type: 'salesinvoiced',
+        columns: [postingperiod, department, amount],
+    });
+
+
+    var budgetmachineperiod = budget.getExpressionFromColumn({
+        alias:"budgetmachineperiod"
+    });
+    var postingperiodExpression = sales.getExpressionFromColumn({
+        alias:"postingperiod"
+    });
+    var link = datasetLink.create({
+        datasets: [budget, sales],
+        expressions: [[budgetmachineperiod, postingperiodExpression]],
+        id: "link"
+    });
+
+    var postingPeriodItem = nWorkbook.createDataDimensionItem({
+        expression: postingperiodExpression
+    });
+    var postingPeriodDimension = nWorkbook.createDataDimension({
+        items: [postingPeriodItem]
+    });
+    var rowSection = nWorkbook.createSection({
+        children: [postingPeriodDimension]
+    });
+
+    var departmentItem = nWorkbook.createDataDimensionItem({
+        expression: budget.getExpressionFromColumn({
+            alias: "department"
+        })
+    });
+    var departmentDimension = nWorkbook.createDataDimension({
+        items: [departmentItem]
+    });
+
+    var sumTotal = nWorkbook.createDataMeasure({
+        label: 'Sum Total',
+        expression: budget.getExpressionFromColumn({
+            alias: 'total'
+        }),
+        aggregation: 'SUM'
+    });
+
+    var sumAmountNet = nWorkbook.createDataMeasure({
+        label: 'Sum Amount',
+        expression: sales.getExpressionFromColumn({
+            alias: 'amount'
+        }),
+        aggregation: 'SUM'
+    });
+
+    var columnSection = nWorkbook.createSection({
+        children: [departmentDimension, sumTotal, sumAmountNet]
+    });
+
+    var pivot = nWorkbook.createPivot({
+        id: "pivot",
+        rowAxis:  nWorkbook.createPivotAxis({
+            root: rowSection
+        }),
+        columnAxis: nWorkbook.createPivotAxis({
+            root: columnSection
+        }),
+        name: "Pivot",
+        datasetLink: link
+    });
+
+    var wb = nWorkbook.create({
+        pivots: [pivot]
+    });
+
+    wb.runPivot.promise("pivot").then(function(intersections){
+        for (var i in intersections)
+        {
+            var intersection = intersections[i];
+            if (intersection.row.itemValues) //skip header
+            {
+                console.log("Period: " + intersection.row.itemValues[0].value.name);
+                console.log(intersection.column.section.children[1].label + ":");
+                console.log(intersection.measureValues[0] ? intersection.measureValues[0].value.amount : 0);
+                console.log(intersection.column.section.children[2].label + ":");
+                console.log(intersection.measureValues[1] ? intersection.measureValues[1].value.amount : 0);
+            }
+        }
+    })
 });
 ```
 
 #### Sample 2: Create a Comprehensive Workbook
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-// The following script creates a workbook that includes a chart, a table, and a pivot. This sample uses a dataset that is not included in your account, so you will need to change the dataset id to a valid value from your account. This dataset needs to include columns for 'id', 'name', 'date', and 'total'.
-
-require(['N/workbook', 'N/dataset'], function(workbook, dataset){ 
-    var myDataset = dataset.load({
-        id: 'dataset_7'
-    });
-
-    var theIDExpression = myDataset.getExpressionFromColumn({
-        alias: 'id'
-    });
-    var sort = workbook.createSort({
-        ascending: false
-    });
-    var columnID = workbook.createTableColumn({
-        datasetColumnAlias: 'id'
-    });
-    var columnName = workbook.createTableColumn({
-        datasetColumnAlias: 'name'
-    });
-    var columnDate = workbook.createTableColumn({
-        datasetColumnAlias: 'date'
-    });
-    var columnTotal = myBasicWorkbook.createTableColumn({
-        datasetColumnAlias: 'total'
-    });
-    var tableView = workbook.createTableDefinition({
-        id: 'view',
-        name: 'View',
-        dataset: myDataset, 
-        columns: [columnID, columnName, columnDate, columnTotal]
-    });
-    var theDateExpression = dataset.getExpressionFromColumn({
-        alias: 'date'
-    });    
-    var rowItem = workbook.createDataDimensionitem({
-        label: 'A',
-        expression: theDateExpression
-    });
-    var rowDataDimension = workbook.createDataDimension({
-        items: [rowItem]
-    });
-    var rowSection = workbook.createSection({
-        children: [rowDataDimension]
-    });
-    var theTotalExpression = dataset.getExpressionFromColumn({
-        alias: 'total'
-    });
-    var columnItem = workbook.createDataDimensionItem({
-        label: 'B',
-        expression: theTotalExpression
-    });    var columnDataDimension = workbook.createDataDimension({
-        items: [columnItem]
-    });
-    var columnMeasure = workbook.createMeasure({
-        label: 'M',
-        expression: theIDExpression,
-        aggregation: workbook.Aggregation.MAX
-    });
-    var columnSection = workbook.createSection({
-        children: [columnDataDimension, columnMeasure]
-    });
-    var constExpr = workbook.createConstant({
-        constant: 1
-    });
-    var anyOfExpr = workbook.createExpression({
-        functionId: workbook.ExpressionType.AND,
-        parameters: {
-            expression: theIDExpression,
-            set: [constExpr]
-        }
-    });
-    var notExpr = workbook.createExpression({
-        functionId: workbook.ExpressionType.NOT,
-        parameters: {
-            a: anyOfExpr
-        }
-    });
-    var allSubNodesSelector = workbook.createAllSubNodesSelector();
-    var rowItemSelector = workbook.createDimensionSelector({
-        dimension: rowDataDimension
-    });
-    var columnItemSelector = workbook.createDimensionSelector({
-        dimension: columnDataDimension
-    });
-    var rowSelector = workbook.createPathSelector({
-        elements: [allSubNodesSelector, rowItemSelector]
-    });
-    var columnSelector = workbook.createPathSelector({
-        elements: [allSubNodesSelector, columnItemSelector]
-    });
-    var rowSort = workbook.createDimensionSort({
-        item:rowItem,
-        sort:sort
-    });
-    var columnSort = workbook.createMeasureSort({
-        measure: columnMeasure,
-        sort: sort,
-        otherAxisSelector: allSubNodesSelector
-    });
-    var rowSortDefinition = workbook.createSortDefinition({
-        sortBys: [rowSort],
-        selector: rowSelector
-    });
-    var columnSortDefinition = workbook.createSortDefinition({
-        sortBys: [columnSort],
-        selector: columnSelector
-    });
-    var rowAxis = workbook.createPivotAxis({
-        root: rowSection,
-        sortDefinitions: [rowSortDefinition]
-    });
-    var columnAxis = workbook.createPivotAxis({
-        root: columnSection,
-        sortDefinitions: [columnSortDefinition]
-    });
-    var limitingFilter = workbook.createLimitingFilter({
-        row: true,
-        filteredNodesSelector: rowSelector,
-        limit: 1,
-        sortBys: [rowSort]
-    });
-    var conditionalFilter = workbook.createConditionalFilter({
-        row: false,
-        filteredNodesSelector: rowSelector,
-        otherAxisSelector: columnSelector,
-        measure: columnMeasure,
-        predicate: notExpr
-    });
-    var pivot = workbook.createPivotDefinition({
-        id: 'pivot',
-        name: 'Pivot',
-        dataset: myDataset,
-        rowAxis: rowAxis,
-        columnAxis: columnAxis,
-        filterExpressions: [notExpr],
-        aggregationFilters: [limitingFilter, conditionalFilter]
-    });
-    var firstAxis = workbook.createChartAxis({
-        title: 'First axis'
-    });
-    var secondAxis = workbook.createChartAxis({
-        title: 'Second axis'
-    });
-    var category = workbook.createCategory({
-        axis: firstAxis,
-        root: rowSection
-    });
-    var legend = workbook.createLegend({
-        axes: [secondAxis],
-        root: columnSection
-    });
-    var aspect = workbook.createAspect({
-        measure: columnMeasure
-    });
-    var series = workbook.createSeries({
-        aspects: [aspect]
-    });
-    var chart = workbook.createChartDefinition({
-        id: 'chart',
-        name: 'Chart',
-        type: workbook.ChartType.AREA,
-        dataset: myDataset,
-        category: category,
-        legend: legend,
-        series: [series]
-    });
-    var myNewWorkbook = workbook.create({
-        description: 'My new updated workbook',
-        name: 'Workbook Updated',
-        tableDefinitions: [tableView],
-        pivotDefinitions: [pivot],
-        chartDefinitions: [chart]
-    });
-    var workbookList = workbook.list();
-
-    log.debug({
-        title: "MyNewWorkbook",
-        details: myNewWorkbook
-    });
+/**
+ * @NApiVersion 2.x
+ */
+// The following script creates a workbook that includes a chart, a table, and a pivot. This sample uses a dataset that is not included in your account, so you will need to change the dataset id to a valid value from your account. This dataset needs to include columns for 'id', 'name', 'date', and 'total'.
+
+require(['N/workbook', 'N/dataset'], function(workbook, dataset){ 
+    var myDataset = dataset.load({
+        id: 'dataset_7'
+    });
+
+    var theIDExpression = myDataset.getExpressionFromColumn({
+        alias: 'id'
+    });
+    var sort = workbook.createSort({
+        ascending: false
+    });
+    var columnID = workbook.createTableColumn({
+        datasetColumnAlias: 'id'
+    });
+    var columnName = workbook.createTableColumn({
+        datasetColumnAlias: 'name'
+    });
+    var columnDate = workbook.createTableColumn({
+        datasetColumnAlias: 'date'
+    });
+    var columnTotal = myBasicWorkbook.createTableColumn({
+        datasetColumnAlias: 'total'
+    });
+    var tableView = workbook.createTableDefinition({
+        id: 'view',
+        name: 'View',
+        dataset: myDataset, 
+        columns: [columnID, columnName, columnDate, columnTotal]
+    });
+    var theDateExpression = dataset.getExpressionFromColumn({
+        alias: 'date'
+    });    
+    var rowItem = workbook.createDataDimensionitem({
+        label: 'A',
+        expression: theDateExpression
+    });
+    var rowDataDimension = workbook.createDataDimension({
+        items: [rowItem]
+    });
+    var rowSection = workbook.createSection({
+        children: [rowDataDimension]
+    });
+    var theTotalExpression = dataset.getExpressionFromColumn({
+        alias: 'total'
+    });
+    var columnItem = workbook.createDataDimensionItem({
+        label: 'B',
+        expression: theTotalExpression
+    });    var columnDataDimension = workbook.createDataDimension({
+        items: [columnItem]
+    });
+    var columnMeasure = workbook.createMeasure({
+        label: 'M',
+        expression: theIDExpression,
+        aggregation: workbook.Aggregation.MAX
+    });
+    var columnSection = workbook.createSection({
+        children: [columnDataDimension, columnMeasure]
+    });
+    var constExpr = workbook.createConstant({
+        constant: 1
+    });
+    var anyOfExpr = workbook.createExpression({
+        functionId: workbook.ExpressionType.AND,
+        parameters: {
+            expression: theIDExpression,
+            set: [constExpr]
+        }
+    });
+    var notExpr = workbook.createExpression({
+        functionId: workbook.ExpressionType.NOT,
+        parameters: {
+            a: anyOfExpr
+        }
+    });
+    var allSubNodesSelector = workbook.createAllSubNodesSelector();
+    var rowItemSelector = workbook.createDimensionSelector({
+        dimension: rowDataDimension
+    });
+    var columnItemSelector = workbook.createDimensionSelector({
+        dimension: columnDataDimension
+    });
+    var rowSelector = workbook.createPathSelector({
+        elements: [allSubNodesSelector, rowItemSelector]
+    });
+    var columnSelector = workbook.createPathSelector({
+        elements: [allSubNodesSelector, columnItemSelector]
+    });
+    var rowSort = workbook.createDimensionSort({
+        item:rowItem,
+        sort:sort
+    });
+    var columnSort = workbook.createMeasureSort({
+        measure: columnMeasure,
+        sort: sort,
+        otherAxisSelector: allSubNodesSelector
+    });
+    var rowSortDefinition = workbook.createSortDefinition({
+        sortBys: [rowSort],
+        selector: rowSelector
+    });
+    var columnSortDefinition = workbook.createSortDefinition({
+        sortBys: [columnSort],
+        selector: columnSelector
+    });
+    var rowAxis = workbook.createPivotAxis({
+        root: rowSection,
+        sortDefinitions: [rowSortDefinition]
+    });
+    var columnAxis = workbook.createPivotAxis({
+        root: columnSection,
+        sortDefinitions: [columnSortDefinition]
+    });
+    var limitingFilter = workbook.createLimitingFilter({
+        row: true,
+        filteredNodesSelector: rowSelector,
+        limit: 1,
+        sortBys: [rowSort]
+    });
+    var conditionalFilter = workbook.createConditionalFilter({
+        row: false,
+        filteredNodesSelector: rowSelector,
+        otherAxisSelector: columnSelector,
+        measure: columnMeasure,
+        predicate: notExpr
+    });
+    var pivot = workbook.createPivotDefinition({
+        id: 'pivot',
+        name: 'Pivot',
+        dataset: myDataset,
+        rowAxis: rowAxis,
+        columnAxis: columnAxis,
+        filterExpressions: [notExpr],
+        aggregationFilters: [limitingFilter, conditionalFilter]
+    });
+    var firstAxis = workbook.createChartAxis({
+        title: 'First axis'
+    });
+    var secondAxis = workbook.createChartAxis({
+        title: 'Second axis'
+    });
+    var category = workbook.createCategory({
+        axis: firstAxis,
+        root: rowSection
+    });
+    var legend = workbook.createLegend({
+        axes: [secondAxis],
+        root: columnSection
+    });
+    var aspect = workbook.createAspect({
+        measure: columnMeasure
+    });
+    var series = workbook.createSeries({
+        aspects: [aspect]
+    });
+    var chart = workbook.createChartDefinition({
+        id: 'chart',
+        name: 'Chart',
+        type: workbook.ChartType.AREA,
+        dataset: myDataset,
+        category: category,
+        legend: legend,
+        series: [series]
+    });
+    var myNewWorkbook = workbook.create({
+        description: 'My new updated workbook',
+        name: 'Workbook Updated',
+        tableDefinitions: [tableView],
+        pivotDefinitions: [pivot],
+        chartDefinitions: [chart]
+    });
+    var workbookList = workbook.list();
+
+    log.debug({
+        title: "MyNewWorkbook",
+        details: myNewWorkbook
+    });
 });
 ```
 
@@ -14646,24 +14736,24 @@ workflow.trigger(options)
 #### Sample 1: N/workflow Module Script Sample
 
 ```javascript
-/**
- * @NApiVersion 2.1
- */
-
-require(['N/workflow', 'N/search', 'N/error', 'N/record'],
-    function(workflow, search, error, record) {
-        function initiateWorkflow() {
-            var workflowInstanceId = workflow.initiate({
-                recordType: 'customer',
-                recordId: 24,
-                workflowId: 'customworkflow_myWorkFlow'
-            });
-            var customerRecord = record.load({
-                type: record.Type.CUSTOMER,
-                id: 24
-            });
-        }
-        initiateWorkflow();
+/**
+ * @NApiVersion 2.1
+ */
+
+require(['N/workflow', 'N/search', 'N/error', 'N/record'],
+    function(workflow, search, error, record) {
+        function initiateWorkflow() {
+            var workflowInstanceId = workflow.initiate({
+                recordType: 'customer',
+                recordId: 24,
+                workflowId: 'customworkflow_myWorkFlow'
+            });
+            var customerRecord = record.load({
+                type: record.Type.CUSTOMER,
+                id: 24
+            });
+        }
+        initiateWorkflow();
     });
 ```
 
@@ -14893,99 +14983,41 @@ Selects an array of nodes from an XML document using an XPath expression.
 | --- | --- | --- | --- | --- |
 | Method | XPath.select(options) | xml.Node[] | Client and server scripts | Selects an array of nodes from an XML document using an XPath expression. |
 
-### Official Code Samples (3 Sample(s))
+### Official Code Samples (1 Sample(s))
 
-#### Sample 1: Load an XML File and Obtain Child Element Values
-
-```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-define(['N/xml', 'N/file'], function(xml, file) {
-    return {
-        onRequest: function(options) {
-            var sentence = '';
-            var xmlFileContent = file.load({
-                id: 'SuiteScripts/BookSample.xml'
-            }).getContents();
-            var xmlDocument = xml.Parser.fromString({
-                text: xmlFileContent
-            });
-            var bookNode = xml.XPath.select({
-                node: xmlDocument,
-                xpath: '//b:book'
-            });
-
-            for (var i = 0; i &lt; bookNode.length; i++) {
-                var title = bookNode[i].firstChild.nextSibling.textContent;
-                var author = bookNode[i].getElementsByTagName({
-                    tagName: 'b:author'
-                })[0].textContent;
-                sentence += 'Author: ' + author + ' wrote ' + title + '.\n';
-            }
-
-            options.response.write(sentence);
-        }
-    };
-});
-```
-
-#### Sample 2: Parse an XML File and Append New Elements
+#### Sample 1: N/xml Module Script Samples
 
 ```javascript
-/**
- * @NApiVersion 2.x
- */
-
-require(['N/xml','N/file'], function(xml,file) {
-    var xmlData = file.load('SuiteScripts/BookSample.xml').getContents();
-    var bookShelf = xml.Parser.fromString({
-        text: xmlData
-        }); 
-
-    var newBookNode = bookShelf.createElement("book"); 
-    var newTitleNode = bookShelf.createElement("title"); 
-    var newTitleNodeValue = bookShelf.createTextNode(""); 
-    var newAuthorNode = bookShelf.createElement("author"); 
-    var newAuthorNodeValue = bookShelf.createTextNode("");
-
-    newBookNode.appendChild(newTitleNode);
-    newBookNode.appendChild(newAuthorNode);    
-    newTitleNode.appendChild(newTitleNodeValue);
-    newAuthorNode.appendChild(newAuthorNodeValue);
-    
-});
-```
-
-#### Sample 3: Parse an XML String and Log Element Values
-
-```javascript
-/**
- * @NApiVersion 2.1
- * @NScriptType Suitelet
- */
-
-require(['N/xml'], function(xml) {
-    return {
-        onRequest: function(options) {
-            var xmlString = '&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;config date="1465467658668" transient="false"&gt;Some content&lt;/config&gt;';
-
-            var xmlDocument = xml.Parser.fromString({
-                text: xmlString
-            });
-
-            var bookNode = xml.XPath.select({
-                node: xmlDocument,
-                xpath: '//config'
-            });
-
-            for (var i = 0; i &lt; bookNode.length; i++) {
-                log.debug('Config content', bookNode[i].textContent);
-            }
-        }
-    };
-});
+&lt;bookstore xmlns:b="http://www.qualifiednamespace.com/book"&gt;
+    &lt;b:book category="cooking"&gt;
+        &lt;b:title lang="en"&gt;Everyday Italian&lt;/b:title&gt;
+        &lt;b:author&gt;Giada De Laurentiis&lt;/b:author&gt;
+        &lt;b:year&gt;2005&lt;/b:year&gt;
+        &lt;b:price&gt;30.00&lt;/b:price&gt;
+    &lt;/b:book&gt;
+    &lt;b:book category="children"&gt;
+        &lt;b:title lang="en"&gt;Harry Potter&lt;/b:title&gt;
+        &lt;b:author&gt;J K. Rowling&lt;/b:author&gt;
+        &lt;b:year&gt;2005&lt;/b:year&gt;
+        &lt;b:price&gt;29.99&lt;/b:price&gt;
+    &lt;/b:book&gt;
+    &lt;b:book category="web"&gt;
+        &lt;b:title lang="en"&gt;XQuery Kick Start&lt;/b:title&gt;
+        &lt;b:author&gt;James McGovern&lt;/b:author&gt;
+        &lt;b:author&gt;Per Bothner&lt;/b:author&gt;
+        &lt;b:author&gt;Kurt Cagle&lt;/b:author&gt;
+        &lt;b:author&gt;James Linn&lt;/b:author&gt;
+        &lt;b:author&gt;Vaidyanathan Nagarajan&lt;/b:author&gt;
+        &lt;b:year&gt;2003&lt;/b:year&gt;
+        &lt;b:price&gt;49.99&lt;/b:price&gt;
+    &lt;/b:book&gt;
+    &lt;b:book category="web" cover="paperback"&gt;
+        &lt;b:title lang="en"&gt;Learning XML&lt;/b:title&gt;
+        &lt;b:author&gt;Erik T. Ray&lt;/b:author&gt;
+        &lt;b:year&gt;2003&lt;/b:year&gt;
+        &lt;b:price&gt;39.95&lt;/b:price&gt;
+    &lt;/b:book&gt;
+&lt;/bookstore&gt;
 ```
 
 
