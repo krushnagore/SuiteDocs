@@ -48,15 +48,17 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install Site Dependencies
+        working-directory: './SuiteDocs Site'
+        run: npm ci || npm install
+
       - name: Run Documentation Sync Pipeline
         run: |
           python sync_manager.py --run-now
 
-      - name: Install Site Dependencies & Build
+      - name: Build Site Production Distribution
         working-directory: './SuiteDocs Site'
-        run: |
-          npm install
-          npm run build
+        run: npm run build
 
       - name: Commit & Push Updated Documentation
         run: |
@@ -65,14 +67,40 @@ jobs:
           git add suite_script_21_complete.json SuiteScript_2.1_Modules_Reference.pdf sync_config.json scraped_method_samples.json "SuiteDocs Site/public/data" "SuiteDocs Site/public/downloads"
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync: update SuiteScript 2.1 documentation, PDF & method code references [skip ci]" && git push)
 
+      # Graceful GitHub Pages Deployment:
+      # Verifies whether GitHub Pages is enabled in repo settings (Settings -> Pages -> Source: GitHub Actions).
+      # If GitHub Pages is not configured (e.g. site is hosted on Vercel), this step safely skips without failing the job.
+      - name: Check GitHub Pages Configuration
+        id: check_pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages)
+          if [ "$STATUS_CODE" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages is active and configured."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages is not enabled or not set to GitHub Actions (HTTP $STATUS_CODE). Skipping Pages deployment."
+          fi
+
       - name: Setup GitHub Pages
+        if: steps.check_pages.outputs.enabled == 'true'
+        id: pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Upload GitHub Pages Artifact
+        if: steps.check_pages.outputs.enabled == 'true' && steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: './SuiteDocs Site/dist'
 
       - name: Deploy to GitHub Pages
+        if: steps.check_pages.outputs.enabled == 'true' && steps.pages.outcome == 'success'
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
