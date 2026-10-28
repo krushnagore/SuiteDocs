@@ -65,7 +65,13 @@ jobs:
           git config --global user.name 'SuiteDocs Automation [Bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add suite_script_21_complete.json SuiteScript_2.1_Modules_Reference.pdf sync_config.json scraped_method_samples.json "SuiteDocs Site/public/data" "SuiteDocs Site/public/downloads"
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync: update SuiteScript 2.1 documentation, PDF & method code references [skip ci]" && git push)
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-sync: update SuiteScript 2.1 documentation, PDF & method code references [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No documentation changes detected. Working tree clean."
+          fi
 
       # Graceful GitHub Pages Deployment:
       # Verifies whether GitHub Pages is enabled in repo settings (Settings -> Pages -> Source: GitHub Actions).
